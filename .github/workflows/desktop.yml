@@ -245,7 +245,7 @@ jobs:
           if not exist "%LOCALAPPDATA%\Programs\Mihrab\Mihrab.exe" (echo not installed & exit /b 1)
           start "" "%LOCALAPPDATA%\Programs\Mihrab\Mihrab.exe"
           ping -n 25 127.0.0.1 >nul
-          reg query "HKCU\Software\Microsoft\Windows\CurrentVersion\Run" /v com.prayer_times.desktop || (echo no start-at-login entry under that name & exit /b 1)
+          reg query "HKCU\Software\Microsoft\Windows\CurrentVersion\Run" /v com.goma.salat.desktop || (echo no start-at-login entry under that name & exit /b 1)
           taskkill /f /im Mihrab.exe >nul 2>&1
           ping -n 3 127.0.0.1 >nul
           start /wait "" "%LOCALAPPDATA%\Programs\Mihrab\Uninstall Mihrab.exe" /S _?=%LOCALAPPDATA%\Programs\Mihrab
