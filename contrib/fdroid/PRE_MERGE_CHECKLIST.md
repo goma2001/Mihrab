@@ -53,8 +53,8 @@ Expect: `android/app/build/outputs/apk/fdroid/release/app-fdroid-release.apk`
 > and leaves a trailing space on the wrap, which `fdroid lint` then flags
 > (`trailing-spaces`). Use the `G`/`A` shell vars (set on the first two prebuild
 > lines, they persist across the shared prebuild shell) and `npm set ...` to keep
-> each command short. Validate locally with `fdroid rewritemeta com.prayer_times`
-> (must produce no diff) and `fdroid lint com.prayer_times` (must exit 0).
+> each command short. Validate locally with `fdroid rewritemeta com.goma.salat`
+> (must produce no diff) and `fdroid lint com.goma.salat` (must exit 0).
 
 **Keep only the current version in `Builds:`.** The fdroiddata MR diff adds every
 entry, and CI builds each one in sequence starting from the oldest. Historical
@@ -186,13 +186,13 @@ Two fixes, both required:
 After pulling latest **PrayerApp** `main`:
 
 ```sh
-cp /path/to/PrayerApp/contrib/fdroid/com.prayer_times.yml \
-   /path/to/fdroiddata/metadata/com.prayer_times.yml
+cp /path/to/PrayerApp/contrib/fdroid/com.goma.salat.yml \
+   /path/to/fdroiddata/metadata/com.goma.salat.yml
 # Remove the two # comment lines at the top of the copied file if present
 cd /path/to/fdroiddata
-git checkout add-com.prayer_times   # or your MR branch
-git add metadata/com.prayer_times.yml
-git commit -m "Update com.prayer_times maintainer notes"
+git checkout add-com.goma.salat   # or your MR branch
+git add metadata/com.goma.salat.yml
+git commit -m "Update com.goma.salat maintainer notes"
 git push
 ```
 

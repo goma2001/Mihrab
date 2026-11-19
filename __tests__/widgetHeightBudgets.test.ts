@@ -28,7 +28,7 @@ import { readFileSync } from 'fs';
 import path from 'path';
 
 const ROOT = path.join(__dirname, '..');
-const JAVA = path.join(ROOT, 'android', 'app', 'src', 'main', 'java', 'com', 'prayer_times');
+const JAVA = path.join(ROOT, 'android', 'app', 'src', 'main', 'java', 'com', 'goma', 'salat');
 const RES = path.join(ROOT, 'android', 'app', 'src', 'main', 'res');
 
 const src = (name: string) => readFileSync(path.join(JAVA, `${name}.kt`), 'utf8');

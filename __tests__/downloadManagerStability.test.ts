@@ -104,7 +104,7 @@ import {
   type QuranDownloadJob,
 } from '../src/quran/quranDownloadManager';
 
-const PENDING_KEY = 'mihrab.quran.download.pending';
+const PENDING_KEY = 'salaty.quran.download.pending';
 const FONTS: QuranDownloadJob = { kind: 'fonts' };
 const HUSARY: QuranDownloadJob = { kind: 'audio', reciterId: 'husary' };
 const WARSH: QuranDownloadJob = { kind: 'riwayah', riwayahId: 'warsh' };

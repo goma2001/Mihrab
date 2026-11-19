@@ -140,7 +140,7 @@ const read = (rel: string) => fs.readFileSync(path.join(REPO, rel), 'utf8');
 
 describe('the Android reading widget', () => {
   const kotlin = read(
-    'android/app/src/main/java/com/prayer_times/glance/ReadingGlanceWidget.kt',
+    'android/app/src/main/java/com/goma/salat/glance/ReadingGlanceWidget.kt',
   );
 
   it('sends the play position from the play control', () => {
@@ -158,7 +158,7 @@ describe('the Android reading widget', () => {
     // khatmah's door telling the reader whose visit this is; it says
     // nothing about sound.
     expect(kotlin).toContain(
-      '"mihrab://read/${r.surah}?$position$playParam$session"',
+      '"salaty://read/${r.surah}?$position$playParam$session"',
     );
     expect(kotlin).toContain('readingAction(context, r, play = false)');
     expect(kotlin).toContain('val playParam = if (play) "&playFromAyah=${r.ayah}" else ""');
@@ -203,10 +203,10 @@ describe('the iOS reading widget', () => {
 
   it('leaves its own tap silent', () => {
     expect(swift).toContain(
-      'URL(string: "mihrab://read/\\(r.surah)?\\(position)\\(sessionParam(r))")',
+      'URL(string: "salaty://read/\\(r.surah)?\\(position)\\(sessionParam(r))")',
     );
     expect(swift).toContain(
-      'URL(string: "mihrab://read/\\(r.surah)?\\(position)&playFromAyah=\\(r.ayah)\\(sessionParam(r))")',
+      'URL(string: "salaty://read/\\(r.surah)?\\(position)&playFromAyah=\\(r.ayah)\\(sessionParam(r))")',
     );
     expect(swift.match(/playFromAyah=/g)).toHaveLength(1);
   });

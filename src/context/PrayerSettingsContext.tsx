@@ -165,6 +165,7 @@ export type WidgetSlice = Pick<
 export type LiveActivitySlice = Pick<
   PrayerAppSettings,
   | 'liveActivityEnabled'
+  | 'floatingButtonEnabled'
   | 'liveActivityCompactMode'
   | 'liveActivityShowSunrise'
   | 'liveActivityShowHijri'
@@ -498,6 +499,7 @@ export function PrayerSettingsProvider({
   const liveActivity = useMemo<LiveActivitySlice>(
     () => ({
       liveActivityEnabled: settings.liveActivityEnabled,
+      floatingButtonEnabled: settings.floatingButtonEnabled,
       liveActivityCompactMode: settings.liveActivityCompactMode,
       liveActivityShowSunrise: settings.liveActivityShowSunrise,
       liveActivityShowHijri: settings.liveActivityShowHijri,
@@ -508,6 +510,7 @@ export function PrayerSettingsProvider({
     }),
     [
       settings.liveActivityEnabled,
+      settings.floatingButtonEnabled,
       settings.liveActivityCompactMode,
       settings.liveActivityShowSunrise,
       settings.liveActivityShowHijri,

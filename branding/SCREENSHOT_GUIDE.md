@@ -440,7 +440,7 @@ adb shell date 0909094126                      # 09:41, to match the demo clock
 adb shell wm size 1080x2400; adb shell wm density 420    # the phone set
 adb shell wm size 2560x1600; adb shell wm density 320    # the tablet set
 adb shell settings put system time_12_24 24
-adb shell cmd appops set com.prayer_times SCHEDULE_EXACT_ALARM allow
+adb shell cmd appops set com.goma.salat SCHEDULE_EXACT_ALARM allow
 adb emu geo fix -7.6200 33.5945                # longitude first
 adb shell cmd uimode night yes|no              # the dark figures
 ```

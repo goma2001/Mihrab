@@ -252,7 +252,7 @@ function registerIpc() {
 // Center.
 // From the Microsoft Store the package names the app itself
 // (PackageFamilyName!App), and the toasts must go out under that name.
-if (process.platform === 'win32' && !process.windowsStore) app.setAppUserModelId('com.prayer_times.desktop');
+if (process.platform === 'win32' && !process.windowsStore) app.setAppUserModelId('com.goma.salat.desktop');
 
 // One instance: a second launch focuses the first, so two copies never
 // schedule the same adhan twice.

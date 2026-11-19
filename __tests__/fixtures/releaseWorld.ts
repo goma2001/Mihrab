@@ -237,7 +237,7 @@ export const GOOD_CASK = `cask "mihrab" do
   version "2.27.1"
   sha256 "${'a'.repeat(64)}"
 
-  url "https://github.com/MihrabHQ/Mihrab/releases/download/v#{version}/Mihrab-macOS-#{version}.zip"
+  url "https://github.com/goma2001/Mihrab/releases/download/v#{version}/Mihrab-macOS-#{version}.zip"
   depends_on macos: ">= :monterey"
   depends_on arch: :arm64
 

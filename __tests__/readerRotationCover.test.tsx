@@ -239,13 +239,13 @@ describe('the rotation fade', () => {
 
 describe('the platform raises its cover at the turn itself', () => {
   it('Android: first thing in the configuration change, before anything draws', () => {
-    const activity = read('android/app/src/main/java/com/prayer_times/MainActivity.kt');
+    const activity = read('android/app/src/main/java/com/goma/salat/MainActivity.kt');
     const body = activity.slice(activity.indexOf('override fun onConfigurationChanged'));
     expect(body.indexOf('RotationCover.onConfigurationChanged(this, newConfig)')).toBeGreaterThan(-1);
     expect(body.indexOf('RotationCover.onConfigurationChanged')).toBeLessThan(
       body.indexOf('super.onConfigurationChanged'),
     );
-    expect(read('android/app/src/main/java/com/prayer_times/MainApplication.kt')).toContain(
+    expect(read('android/app/src/main/java/com/goma/salat/MainApplication.kt')).toContain(
       'add(RotationCoverPackage())',
     );
   });

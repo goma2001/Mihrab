@@ -43,7 +43,7 @@ function device() {
 }
 
 const PAYLOAD = JSON.stringify({
-  format: 'mihrab.snapshot',
+  format: 'salaty.snapshot',
   data: { journal: [{ date: '2026-08-20', prayer: 'fajr' }] },
 });
 
@@ -284,7 +284,7 @@ describe('files that are not ours', () => {
   it.each([
     ['null', null],
     ['a string', 'MHRB-ABCDEF'],
-    ['an unrelated document', { format: 'mihrab.snapshot', data: {} }],
+    ['an unrelated document', { format: 'salaty.snapshot', data: {} }],
     ['a header with no body', { format: ENVELOPE_FORMAT, sender: { pk: 'x' } }],
     [
       'a header with no sender',
@@ -389,7 +389,7 @@ describe('the shape on disk', () => {
       now: new Date('2026-08-23T09:15:00.000Z'),
     });
 
-    expect(envelope.format).toBe('mihrab.envelope');
+    expect(envelope.format).toBe('salaty.envelope');
     expect(envelope.version).toBe(1);
     expect(envelope.createdAt).toBe('2026-08-23T09:15:00.000Z');
     expect(JSON.parse(JSON.stringify(envelope))).toEqual(envelope);

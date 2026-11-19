@@ -85,7 +85,7 @@ still promotes with `usesChronometer` set. Both are visual checks on a device,
 not guesses to make in the plan.
 
 **Verify.** With the Live Activity on and the screen awake for 60 s:
-`dumpsys notification --noredact | grep -c "com.prayer_times"` is not the
+`dumpsys notification --noredact | grep -c "com.goma.salat"` is not the
 measure — instead count re-posts by logging in `notify()` behind a debug flag,
 or watch `perfetto`'s NotificationService track. Before: ~60 posts/minute.
 After: ~1.
@@ -159,7 +159,7 @@ binder round-trips per unlock, and the Streak path allocates and draws an
 refreshes a placed widget at the prayer boundary, so the early return must be
 "no widgets at all", not "none of *this* class".
 
-**Verify.** `adb shell dumpsys alarm | grep -A5 com.prayer_times` before and
+**Verify.** `adb shell dumpsys alarm | grep -A5 com.goma.salat` before and
 after an unlock — the count should stop growing by ~18.
 
 ## P4 — One `'active'` event cascades into a GPS fix, an alarm rewrite and a journal decrypt
@@ -220,7 +220,7 @@ nothing but a row in a table. The cost is in the **rewriting** (P4) and in the
 - Audit which alarms genuinely need `allowWhileIdle`. A prayer alert does; the
   ayah of the day at 09:00 does not.
 
-**Verify.** `adb shell dumpsys alarm | grep com.prayer_times | wc -l`.
+**Verify.** `adb shell dumpsys alarm | grep com.goma.salat | wc -l`.
 
 ## P6 — The Wi-Fi backfill is a ~90-round burst that ignores backgrounding
 
@@ -293,7 +293,7 @@ that needs care and a test. P5 and P6 are cleanup.
 ## What measuring actually showed (2026-08-26, Pixel, v2.10.1 vs the fixes)
 
 Measured on hardware with the fixed build installed side by side as
-`com.prayer_times.beta`, CPU read from `/proc/<pid>/stat` so charging does
+`com.goma.salat.beta`, CPU read from `/proc/<pid>/stat` so charging does
 not distort it. Two of these corrected the plan.
 
 **The first number was wrong and nearly got reported.** Fixed build 0.22 s
@@ -358,12 +358,12 @@ and after, on a real phone.
 # Reset, use the phone normally for an hour, then dump.
 adb shell dumpsys batterystats --reset
 adb shell dumpsys batterystats > before.txt          # Battery Historian input
-adb shell dumpsys alarm | grep -A20 com.prayer_times # standing + fired counts
+adb shell dumpsys alarm | grep -A20 com.goma.salat # standing + fired counts
 adb shell dumpsys sensorservice | grep -B2 -A6 prayer_times
-adb shell dumpsys notification --noredact | grep -c com.prayer_times
+adb shell dumpsys notification --noredact | grep -c com.goma.salat
 
 # What "Restricted" does to us, which is a different question (see below).
-adb shell cmd appops set com.prayer_times RUN_ANY_IN_BACKGROUND deny
+adb shell cmd appops set com.goma.salat RUN_ANY_IN_BACKGROUND deny
 ```
 
 Perfetto with the `android_power`, `sched` and `binder` data sources for a

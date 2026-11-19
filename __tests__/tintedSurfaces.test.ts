@@ -36,7 +36,7 @@ const PRESET_SOLID: Record<
   Exclude<AppAccentId, 'custom'>,
   { light: string; dark: string }
 > = {
-  green: { light: '#1F5F4A', dark: '#46A081' },
+  green: { light: '#01543F', dark: '#46A081' },
   teal: { light: '#0d9488', dark: '#5eead4' },
   blue: { light: '#2563eb', dark: '#7dd3fc' },
   amber: { light: '#b45309', dark: '#fbbf24' },
@@ -104,7 +104,7 @@ describe('Verdant accent rules', () => {
 
     it(`coerces custom hex to green — ${isDark ? 'dark' : 'light'}`, () => {
       const p = buildAppPalette(isDark, false, 'custom', '#ff0000', true);
-      expect(p.accentSolid).toBe(isDark ? '#46A081' : '#1F5F4A');
+      expect(p.accentSolid).toBe(isDark ? '#46A081' : '#01543F');
     });
   }
 

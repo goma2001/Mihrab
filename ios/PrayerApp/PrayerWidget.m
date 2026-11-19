@@ -287,7 +287,7 @@ RCT_EXPORT_MODULE();
   _observing = YES;
   __weak WidgetQueueWatcher *weakSelf = self;
   notify_register_dispatch(
-      "com.hassan.prayerapp.widgetQueueChanged", &_token, dispatch_get_main_queue(), ^(int token) {
+      "com.goma.salat.widgetQueueChanged", &_token, dispatch_get_main_queue(), ^(int token) {
         // The notification carries nothing on purpose. It says "look
         // again"; the queue itself is the state, and the drain that reads
         // it is the one that already existed and is already tested.

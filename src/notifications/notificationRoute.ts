@@ -12,7 +12,7 @@
  * looked at it.
  *
  * So a notification's destination is a URL, resolved here, and handed to
- * the same deep-link machinery the widgets already use: `mihrab://…`,
+ * the same deep-link machinery the widgets already use: `salaty://…`,
  * parsed by src/navigation/linking.ts. Widgets and notifications then
  * reach a screen the same way, and there is one place that decides where
  * a tap goes.
@@ -36,7 +36,7 @@
  * handling and are deliberately not routed here.
  */
 import type { Notification } from '@notifee/react-native';
-import { MIHRAB_SCHEME } from '../navigation/linking';
+import { SALATY_SCHEME } from '../navigation/linking';
 import { findPageForAyah } from '../quran/pages';
 import { khatmahContinueTarget } from '../quran/khatmahTarget';
 import { findDhikr } from '../dhikr/dhikr';
@@ -79,7 +79,7 @@ function positiveInt(value: unknown): number | null {
  * both is a link that has not decided what it is asking for.
  */
 function readUrl(surah: number, position: string): string {
-  return `${MIHRAB_SCHEME}read/${surah}?${position}`;
+  return `${SALATY_SCHEME}read/${surah}?${position}`;
 }
 
 export async function notificationRoute(
@@ -98,7 +98,7 @@ export async function notificationRoute(
 
   // Manage downloads, where a stopped download can be picked up — #55.
   if (data.route === ROUTE_QURAN_DOWNLOADS) {
-    return `${MIHRAB_SCHEME}downloads`;
+    return `${SALATY_SCHEME}downloads`;
   }
 
   // A surah, opened at its beginning, in whichever reader they were last
@@ -144,7 +144,7 @@ export async function notificationRoute(
         // The counter opens on its last dhikr rather than not at all.
       }
     }
-    return `${MIHRAB_SCHEME}tasbih`;
+    return `${SALATY_SCHEME}tasbih`;
   }
 
   // The morning and evening adhkār — issue #39. The reminder names a
@@ -161,13 +161,13 @@ export async function notificationRoute(
   // should open the index rather than a page of nothing.
   if (data.route === ROUTE_DUA_CATEGORY || (!data.route && data.duaCategory)) {
     return isDuaCategory(data.duaCategory)
-      ? `${MIHRAB_SCHEME}duas/${data.duaCategory}`
-      : `${MIHRAB_SCHEME}duas`;
+      ? `${SALATY_SCHEME}duas/${data.duaCategory}`
+      : `${SALATY_SCHEME}duas`;
   }
 
   // The Hifz page: the day's revision is drawn there whatever has changed
   // since this was scheduled.
-  if (data.route === ROUTE_HIFZ) return `${MIHRAB_SCHEME}hifz`;
+  if (data.route === ROUTE_HIFZ) return `${SALATY_SCHEME}hifz`;
 
   if (data.route === ROUTE_KHATMAH) {
     // The plan may have finished, been deleted, or never existed by the
@@ -176,7 +176,7 @@ export async function notificationRoute(
     try {
       await hydrateQuranState();
       const plan = activeKhatmah(getQuranState());
-      if (!plan) return `${MIHRAB_SCHEME}quran`;
+      if (!plan) return `${SALATY_SCHEME}quran`;
       const target = khatmahContinueTarget(plan);
       // The reader they were last in, which is the same signal the
       // Continue-reading widget uses to choose between the two.
@@ -191,7 +191,7 @@ export async function notificationRoute(
       );
     } catch (quietError) {
       quiet('notifications/notificationRoute', quietError);
-      return `${MIHRAB_SCHEME}quran`;
+      return `${SALATY_SCHEME}quran`;
     }
   }
 

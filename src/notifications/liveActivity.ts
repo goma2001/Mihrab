@@ -72,7 +72,7 @@ export function hijriLabelForDateKey(dateKey: string): string {
 
 /** Stable notifee id — fixed so updates replace in place, not stack. */
 export const LIVE_ACTIVITY_NOTIFICATION_ID =
-  'mihrab.live_activity.prayer_countdown';
+  'salaty.live_activity.prayer_countdown';
 
 /** Dedicated channel for the Live Activity.
  *   v1 — IMPORTANCE_LOW → Silent section.
@@ -81,9 +81,9 @@ export const LIVE_ACTIVITY_NOTIFICATION_ID =
  *        for the Android 16 status-bar "Live Update" chip on most
  *        shells. NotificationChannel importance is immutable after
  *        first create, so the bump needed a new id. */
-const CHANNEL_ID = 'mihrab_live_activity_v3';
-const CHANNEL_ID_LEGACY_V1 = 'mihrab_live_activity_v1';
-const CHANNEL_ID_LEGACY_V2 = 'mihrab_live_activity_v2';
+const CHANNEL_ID = 'salaty_live_activity_v3';
+const CHANNEL_ID_LEGACY_V1 = 'salaty_live_activity_v1';
+const CHANNEL_ID_LEGACY_V2 = 'salaty_live_activity_v2';
 
 /** ── Channel ─────────────────────────────────────────────────────── */
 

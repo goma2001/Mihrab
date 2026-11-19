@@ -242,7 +242,7 @@ export function AlertsScreen({
           IS_WEB_APP
             ? t(
                 'onboarding.alerts.bodyWeb',
-                'A notification from your browser when each prayer comes in, with the adhan. Browsers can only do this while Mihrab is open, so keep it in a tab.',
+                'A notification from your browser when each prayer comes in, with the adhan. Browsers can only do this while صلاتي is open, so keep it in a tab.',
               )
             : t(
                 'onboarding.alerts.body',
@@ -261,7 +261,7 @@ export function AlertsScreen({
               )
             : t(
                 'onboarding.alerts.denied',
-                'Your phone is set to block notifications from Mihrab. You can turn them on later in Settings → Notifications.',
+                'Your phone is set to block notifications from صلاتي. You can turn them on later in Settings → Notifications.',
               )}
         </Text>
       ) : null}

@@ -217,7 +217,7 @@ echo "▸ Signing ($SIGN_IDENTITY)…"
 # profile added afterwards invalidates the signature.
 #
 # To get one: developer.apple.com → Certificates, Identifiers & Profiles.
-# Register the App ID `maccatalyst.com.hassan.prayerapp` with Keychain
+# Register the App ID `maccatalyst.com.goma.salat` with Keychain
 # Sharing and App Groups enabled, then Profiles → + → macOS → Developer ID
 # → that App ID → your Developer ID Application certificate. Download it
 # and save it as the path below. It is account-specific rather than
@@ -268,7 +268,7 @@ if [ "$SIGN_IDENTITY" != "-" ]; then
       echo "      profile holds $PROFILE_CERTS certificate(s), none of them that one." >&2
       echo "    AMFI will SIGKILL the app before main() and say nothing." >&2
       echo "    A Developer ID build needs a Developer ID profile: portal →" >&2
-      echo "    Profiles → + → Developer ID → maccatalyst.com.hassan.prayerapp." >&2
+      echo "    Profiles → + → Developer ID → maccatalyst.com.goma.salat." >&2
       echo "    Xcode's own Mac Catalyst profile is a DEVELOPMENT one and only" >&2
       echo "    works with the Apple Development identity." >&2
       exit 1
@@ -536,7 +536,7 @@ hand_back_the_machine() {
     if [ -d /Applications/Mihrab.app ]; then
       "$LSREGISTER" -f /Applications/Mihrab.app 2>/dev/null || true
       INSTALLED_EXT=/Applications/Mihrab.app/Contents/PlugIns/PrayerWidgetExtension.appex
-      INSTALLED_ID=maccatalyst.com.hassan.prayerapp.PrayerWidgetExtension
+      INSTALLED_ID=maccatalyst.com.goma.salat.PrayerWidgetExtension
       # CAPTURED, NOT PIPED INTO `grep -q`. grep exits on the first line,
       # pluginkit takes SIGPIPE, and `pipefail` turns that into 141 — so a
       # registered extension reads as missing, the loop can never break, and
@@ -601,7 +601,7 @@ echo "▸ Smoke-launching the signed app…"
 # it, so the gate has to be an actual launch.
 LAUNCH_LOG=$(mktemp -t mihrab-catalyst-launch)
 # Address the group container BY PATH, never as a bare domain name. An
-# unsandboxed shell asking `defaults` for `GAW23HT439.group.com.prayerapp`
+# unsandboxed shell asking `defaults` for `GAW23HT439.group.com.goma.salat`
 # does not get the group container: it gets (and, on write, CREATES) a shadow
 # ~/Library/Preferences/<name>.plist, which then masks the real container for
 # every later read. That shadow is what made this gate report an empty

@@ -261,7 +261,7 @@ if [ -f "$TAP" ]; then
       # The entitlement the widgets live or die by, read off the shipped
       # bundle rather than the repo's entitlements file.
       ents="$(codesign -d --entitlements - --xml "$unz/Mihrab.app" 2>/dev/null || true)"
-      if has "$ents" "group.com.prayerapp"; then
+      if has "$ents" "group.com.goma.salat"; then
         pass "published app carries the App Group"
       else
         fail "published app has NO App Group — its widgets will not render"
@@ -359,7 +359,7 @@ if [ -f "$TAP" ]; then
     # line, pluginkit takes SIGPIPE, and under `pipefail` a registered
     # extension reads as missing.
     ext=/Applications/Mihrab.app/Contents/PlugIns/PrayerWidgetExtension.appex
-    extid=maccatalyst.com.hassan.prayerapp.PrayerWidgetExtension
+    extid=maccatalyst.com.goma.salat.PrayerWidgetExtension
     if [ -d "$ext" ]; then
       for _ in 1 2 3 4 5 6 7 8; do
         pluginkit -a "$ext" >/dev/null 2>&1 || true
@@ -391,7 +391,7 @@ else
 fi
 
 # ── 5. F-Droid recipe agrees with the released version ──────────────────
-RECIPE="$(dirname "$0")/../contrib/fdroid/com.prayer_times.yml"
+RECIPE="$(dirname "$0")/../contrib/fdroid/com.goma.salat.yml"
 if grep -q "CurrentVersion: $VERSION" "$RECIPE"; then
   pass "F-Droid recipe CurrentVersion is $VERSION"
 else

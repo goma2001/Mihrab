@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Mihrab</string>
-    <string name="widget_name_small">Mihrab · अगली नमाज़</string>
-    <string name="widget_name_medium">Mihrab · नमाज़ के समय</string>
-    <string name="widget_name_large">Mihrab · नमाज़ के समय (पुराना)</string>
+    <string name="app_name">صلاتي</string>
+    <string name="widget_name_small">صلاتي · अगली नमाज़</string>
+    <string name="widget_name_medium">صلاتي · नमाज़ के समय</string>
+    <string name="widget_name_large">صلاتي · नमाज़ के समय (पुराना)</string>
     <string name="widget_description">आज के समय एक पंक्ति में, अगली नमाज़ को हाइलाइट किया गया</string>
     <string name="widget_description_small">सिर्फ़ अगली नमाज़ और उसका समय। 2×1।</string>
     <string name="widget_description_medium">सभी छह समय एक चौड़ी पंक्ति में कॉलम के रूप में, अगली नमाज़ हाइलाइट की गई। 4×2, आकार बदलने योग्य।</string>
     <string name="widget_description_prayer_times">आज के छह समय एक पंक्ति में, शहर और हिजरी तारीख़ के साथ। 4×1।</string>
     <string name="widget_description_large_retired">पहले वाला नमाज़-समय विजेट। यह अब मौजूदा विजेट जैसा ही डिज़ाइन दिखाता है; नया विजेट लगाने की कोई ज़रूरत नहीं है।</string>
     <string name="widget_description_large">अगली नमाज़ के साथ सभी छह समय सूची के रूप में। 4×3 — इसे तीन पंक्तियों से छोटा करें तो यह एक-पंक्ति पट्टी बन जाता है।</string>
-    <string name="widget_name_log">Mihrab · आज दर्ज करें</string>
+    <string name="widget_name_log">صلاتي · आज दर्ज करें</string>
     <string name="widget_description_log">समय पर दर्ज करने के लिए किसी नमाज़ पर टैप करें, अगली तक की उलटी गिनती के साथ। 4×1।</string>
     <string name="widget_log_today">आज</string>
     <string name="widget_log_count">%2$d में से %1$d</string>
@@ -18,7 +18,7 @@
     <string name="widget_log_tap_to_log">%1$s को समय पर दर्ज करने के लिए ✓ पर टैप करें</string>
     <string name="widget_log_up_to_date">आज पूरी तरह अद्यतन है</string>
     <string name="widget_log_owed">%1$d बकाया</string>
-    <string name="widget_placeholder_day">समय लोड करने के लिए Mihrab खोलें</string>
+    <string name="widget_placeholder_day">समय लोड करने के लिए صلاتي खोलें</string>
     <string name="widget_error">विजेट डेटा लोड नहीं हो सका</string>
     <string name="widget_configure_title">नमाज़ विजेट</string>
     <string name="widget_configure_background">पृष्ठभूमि की तीव्रता</string>
@@ -52,14 +52,14 @@
     <string name="live_activity_fgs_channel_desc">नमाज़ की उलटी गिनती के लिए आंतरिक सेवा चैनल। उपयोगकर्ता-सामना नहीं।</string>
     <string name="live_activity_countdown_active">नमाज़ की उलटी गिनती सक्रिय</string>
 
-    <string name="widget_name_streak">Mihrab · स्ट्रीक</string>
+    <string name="widget_name_streak">صلاتي · स्ट्रीक</string>
     <string name="widget_description_streak">आपकी समय-पर लड़ी और अमल के ग्राफ़ के पिछले हफ़्ते। 4×2।</string>
     <string name="widget_streak_title">स्ट्रीक</string>
     <string name="widget_streak_best">सर्वश्रेष्ठ %1$d</string>
     <string name="widget_streak_logged">आज 5 में से %1$d</string>
     <string name="widget_streak_sunnah">सुन्नत %1$d%%</string>
     <string name="widget_streak_grid_description">अभ्यास ग्राफ़</string>
-    <string name="widget_placeholder_open_app">Mihrab खोलें</string>
+    <string name="widget_placeholder_open_app">صلاتي खोलें</string>
     <plurals name="widget_streak_days">
         <item quantity="one">दिन</item>
         <item quantity="other">दिन</item>
@@ -73,7 +73,7 @@
         <item quantity="other">इस महीने %1$d रोज़े</item>
     </plurals>
 
-    <string name="widget_name_reading">Mihrab · पढ़ना जारी रखें</string>
+    <string name="widget_name_reading">صلاتي · पढ़ना जारी रखें</string>
     <string name="widget_description_reading">जहाँ आपने छोड़ा था, और आज के ख़त्म हिस्से में क्या है। 4×1, आकार बदलने योग्य।</string>
     <string name="widget_reading_continue">जारी रखें</string>
     <string name="widget_reading_play">यहाँ से चलाएँ</string>
@@ -108,7 +108,7 @@
         <item quantity="other">%1$d बुकमार्क</item>
     </plurals>
 
-    <string name="widget_name_tasbih">Mihrab · तस्बीह</string>
+    <string name="widget_name_tasbih">صلاتي · तस्बीह</string>
     <string name="widget_description_tasbih">ऐप खोले बिना ज़िक्र गिनें। 4×2।</string>
     <string name="widget_tasbih_of">%1$d में से</string>
     <string name="widget_tasbih_today">आज %1$d</string>
@@ -133,7 +133,7 @@
     <string name="widget_countdown_format">%1$s में</string>
     <string name="widget_since_adhan_format">%2$s को %1$s हुए</string>
     <string name="widget_logged_line">आज %2$d में से %1$d दर्ज</string>
-    <string name="widget_name_hijri">Mihrab · हिजरी तारीख़</string>
+    <string name="widget_name_hijri">صلاتي · हिजरी तारीख़</string>
     <string name="widget_description_hijri">आज की हिजरी तारीख़, और अगला महीना कितनी दूर है। 2×1, आकार बदलने योग्य।</string>
     <string name="widget_hijri_day_month">%1$d %2$s</string>
     <string name="widget_hijri_next">अगला</string>
@@ -189,9 +189,9 @@
     <string name="widget_streak_inline">स्ट्रीक %1$dदि</string>
     <string name="widget_preview_tap_to_log">अस्र को समय पर दर्ज करने के लिए \u2713 पर टैप करें</string>
     <string name="widget_preview_practice_second">दिन की स्ट्रीक \u00b7 सर्वश्रेष्ठ 31 \u00b7 आज 5 में से 2</string>
-    <string name="widget_name_tall">Mihrab \u00b7 नमाज़ के समय (ऊँचा)</string>
+    <string name="widget_name_tall">صلاتي \u00b7 नमाज़ के समय (ऊँचा)</string>
     <string name="widget_description_tall">आज के छह समय, शहर, हिजरी तारीख़ और अमल के ग्राफ़ के साथ। 4×2।</string>
-    <string name="widget_name_log_tall">Mihrab \u00b7 आज दर्ज करें (ऊँचा)</string>
+    <string name="widget_name_log_tall">صلاتي \u00b7 आज दर्ज करें (ऊँचा)</string>
     <string name="widget_description_log_tall">समय पर दर्ज करने के लिए किसी नमाज़ पर टैप करें, अगली तक की उलटी गिनती और अमल के ग्राफ़ के साथ। 4×2।</string>
     <string name="widget_configure_all_title">सभी विजेट</string>
     <string name="widget_configure_since_adhan">अज़ान के बाद का समय</string>

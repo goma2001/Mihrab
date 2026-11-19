@@ -164,7 +164,7 @@ export function MihrabArchIcon({ size = 24, color }: IconProps) {
  * interior is transparent (shows the header/theme background through it).
  * An eight-pointed star sits inside the niche.
  *
- * Paths derived from branding/01_mihrab.svg (1024×1024 canvas), scaled to a
+ * Paths derived from branding/01_salaty.svg (1024×1024 canvas), scaled to a
  * 24×24 viewBox with 14 px arch width and 1.5 px top padding.
  *
  * Use when the full brand mark is needed — e.g. the home screen header title.

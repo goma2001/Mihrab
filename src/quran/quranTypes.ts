@@ -1,5 +1,5 @@
 /**
- * THE SHAPE OF THE QURAN BLOB — the types `mihrab.quran.v1` is made of.
+ * THE SHAPE OF THE QURAN BLOB — the types `salaty.quran.v1` is made of.
  *
  * Types only, so that everything which reads a plan or a bookmark can say
  * what it is reading without importing the store that holds it: the pure

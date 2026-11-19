@@ -265,9 +265,9 @@ F-Droid builds the APK themselves on their CI from a public tag. We don't ship a
 
 | Path | Role |
 |---|---|
-| `contrib/fdroid/com.prayer_times.yml` | **Local copy of the recipe**, source of truth in this repo. |
-| `~/git/fdroiddata/metadata/com.prayer_times.yml` | **Upstream copy**, now merged into `fdroid/fdroiddata` master. |
-| https://f-droid.org/packages/com.prayer_times/ | **The listing.** Live once F-Droid's builder has run against a tag. |
+| `contrib/fdroid/com.goma.salat.yml` | **Local copy of the recipe**, source of truth in this repo. |
+| `~/git/fdroiddata/metadata/com.goma.salat.yml` | **Upstream copy**, now merged into `fdroid/fdroiddata` master. |
+| https://f-droid.org/packages/com.goma.salat/ | **The listing.** Live once F-Droid's builder has run against a tag. |
 | `contrib/fdroid/README.md` | The submission-kit README. Outside contributors read this. |
 | `contrib/fdroid/PRE_MERGE_CHECKLIST.md` | Local sanity checks before pushing. |
 | `contrib/fdroid/MERGE_REQUEST.md` | Suggested MR title / description for GitLab. |
@@ -289,19 +289,19 @@ setup from scratch.
 
 1. Bump versions (step 1 of the shared flow).
 2. Tag the release `v2.x.y` and push the tag. **The recipe references tag refs, not commit hashes** — F-Droid CI enforces this.
-3. Edit `contrib/fdroid/com.prayer_times.yml`:
+3. Edit `contrib/fdroid/com.goma.salat.yml`:
    - Add a new entry under `Builds:` with the new `versionName`, `versionCode`, and `commit: v2.x.y`.
    - Update the trailing `CurrentVersion:` and `CurrentVersionCode:`.
 4. Mirror to the fork:
    ```sh
-   cp contrib/fdroid/com.prayer_times.yml ~/git/fdroiddata/metadata/com.prayer_times.yml
+   cp contrib/fdroid/com.goma.salat.yml ~/git/fdroiddata/metadata/com.goma.salat.yml
    ```
 5. Commit + push both repos:
    ```sh
    git -C ~/git/PrayerApp     add -A && git -C ~/git/PrayerApp     commit -m "fdroid metadata: bump to vX.Y.Z (versionCode N)"
    git -C ~/git/PrayerApp     push
-   git -C ~/git/fdroiddata    add -A && git -C ~/git/fdroiddata    commit -m "com.prayer_times: bump to vX.Y.Z (versionCode N)"
-   git -C ~/git/fdroiddata    push                       # to the fork, branch add-com.prayer_times
+   git -C ~/git/fdroiddata    add -A && git -C ~/git/fdroiddata    commit -m "com.goma.salat: bump to vX.Y.Z (versionCode N)"
+   git -C ~/git/fdroiddata    push                       # to the fork, branch add-com.goma.salat
    ```
    The MR auto-updates the moment the fork branch advances.
 
@@ -406,7 +406,7 @@ The Gradle `wantsPlayRelease` guard in `app/build.gradle` REFUSES to fall back t
 ### Upload
 
 1. Open https://play.google.com/console.
-2. App: **Mihrab** (`com.prayer_times`).
+2. App: **Mihrab** (`com.goma.salat`).
 3. Release → **Production** (or **Open testing** / **Internal testing** for staged rollouts).
 4. **Create new release** → upload `app-play-release.aab`.
 5. Paste the release notes from `CHANGELOG.md`.
@@ -435,7 +435,7 @@ whatever these folders held at the tagged commit. They hold the same
 captioned panels as Play (`branding/tools/build_store.py` writes both).
 
 **F-Droid never deletes a screenshot it has copied.** fdroidserver copies
-every file in `phoneScreenshots/` into `repo/com.prayer_times/en-US/` and
+every file in `phoneScreenshots/` into `repo/com.goma.salat/en-US/` and
 has no cleanup step, so a file renamed here becomes a *second* screenshot on
 the listing, under the old name, until an F-Droid admin removes it by hand.
 Overwrite in place; never rename. (Seen 2026-09-11: four July captures
@@ -446,7 +446,7 @@ on the listing beside the current seven.)
 
 - **`play` flavor**: Google Play Services for location. The `PrayerBuildInfo` native module still exposes the flavor to JS, now only so `rateApp` knows whether there is a Play Store to open.
 - **ABI splits**: per-ABI APKs (`armeabi-v7a`, `arm64-v8a`, `x86`, `x86_64`) for the Play upload, `universalApk = false`. Cuts download size ~3-4× per device.
-- **R8 minification**: on (`enableProguardInReleaseBuilds = true`). Rules in `android/app/proguard-rules.pro` — keep `com.prayer_times.**` and any new RN-bridged native modules.
+- **R8 minification**: on (`enableProguardInReleaseBuilds = true`). Rules in `android/app/proguard-rules.pro` — keep `com.goma.salat.**` and any new RN-bridged native modules.
 
 ---
 
@@ -710,6 +710,6 @@ whole format; `**bold**` is honoured if you ever want a lead-in.
 | App Store Connect API key | App Store Connect → Users + Access | Xcode Cloud (configured once in App Store Connect) |
 | Apple Developer signing certs | Xcode → Settings → Accounts | Xcode Cloud (automatic) |
 | GitHub PAT for `gh release` | `~/.config/gh/hosts.yml` | `gh release create` |
-| GitLab PAT for fdroiddata fork pushes | `~/.gitlab-credentials` | `git push origin add-com.prayer_times` (in `~/git/fdroiddata`) |
+| GitLab PAT for fdroiddata fork pushes | `~/.gitlab-credentials` | `git push origin add-com.goma.salat` (in `~/git/fdroiddata`) |
 
 Nothing sensitive is in this repo; every credential is loaded from gitignored files or from the system keychain.

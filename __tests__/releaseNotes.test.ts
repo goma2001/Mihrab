@@ -7,7 +7,7 @@
  *   • a FRESH INSTALL, which has just been walked through onboarding and
  *     must not then be handed release notes for a version it has never
  *     not had;
- *   • an install from BEFORE `mihrab.lastSeenVersion` existed, which
+ *   • an install from BEFORE `salaty.lastSeenVersion` existed, which
  *     looks exactly like a fresh one and must not be mistaken for it, or
  *     the release that introduced this surface can never announce it.
  *

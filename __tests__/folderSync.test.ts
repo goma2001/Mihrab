@@ -738,7 +738,7 @@ describe('a folder that has stopped carrying files', () => {
    *
    * The first fix — timestamped tombstones — was right and did not help,
    * because the thing re-asserting the count was not a live device. A Mac's
-   * sync identity had been replaced, leaving `mihrab-ASWPFJBG07HZ.sync.json`
+   * sync identity had been replaced, leaving `salaty-ASWPFJBG07HZ.sync.json`
    * in the folder: a file nothing would ever rewrite, written by a build old
    * enough that its sunnah days carry no timestamps. Every round the phone
    * opened it, `mergeSunnah` fell back to `Math.max` for the undated day, and
@@ -957,7 +957,7 @@ describe('the folder is shared with things that are not us', () => {
     folder.files.set(
       `${SYNC_FILE_PREFIX}SOMEONEELSE.sync.json`,
       JSON.stringify({
-        format: 'mihrab.envelope',
+        format: 'salaty.envelope',
         version: 1,
         createdAt: '2026-08-22T00:00:00.000Z',
         sender: { pk: 'AAAA' },
@@ -980,8 +980,8 @@ describe('the folder is shared with things that are not us', () => {
     const key = new Uint8Array(32).fill(7);
     const name = syncFileNameFor(key);
     expect(isSyncFileName(name)).toBe(true);
-    expect(name).toMatch(/^mihrab-[0-9A-HJKMNP-TV-Z]{12}\.sync\.json$/);
-    expect(isSyncFileName('mihrab-backup-2026-08-19.json')).toBe(false);
+    expect(name).toMatch(/^salaty-[0-9A-HJKMNP-TV-Z]{12}\.sync\.json$/);
+    expect(isSyncFileName('salaty-backup-2026-08-19.json')).toBe(false);
     expect(isSyncFileName('shopping-list.txt')).toBe(false);
   });
 

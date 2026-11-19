@@ -332,7 +332,7 @@ export function ShareMonthScreen({ route, navigation, embedded }: Props & { navi
           }),
           20000,
         );
-        const stem = `mihrab-${year}-${String(month + 1).padStart(2, '0')}`;
+        const stem = `salaty-${year}-${String(month + 1).padStart(2, '0')}`;
         const dir = ReactNativeBlobUtil.fs.dirs.CacheDir;
         if (as === 'pdf') {
           setExporting({ as, stage: 'pdf', percent: 0 });

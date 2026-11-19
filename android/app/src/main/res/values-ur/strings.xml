@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Mihrab</string>
-    <string name="widget_name_small">Mihrab · اگلی نماز</string>
-    <string name="widget_name_medium">Mihrab · اوقاتِ نماز</string>
-    <string name="widget_name_large">Mihrab · اوقاتِ نماز (پرانا)</string>
+    <string name="app_name">صلاتي</string>
+    <string name="widget_name_small">صلاتي · اگلی نماز</string>
+    <string name="widget_name_medium">صلاتي · اوقاتِ نماز</string>
+    <string name="widget_name_large">صلاتي · اوقاتِ نماز (پرانا)</string>
     <string name="widget_description">آج کے اوقات ایک قطار میں، اگلی نماز نمایاں</string>
     <string name="widget_description_small">صرف اگلی نماز اور اس کا وقت۔ 2×1۔</string>
     <string name="widget_description_medium">تمام چھ اوقات ایک چوڑی قطار میں کالموں کی صورت میں، اگلی نماز نمایاں۔ 4×2، سائز تبدیل کرنے کے قابل۔</string>
     <string name="widget_description_prayer_times">آج کے چھ اوقات ایک قطار میں، شہر اور ہجری تاریخ کے ساتھ۔ 4×1۔</string>
     <string name="widget_description_large_retired">پہلے والا اوقاتِ نماز ویجٹ۔ یہ اب موجودہ ویجٹ جیسا ہی ڈیزائن دکھاتا ہے؛ نیا لگانے کی کوئی وجہ نہیں۔</string>
     <string name="widget_description_large">تمام چھ اوقات فہرست کی صورت میں اگلی نماز کے ساتھ۔ 4×3 — اسے تین قطاروں سے کم کریں تو یہ ایک قطار والی پٹی بن جاتا ہے۔</string>
-    <string name="widget_name_log">Mihrab · آج کا اندراج</string>
+    <string name="widget_name_log">صلاتي · آج کا اندراج</string>
     <string name="widget_description_log">وقت پر درج کرنے کے لیے کسی نماز پر ٹیپ کریں، اگلی تک الٹی گنتی کے ساتھ۔ 4×1۔</string>
     <string name="widget_log_today">آج</string>
     <string name="widget_log_count">%2$d میں سے %1$d</string>
@@ -18,7 +18,7 @@
     <string name="widget_log_tap_to_log">%1$s کو وقت پر درج کرنے کے لیے ✓ تھپتھپائیں</string>
     <string name="widget_log_up_to_date">آج مکمل ہے</string>
     <string name="widget_log_owed">%1$d باقی</string>
-    <string name="widget_placeholder_day">اوقات لوڈ کرنے کے لیے Mihrab کھولیں</string>
+    <string name="widget_placeholder_day">اوقات لوڈ کرنے کے لیے صلاتي کھولیں</string>
     <string name="widget_error">ویجٹ کا ڈیٹا لوڈ نہیں ہو سکا</string>
     <string name="widget_configure_title">نماز ویجٹ</string>
     <string name="widget_configure_background">پس منظر کی شدت</string>
@@ -53,14 +53,14 @@
     <string name="live_activity_fgs_channel_desc">نماز کی گنتی کے لیے اندرونی سروس چینل۔ صارف کو نظر نہیں آتا۔</string>
     <string name="live_activity_countdown_active">نماز کی الٹی گنتی فعال</string>
 
-    <string name="widget_name_streak">Mihrab · تسلسل</string>
+    <string name="widget_name_streak">صلاتي · تسلسل</string>
     <string name="widget_description_streak">آپ کا وقت پر سلسلہ اور عمل کے گراف کے آخری ہفتے۔ 4×2۔</string>
     <string name="widget_streak_title">تسلسل</string>
     <string name="widget_streak_best">بہترین %1$d</string>
     <string name="widget_streak_logged">آج 5 میں سے %1$d</string>
     <string name="widget_streak_sunnah">سنت %1$d%%</string>
     <string name="widget_streak_grid_description">عمل کا گراف</string>
-    <string name="widget_placeholder_open_app">Mihrab کھولیں</string>
+    <string name="widget_placeholder_open_app">صلاتي کھولیں</string>
     <plurals name="widget_streak_days">
         <item quantity="one">دن</item>
         <item quantity="other">دن</item>
@@ -74,7 +74,7 @@
         <item quantity="other">اس مہینے %1$d روزے</item>
     </plurals>
 
-    <string name="widget_name_reading">Mihrab · پڑھنا جاری رکھیں</string>
+    <string name="widget_name_reading">صلاتي · پڑھنا جاری رکھیں</string>
     <string name="widget_description_reading">جہاں آپ نے چھوڑا تھا، اور آج کے ختم کا حصہ کیا مانگتا ہے۔ 4×1، سائز تبدیل کرنے کے قابل۔</string>
     <string name="widget_reading_continue">جاری رکھیں</string>
     <string name="widget_reading_play">یہاں سے چلائیں</string>
@@ -109,7 +109,7 @@
         <item quantity="other">%1$d نشانات</item>
     </plurals>
 
-    <string name="widget_name_tasbih">Mihrab · تسبیح</string>
+    <string name="widget_name_tasbih">صلاتي · تسبیح</string>
     <string name="widget_description_tasbih">ایپ کھولے بغیر ذکر شمار کریں۔ 4×2۔</string>
     <string name="widget_tasbih_of">%1$d میں سے</string>
     <string name="widget_tasbih_today">آج %1$d</string>
@@ -134,7 +134,7 @@
     <string name="widget_countdown_format">%1$s میں</string>
     <string name="widget_since_adhan_format">%2$s کو %1$s ہوئے</string>
     <string name="widget_logged_line">آج %2$d میں سے %1$d درج</string>
-    <string name="widget_name_hijri">Mihrab · ہجری تاریخ</string>
+    <string name="widget_name_hijri">صلاتي · ہجری تاریخ</string>
     <string name="widget_description_hijri">آج کی ہجری تاریخ، اور اگلا مہینہ کتنی دور ہے۔ 2×1، سائز تبدیل کرنے کے قابل۔</string>
     <string name="widget_hijri_day_month">%1$d %2$s</string>
     <string name="widget_hijri_next">اگلا</string>
@@ -190,9 +190,9 @@
     <string name="widget_streak_inline">تسلسل %1$d دن</string>
     <string name="widget_preview_tap_to_log">Asr کو وقت پر درج کرنے کے لیے \u2713 تھپتھپائیں</string>
     <string name="widget_preview_practice_second">دن کا تسلسل \u00b7 بہترین 31 \u00b7 آج 5 میں سے 2</string>
-    <string name="widget_name_tall">محراب \u00b7 اوقاتِ نماز (اونچا)</string>
+    <string name="widget_name_tall">صلاتي \u00b7 اوقاتِ نماز (اونچا)</string>
     <string name="widget_description_tall">آج کے چھ اوقات، شہر، ہجری تاریخ اور عمل کے گراف کے ساتھ۔ 4×2۔</string>
-    <string name="widget_name_log_tall">محراب \u00b7 آج کا اندراج (اونچا)</string>
+    <string name="widget_name_log_tall">صلاتي \u00b7 آج کا اندراج (اونچا)</string>
     <string name="widget_description_log_tall">وقت پر درج کرنے کے لیے کسی نماز پر ٹیپ کریں، اگلی تک الٹی گنتی اور عمل کے گراف کے ساتھ۔ 4×2۔</string>
     <string name="widget_configure_all_title">تمام ویجیٹس</string>
     <string name="widget_configure_since_adhan">اذان کے بعد کا وقت</string>
