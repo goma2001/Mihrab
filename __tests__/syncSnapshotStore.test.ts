@@ -266,9 +266,9 @@ describe('the user choice is honoured on both sides', () => {
     // button uses it as the earliest day it may offer, so importing another
     // phone's would let this one claim days it never saw.
     seedUsedPhone();
-    mockStore.set('mihrab.first_seen_day', '2020-01-01');
+    mockStore.set('salaty.first_seen_day', '2020-01-01');
     mockStore.set('prayer_times_cache.v2', '{"caches":{}}');
-    mockStore.set('mihrab.lastSeenVersion', '2.18.5');
+    mockStore.set('salaty.lastSeenVersion', '2.18.5');
     const text = JSON.stringify(buildSnapshot(await collectData(), everything(), NOW));
     expect(text).not.toContain('first_seen');
     expect(text).not.toContain('2020-01-01');

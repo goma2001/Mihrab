@@ -44,19 +44,19 @@ import {
 const ROOT = path.join(__dirname, '..');
 const read = (p: string) => readFileSync(path.join(ROOT, p), 'utf-8');
 const KOTLIN = read(
-  'android/app/src/main/java/com/prayer_times/LiveActivityAlertModes.kt',
+  'android/app/src/main/java/com/goma/salat/LiveActivityAlertModes.kt',
 );
 const NIGHT_MARKS = read(
-  'android/app/src/main/java/com/prayer_times/contract/NightMarks.kt',
+  'android/app/src/main/java/com/goma/salat/contract/NightMarks.kt',
 );
 const RECEIVER = read(
-  'android/app/src/main/java/com/prayer_times/MihrabLiveActivityActionReceiver.kt',
+  'android/app/src/main/java/com/goma/salat/MihrabLiveActivityActionReceiver.kt',
 );
 const MODULE = read(
-  'android/app/src/main/java/com/prayer_times/MihrabLiveActivityModule.kt',
+  'android/app/src/main/java/com/goma/salat/MihrabLiveActivityModule.kt',
 );
 const SERVICE = read(
-  'android/app/src/main/java/com/prayer_times/MihrabLiveActivityService.kt',
+  'android/app/src/main/java/com/goma/salat/MihrabLiveActivityService.kt',
 );
 
 /** Source with `//` comment lines dropped — a claim about what the code

@@ -73,13 +73,13 @@ import {
   type ReleaseNote,
 } from './releaseNotes';
 
-const SEEN_KEY = 'mihrab.lastSeenVersion';
+const SEEN_KEY = 'salaty.lastSeenVersion';
 /**
  * The feature tour's flag, read but never written again. Its presence is
  * how an install that predates release notes is told apart from a fresh
  * one — see `lastSeenFrom` and `LEGACY_BASELINE_VERSION` in releaseNotes.
  */
-const LEGACY_TOUR_KEY = 'mihrab.featureTour.v1';
+const LEGACY_TOUR_KEY = 'salaty.featureTour.v1';
 
 /** How much of the window the sheet may take, at most. */
 const MAX_HEIGHT_RATIO = 0.88;
@@ -438,7 +438,7 @@ function LanguageNote({
   const tl =
     (i18n as { getFixedT?: (l: string) => typeof t }).getFixedT?.(language) ?? t;
   const heading = tl('whatsNew.installed', {
-    defaultValue: 'Mihrab {{version}}',
+    defaultValue: 'صلاتي {{version}}',
     version: release.version,
   });
   const name = languageLabel(language);
@@ -588,7 +588,7 @@ export function ChangelogSheet({ visible, onClose, since = null }: Props) {
             {t('whatsNew.title', 'What’s new')}
           </Text>
           <Text style={[typeStyle('footnote'), { color: palette.muted }]}>
-            {t('whatsNew.installed', 'Mihrab {{version}}', {
+            {t('whatsNew.installed', 'صلاتي {{version}}', {
               version: ltr(installed),
             })}
           </Text>

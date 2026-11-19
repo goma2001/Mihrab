@@ -29,7 +29,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { TASBIH_PRESETS, findPreset, increment } from './tasbih';
 
 /** This feature's own blob, versioned like the Quran one. */
-export const TASBIH_STORAGE_KEY = 'mihrab.tasbih.v1';
+export const TASBIH_STORAGE_KEY = 'salaty.tasbih.v1';
 
 export type TasbihState = {
   version: 1;

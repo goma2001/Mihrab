@@ -107,7 +107,7 @@ export type SyncFolder = {
  * it is frozen — and a frozen snapshot is a device that keeps asserting a
  * day that has since been edited elsewhere. That is not hypothetical: on
  * 2026-08-27 a Mac whose sync identity had been replaced left
- * `mihrab-ASWPFJBG07HZ.sync.json` behind, and it spent a day putting a
+ * `salaty-ASWPFJBG07HZ.sync.json` behind, and it spent a day putting a
  * cleared sunnah back on a phone, several times an hour. `syncWithFolder`
  * now steps over a snapshot it has already merged, which stops the bleeding
  * — but the corpse is still there to be read once by every device that has
@@ -142,7 +142,7 @@ export async function forgetDeparted(
 }
 
 /**
- * `mihrab-XXXXXXXXXXXX.sync.json`.
+ * `salaty-XXXXXXXXXXXX.sync.json`.
  *
  * The middle is the first twelve characters of this device's own pairing
  * code, which is public by construction, so the filename gives away nothing
@@ -154,7 +154,7 @@ export async function forgetDeparted(
  * is telling the truth, and a file manager that refuses to sync an unknown
  * extension is a real problem this avoids.
  */
-export const SYNC_FILE_PREFIX = 'mihrab-';
+export const SYNC_FILE_PREFIX = 'salaty-';
 export const SYNC_FILE_SUFFIX = '.sync.json';
 
 export function syncFileNameFor(publicKey: Uint8Array): string {
@@ -170,7 +170,7 @@ export function isSyncFileName(name: string): boolean {
 }
 
 /**
- * `mihrab-XXXXXXXXXXXX.invite.json` — named after the RECIPIENT, not the
+ * `salaty-XXXXXXXXXXXX.invite.json` — named after the RECIPIENT, not the
  * sender, and that is the whole point.
  *
  * ── WHY AN INVITE FILE EXISTS AT ALL ──────────────────────────────────
@@ -184,7 +184,7 @@ export function isSyncFileName(name: string): boolean {
  * being solved.
  *
  * Naming the invite after A fixes that. A knows its OWN id, so it can ask
- * for `mihrab-<A>.invite.json` by name, every round, without enumerating
+ * for `salaty-<A>.invite.json` by name, every round, without enumerating
  * anything. Listing is now needed for nothing at all.
  *
  * ── THE COLLISION, AND WHY IT HEALS ───────────────────────────────────
@@ -513,7 +513,7 @@ export async function syncWithFolder(
     //
     // Nothing in the shared folder is ever deleted, so a device that stops
     // writing leaves its last file there for ever. Reported 2026-08-27: a
-    // Mac's sync identity was replaced, orphaning `mihrab-ASWPFJBG07HZ`, a
+    // Mac's sync identity was replaced, orphaning `salaty-ASWPFJBG07HZ`, a
     // file frozen at 15:18 the previous day and written by a build old
     // enough that its sunnah days carried no timestamps. Every round, the
     // phone opened that corpse, and every round the undated rule in

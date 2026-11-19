@@ -23,9 +23,9 @@ import os
 /// out of the same group. Two copies of an App Group identifier is exactly
 /// the bug this file's own comment warns about.
 #if targetEnvironment(macCatalyst)
-let kSuite = "GAW23HT439.group.com.prayerapp"
+let kSuite = "GAW23HT439.group.com.goma.salat"
 #else
-let kSuite = "group.com.prayerapp"
+let kSuite = "group.com.goma.salat"
 #endif
 let kKey = "prayer_widget_payload_v1"
 
@@ -55,7 +55,7 @@ func loadStoredWidgetPayload(now: Date = Date()) -> WidgetPayload? {
   return try? JSONDecoder().decode(WidgetPayload.self, from: data)
 }
 
-private let widgetPayloadLog = Logger(subsystem: "com.hassan.prayerapp.widget", category: "payload")
+private let widgetPayloadLog = Logger(subsystem: "com.goma.salat.widget", category: "payload")
 
 /// The v2 payload adapted for one minute, kept for the rest of it.
 ///

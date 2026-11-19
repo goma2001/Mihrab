@@ -540,7 +540,7 @@ export function QuranDownloadsContent() {
           'downloads.storageFooter',
           'Everything Mihrab downloads can be downloaded again, so deleting it here is always safe.',
         )}>
-        <StorageBar mihrabBytes={total} device={device} loading={loading} />
+        <StorageBar salatyBytes={total} device={device} loading={loading} />
       </SettingsGroup>
 
       {running ? (

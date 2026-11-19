@@ -283,7 +283,7 @@ struct LogTodayEntryView: View {
       // On 16 the buttons are absent, so the whole card has to lead
       // somewhere. On 17 a widgetURL still covers the gaps between cells,
       // which is the right place for "open the full row".
-      .widgetURL(URL(string: "mihrab://log"))
+      .widgetURL(URL(string: "salaty://log"))
     } else {
       widgetText("widget_placeholder_open_app")
         .font(.caption)

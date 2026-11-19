@@ -41,7 +41,7 @@ export interface XcCtx {
 // the push; the 2026-08-07 incident had nothing after thirty.
 export const TRIGGER_GRACE_MINUTES = 15;
 
-export const BUNDLE_ID = 'com.hassan.prayerapp';
+export const BUNDLE_ID = 'com.goma.salat';
 
 /**
  * Minutes since `sha` was committed locally, or null if git cannot say.

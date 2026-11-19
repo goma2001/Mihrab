@@ -297,7 +297,7 @@ export async function buildCatalyst(ctx: Ctx, args: string[]): Promise<number> {
             `      profile holds ${profileCerts} certificate(s), none of them that one.`,
             '    AMFI will SIGKILL the app before main() and say nothing.',
             '    A Developer ID build needs a Developer ID profile: portal →',
-            '    Profiles → + → Developer ID → maccatalyst.com.hassan.prayerapp.',
+            '    Profiles → + → Developer ID → maccatalyst.com.goma.salat.',
             "    Xcode's own Mac Catalyst profile is a DEVELOPMENT one and only",
             '    works with the Apple Development identity.',
           );
@@ -517,7 +517,7 @@ export async function buildCatalyst(ctx: Ctx, args: string[]): Promise<number> {
     say('▸ Smoke-launching the signed app…');
     const launchLog = `${ctx.io.fs.mkdtemp('mihrab-catalyst-launch-')}/launch.log`;
     // Address the group container BY PATH, never as a bare domain: an
-    // unsandboxed `defaults` asked for `GAW23HT439.group.com.prayerapp`
+    // unsandboxed `defaults` asked for `GAW23HT439.group.com.goma.salat`
     // CREATES a shadow ~/Library/Preferences plist that masks the real
     // container for every later read (2026-08-07).
     const groupName = groupNameFrom(ctx.io.fs.readText(abs('ios/PrayerApp/Catalyst.entitlements')));

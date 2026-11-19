@@ -213,28 +213,32 @@ const RAW_MOODS: Record<SkyMoodName, Omit<SkyMood, 'accentBg'>> = {
     danger: '#FF6B8B',
     overlay: 'rgba(8,5,20,0.7)',
   },
-  /** Dawn: deep violet, electric coral for the hand, neon sunshine in the highlights. */
+  /** Dawn: a calm green-grey first light, gold for the hand — فجر هادئ. */
   dawn: {
     name: 'dawn',
     isDark: true,
-    heroTop: '#140A33',
-    heroMid: '#703D72',
-    heroFoot: '#1E1140',
-    bodyLight: '#F3D48E',
-    starGlow: '#E9C8FF',
-    bg: '#1E1140',
-    card: '#2A1A57',
-    controlBg: '#38276E',
-    border: '#52408F',
-    text: '#FFF4EC',
-    muted: '#D6C4EE',
-    accent: '#E88C79',
-    onAccent: '#2A0F08',
-    accentSurface: '#24154A',
-    accentSurfaceStrong: '#352162',
-    accentHairline: '#8F5BC8',
+    heroTop: '#0B2E25',
+    heroMid: '#1E5A48',
+    heroFoot: '#122B24',
+    bodyLight: '#F3E9C8',
+    starGlow: '#E8D9A0',
+    bg: '#122B24',
+    card: '#1B3A30',
+    controlBg: '#24473A',
+    border: '#3A5C4E',
+    text: '#F4F1E6',
+    muted: '#C9D4C8',
+    // The gold, lifted to #D6B23A: the brand gold #C9A227 reads 4.47:1 on
+    // its own highlight and 4.06:1 on its strongest surface — under the
+    // 4.5 floor — while the lifted gold clears every surface (4.81:1 at
+    // its worst). Same hue family, light enough to be an accent in the dark.
+    accent: '#D6B23A',
+    onAccent: '#1A2B20',
+    accentSurface: '#1E3A2E',
+    accentSurfaceStrong: '#2A4A3A',
+    accentHairline: '#C9A227',
     danger: '#FF8A80',
-    overlay: 'rgba(14,6,36,0.7)',
+    overlay: 'rgba(10,24,20,0.7)',
   },
   /** Early morning: warm cream, fresh coffee, the coral still the hand. */
   morning: {
@@ -392,10 +396,10 @@ function buildAnchors() {
     bodyLight: '#E2D6FF',
   }),
   dawn: M.dawn,
-  /** The last of the dawn: the horizon's glow gone coral. */
+  /** The last of the dawn: the horizon's glow gone gold. */
   dawnBright: vary(M.dawn, {
-    heroTop: '#1A0E42',
-    heroMid: '#A4516C',
+    heroTop: '#0F2A21',
+    heroMid: '#A8842A',
     bodyLight: '#FFE08A',
   }),
   morning: M.morning,
@@ -544,11 +548,20 @@ export function mixHexVivid(a: string, b: string, u: number): string {
  * blue by magenta and violet, and from a morning's ochre to the midday's
  * blue by rose and lilac, never by green — in which case the long way.
  * The ends' own hue when either has none (a grey has no direction).
+ *
+ * An end that IS green is the journey's destination, not a crossing:
+ * the short way to a green dawn goes through blue, not round through
+ * magenta — the crossing rule is for a meeting of two non-green hues
+ * that would otherwise turn green halfway. (The horizon's own mix has
+ * the same shape: green is kept when an end is green, taken out only
+ * when neither end is.)
  */
 const GREEN_FROM = 95;
 const GREEN_TO = 175;
 function hueWay(ha: number, hb: number): number {
   let delta = ((hb - ha + 540) % 360) - 180; // the short way, −180…180
+  const inGreen = (h: number) => h > GREEN_FROM && h < GREEN_TO;
+  if (inGreen(ha) || inGreen(hb)) return delta;
   const crossesGreen = (from: number, d: number): boolean => {
     const steps = 12;
     for (let i = 1; i < steps; i += 1) {
@@ -716,7 +729,12 @@ function physical(s: PhysicalSpec): SkyMood {
   for (let i = 0; i < 30; i += 1) {
     accent = lch(L, s.accent.C, s.accent.h);
     accentBg = mixHexOklab(bg, accent, HIGHLIGHT_DARK);
-    if ([bg, card, controlBg, accentBg].every(g => contrastOf(accent, g) >= ACCENT_FLOOR)) break;
+    // The chrome bands carry the accent too (a header strip, the tab bar),
+    // and they sit a step lighter than the page — so the accent has to
+    // clear the floor on them as well, not only on the page and its card.
+    const band = mixHexOklab(bg, accent, 0.06);
+    const bandStrong = mixHexOklab(bg, accent, 0.12);
+    if ([bg, card, controlBg, accentBg, band, bandStrong].every(g => contrastOf(accent, g) >= ACCENT_FLOOR)) break;
     L += 0.01;
   }
   const onAccentDark = lch(0.2, 0.03, s.accent.h);
@@ -828,13 +846,30 @@ const physicalDark = (side: 'evening' | 'morning'): StationAt[] => {
     ),
   });
   return [
-    // The sun just under: the afterglow's ember under a deepening blue.
-    st(0, dawn ? 'dawn' : 'sunset', [0.42, 0.12, 262], [0.66, 0.16, 36], { h: dawn ? 46 : 44, C: 0.12 }, [0.80, 0.14, 55]),
-    st(3, dawn ? 'dawn' : 'sunset', [0.36, 0.12, 265], [0.58, 0.14, 20], { h: dawn ? 38 : 36, C: 0.12 }, [0.78, 0.13, 45]),
-    // Civil twilight over: rose.
-    st(6, dawn ? 'dawn' : 'sunset', [0.30, 0.11, 267], [0.49, 0.13, 356], { h: dawn ? 30 : 20, C: 0.11 }, [0.82, 0.08, 60]),
-    // Nautical: violet.
-    st(12, dawn ? 'dawn' : 'sunset', [0.24, 0.09, 269], [0.39, 0.11, 312], { h: 300, C: 0.09 }, MOON_LIGHT),
+    // The sun just under: the afterglow's gold under a deepening green-grey.
+    // The dawn's stations are its own: the dusk keeps the ember, rose and
+    // violet it always had — only the morning side goes green-grey and gold.
+    st(0, dawn ? 'dawn' : 'sunset',
+      dawn ? [0.42, 0.10, 168] : [0.42, 0.12, 262],
+      dawn ? [0.66, 0.14, 65] : [0.66, 0.16, 36],
+      { h: dawn ? 46 : 44, C: 0.12 },
+      dawn ? [0.80, 0.12, 62] : [0.80, 0.14, 55]),
+    st(3, dawn ? 'dawn' : 'sunset',
+      dawn ? [0.36, 0.10, 168] : [0.36, 0.12, 265],
+      dawn ? [0.58, 0.12, 58] : [0.58, 0.14, 20],
+      { h: dawn ? 46 : 36, C: 0.12 },
+      dawn ? [0.78, 0.11, 60] : [0.78, 0.13, 45]),
+    // Civil twilight over: sage for the dawn, rose for the dusk.
+    st(6, dawn ? 'dawn' : 'sunset',
+      dawn ? [0.30, 0.09, 170] : [0.30, 0.11, 267],
+      dawn ? [0.49, 0.10, 70] : [0.49, 0.13, 356],
+      { h: dawn ? 46 : 20, C: 0.11 },
+      dawn ? [0.82, 0.07, 65] : [0.82, 0.08, 60]),
+    // Nautical: grey-green for the dawn, violet for the dusk.
+    st(12, dawn ? 'dawn' : 'sunset',
+      dawn ? [0.24, 0.08, 172] : [0.24, 0.09, 269],
+      dawn ? [0.39, 0.08, 150] : [0.39, 0.11, 312],
+      { h: dawn ? 46 : 300, C: 0.09 }, MOON_LIGHT),
     // Astronomical: the night.
     st(18, 'night', [0.20, 0.07, 270], [0.36, 0.13, 272], { h: 262, C: 0.085 }, MOON_LIGHT),
   ];

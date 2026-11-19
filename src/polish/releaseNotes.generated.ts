@@ -919,4 +919,14 @@ export const RELEASE_NOTES: ReleaseNote[] = [
       sv: '• Underhållsuppdatering utan synliga ändringar.',
     },
   },
+  {
+    code: 1,
+    version: '1.0.0',
+    date: '2026-11-19',
+    notes: {
+      en: '• صلاتي 1.0.0 — the first release: prayer times, Qur\'an and dhikr, offline-first, no ads, no account. Based on the open-source Mihrab project (AGPLv3).\n• The dawn-calm (فجر هادئ) look: deep green and gold, with the dawn sky as the default.\n• Android: a floating prayer button above other apps — the next prayer and the time left, even when the app is closed. Turn it on in Settings → Notifications; it needs "Draw over other apps".\n• Prayer times by location: Umm al-Qura in Saudi Arabia, the Egyptian General Authority of Survey in Egypt, and each country\'s own timetable where one is published.\n• Arabic is the app\'s language when the phone is set to Arabic.',
+      ar: '• صلاتي 1.0.0 — الإصدار الأول: أوقات الصلاة والقرآن والأذكار، يعمل دون اتصال، بلا إعلانات وبلا حساب. مبنية على مشروع Mihrab مفتوح المصدر (AGPLv3).\n• مظهر «فجر هادئ»: أخضر عميق وذهبي، وسماء الفجر هي الافتراضية.\n• أندرويد: زر عائم للصلاة فوق التطبيقات — الصلاة القادمة والوقت المتبقي لها، حتى عند إغلاق التطبيق. فعّله من الإعدادات ← التنبيهات؛ يحتاج إذن «الظهور فوق التطبيقات».\n• أوقات الصلاة حسب الموقع: أم القرى في السعودية، والهيئة المصرية العامة للمساحة في مصر، وجدول كل بلد حيث يُنشر جدول خاص به.\n• العربية هي لغة التطبيق عندما يكون الهاتف مضبوطًا على العربية.',
+      sv: '• صلاتي 1.0.0 — the first release: prayer times, Qur\'an and dhikr, offline-first, no ads, no account. Based on the open-source Mihrab project (AGPLv3).\n• The dawn-calm (فجر هادئ) look: deep green and gold, with the dawn sky as the default.\n• Android: a floating prayer button above other apps — the next prayer and the time left, even when the app is closed. Turn it on in Settings → Notifications; it needs "Draw over other apps".\n• Prayer times by location: Umm al-Qura in Saudi Arabia, the Egyptian General Authority of Survey in Egypt, and each country\'s own timetable where one is published.\n• Arabic is the app\'s language when the phone is set to Arabic.',
+    },
+  },
 ];

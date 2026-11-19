@@ -145,11 +145,11 @@ export type DeviceStorage = { total: number; free: number };
  * only what Mihrab holds — a bar built on a guess would be worse than none.
  */
 export function StorageBar({
-  mihrabBytes,
+  salatyBytes,
   device,
   loading,
 }: {
-  mihrabBytes: number;
+  salatyBytes: number;
   device: DeviceStorage | null;
   loading?: boolean;
 }) {
@@ -161,19 +161,19 @@ export function StorageBar({
   const free = device ? Math.max(0, Math.min(device.free, total)) : 0;
   const used = Math.max(0, total - free);
   // Mihrab's bytes are inside "used"; the rest is everyone else's.
-  const mihrab = Math.min(mihrabBytes, used);
-  const other = Math.max(0, used - mihrab);
+  const salaty = Math.min(salatyBytes, used);
+  const other = Math.max(0, used - salaty);
   const share = (n: number) => (total > 0 ? n / total : 0);
   // A few hundred megabytes of a 256 GB phone is a fraction of a pixel.
   // It is the one part this page is about, so it is always visible.
-  const mihrabShare = mihrab > 0 ? Math.max(share(mihrab), 0.012) : 0;
+  const salatyShare = salaty > 0 ? Math.max(share(salaty), 0.012) : 0;
 
   const legend: Array<{ key: string; color: ColorValue; label: string; value: number }> = [
     {
-      key: 'mihrab',
+      key: 'salaty',
       color: palette.accentSolid,
       label: t('downloads.storageMihrab', 'Mihrab'),
-      value: mihrabBytes,
+      value: salatyBytes,
     },
   ];
   if (device) {
@@ -208,7 +208,7 @@ export function StorageBar({
               })
             : t('downloads.total', {
                 defaultValue: 'Total on device: {{size}}',
-                size: inlineSize(mihrabBytes, rtl),
+                size: inlineSize(salatyBytes, rtl),
               })}
       </Text>
       {device ? (
@@ -220,19 +220,19 @@ export function StorageBar({
           // The track IS the free space, in the accent's pale tint, so its
           // dot in the legend can be seen.
           style={[styles.bar, { backgroundColor: palette.accentBg }]}>
-          {mihrabShare > 0 ? (
+          {salatyShare > 0 ? (
             <View
               style={{
-                width: `${mihrabShare * 100}%`,
+                width: `${salatyShare * 100}%`,
                 backgroundColor: palette.accentSolid,
               }}
             />
           ) : null}
           <View
             style={[
-              mihrabShare > 0 ? styles.barGap : null,
+              salatyShare > 0 ? styles.barGap : null,
               {
-                width: `${Math.max(0, share(other) - (mihrabShare - share(mihrab))) * 100}%`,
+                width: `${Math.max(0, share(other) - (salatyShare - share(salaty))) * 100}%`,
                 backgroundColor: palette.mutedSolid,
               },
             ]}

@@ -125,7 +125,7 @@ struct StreakEntryView: View {
       }
       .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
       .padding(14)
-      .widgetURL(URL(string: "mihrab://log"))
+      .widgetURL(URL(string: "salaty://log"))
     } else {
       emptyBody
     }
@@ -196,7 +196,7 @@ struct StreakEntryView: View {
       }
       .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
       .padding(14)
-      .widgetURL(URL(string: "mihrab://log"))
+      .widgetURL(URL(string: "salaty://log"))
     } else {
       emptyBody
     }

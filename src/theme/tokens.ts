@@ -76,9 +76,9 @@ const RAW = {
   warmGray: '#6B6660',
   warmGrayMuted: '#9A958E',
   divDayLight: '#EDE8DF',
-  emeraldDeep: '#1F5F4A',
-  emeraldHover: '#1A5240',
-  emeraldTint: '#E2EEE9',
+  emeraldDeep: '#01543F',
+  emeraldHover: '#014634',
+  emeraldTint: '#E0EAE8',
 
   // Night — task #35, warmed 2026-09-12.
   //

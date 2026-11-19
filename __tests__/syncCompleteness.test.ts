@@ -61,7 +61,7 @@ const TRAVELS = new Set([
   'prayerapp.fasting.v1',
   'prayerapp.dhikr.v1',
   'prayerapp.sunnah.v1',
-  'mihrab.quran.v1',
+  'salaty.quran.v1',
   'prayerapp.settings.v1',
   'prayerapp.location.v1',
 ]);
@@ -74,29 +74,29 @@ const TRAVELS = new Set([
  * thing; "too large" means it is content, not record, and re-downloadable.
  */
 const STAYS: Record<string, string> = {
-  'mihrab.voiceHint.dismissed':
+  'salaty.voiceHint.dismissed':
     'a hint put away on THIS phone — "keep this voice" for a reading; a new phone may as well be told once',
   'log.graph': 'a view, not a record — which of the two graphs the Log draws on THIS phone',
-  'mihrab.listenProgress.v1':
+  'salaty.listenProgress.v1':
     'device-local — where a listen on THIS phone stopped; the reading marker is what travels',
   'prayer_times_cache.v2': 'derived — recomputed from coordinates and method',
-  '@mihrab/logTiming/v1':
+  '@salaty/logTiming/v1':
     "derived — this phone's prayer windows and a copy of a setting, rewritten by Today (#74)",
-  '@mihrab/skyTheme/v1':
+  '@salaty/skyTheme/v1':
     'derived — the last sky the hero drew, kept for the moment before it draws again; the next phone draws its own',
-  '@mihrab/todayLayout/v1':
+  '@salaty/todayLayout/v1':
     "derived — the sizes Today settled on for this phone's window and text size; the next phone measures its own",
-  '@mihrab/dayWords/v1':
+  '@salaty/dayWords/v1':
     "derived — the day bar's weekday and date in the reader's language, as the formatter gave them; the next phone formats its own",
   prayer_times_cache: 'derived — the legacy cache, migrated then deleted',
-  'mihrab.alertsWrittenForVersion':
+  'salaty.alertsWrittenForVersion':
     'describes this INSTALL — the build whose first start wrote the prayer alerts ' +
     'again (src/notifications/afterUpdate.ts); another device’s would skip or repeat it',
   'prayer_times_cache.schema':
     'describes this phone — which cache schema its launch sweep last cleared up after',
   'prayerapp.prayer.v1': 'dead — named in resetAppData but written nowhere',
-  'mihrab.cityRegistry.v1': 'describes this phone — where it has been',
-  'mihrab.dataStatus.v1': 'derived — diagnostics about the last fetch',
+  'salaty.cityRegistry.v1': 'describes this phone — where it has been',
+  'salaty.dataStatus.v1': 'derived — diagnostics about the last fetch',
   'prayerapp.providerHealth.v1': 'describes this phone — which host failed here',
   'islamiska_forbundet.reverse.v1': 'derived cache, and holds coordinates',
   'ifis.dataset.v1.city.': 'derived — a per-city timetable cache',
@@ -125,57 +125,57 @@ const STAYS: Record<string, string> = {
     'describes this phone — its zone data, and the note about it dismissed on its Today (#82)',
   'marw.dataset.v1.city.':
     'derived — the Algerian ministry’s published timetable for one city, re-downloadable',
-  'mihrab.first_seen_day':
+  'salaty.first_seen_day':
     'describes this phone — the Log’s backfill uses it as the earliest ' +
     'day it may offer, so importing another device’s would let this one ' +
     'claim days it never saw',
-  'mihrab.muted_next_adhan': 'describes this phone — a one-off alert flag',
-  'mihrab.tasbih.v1':
+  'salaty.muted_next_adhan': 'describes this phone — a one-off alert flag',
+  'salaty.tasbih.v1':
     'a sitting, not a record — it holds which dhikr is on screen and how ' +
     'far into the current round you are, and a sitting ends rather than ' +
     'migrating. The part that IS a record, the completed sets per day, is ' +
     'prayerapp.dhikr.v1 and that does travel, so nothing about someone’s ' +
     'dhikr history is lost by leaving this behind',
-  'mihrab.lastSeenVersion':
+  'salaty.lastSeenVersion':
     'describes this INSTALL — the app version this phone last ran, which is ' +
     'what decides whether to show release notes. Importing another device’s ' +
     'would either hide what changed or announce it twice. It replaced ' +
-    'mihrab.featureTour.v1, which was device-local for the same reason',
-  'mihrab.featureTour.v1':
+    'salaty.featureTour.v1, which was device-local for the same reason',
+  'salaty.featureTour.v1':
     'describes this phone — the retired feature tour’s seen-flag, no longer ' +
     'written, read once to tell an install that predates release notes ' +
     'from a fresh one (src/polish/ChangelogSheet.tsx, LEGACY_TOUR_KEY)',
-  'mihrab.syncHint.dismissed.v1':
+  'salaty.syncHint.dismissed.v1':
     'describes this phone — which one-off pointers the user has waved away, ' +
     'the same kind of thing as the what’s-new version stamp',
-  'mihrab.homeFeaturesOffer.v1':
+  'salaty.homeFeaturesOffer.v1':
     'describes this phone — whether the home screen has asked, once, about ' +
     'the full-screen alert, silencing the phone and the Live Activity ' +
     '(src/home/HomeFeaturesOffer.tsx). The answers are settings, which ' +
     'travel; a new phone with them on is never asked, and one without may ' +
     'as well be asked once',
-  'mihrab.fullScreenAsked.v1':
+  'salaty.fullScreenAsked.v1':
     'describes this phone — that the first-run walkthrough offered the ' +
     'full-screen alert here, so the home screen does not ask again',
-  'mihrab.skyAsked.v1':
+  'salaty.skyAsked.v1':
     'describes this phone — that the first-run walkthrough showed the Sky ' +
     'theme here, so the home screen does not offer it again',
-  'mihrab.webBookmarkOffer.v1':
+  'salaty.webBookmarkOffer.v1':
     'describes this browser — whether Mihrab Web has said how to keep the ' +
     'page close (src/home/WebBookmarkOffer.tsx); sync never runs there.',
-  'mihrab.skyThemeOffer.v1':
+  'salaty.skyThemeOffer.v1':
     'describes this phone — whether the home screen has offered the Sky ' +
     'theme, once, to somebody from before it (src/home/SkyThemeOffer.tsx). ' +
     'The theme itself is a setting, which travels; a new phone with Sky on ' +
     'is never asked, and one without may as well be asked once',
-  'mihrab.homeFeaturesOffer.notBefore.v1':
+  'salaty.homeFeaturesOffer.notBefore.v1':
     'describes this phone — a day’s hold after the walkthrough finished, ' +
     'so the offer is not a second welcome',
-  'mihrab.quran.touchLockExplained.v1':
+  'salaty.quran.touchLockExplained.v1':
     'describes this phone — that the reading lock has explained itself ' +
     'here once (src/quran/MushafPhoneReader.tsx). The lock itself is a ' +
     'Quran pref, which travels',
-  'mihrab.quran.featuresOffer.v1':
+  'salaty.quran.featuresOffer.v1':
     'describes this phone — whether the muṣḥaf has asked, once, about its ' +
     'two off-by-default features (src/quran/QuranFeaturesOffer.tsx). The ' +
     'answer itself is in the Quran prefs, which travel; a new phone that ' +
@@ -225,7 +225,7 @@ const STAYS: Record<string, string> = {
   'surah-kahf-': 'a notification id prefix, not a store',
   'surah-mulk-': 'a notification id prefix, not a store',
   'dhikr-rem-': 'a notification id prefix, not a store',
-  'mihrab.snapshot': 'the export format tag, not a store',
+  'salaty.snapshot': 'the export format tag, not a store',
   'prayerapp.sync.secret.v1':
     'this device’s X25519 secret half, and the one key in the app that ' +
     'must NEVER travel. Carrying it would give every paired device the ' +
@@ -250,7 +250,7 @@ const STAYS: Record<string, string> = {
     'be able to unpair the friend’s phones. The peer LIST cannot travel at ' +
     'all (see above) because it creates pairings; a removal only destroys ' +
     'one, and a code makes it again',
-  'mihrab.sync.deviceName.v1':
+  'salaty.sync.deviceName.v1':
     'describes this phone — the label it shows to other devices. Carrying ' +
     'it would rename every device in the set to whatever the last import ' +
     'came from',
@@ -259,7 +259,7 @@ const STAYS: Record<string, string> = {
     'URI or an iOS security-scoped bookmark, and both are meaningless on ' +
     'any other device. Carrying it would point a phone at a directory it ' +
     'has no permission for, or at somebody else’s',
-  'mihrab.prayer.utcOffset.v1':
+  'salaty.prayer.utcOffset.v1':
     'the UTC offset this DEVICE was on when it last stored prayer times ' +
     '(issue #56). It describes one phone’s clock, and its whole job is to ' +
     'be compared against that same phone a moment later. Carried, a Mac in ' +
@@ -267,7 +267,7 @@ const STAYS: Record<string, string> = {
     'was last on — inventing a shift that never happened, or worse, ' +
     'matching the phone’s new offset and suppressing the real one, which ' +
     'is the exact failure the file exists to prevent',
-  'mihrab.quran.download.pending':
+  'salaty.quran.download.pending':
     'names a download this PHONE stopped part way through, so the app can ' +
     'offer to pick it up (issue #55). It is a fact about one device’s ' +
     'disk: the files it refers to are here and nowhere else, and carried ' +
@@ -275,7 +275,7 @@ const STAYS: Record<string, string> = {
     'downloaded a byte of — a gigabyte fetched because another device ' +
     'lost its wifi',
   MHRB: 'the pairing code prefix, not a store',
-  'mihrab-': 'the sync filename prefix, not a store',
+  'salaty-': 'the sync filename prefix, not a store',
   'prayerapp.unprotected.':
     'a prefix, not a store — it namespaces the plaintext copy durableWrite ' +
     'falls back to on a build with no Keychain. Whatever sits under it is ' +

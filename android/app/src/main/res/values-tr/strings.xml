@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Mihrab</string>
-    <string name="widget_name_small">Mihrab · Sıradaki namaz</string>
-    <string name="widget_name_medium">Mihrab · Namaz vakitleri</string>
-    <string name="widget_name_large">Mihrab · Namaz vakitleri (eski)</string>
+    <string name="app_name">صلاتي</string>
+    <string name="widget_name_small">صلاتي · Sıradaki namaz</string>
+    <string name="widget_name_medium">صلاتي · Namaz vakitleri</string>
+    <string name="widget_name_large">صلاتي · Namaz vakitleri (eski)</string>
     <string name="widget_description">Bugünün vakitleri tek satırda, sıradaki namaz vurgulanır</string>
     <string name="widget_description_small">Yalnızca sonraki namaz ve vakti. 2×1.</string>
     <string name="widget_description_medium">Altı vaktin tümü geniş tek satırda sütunlar halinde, sıradaki namaz vurgulanır. 4×2, yeniden boyutlandırılabilir.</string>
     <string name="widget_description_prayer_times">Bugünün altı vakti tek satırda, şehir ve hicri tarihle. 4×1.</string>
     <string name="widget_description_large_retired">Önceki namaz vakitleri widget\'ı. Artık güncel widget\'la aynı tasarımı kullanıyor; yenisini eklemenin bir anlamı yok.</string>
     <string name="widget_description_large">Altı vaktin tümü sıradaki namazın yanında liste halinde. 4×3 — üç satırın altına küçültüldüğünde tek satırlık şeride dönüşür.</string>
-    <string name="widget_name_log">Mihrab · Bugünü kaydet</string>
+    <string name="widget_name_log">صلاتي · Bugünü kaydet</string>
     <string name="widget_description_log">Vaktinde kaydetmek için bir namaza dokunun, sonrakine geri sayımla. 4×1.</string>
     <string name="widget_log_today">Bugün</string>
     <string name="widget_log_count">%2$d üzerinden %1$d</string>
@@ -18,7 +18,7 @@
     <string name="widget_log_tap_to_log">%1$s namazını vaktinde kaydetmek için ✓\'a dokunun</string>
     <string name="widget_log_up_to_date">Bugün güncel</string>
     <string name="widget_log_owed">%1$d kaza</string>
-    <string name="widget_placeholder_day">Vakitleri yüklemek için Mihrab\'ı açın</string>
+    <string name="widget_placeholder_day">Vakitleri yüklemek için صلاتي\'ı açın</string>
     <string name="widget_error">Widget verileri yüklenemedi</string>
     <string name="widget_configure_title">Namaz widget\'ı</string>
     <string name="widget_configure_background">Arka plan yoğunluğu</string>
@@ -51,14 +51,14 @@
     <string name="live_activity_fgs_channel_name">Namaz geri sayımı (sistem)</string>
     <string name="live_activity_fgs_channel_desc">Namaz geri sayımı için dahili hizmet kanalı. Kullanıcıya görünmez.</string>
     <string name="live_activity_countdown_active">Namaz geri sayımı etkin</string>
-    <string name="widget_name_streak">Mihrab · Seri</string>
+    <string name="widget_name_streak">صلاتي · Seri</string>
     <string name="widget_description_streak">Vaktinde kılma seriniz ve ibadet grafiğinin son haftaları. 4×2.</string>
     <string name="widget_streak_title">SERİ</string>
     <string name="widget_streak_best">En iyi %1$d</string>
     <string name="widget_streak_logged">Bugün 5 üzerinden %1$d</string>
     <string name="widget_streak_sunnah">Sünnet %1$d%%</string>
     <string name="widget_streak_grid_description">İbadet grafiği</string>
-    <string name="widget_placeholder_open_app">Mihrab\'ı aç</string>
+    <string name="widget_placeholder_open_app">صلاتي\'ı aç</string>
     <plurals name="widget_streak_days">
         <item quantity="one">gün</item>
         <item quantity="other">gün</item>
@@ -71,7 +71,7 @@
         <item quantity="one">Bu ay %1$d oruç</item>
         <item quantity="other">Bu ay %1$d oruç</item>
     </plurals>
-    <string name="widget_name_reading">Mihrab · Okumaya devam et</string>
+    <string name="widget_name_reading">صلاتي · Okumaya devam et</string>
     <string name="widget_description_reading">Kaldığınız yer ve bugünün vird miktarı. 4×1, yeniden boyutlandırılabilir.</string>
     <string name="widget_reading_continue">DEVAM ET</string>
     <string name="widget_reading_play">Buradan oynat</string>
@@ -105,7 +105,7 @@
         <item quantity="one">%1$d yer imi</item>
         <item quantity="other">%1$d yer imi</item>
     </plurals>
-    <string name="widget_name_tasbih">Mihrab · Tesbih</string>
+    <string name="widget_name_tasbih">صلاتي · Tesbih</string>
     <string name="widget_description_tasbih">Uygulamayı açmadan zikir sayın. 4×2.</string>
     <string name="widget_tasbih_of">%1$d üzerinden</string>
     <string name="widget_tasbih_today">Bugün %1$d</string>
@@ -129,7 +129,7 @@
     <string name="widget_countdown_format">%1$s kaldı</string>
     <string name="widget_since_adhan_format">%2$s, %1$s önce</string>
     <string name="widget_logged_line">Bugün %2$d üzerinden %1$d kaydedildi</string>
-    <string name="widget_name_hijri">Mihrab · Hicri tarih</string>
+    <string name="widget_name_hijri">صلاتي · Hicri tarih</string>
     <string name="widget_description_hijri">Bugünün hicri tarihi ve sıradaki aya ne kadar kaldığı. 2×1, yeniden boyutlandırılabilir.</string>
     <string name="widget_hijri_day_month">%1$d %2$s</string>
     <string name="widget_hijri_next">SIRADAKİ</string>
@@ -185,9 +185,9 @@
     <string name="widget_streak_inline">Seri %1$dg</string>
     <string name="widget_preview_tap_to_log">Asr namazını vaktinde kaydetmek için \u2713\'a dokunun</string>
     <string name="widget_preview_practice_second">gün serisi \u00b7 En iyi 31 \u00b7 Bugün 5 üzerinden 2</string>
-    <string name="widget_name_tall">Mihrab \u00b7 Namaz vakitleri (yüksek)</string>
+    <string name="widget_name_tall">صلاتي \u00b7 Namaz vakitleri (yüksek)</string>
     <string name="widget_description_tall">Bugünün altı vakti; şehir, hicri tarih ve ibadet grafiğiyle. 4×2.</string>
-    <string name="widget_name_log_tall">Mihrab \u00b7 Bugünü kaydet (yüksek)</string>
+    <string name="widget_name_log_tall">صلاتي \u00b7 Bugünü kaydet (yüksek)</string>
     <string name="widget_description_log_tall">Vaktinde kaydetmek için bir namaza dokunun, sonrakine geri sayım ve ibadet grafiğiyle. 4×2.</string>
     <string name="widget_configure_all_title">Tüm widget’lar</string>
     <string name="widget_configure_since_adhan">Ezandan bu yana geçen süre</string>

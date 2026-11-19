@@ -287,7 +287,7 @@ describe('snapshots from other builds', () => {
     await become(A);
     const before = await loadSettings();
     const old = readSnapshot({
-      format: 'mihrab.snapshot',
+      format: 'salaty.snapshot',
       // no version, no createdAt
       data: {
         settings: {
@@ -314,7 +314,7 @@ describe('snapshots from other builds', () => {
     const A = await phoneA();
     await become(A);
     const newer = readSnapshot({
-      format: 'mihrab.snapshot',
+      format: 'salaty.snapshot',
       version: 1,
       createdAt: '2027-01-01T00:00:00.000Z',
       data: {
@@ -343,7 +343,7 @@ describe('snapshots from other builds', () => {
 
   it('a newer snapshot FORMAT is refused rather than half-read', () => {
     expect(() =>
-      readSnapshot({ format: 'mihrab.snapshot', version: 2, data: {} }),
+      readSnapshot({ format: 'salaty.snapshot', version: 2, data: {} }),
     ).toThrow(SnapshotError);
   });
 });

@@ -363,11 +363,11 @@ it('"Show onboarding again" leaves no coordinates behind in the prayer cache or 
   });
   await settle(5);
   await realSet(
-    'mihrab.cityRegistry.v1',
+    'salaty.cityRegistry.v1',
     JSON.stringify({ cities: [{ anchorLat: 59.33, anchorLng: 18.07 }] }),
   );
   expect(await realGet(CACHE_KEY)).toContain('59.33');
   await resetAppData();
   expect(await realGet(CACHE_KEY)).toBeNull();
-  expect(await realGet('mihrab.cityRegistry.v1')).toBeNull();
+  expect(await realGet('salaty.cityRegistry.v1')).toBeNull();
 });

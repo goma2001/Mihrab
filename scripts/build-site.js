@@ -65,12 +65,12 @@ const BADGES = [
   {
     img: 'googleplay',
     alt: 'Google Play',
-    href: 'https://play.google.com/store/apps/details?id=com.prayer_times',
+    href: 'https://play.google.com/store/apps/details?id=com.goma.salat',
   },
   {
     img: 'fdroid',
     alt: 'F-Droid',
-    href: 'https://f-droid.org/packages/com.prayer_times/',
+    href: 'https://f-droid.org/packages/com.goma.salat/',
   },
   {
     img: 'github',
@@ -85,7 +85,7 @@ const BADGES = [
   {
     img: 'obtainium',
     alt: 'Obtainium',
-    href: 'https://apps.obtainium.imranr.dev/redirect?r=obtainium://app/%7B%22id%22%3A%22com.prayer_times%22%2C%22url%22%3A%22https%3A%2F%2Fgithub.com%2FMihrabHQ%2FMihrab%22%2C%22author%22%3A%22Hassan-PS%22%2C%22name%22%3A%22Mihrab%22%7D',
+    href: 'https://apps.obtainium.imranr.dev/redirect?r=obtainium://app/%7B%22id%22%3A%22com.goma.salat%22%2C%22url%22%3A%22https%3A%2F%2Fgithub.com%2FMihrabHQ%2FMihrab%22%2C%22author%22%3A%22Hassan-PS%22%2C%22name%22%3A%22Mihrab%22%7D',
   },
 ];
 
@@ -600,9 +600,9 @@ function renderPage(code, langs, version) {
       url: 'https://github.com/Hassan-PS',
     },
     sameAs: [
-      'https://play.google.com/store/apps/details?id=com.prayer_times',
+      'https://play.google.com/store/apps/details?id=com.goma.salat',
       'https://apps.apple.com/us/app/prayer-salah-times-qibla/id6762085256',
-      'https://f-droid.org/packages/com.prayer_times/',
+      'https://f-droid.org/packages/com.goma.salat/',
       'https://github.com/MihrabHQ/Mihrab',
     ],
   };

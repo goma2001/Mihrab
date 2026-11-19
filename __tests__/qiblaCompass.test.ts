@@ -42,7 +42,7 @@ const code = (...parts: string[]) =>
     .join('\n');
 
 const ANDROID_PARTS = [
-  'android', 'app', 'src', 'main', 'java', 'com', 'prayer_times',
+  'android', 'app', 'src', 'main', 'java', 'com', 'goma', 'salat',
   'CompassModule.kt',
 ] as const;
 const ANDROID_MODULE = repo(...ANDROID_PARTS);
@@ -211,7 +211,7 @@ describe('the Android heading', () => {
 
   test('is registered, or the module would not exist at runtime', () => {
     const app = repo(
-      'android', 'app', 'src', 'main', 'java', 'com', 'prayer_times',
+      'android', 'app', 'src', 'main', 'java', 'com', 'goma', 'salat',
       'MainApplication.kt',
     );
     expect(app).toContain('add(CompassPackage())');

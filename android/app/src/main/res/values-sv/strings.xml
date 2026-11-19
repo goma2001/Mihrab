@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Mihrab</string>
-    <string name="widget_name_small">Mihrab · Nästa bön</string>
-    <string name="widget_name_medium">Mihrab · Bönetider</string>
-    <string name="widget_name_large">Mihrab · Bönetider (gammal)</string>
+    <string name="app_name">صلاتي</string>
+    <string name="widget_name_small">صلاتي · Nästa bön</string>
+    <string name="widget_name_medium">صلاتي · Bönetider</string>
+    <string name="widget_name_large">صلاتي · Bönetider (gammal)</string>
     <string name="widget_description">Dagens tider på en rad, nästa bön markerad</string>
     <string name="widget_description_small">Bara nästa bön och dess tid. 2×1.</string>
     <string name="widget_description_medium">Alla sex tider som kolumner i en bred rad, nästa bön markerad. 4×2, storleken kan ändras.</string>
     <string name="widget_description_prayer_times">Dagens sex tider på en rad, med stad och hijridatum. 4×1.</string>
     <string name="widget_description_large_retired">Den tidigare widgeten för bönetider. Den visar nu samma design som den aktuella; det finns ingen anledning att lägga till en ny.</string>
     <string name="widget_description_large">Alla sex tider som en lista bredvid nästa bön. 4×3 — krymp den under tre rader så blir den enradsremsan.</string>
-    <string name="widget_name_log">Mihrab · Logga idag</string>
+    <string name="widget_name_log">صلاتي · Logga idag</string>
     <string name="widget_description_log">Tryck på en bön för att logga den i tid, med nedräkning till nästa. 4×1.</string>
     <string name="widget_log_today">Idag</string>
     <string name="widget_log_count">%1$d av %2$d</string>
@@ -18,7 +18,7 @@
     <string name="widget_log_tap_to_log">Tryck ✓ för att logga %1$s i tid</string>
     <string name="widget_log_up_to_date">Allt loggat för idag</string>
     <string name="widget_log_owed">%1$d att ta igen</string>
-    <string name="widget_placeholder_day">Öppna Mihrab för att ladda tider</string>
+    <string name="widget_placeholder_day">Öppna صلاتي för att ladda tider</string>
     <string name="widget_error">Kunde inte ladda widgetdata</string>
     <string name="widget_configure_title">Bönewidget</string>
     <string name="widget_configure_background">Bakgrundsstyrka</string>
@@ -54,14 +54,14 @@
     <string name="live_activity_countdown_active">Bönnedräkning aktiv</string>
 
     <!-- ── Streak &amp; Practice ────────────────────────────────────────── -->
-    <string name="widget_name_streak">Mihrab · Räcka</string>
+    <string name="widget_name_streak">صلاتي · Räcka</string>
     <string name="widget_description_streak">Din räcka i tid och de senaste veckorna i aktivitetsgrafen. 4×2.</string>
     <string name="widget_streak_title">RÄCKA</string>
     <string name="widget_streak_best">Bäst %1$d</string>
     <string name="widget_streak_logged">%1$d av 5 idag</string>
     <string name="widget_streak_sunnah">Sunnah %1$d%%</string>
     <string name="widget_streak_grid_description">Aktivitetsgraf</string>
-    <string name="widget_placeholder_open_app">Öppna Mihrab</string>
+    <string name="widget_placeholder_open_app">Öppna صلاتي</string>
     <plurals name="widget_streak_days">
         <item quantity="one">dag</item>
         <item quantity="other">dagar</item>
@@ -76,7 +76,7 @@
     </plurals>
 
     <!-- ── Continue Reading ─────────────────────────────────────────── -->
-    <string name="widget_name_reading">Mihrab · Fortsätt läsa</string>
+    <string name="widget_name_reading">صلاتي · Fortsätt läsa</string>
     <string name="widget_description_reading">Var du slutade, och vad dagens khatma-portion kräver. 4×1, storleken kan ändras.</string>
     <string name="widget_reading_continue">FORTSÄTT</string>
     <string name="widget_reading_play">Spela upp härifrån</string>
@@ -112,7 +112,7 @@
     </plurals>
 
     <!-- ── Tasbih ────────────────────────────────────────────────────── -->
-    <string name="widget_name_tasbih">Mihrab · Tasbih</string>
+    <string name="widget_name_tasbih">صلاتي · Tasbih</string>
     <string name="widget_description_tasbih">Räkna dhikr utan att öppna appen. 4×2.</string>
     <string name="widget_tasbih_of">av %1$d</string>
     <string name="widget_tasbih_today">Idag %1$d</string>
@@ -144,7 +144,7 @@
     <!-- The plan's 4x3 mock carries this under the location. -->
     <string name="widget_logged_line">%1$d av %2$d loggade idag</string>
     <!-- ── Hijri Date ────────────────────────────────────────────────── -->
-    <string name="widget_name_hijri">Mihrab · Hijridatum</string>
+    <string name="widget_name_hijri">صلاتي · Hijridatum</string>
     <string name="widget_description_hijri">Dagens hijridatum, och hur långt bort nästa månad är. 2×1, storleken kan ändras.</string>
     <string name="widget_hijri_day_month">%1$d %2$s</string>
     <string name="widget_hijri_next">NÄSTA</string>
@@ -205,9 +205,9 @@
     <string name="widget_streak_inline">Räcka %1$dd</string>
     <string name="widget_preview_tap_to_log">Tryck \u2713 för att logga Asr i tid</string>
     <string name="widget_preview_practice_second">dagars räcka \u00b7 Bäst 31 \u00b7 2 av 5 idag</string>
-    <string name="widget_name_tall">Mihrab \u00b7 Bönetider (hög)</string>
+    <string name="widget_name_tall">صلاتي \u00b7 Bönetider (hög)</string>
     <string name="widget_description_tall">Dagens sex tider med stad, hijridatum och aktivitetsgrafen. 4×2.</string>
-    <string name="widget_name_log_tall">Mihrab \u00b7 Logga idag (hög)</string>
+    <string name="widget_name_log_tall">صلاتي \u00b7 Logga idag (hög)</string>
     <string name="widget_description_log_tall">Tryck på en bön för att logga den i tid, med nedräkning till nästa och aktivitetsgrafen. 4×2.</string>
     <string name="widget_configure_all_title">Alla widgetar</string>
     <string name="widget_configure_since_adhan">Tid sedan adhan</string>

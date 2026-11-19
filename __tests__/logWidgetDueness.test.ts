@@ -30,7 +30,7 @@ import path from 'path';
 const ROOT = path.join(__dirname, '..');
 const kt = (name: string) =>
   readFileSync(
-    path.join(ROOT, 'android', 'app', 'src', 'main', 'java', 'com', 'prayer_times', name),
+    path.join(ROOT, 'android', 'app', 'src', 'main', 'java', 'com', 'goma', 'salat', name),
     'utf8',
   );
 const swift = (name: string) =>

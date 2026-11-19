@@ -94,11 +94,11 @@ describe('B4 the APK is asked what it is', () => {
     w.file(`${HOME}/Library/Android/sdk/build-tools/34.0.0/aapt2`, '');
     w.file(`${HOME}/Library/Android/sdk/build-tools/35.0.0/aapt2`, '');
     w.on(`${HOME}/Library/Android/sdk/build-tools/35.0.0/aapt2 dump badging`, {
-      stdout: "package: name='com.prayer_times' versionCode='283' versionName='2.28.0'\nsdkVersion:'24'\n",
+      stdout: "package: name='com.goma.salat' versionCode='283' versionName='2.28.0'\nsdkVersion:'24'\n",
     })
       .on('unzip -Z1', { stdout: 'lib/arm64-v8a/x.so\nlib/armeabi-v7a/x.so\n' })
       .on(/^unzip -Z1 \S+ classes\*\.dex$/, { stdout: 'classes.dex\nclasses2.dex\n' })
-      .on('unzip -q -o', c => dex(c.args[c.args.length - 1], 'Lcom/prayer_times/MainActivity;'));
+      .on('unzip -q -o', c => dex(c.args[c.args.length - 1], 'Lcom/goma/salat/MainActivity;'));
     const dex = (dir: string, body: string) => {
       w.file(`${dir}/classes.dex`, 'Landroidx/core/app/Notification;');
       w.file(`${dir}/classes2.dex`, body);
@@ -168,7 +168,7 @@ describe('B6 the zip about to be published (2.11.0)', () => {
   };
 
   it('passes a Developer ID signed, entitled, stapled app, and cleans up after itself', async () => {
-    const w = zipWorld('TeamIdentifier=GAW23HT439', '<string>group.com.prayerapp</string>');
+    const w = zipWorld('TeamIdentifier=GAW23HT439', '<string>group.com.goma.salat</string>');
     const ctx = w.ctx();
     await inspectZip(ctx, '/z.zip');
     expect(lines(ctx)).toEqual([
@@ -182,7 +182,7 @@ describe('B6 the zip about to be published (2.11.0)', () => {
   });
 
   it('stops a cask that asks for the wrong macOS BEFORE publishing — the verifier found it after', async () => {
-    const w = zipWorld('TeamIdentifier=GAW23HT439', 'group.com.prayerapp').file(
+    const w = zipWorld('TeamIdentifier=GAW23HT439', 'group.com.goma.salat').file(
       TAP,
       GOOD_CASK.replace('>= :monterey', '>= :ventura'),
     );
@@ -193,7 +193,7 @@ describe('B6 the zip about to be published (2.11.0)', () => {
   });
 
   it('reads the array form of depends_on arch, and stops a universal app behind an arm64-only cask', async () => {
-    const w = zipWorld('TeamIdentifier=GAW23HT439', 'group.com.prayerapp')
+    const w = zipWorld('TeamIdentifier=GAW23HT439', 'group.com.goma.salat')
       .file(TAP, GOOD_CASK.replace('depends_on arch: :arm64', 'depends_on arch: [:arm64]'))
       .on('lipo -archs', { stdout: 'x86_64 arm64\n' });
     expect(await stopOf(() => inspectZip(w.ctx(), '/z.zip'))).toBe(
@@ -202,7 +202,7 @@ describe('B6 the zip about to be published (2.11.0)', () => {
   });
 
   it('beside the shell it unpacks nothing and registers nothing: the plist and executable alone, then the cask', async () => {
-    const w = zipWorld('TeamIdentifier=GAW23HT439', 'group.com.prayerapp').on('unzip -j', {});
+    const w = zipWorld('TeamIdentifier=GAW23HT439', 'group.com.goma.salat').on('unzip -j', {});
     const ctx = w.ctx({ shadow: true, quiet: true });
     await inspectZip(ctx, '/z.zip');
     expect(w.ran('ditto')).toEqual([]);
@@ -226,14 +226,14 @@ describe('B6 the zip about to be published (2.11.0)', () => {
   });
 
   it('a zip that will not unpack still has its temp copy unregistered and removed', async () => {
-    const w = zipWorld('TeamIdentifier=GAW23HT439', 'group.com.prayerapp').on('ditto -x -k', { code: 1 });
+    const w = zipWorld('TeamIdentifier=GAW23HT439', 'group.com.goma.salat').on('ditto -x -k', { code: 1 });
     expect(await stopOf(() => inspectZip(w.ctx(), '/z.zip'))).toBe('cannot unpack /z.zip');
     expect(w.ran(/lsregister -u \/tmp\/mihrab-zip-\d+\/Mihrab\.app/)).toHaveLength(1);
     expect([...w.dirs].some(d => d.startsWith('/tmp/mihrab-zip-'))).toBe(false);
   });
 
   it('stops an unstapled app — Gatekeeper would block its first launch', async () => {
-    const w = zipWorld('TeamIdentifier=GAW23HT439', 'group.com.prayerapp', false);
+    const w = zipWorld('TeamIdentifier=GAW23HT439', 'group.com.goma.salat', false);
     expect(await stopOf(() => inspectZip(w.ctx(), '/z.zip'))).toMatch(/carries no notarization ticket/);
     expect(w.ran('spctl')).toHaveLength(0);
   });
@@ -296,8 +296,8 @@ function publishWorld() {
     .on('git', {})
     .on('git rev-parse HEAD', { stdout: 'feedbeef00\n' })
     .on('gh release create', {})
-    .on('gh release view', { stdout: 'Mihrab-v2.28.0.apk\nMihrab-macOS-2.28.0.zip\n' });
-  w.url('https://github.com/MihrabHQ/Mihrab/releases/download/v2.28.0/Mihrab-macOS-2.28.0.zip', { body: 'ZIP' });
+    .on('gh release view', { stdout: 'Salaty-v2.28.0.apk\nMihrab-macOS-2.28.0.zip\n' });
+  w.url('https://github.com/goma2001/Mihrab/releases/download/v2.28.0/Mihrab-macOS-2.28.0.zip', { body: 'ZIP' });
   const BASE = 'https://api.appstoreconnect.apple.com';
   w.url(`${BASE}/v1/ciProducts?limit=10`, { text: JSON.stringify({ data: [{ id: 'P' }] }) });
   w.url(`${BASE}/v1/ciProducts/P/workflows?limit=20`, { text: JSON.stringify({ data: [{ id: 'WF', attributes: { name: 'Default' } }] }) });
@@ -333,7 +333,7 @@ describe('publishing, for real', () => {
     await publish(w.ctx(), rel, built, '');
     const create = w.ran('gh release create')[0].args;
     expect(create.filter(a => a.startsWith('/tmp/'))).toEqual([
-      expect.stringMatching(/\/Mihrab-v2\.28\.0\.apk$/),
+      expect.stringMatching(/\/Salaty-v2\.28\.0\.apk$/),
       expect.stringMatching(/\/Mihrab-macOS-2\.28\.0\.zip$/),
     ]);
     expect(create.some(a => a.includes('#'))).toBe(false);
@@ -376,7 +376,7 @@ describe('publishing, for real', () => {
   });
 
   it('SKIP_CATALYST leaves the cask alone and ships the APK only', async () => {
-    const w = publishWorld().on('gh release view', { stdout: 'Mihrab-v2.28.0.apk\n' });
+    const w = publishWorld().on('gh release view', { stdout: 'Salaty-v2.28.0.apk\n' });
     w.env.SKIP_CATALYST = '1';
     const ctx = w.ctx();
     await publish(ctx, rel, { ...built, zip: '' }, '');
@@ -442,7 +442,7 @@ describe('publishing in dry run', () => {
       'push main to origin',
       'tag v2.28.0 "Mihrab 2.28.0 (283)"',
       'push v2.28.0 to origin',
-      'create the GitHub release v2.28.0 with Mihrab-v2.28.0.apk, Mihrab-macOS-2.28.0.zip',
+      'create the GitHub release v2.28.0 with Salaty-v2.28.0.apk, Mihrab-macOS-2.28.0.zip',
       'commit "mihrab 2.28.0" in the tap and push it',
       'wait for the Xcode Cloud run on feedbeef',
     ]);

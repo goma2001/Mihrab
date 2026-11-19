@@ -123,7 +123,7 @@ rm -rf "$EXPORT"
 # App Store profiles with and the export dies on
 #
 #     error: exportArchive No Accounts
-#     error: exportArchive No profiles for 'com.hassan.prayerapp' were found
+#     error: exportArchive No profiles for 'com.goma.salat' were found
 #
 # which reads as a project misconfiguration and is an authentication
 # problem. The same API key that uploads the build can also mint the

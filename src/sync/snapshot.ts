@@ -43,7 +43,7 @@ import { coerceDhikrLog, type DhikrLog } from '../practice/practiceStore';
 import { coerceQuranState, DEFAULT_QURAN_STATE } from '../quran/quranState';
 import type { QuranState } from '../quran/quranTypes';
 
-export const SNAPSHOT_FORMAT = 'mihrab.snapshot';
+export const SNAPSHOT_FORMAT = 'salaty.snapshot';
 export const SNAPSHOT_FORMAT_VERSION = 1;
 
 /**

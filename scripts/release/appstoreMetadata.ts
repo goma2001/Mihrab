@@ -30,7 +30,7 @@ import type { Asc, Json } from './asc.ts';
 import { AscExit } from './asc.ts';
 import type { Io } from './io.ts';
 
-export const BUNDLE_ID = 'com.hassan.prayerapp';
+export const BUNDLE_ID = 'com.goma.salat';
 // App Store locale -> the Android directory whose changelog is "What's New".
 // storeListings.test.ts holds this to the same table as the Python's.
 export const LOCALES: Record<string, string> = {
@@ -47,9 +47,9 @@ export const ASC_LOCALE: Record<string, string> = { bn: 'bn-BD', ur: 'ur-PK' };
 export const ascLocale = (loc: string) => ASC_LOCALE[loc] ?? loc;
 export const PRIMARY_CATEGORY = 'LIFESTYLE';
 export const SECONDARY_CATEGORY = 'REFERENCE';
-export const MARKETING_URL = 'https://mihrab.elghamri.se/';
-export const SUPPORT_URL = 'https://github.com/MihrabHQ/Mihrab/issues';
-export const PRIVACY_URL = 'https://github.com/MihrabHQ/Mihrab/blob/main/PRIVACY_POLICY.md';
+export const MARKETING_URL = 'https://github.com/goma2001/Mihrab';
+export const SUPPORT_URL = 'https://github.com/goma2001/Mihrab/issues';
+export const PRIVACY_URL = 'https://github.com/goma2001/Mihrab/blob/main/PRIVACY_POLICY.md';
 
 export const EDITABLE = new Set([
   'PREPARE_FOR_SUBMISSION',

@@ -565,6 +565,13 @@ export type PrayerAppSettings = {
    * notifications don't surprise upgraders.
    */
   liveActivityEnabled: boolean;
+  /**
+   * Floating prayer button (Android only): a small pill drawn above
+   * other apps showing the next prayer + live countdown, through a
+   * foreground service. Off by default — it needs the system's
+   * "Draw over other apps" permission, granted from Settings.
+   */
+  floatingButtonEnabled: boolean;
   // ── Retained-but-unused (since v2.1.0-beta.5) ──────────────────────────
   // These Live Activity display knobs were removed from the UI: Sunrise is
   // always shown and the Hijri/location captions are always omitted. The
@@ -894,6 +901,9 @@ export const DEFAULT_SETTINGS: PrayerAppSettings = {
   // useful version on the lock screen / shade. Sunrise included because
   // it's the most-requested data point not in the headline countdown.
   liveActivityEnabled: false,
+  // Floating button defaults: OFF; the pill needs the overlay
+  // permission, which the toggle sends the user to grant.
+  floatingButtonEnabled: false,
   liveActivityCompactMode: false,
   liveActivityShowSunrise: true,
   liveActivityShowHijri: true,

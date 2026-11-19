@@ -2,69 +2,23 @@
   <a href="https://github.com/Safouene1/support-palestine-banner/blob/master/Markdown-pages/Support.md"><img src="https://raw.githubusercontent.com/Safouene1/support-palestine-banner/master/banner-support.svg" alt="Stand with Palestine — ways to help" width="100%"></a>
 </div>
 
-<div align="center">
-  <img src="branding/github-hero.png" alt="Mihrab, The Muslim Companion — for every prayer, and everything between. Calm, private, offline-first.">
+# صلاتي
 
-  **A Muslim's daily companion — for every prayer, and everything between.**
+**صلاتي — أوقات الصلاة والقرآن والأذكار. يعمل دون اتصال، بلا إعلانات وبلا حساب.**
 
-  Prayer times that match the published timetables of Diyanet, Islamiska Förbundet, Morocco, Algeria and Kemenag to the printed minute — and around them the Madinah muṣḥaf with recitation and tajweed, a hifz tracker, duas, dhikr and a prayer journal. No ads, no account, no tracking, and every line of it open source.
+تطبيق صلاة كامل: مواقيت دقيقة مطابِقة للتقاويم الرسمية المنشورة، ومصحف المدينة مع التلاوة والتجويد، وتتبّع الحفظ، والأدعية والأذكار، ودفتر الصلاة، والقبلة، والأدوات — كل ذلك دون اتصال ودون حساب.
 
-  **[Website](https://mihrab.elghamri.se/)** · **[Open Mihrab Web](https://mihrabhq.github.io/)** <sub>— the app in your browser, nothing to install</sub>
+## النسب
 
-  <sub>[Accuracy](#accuracy) · [Screenshots](#screenshots) · [Features](#features) · [Privacy](#privacy) · [Build](#build) · [Contributing](#contributing) · [Sources](#content-sources--thanks) · [License](#license)</sub>
+صلاتي مبنية على مشروع [Mihrab](https://github.com/MihrabHQ/Mihrab) مفتوح المصدر، برخصة AGPLv3 — أُخذ كوده وعُدّل ليصبح تطبيقًا مستقلًا باسم وهوية جديدين، مع بقاء المصدر مفتوحًا بنفس الرخصة. الشكر لمؤلف Mihrab الأصلي ولكل المساهمين فيه.
 
-  <br>
+_Salaty is a fork of the open-source [Mihrab](https://github.com/MihrabHQ/Mihrab) project (AGPLv3), rebranded as an independent app. Upstream's name, icon and store listings stay with upstream._
 
-  <p><b>Apple</b></p>
+## التنزيل
 
-  <p><a href="https://apps.apple.com/us/app/prayer-salah-times-qibla/id6762085256"><img src="branding/badges/appstore.png" alt="Download on the App Store" height="60"></a></p>
+التنزيل حاليًا من [صفحة الإصدارات على GitHub](https://github.com/goma2001/Mihrab/releases/latest) (ملف APK). روابط المتاجر (Google Play وF-Droid وApp Store) قادمة لاحقًا.
 
-  <p>Mac: <code>brew install --cask mihrabhq/tap/mihrab</code></p>
-
-  <p><b>Android</b></p>
-
-  <p>
-  <a href="https://apps.obtainium.imranr.dev/redirect?r=obtainium://app/%7B%22id%22%3A%22com.prayer_times%22%2C%22url%22%3A%22https%3A%2F%2Fgithub.com%2FMihrabHQ%2FMihrab%22%2C%22author%22%3A%22Hassan-PS%22%2C%22name%22%3A%22Mihrab%22%7D"><img src="branding/badges/obtainium.png" alt="Add to Obtainium" height="60"></a>&nbsp;
-  <a href="https://play.google.com/store/apps/details?id=com.prayer_times"><img src="branding/badges/googleplay.png" alt="Get it on Google Play" height="60"></a>&nbsp;
-  <a href="https://f-droid.org/packages/com.prayer_times/"><img src="branding/badges/fdroid.png" alt="Get it on F-Droid" height="60"></a>&nbsp;
-  <a href="https://github.com/MihrabHQ/Mihrab/releases/latest"><img src="branding/badges/github.png" alt="Get it on GitHub" height="60"></a>
-  </p>
-
-  <p><sub>Obtainium is recommended: first to get every update, and it updates itself. Don’t have it? <a href="https://github.com/ImranR98/Obtainium">Get Obtainium</a>.</sub></p>
-
-  <p><b>Windows</b></p>
-
-  <p><a href="https://apps.microsoft.com/detail/9N43KNMJHBWV"><img src="branding/badges/microsoft.png" alt="Get it from the Microsoft Store" height="60"></a></p>
-
-  <p><b>Linux</b> <sub>(preview)</sub></p>
-
-  <p>From your package manager, with Mihrab's signed repositories — updates come with the rest of your system:</p>
-
-  <details><summary>Debian, Ubuntu, Mint (apt)</summary>
-<pre>sudo curl -fsSLo /usr/share/keyrings/mihrab.gpg https://mihrabhq.github.io/packages/mihrab.gpg
-sudo curl -fsSLo /etc/apt/sources.list.d/mihrab.sources https://mihrabhq.github.io/packages/mihrab.sources
-sudo apt update &amp;&amp; sudo apt install mihrab</pre>
-<p><sub>Remove: <code>sudo apt purge mihrab</code></sub></p>
-  </details>
-  <details><summary>Fedora (dnf)</summary>
-<pre>sudo curl -fsSLo /etc/yum.repos.d/mihrab.repo https://mihrabhq.github.io/packages/mihrab.repo
-sudo dnf install mihrab</pre>
-<p><sub>Remove: <code>sudo dnf remove mihrab</code></sub></p>
-  </details>
-  <details><summary>openSUSE (zypper)</summary>
-<pre>sudo zypper addrepo https://mihrabhq.github.io/packages/mihrab.repo
-sudo zypper install mihrab</pre>
-<p><sub>Remove: <code>sudo zypper remove mihrab</code></sub></p>
-  </details>
-  <details><summary>Arch, Manjaro, EndeavourOS (pacman, yay)</summary>
-<pre>curl -fsSL https://mihrabhq.github.io/packages/mihrab.asc | sudo pacman-key --add -
-sudo pacman-key --lsign-key 28BB36D6D8388A8EF15EEA24E19DCF135A3D8035
-printf '\n[mihrab]\nServer = https://mihrabhq.github.io/packages/arch/$arch\n' | sudo tee -a /etc/pacman.conf
-sudo pacman -Syu mihrab</pre>
-<p><sub>Remove: <code>sudo pacman -R mihrab</code></sub></p>
-  </details>
-
-</div>
+_Store links (Google Play, F-Droid, App Store) are pending._
 
 ## Accuracy
 
@@ -435,30 +389,18 @@ Where you are, five times a day, is the most sensitive thing a prayer app touche
 - **Goes over the network, none of it to the developer** — coordinates to AlAdhan where it is the source of your times (Sweden, Diyanet’s places, Morocco, Algeria and Indonesia are calculated on the phone instead); your position rounded to about a kilometre to OpenStreetMap, to name your town when location is automatic; small update files from this project’s repositories; and the downloads you ask for.
 - **Not present at all** — ads, trackers, accounts, Google Play Services.
 
-The full list, from the code, is in the [privacy policy](PRIVACY_POLICY.md) and on the [website](https://mihrab.elghamri.se/#privacy).
+The full list, from the code, is in the [privacy policy](PRIVACY_POLICY.md) and on the [privacy policy in this repo](https://github.com/goma2001/Mihrab/blob/main/PRIVACY_POLICY.md).
 
 ---
 
 ## Install
 
-Every channel is at the top of this page: the store badges, Homebrew for the Mac, the Linux package repositories, and Mihrab Web. Same app on each, built from the same `main` branch; no Android build carries Google Play Services, the Play Store one included.
+صلاتي is distributed from its own GitHub releases only, for now: download the APK from [GitHub Releases](https://github.com/goma2001/Mihrab/releases/latest). Store links (Google Play, F-Droid, App Store) are pending, as are the Mac, Windows and Linux builds — this fork builds the Android APK.
 
-<details><summary><b>Notes on each channel</b></summary>
-
-| Platform | Link |
-|---|---|
-| **iPhone & iPad** | [App Store](https://apps.apple.com/us/app/prayer-salah-times-qibla/id6762085256) |
-| **macOS** | `brew install --cask mihrabhq/tap/mihrab` — native Mac Catalyst build from [GitHub Releases](https://github.com/MihrabHQ/Mihrab/releases/latest), for Intel and Apple silicon Macs on macOS 12.1 (Monterey) or later; the widgets need macOS 14 |
-| **Android — Obtainium (recommended)** | [Add to Obtainium](https://apps.obtainium.imranr.dev/redirect?r=obtainium://app/%7B%22id%22%3A%22com.prayer_times%22%2C%22url%22%3A%22https%3A%2F%2Fgithub.com%2FMihrabHQ%2FMihrab%22%2C%22author%22%3A%22Hassan-PS%22%2C%22name%22%3A%22Mihrab%22%7D) — first to get every update, and it updates itself. Needs [Obtainium](https://github.com/ImranR98/Obtainium) installed |
-| **Android — Google Play** | [Google Play](https://play.google.com/store/apps/details?id=com.prayer_times) |
-| **Android — F-Droid** | [f-droid.org/packages/com.prayer_times](https://f-droid.org/packages/com.prayer_times/) |
-| **Android — APK** | [GitHub Releases](https://github.com/MihrabHQ/Mihrab/releases/latest) → `Mihrab-vX.Y.Z.apk` (ARM phones, 32- and 64-bit) |
-| **Windows** | [Microsoft Store](https://apps.microsoft.com/detail/9N43KNMJHBWV) |
-| **Linux (preview)** | apt, dnf, zypper or pacman, from Mihrab's signed repositories at [mihrabhq.github.io/packages](https://mihrabhq.github.io/packages) — the commands are at the top of this page. Without any of those, [`install-linux.sh`](desktop/scripts/install-linux.sh) unpacks the AppImage. Testers and a maintainer are welcome ([desktop/MAINTAINING.md](desktop/MAINTAINING.md)) |
+- **Android — APK**: [GitHub Releases](https://github.com/goma2001/Mihrab/releases/latest) → `salaty-release.apk` (ARM phones, 32- and 64-bit)
+- **Android — Obtainium (recommended)**: add the fork's releases in Obtainium (`https://github.com/goma2001/Mihrab`) — first to get every update, and it updates itself. Needs [Obtainium](https://github.com/ImranR98/Obtainium) installed.
 
 On **GrapheneOS**: no Google Play services are used, the Network and Sensors switches are handled, and the APK is checked at every release for what its exploit protections expect — [what was checked, and how](docs/grapheneos.md).
-
-</details>
 
 ---
 

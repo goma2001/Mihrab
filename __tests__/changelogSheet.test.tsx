@@ -150,7 +150,7 @@ describe('what the sheet lists', () => {
   });
 
   it('names the installed version in its own header', () => {
-    expect(texts(render(null))).toContain(`Mihrab ${INSTALLED}`);
+    expect(texts(render(null))).toContain(`صلاتي ${INSTALLED}`);
   });
 
   it('isolates a version number so Arabic cannot reorder it', () => {
@@ -164,7 +164,7 @@ describe('what the sheet lists', () => {
       .root.findAllByType(Text)
       .map((n: Node) => n.props.children)
       .filter((c): c is string => typeof c === 'string');
-    expect(raw).toContain(`Mihrab ${LRI}${INSTALLED}${PDI}`);
+    expect(raw).toContain(`صلاتي ${LRI}${INSTALLED}${PDI}`);
     expect(raw).toContain(`${LRI}${INSTALLED}${PDI}`);
   });
 });
@@ -342,7 +342,7 @@ describe('copying a release\'s notes', () => {
     expect(mockCopy).toHaveBeenCalledTimes(1);
     const copied = mockCopy.mock.calls[0][0];
     const installed = CHANGELOG.find((r: { version: string }) => r.version === INSTALLED);
-    expect(copied.startsWith(`whatsNew.installed`) || copied.startsWith(`Mihrab ${INSTALLED}`)).toBe(true);
+    expect(copied.startsWith(`whatsNew.installed`) || copied.startsWith(`صلاتي ${INSTALLED}`)).toBe(true);
     // Every line of the installed release's note is in it, bullets kept,
     // markers gone.
     const lines = installed.notes.en
@@ -438,7 +438,7 @@ describe('noteCopyText', () => {
   const { noteCopyText } = require('../src/polish/notesMarkup');
   it('keeps the blocks and the bullets, and drops the bold markers', () => {
     expect(
-      noteCopyText('Mihrab 9.9.9', 'Intro line\n\n• **One** thing\n- another\n\nClosing'),
-    ).toBe('Mihrab 9.9.9\n\nIntro line\n\n• One thing\n• another\n\nClosing');
+      noteCopyText('صلاتي 9.9.9', 'Intro line\n\n• **One** thing\n- another\n\nClosing'),
+    ).toBe('صلاتي 9.9.9\n\nIntro line\n\n• One thing\n• another\n\nClosing');
   });
 });

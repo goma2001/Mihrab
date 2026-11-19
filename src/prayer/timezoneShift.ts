@@ -54,7 +54,7 @@ import { refetchIslamiskaForbundetDatasetNow } from '../providers/islamiskaForbu
 
 export { deviceUtcOffsetMinutes };
 
-const KEY = 'mihrab.prayer.utcOffset.v1';
+const KEY = 'salaty.prayer.utcOffset.v1';
 
 /**
  * ── THE ZONE, NOT JUST THE OFFSET ─────────────────────────────────────

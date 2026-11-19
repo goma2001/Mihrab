@@ -13,9 +13,9 @@ import path from 'path';
 const REPO = path.resolve(__dirname, '..');
 const read = (p: string) => fs.readFileSync(path.join(REPO, p), 'utf-8');
 
-const NATIVE = read('android/app/src/main/java/com/prayer_times/LaunchSnapshot.kt');
-const ACTIVITY = read('android/app/src/main/java/com/prayer_times/MainActivity.kt');
-const APPLICATION = read('android/app/src/main/java/com/prayer_times/MainApplication.kt');
+const NATIVE = read('android/app/src/main/java/com/goma/salat/LaunchSnapshot.kt');
+const ACTIVITY = read('android/app/src/main/java/com/goma/salat/MainActivity.kt');
+const APPLICATION = read('android/app/src/main/java/com/goma/salat/MainApplication.kt');
 const HOME = read('src/screens/HomeScreen.tsx');
 const FIRST_PAINT = read('src/boot/firstPaint.ts');
 const ROOT = read('src/AppNavigationRoot.tsx');
@@ -55,7 +55,7 @@ describe('the native side', () => {
       'fontScale != fontScale',
       'w == width && h == height',
       // A link opens something in the app, not the app — but the widgets'
-      // `mihrab://today` lands where a plain launch does.
+      // `salaty://today` lands where a plain launch does.
       '!isTodayLink(data)',
       'uri.host == "today" && uri.path.isNullOrEmpty() && uri.query == null',
       'it.startsWith("android.")',
@@ -209,7 +209,7 @@ describe('the JS side', () => {
     // A phone on a scheduled dark theme flips night mode at dusk and
     // dawn; under an explicit theme or the Sky theme that changes nothing
     // on screen, and the picture kept across it is still this screen.
-    const kt = read('android/app/src/main/java/com/prayer_times/LaunchSnapshot.kt');
+    const kt = read('android/app/src/main/java/com/goma/salat/LaunchSnapshot.kt');
     const SWIFT = read('ios/PrayerApp/MihrabLaunchSnapshot.swift');
     const BRIDGE = read('ios/PrayerApp/MihrabLaunchSnapshot.m');
     expect(kt).toMatch(/if \(night >= 0 && \(c\.uiMode and Configuration\.UI_MODE_NIGHT_MASK\) != night\) return false/);
