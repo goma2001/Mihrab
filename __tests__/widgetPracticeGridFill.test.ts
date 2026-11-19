@@ -27,7 +27,7 @@ const JAVA = path.join(
   'main',
   'java',
   'com',
-  'prayer_times',
+  'goma', 'salat',
 );
 const src = (name: string) => readFileSync(path.join(JAVA, `${name}.kt`), 'utf8');
 const GRID = src('PracticeGridBitmap');

@@ -38,12 +38,12 @@ const layout = (n: string) => readFileSync(path.join(RES, 'layout', `${n}.xml`),
 const strings = (dir: string) => readFileSync(path.join(RES, dir, 'strings.xml'), 'utf8');
 const glancePrayer = readFileSync(
   path.join(__dirname, '..', 'android', 'app', 'src', 'main', 'java', 'com',
-    'prayer_times', 'glance', 'PrayerGlanceWidget.kt'),
+    'goma', 'salat', 'glance', 'PrayerGlanceWidget.kt'),
   'utf8',
 );
 const provider = readFileSync(
   path.join(__dirname, '..', 'android', 'app', 'src', 'main', 'java', 'com',
-    'prayer_times', 'glance', 'LogGlanceWidget.kt'),
+    'goma', 'salat', 'glance', 'LogGlanceWidget.kt'),
   'utf8',
 );
 

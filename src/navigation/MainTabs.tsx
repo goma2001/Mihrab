@@ -507,7 +507,7 @@ export function MainTabs() {
            * card and this header; Catalyst draws its own bar as content.
            */
           headerShown: todayHeader,
-          // Always "Mihrab" — a proper name, not a translated label.
+          // Always "صلاتي" — a proper name, not a translated label.
           headerTitle: () => <MihrabHeaderTitle />,
           /**
            * The wordmark sits at the LEADING EDGE, not centred (v2.8.5).

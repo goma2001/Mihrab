@@ -44,7 +44,7 @@ import os
 /// `log show` does not display it without `--info` — so an investigator who
 /// runs the obvious query
 ///
-///   log show --predicate 'subsystem == "com.hassan.prayerapp.widget"'
+///   log show --predicate 'subsystem == "com.goma.salat.widget"'
 ///
 /// sees an empty table and concludes the code never ran. That is exactly
 /// what happened here: chronod's own log shows `LogPrayerIntent.perform()`
@@ -56,7 +56,7 @@ import os
 /// someone's worship was recorded. That is worth a persisted line. If the
 /// volume ever becomes a problem, the fix is a signpost profile, not a
 /// quieter level.
-let widgetLogLog = Logger(subsystem: "com.hassan.prayerapp.widget", category: "logqueue")
+let widgetLogLog = Logger(subsystem: "com.goma.salat.widget", category: "logqueue")
 
 /// The Darwin notification that tells the app a widget queue has changed.
 ///
@@ -82,7 +82,7 @@ let widgetLogLog = Logger(subsystem: "com.hassan.prayerapp.widget", category: "l
 /// cannot write the journal, and the app cannot observe another process's
 /// UserDefaults reliably. It carries no payload — it only says "look again",
 /// and the app re-reads the queue through the same drain it already had.
-let widgetQueueChangedNotification = "com.hassan.prayerapp.widgetQueueChanged"
+let widgetQueueChangedNotification = "com.goma.salat.widgetQueueChanged"
 
 /// Tell the app to drain. Safe to call from any queue and from either
 /// widget; posting when nobody is listening is a no-op.

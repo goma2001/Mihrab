@@ -969,7 +969,7 @@
 				DEVELOPMENT_TEAM = GAW23HT439;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = PrayerApp/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Mihrab;
+				INFOPLIST_KEY_CFBundleDisplayName = صلاتي;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
 				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 15.2;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -993,7 +993,7 @@
 					"-lc++",
 				);
 				PRESERVE_DEAD_CODE_INITS_AND_TERMS = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.hassan.prayerapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.goma.salat;
 				PRODUCT_NAME = PrayerApp;
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_ENABLE_EXPLICIT_MODULES = NO;
@@ -1018,7 +1018,7 @@
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = GAW23HT439;
 				INFOPLIST_FILE = PrayerApp/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Mihrab;
+				INFOPLIST_KEY_CFBundleDisplayName = صلاتي;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
 				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 15.2;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1042,7 +1042,7 @@
 					"-lc++",
 				);
 				PRESERVE_DEAD_CODE_INITS_AND_TERMS = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.hassan.prayerapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.goma.salat;
 				PRODUCT_NAME = PrayerApp;
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_ENABLE_EXPLICIT_MODULES = NO;
@@ -1225,7 +1225,7 @@
 				DEVELOPMENT_TEAM = GAW23HT439;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = PrayerWidgetExtension/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Mihrab;
+				INFOPLIST_KEY_CFBundleDisplayName = صلاتي;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1244,7 +1244,7 @@
 				);
 				MARKETING_VERSION = 2.38.3;
 				PRESERVE_DEAD_CODE_INITS_AND_TERMS = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.hassan.prayerapp.PrayerWidgetExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.goma.salat.PrayerWidgetExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = YES;
@@ -1269,7 +1269,7 @@
 				DEVELOPMENT_TEAM = GAW23HT439;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = PrayerWidgetExtension/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Mihrab;
+				INFOPLIST_KEY_CFBundleDisplayName = صلاتي;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1288,7 +1288,7 @@
 				);
 				MARKETING_VERSION = 2.38.3;
 				PRESERVE_DEAD_CODE_INITS_AND_TERMS = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.hassan.prayerapp.PrayerWidgetExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.goma.salat.PrayerWidgetExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = YES;
@@ -1312,7 +1312,7 @@
 				DEVELOPMENT_TEAM = GAW23HT439;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = MihrabLiveActivity/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Mihrab;
+				INFOPLIST_KEY_CFBundleDisplayName = صلاتي;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1326,7 +1326,7 @@
 				);
 				MARKETING_VERSION = 2.38.3;
 				PRESERVE_DEAD_CODE_INITS_AND_TERMS = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.hassan.prayerapp.MihrabLiveActivity;
+				PRODUCT_BUNDLE_IDENTIFIER = com.goma.salat.MihrabLiveActivity;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1351,7 +1351,7 @@
 				DEVELOPMENT_TEAM = GAW23HT439;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = MihrabLiveActivity/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Mihrab;
+				INFOPLIST_KEY_CFBundleDisplayName = صلاتي;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1365,7 +1365,7 @@
 				);
 				MARKETING_VERSION = 2.38.3;
 				PRESERVE_DEAD_CODE_INITS_AND_TERMS = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.hassan.prayerapp.MihrabLiveActivity;
+				PRODUCT_BUNDLE_IDENTIFIER = com.goma.salat.MihrabLiveActivity;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

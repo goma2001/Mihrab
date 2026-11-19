@@ -1,29 +1,29 @@
-# Privacy Policy — Mihrab: The Muslim Companion
+# Privacy Policy — صلاتي
 
 **Effective:** 2026-11-05
 **Language:** English first, Swedish (Svenska) below.
 
 ## About this policy
 
-This policy covers the app **Mihrab: The Muslim Companion** ("Mihrab", "the app"), for Android and iOS/iPadOS/macOS, and **Mihrab Web**, the same app in a browser at [https://mihrabhq.github.io](https://mihrabhq.github.io) (see "Mihrab Web" below for what differs).
+This policy covers the app **صلاتي** ("the app"), for Android and iOS/iPadOS/macOS, and **صلاتي Web**, the same app in a browser (see "صلاتي Web" below for what differs). صلاتي is a fork of [Mihrab](https://github.com/MihrabHQ/Mihrab), under the AGPLv3 licence.
 
 | | |
 |---|---|
-| **App name** | Mihrab: The Muslim Companion |
-| **Android package** | `com.prayer_times` (Google Play) |
-| **iOS / macOS bundle ID** | `com.hassan.prayerapp` (App Store) |
-| **Developer / data controller** | Hassan El Ghamri, trading as Mihrab (the "Mihrab team" on Google Play), Stockholm, Sweden |
-| **Contact** | [mihrab@elghamri.se](mailto:mihrab@elghamri.se) |
-| **Website** | [https://mihrab.elghamri.se](https://mihrab.elghamri.se) |
-| **Source code and issues** | [https://github.com/MihrabHQ/Mihrab](https://github.com/MihrabHQ/Mihrab) |
+| **App name** | صلاتي |
+| **Android package** | `com.goma.salat` |
+| **iOS / macOS bundle ID** | `com.goma.salat` |
+| **Developer / data controller** | Goma Mohamed (goma2001), Saudi Arabia |
+| **Contact** | [anazaza492@gmail.com](mailto:anazaza492@gmail.com) |
+| **Website** | [https://github.com/goma2001/Mihrab](https://github.com/goma2001/Mihrab) |
+| **Source code and issues** | [https://github.com/goma2001/Mihrab](https://github.com/goma2001/Mihrab) |
 
-Mihrab is free and open source. It has no accounts, no ads, no analytics, no crash-reporting service, no in-app purchases and no server operated by the developer. **The developer does not receive, store or sell any personal data about you.**
+صلاتي is free and open source. It has no accounts, no ads, no analytics, no crash-reporting service, no in-app purchases and no server operated by the developer. **The developer does not receive, store or sell any personal data about you.**
 
 ## Summary
 
 - Everything you enter or record (prayer log, fasting, dhikr, journal, Quran bookmarks, settings, location) is stored **on your device**. Nothing is sent to the developer.
 - The app connects to the internet to fetch prayer times where they are not calculated on the device, to name your town and search for places, to check for updated calculation data and Hijri-date corrections, and to download Quran fonts, tafsir or recitation audio you ask for. These requests go to the third-party services listed below, never to the developer.
-- Syncing between your own devices is optional, sealed end to end, and goes through a folder you pick, not through a Mihrab server.
+- Syncing between your own devices is optional, sealed end to end, and goes through a folder you pick, not through a صلاتي server.
 
 ## Data the app handles
 
@@ -49,23 +49,23 @@ Mihrab is free and open source. It has no accounts, no ads, no analytics, no cra
 
 **Clipboard.** The app only places text on the clipboard when you tap a copy action (for example a pairing code).
 
-## Mihrab Web
+## صلاتي Web
 
-Mihrab Web is the same app running in your browser. What differs:
+صلاتي Web is the same app running in your browser. It is not currently deployed as a public website. What differs when it runs in a browser:
 
-- **Where your data is kept.** Your settings, location, saved places, Quran bookmarks and records are kept in your browser's storage for the site (`localStorage` and IndexedDB), in this browser only. They are not encrypted by Mihrab there, and there is no device sync. Clearing the site's data in your browser deletes them.
-- **Hosting.** The page and its Quran files (fonts, riwayat, word timings, word meanings) are served by **GitHub Pages** (`mihrabhq.github.io`), which sees your IP address and the files requested, under GitHub's privacy statement.
+- **Where your data is kept.** Your settings, location, saved places, Quran bookmarks and records are kept in your browser's storage for the site (`localStorage` and IndexedDB), in this browser only. They are not encrypted by صلاتي there, and there is no device sync. Clearing the site's data in your browser deletes them.
+- **Hosting.** If صلاتي Web is deployed, the page and its Quran files (fonts, riwayat, word timings, word meanings) are served by that deployment's host (for example GitHub Pages), which sees your IP address and the files requested, under that host's privacy statement.
 - **Your first location.** When you first open it, the page asks **GeoJS** (`get.geojs.io`), or **ipapi.co** if GeoJS does not answer, for the city your internet connection is registered to, and offers it as a question. Sent: only the request itself, which carries your IP address. Nothing is saved unless you confirm it; you can choose your place instead. Device location in the browser uses the browser's own location permission.
 - **Notifications.** If you allow them, prayer notifications are shown by your browser, scheduled in the page and only while it is open. No push service is used.
 
 ## Third-party services
 
-When you use these features, your device contacts the service directly. The service may see technical data such as your IP address, the time of the request and the requested URL, under its own privacy policy. Mihrab sends no account identifier, advertising identifier or device identifier.
+When you use these features, your device contacts the service directly. The service may see technical data such as your IP address, the time of the request and the requested URL, under its own privacy policy. صلاتي sends no account identifier, advertising identifier or device identifier.
 
-- **Prayer times.** Sweden's (Islamiska Förbundet's), Diyanet's, Morocco's, Algeria's, Indonesia's, Tatarstan's, Russia's Central Muftiate's, Albania's, Bulgaria's, Egypt's, Kuwait's, Qatar's, Jordan's, Kazakhstan's, Brunei's, Pakistan's (Jamia Banuri Town's), the United Arab Emirates', Iran's (the Tehran Institute of Geophysics') , the United Kingdom's (Wifaqul Ulama's) and Tunisia's (the Institut National de la Météorologie's) times are calculated on your device and contact no prayer-time service. **Aladhan** (`api.aladhan.com`) is the source elsewhere unless you choose on-device calculation; it is sent your coordinates, the date and the calculation settings. Singapore's, Malaysia's, London's, Kyrgyzstan's, Tajikistan's, Dagestan's and Bashkortostan's tables come from Mihrab's own open datasets on GitHub (`raw.githubusercontent.com/MihrabHQ/Mihrab`), asked for by city; only when a day is missing there is the authority's own service asked (`www.e-solat.gov.my`, by zone code; `api-open.data.gov.sg`, with nothing about you) — for London, Kyrgyzstan and Tajikistan none is: a missing day is calculated on your device. For Türkiye Takvimi the city nearest you is looked up on your device from a map tile covering about 500 km, fetched from GitHub; its year comes from a GitHub release of the Mihrab repository, or, if missing there, from `www.namazvakti.com` by the city's id, never your coordinates.
-- **Calculation and calendar updates:** at start and every few hours the app reads `certification.json` and correction lists from `raw.githubusercontent.com/MihrabHQ/mihrab-methods`, and announced Hijri-date corrections from `raw.githubusercontent.com/MihrabHQ/Mihrab`. Sent: nothing beyond the request itself.
+- **Prayer times.** Sweden's (Islamiska Förbundet's), Diyanet's, Morocco's, Algeria's, Indonesia's, Tatarstan's, Russia's Central Muftiate's, Albania's, Bulgaria's, Egypt's, Kuwait's, Qatar's, Jordan's, Kazakhstan's, Brunei's, Pakistan's (Jamia Banuri Town's), the United Arab Emirates', Iran's (the Tehran Institute of Geophysics') , the United Kingdom's (Wifaqul Ulama's) and Tunisia's (the Institut National de la Météorologie's) times are calculated on your device and contact no prayer-time service. **Aladhan** (`api.aladhan.com`) is the source elsewhere unless you choose on-device calculation; it is sent your coordinates, the date and the calculation settings. Singapore's, Malaysia's, London's, Kyrgyzstan's, Tajikistan's, Dagestan's and Bashkortostan's tables come from صلاتي's own open datasets on GitHub (`raw.githubusercontent.com/goma2001/Mihrab`), asked for by city; only when a day is missing there is the authority's own service asked (`www.e-solat.gov.my`, by zone code; `api-open.data.gov.sg`, with nothing about you) — for London, Kyrgyzstan and Tajikistan none is: a missing day is calculated on your device. For Türkiye Takvimi the city nearest you is looked up on your device from a map tile covering about 500 km, fetched from GitHub; its year comes from a GitHub release of the صلاتي repository, or, if missing there, from `www.namazvakti.com` by the city's id, never your coordinates.
+- **Calculation and calendar updates:** at start and every few hours the app reads `certification.json` and correction lists from `raw.githubusercontent.com/MihrabHQ/mihrab-methods`, and announced Hijri-date corrections from `raw.githubusercontent.com/goma2001/Mihrab`. Sent: nothing beyond the request itself.
 - **Place search and naming your town:** OpenStreetMap Nominatim (`nominatim.openstreetmap.org`), and Photon (`photon.komoot.io`) for search when Nominatim is busy. Sent: your search text; or, with device location, your coordinates rounded to two decimal places (about a kilometre), automatically when you have moved about a kilometre.
-- **Quran content, on request:** (the Quran text and fourteen translations are bundled in the app) tafsir (via `cdn.jsdelivr.net`, and `api.alquran.cloud` for three Tanzil editions), further translations you choose to read (`api.alquran.cloud`, `quranenc.com`), Arabic meanings of harder words (QuranEnc, `quranenc.com`), recitation audio (`everyayah.com`, and `cdn.mp3quran.net` for the whole-surah recitations), additional riwayat and mushaf data (Quranpedia, `api.quranpedia.net`) and mushaf fonts (GitHub releases of the Mihrab repository). Sent: the file or chapter being requested.
+- **Quran content, on request:** (the Quran text and fourteen translations are bundled in the app) tafsir (via `cdn.jsdelivr.net`, and `api.alquran.cloud` for three Tanzil editions), further translations you choose to read (`api.alquran.cloud`, `quranenc.com`), Arabic meanings of harder words (QuranEnc, `quranenc.com`), recitation audio (`everyayah.com`, and `cdn.mp3quran.net` for the whole-surah recitations), additional riwayat and mushaf data (Quranpedia, `api.quranpedia.net`) and mushaf fonts (GitHub releases of the صلاتي repository). Sent: the file or chapter being requested.
 - **Opening links:** If you tap a link (GitHub, the website, the store pages), it opens in your browser or the store app, under that site's policy.
 
 The app contains **no** advertising SDKs, analytics SDKs, tracking, crash-reporting services or data brokers, and it does not track you across apps or websites. Because the developer collects no data, there is nothing to share or sell.
@@ -76,43 +76,43 @@ Processing happens on your device to provide the features you use (prayer times,
 
 ## Your rights (EU/EEA)
 
-Because the developer holds no copy of your data, access, correction and deletion are in your hands: change or revoke permissions in system settings, enter a manual location, delete records inside the app, turn off sync, or **uninstall** the app to remove all local data. You may also write to [mihrab@elghamri.se](mailto:mihrab@elghamri.se) with any privacy question, and you can complain to the Swedish Authority for Privacy Protection (IMY, [imy.se](https://www.imy.se)) or your local supervisory authority.
+Because the developer holds no copy of your data, access, correction and deletion are in your hands: change or revoke permissions in system settings, enter a manual location, delete records inside the app, turn off sync, or **uninstall** the app to remove all local data. You may also write to [anazaza492@gmail.com](mailto:anazaza492@gmail.com) with any privacy question, and you can complain to your local supervisory authority.
 
 ## Children
 
-Mihrab is not directed at children under 13 and does not knowingly collect personal data from anyone. There is no account and no central database, so there is nothing for the developer to delete on a child's behalf; contact us if you have any concern.
+صلاتي is not directed at children under 13 and does not knowingly collect personal data from anyone. There is no account and no central database, so there is nothing for the developer to delete on a child's behalf; contact us if you have any concern.
 
 ## Changes
 
-If the app's data handling changes, this policy and its effective date will be updated. The current version is always at [https://github.com/MihrabHQ/Mihrab/blob/main/PRIVACY_POLICY.md](https://github.com/MihrabHQ/Mihrab/blob/main/PRIVACY_POLICY.md).
+If the app's data handling changes, this policy and its effective date will be updated. The current version is always at [https://github.com/goma2001/Mihrab/blob/main/PRIVACY_POLICY.md](https://github.com/goma2001/Mihrab/blob/main/PRIVACY_POLICY.md).
 
 ---
 
-# Integritetspolicy — Mihrab: The Muslim Companion
+# Integritetspolicy — صلاتي
 
 **Gäller från:** 2026-11-05
 
 ## Om policyn
 
-Den här policyn gäller appen **Mihrab: The Muslim Companion** ("Mihrab", "appen") för Android och iOS/iPadOS/macOS, och **Mihrab Web**, samma app i en webbläsare på [https://mihrabhq.github.io](https://mihrabhq.github.io) (se "Mihrab Web" nedan för det som skiljer sig).
+Den här policyn gäller appen **صلاتي** ("appen") för Android och iOS/iPadOS/macOS, och **صلاتي Web**, samma app i en webbläsare (se "صلاتي Web" nedan för det som skiljer sig). صلاتي är en fork av [Mihrab](https://github.com/MihrabHQ/Mihrab), under AGPLv3-licensen.
 
 | | |
 |---|---|
-| **Appens namn** | Mihrab: The Muslim Companion |
-| **Android-paket** | `com.prayer_times` (Google Play) |
-| **iOS-/macOS-bundle-ID** | `com.hassan.prayerapp` (App Store) |
-| **Utvecklare / personuppgiftsansvarig** | Hassan El Ghamri, verksam under namnet Mihrab ("Mihrab team" på Google Play), Stockholm, Sverige |
-| **Kontakt** | [mihrab@elghamri.se](mailto:mihrab@elghamri.se) |
-| **Webbplats** | [https://mihrab.elghamri.se](https://mihrab.elghamri.se) |
-| **Källkod och ärenden** | [https://github.com/MihrabHQ/Mihrab](https://github.com/MihrabHQ/Mihrab) |
+| **Appens namn** | صلاتي |
+| **Android-paket** | `com.goma.salat` |
+| **iOS-/macOS-bundle-ID** | `com.goma.salat` |
+| **Utvecklare / personuppgiftsansvarig** | Goma Mohamed (goma2001), Saudiarabien |
+| **Kontakt** | [anazaza492@gmail.com](mailto:anazaza492@gmail.com) |
+| **Webbplats** | [https://github.com/goma2001/Mihrab](https://github.com/goma2001/Mihrab) |
+| **Källkod och ärenden** | [https://github.com/goma2001/Mihrab](https://github.com/goma2001/Mihrab) |
 
-Mihrab är gratis och öppen källkod. Appen har inga konton, ingen reklam, ingen analys, ingen kraschrapportering, inga köp i appen och ingen server som drivs av utvecklaren. **Utvecklaren tar inte emot, lagrar eller säljer några personuppgifter om dig.**
+صلاتي är gratis och öppen källkod. Appen har inga konton, ingen reklam, ingen analys, ingen kraschrapportering, inga köp i appen och ingen server som drivs av utvecklaren. **Utvecklaren tar inte emot, lagrar eller säljer några personuppgifter om dig.**
 
 ## Sammanfattning
 
 - Allt du anger eller registrerar (bönelogg, fasta, dhikr, dagbok, Koranbokmärken, inställningar, plats) lagras **på din enhet**. Inget skickas till utvecklaren.
 - Appen ansluter till internet för att hämta bönetider där de inte räknas ut på enheten, för att ta reda på ortens namn och söka platser, för att se efter uppdaterade beräkningsdata och rättelser av hijri-datumet, och för att ladda ned Korantypsnitt, tafsir eller recitationsljud som du ber om. Anropen går till tredjepartstjänsterna nedan, aldrig till utvecklaren.
-- Synkronisering mellan dina egna enheter är valfri, förseglad från ände till ände och sker via en mapp du väljer, inte via någon Mihrab-server.
+- Synkronisering mellan dina egna enheter är valfri, förseglad från ände till ände och sker via en mapp du väljer, inte via någon صلاتي-server.
 
 ## Uppgifter som appen hanterar
 
@@ -138,23 +138,23 @@ Mihrab är gratis och öppen källkod. Appen har inga konton, ingen reklam, inge
 
 **Urklipp.** Appen lägger bara text i urklipp när du trycker på en kopieringsåtgärd (t.ex. en parningskod).
 
-## Mihrab Web
+## صلاتي Web
 
-Mihrab Web är samma app i din webbläsare. Det här skiljer sig:
+صلاتي Web är samma app i din webbläsare. Den är för närvarande inte driftsatt som en offentlig webbplats. Det här skiljer sig när den körs i en webbläsare:
 
-- **Var dina uppgifter lagras.** Dina inställningar, din plats, sparade platser, Koranbokmärken och poster sparas i webbläsarens lagring för webbplatsen (`localStorage` och IndexedDB), bara i den webbläsaren. Mihrab krypterar dem inte där, och det finns ingen enhetssynk. Rensar du webbplatsens data i webbläsaren tas de bort.
-- **Värd.** Sidan och dess Koranfiler (typsnitt, riwayat, ordtidtabeller, ordbetydelser) levereras av **GitHub Pages** (`mihrabhq.github.io`), som ser din IP-adress och vilka filer som begärs, enligt GitHubs integritetspolicy.
+- **Var dina uppgifter lagras.** Dina inställningar, din plats, sparade platser, Koranbokmärken och poster sparas i webbläsarens lagring för webbplatsen (`localStorage` och IndexedDB), bara i den webbläsaren. صلاتي krypterar dem inte där, och det finns ingen enhetssynk. Rensar du webbplatsens data i webbläsaren tas de bort.
+- **Värd.** Om صلاتي Web driftsätts levereras sidan och dess Koranfiler (typsnitt, riwayat, ordtidtabeller, ordbetydelser) av driftsättningens värd (till exempel GitHub Pages), som ser din IP-adress och vilka filer som begärs, enligt värdens integritetspolicy.
 - **Din första plats.** När du öppnar sidan första gången frågar den **GeoJS** (`get.geojs.io`), eller **ipapi.co** om GeoJS inte svarar, vilken stad din internetanslutning är registrerad i, och ställer det som en fråga. Skickas: bara själva förfrågan, som bär din IP-adress. Inget sparas om du inte bekräftar; du kan välja plats själv i stället. Enhetsplats i webbläsaren använder webbläsarens egen platsbehörighet.
 - **Notiser.** Om du tillåter dem visas bönenotiser av webbläsaren, schemalagda i sidan och bara medan den är öppen. Ingen pushtjänst används.
 
 ## Tredje parter
 
-När du använder dessa funktioner kontaktar din enhet tjänsten direkt. Tjänsten kan se tekniska uppgifter som din IP-adress, tidpunkt och begärd URL, enligt sin egen integritetspolicy. Mihrab skickar inget kontoid, reklam-id eller enhets-id.
+När du använder dessa funktioner kontaktar din enhet tjänsten direkt. Tjänsten kan se tekniska uppgifter som din IP-adress, tidpunkt och begärd URL, enligt sin egen integritetspolicy. صلاتي skickar inget kontoid, reklam-id eller enhets-id.
 
-- **Bönetider.** Sveriges (Islamiska Förbundets), Diyanets, Marockos, Algeriets, Indonesiens, Tatarstans, Rysslands centrala muftiats, Albaniens, Bulgariens, Egyptens, Kuwaits, Qatars, Jordaniens, Kazakstans, Bruneis, Pakistans (Jamia Banuri Towns) och Förenade Arabemiratens tider räknas ut på enheten och kontaktar ingen bönetidstjänst. **Aladhan** (`api.aladhan.com`) är källan på andra platser om du inte väljer beräkning på enheten; den får dina koordinater, datumet och beräkningsinställningarna. Singapores, Malaysias, Londons, Kirgizistans, Tadzjikistans, Dagestans och Basjkiriens tabeller kommer från Mihrabs egna öppna dataset på GitHub (`raw.githubusercontent.com/MihrabHQ/Mihrab`), per ort; bara när en dag saknas där frågas myndighetens egen tjänst (`www.e-solat.gov.my`, med zonkod; `api-open.data.gov.sg`, utan något om dig) – för London, Kirgizistan och Tadzjikistan ingen: en dag som saknas räknas ut på enheten. För Türkiye Takvimi slås närmaste stad upp på enheten i en kartruta på cirka 50 mil som hämtas från GitHub; året hämtas från en GitHub-release i Mihrab-repot, eller, om det saknas där, från `www.namazvakti.com` med stadens id, aldrig dina koordinater.
-- **Uppdateringar av beräkningar och kalender:** vid start och med några timmars mellanrum läser appen `certification.json` och korrigeringslistor från `raw.githubusercontent.com/MihrabHQ/mihrab-methods`, och aviserade rättelser av hijri-datumet från `raw.githubusercontent.com/MihrabHQ/Mihrab`. Skickas: inget utöver själva förfrågan.
+- **Bönetider.** Sveriges (Islamiska Förbundets), Diyanets, Marockos, Algeriets, Indonesiens, Tatarstans, Rysslands centrala muftiats, Albaniens, Bulgariens, Egyptens, Kuwaits, Qatars, Jordaniens, Kazakstans, Bruneis, Pakistans (Jamia Banuri Towns) och Förenade Arabemiratens tider räknas ut på enheten och kontaktar ingen bönetidstjänst. **Aladhan** (`api.aladhan.com`) är källan på andra platser om du inte väljer beräkning på enheten; den får dina koordinater, datumet och beräkningsinställningarna. Singapores, Malaysias, Londons, Kirgizistans, Tadzjikistans, Dagestans och Basjkiriens tabeller kommer från صلاتis egna öppna dataset på GitHub (`raw.githubusercontent.com/goma2001/Mihrab`), per ort; bara när en dag saknas där frågas myndighetens egen tjänst (`www.e-solat.gov.my`, med zonkod; `api-open.data.gov.sg`, utan något om dig) – för London, Kirgizistan och Tadzjikistan ingen: en dag som saknas räknas ut på enheten. För Türkiye Takvimi slås närmaste stad upp på enheten i en kartruta på cirka 50 mil som hämtas från GitHub; året hämtas från en GitHub-release i صلاتي-repot, eller, om det saknas där, från `www.namazvakti.com` med stadens id, aldrig dina koordinater.
+- **Uppdateringar av beräkningar och kalender:** vid start och med några timmars mellanrum läser appen `certification.json` och korrigeringslistor från `raw.githubusercontent.com/MihrabHQ/mihrab-methods`, och aviserade rättelser av hijri-datumet från `raw.githubusercontent.com/goma2001/Mihrab`. Skickas: inget utöver själva förfrågan.
 - **Platssökning och ortens namn:** OpenStreetMap Nominatim (`nominatim.openstreetmap.org`), och Photon (`photon.komoot.io`) för sökning när Nominatim är upptagen. Skickas: din söktext; eller, med enhetsplats, dina koordinater avrundade till två decimaler (ungefär en kilometer), automatiskt när du har flyttat dig ungefär en kilometer.
-- **Koraninnehåll, på begäran:** (Korantexten och fjorton översättningar följer med appen) tafsir (via `cdn.jsdelivr.net`, och `api.alquran.cloud` för tre Tanzil-utgåvor), ytterligare översättningar du väljer att läsa (`api.alquran.cloud`, `quranenc.com`), arabiska betydelser av svårare ord (QuranEnc, `quranenc.com`), recitationsljud (`everyayah.com`, och `cdn.mp3quran.net` för recitationerna av hela suror), ytterligare riwayat- och mushaf-data (Quranpedia, `api.quranpedia.net`) och mushaf-typsnitt (GitHub-releaser för Mihrab-repot). Skickas: den fil eller sura som begärs.
+- **Koraninnehåll, på begäran:** (Korantexten och fjorton översättningar följer med appen) tafsir (via `cdn.jsdelivr.net`, och `api.alquran.cloud` för tre Tanzil-utgåvor), ytterligare översättningar du väljer att läsa (`api.alquran.cloud`, `quranenc.com`), arabiska betydelser av svårare ord (QuranEnc, `quranenc.com`), recitationsljud (`everyayah.com`, och `cdn.mp3quran.net` för recitationerna av hela suror), ytterligare riwayat- och mushaf-data (Quranpedia, `api.quranpedia.net`) och mushaf-typsnitt (GitHub-releaser för صلاتي-repot). Skickas: den fil eller sura som begärs.
 - **Öppna länkar:** Om du trycker på en länk (GitHub, webbplatsen, butikssidorna) öppnas den i webbläsaren eller butiksappen, enligt den webbplatsens policy.
 
 Appen innehåller **inga** reklam-SDK:er, analys-SDK:er, spårning, kraschrapporteringstjänster eller datamäklare, och den spårar dig inte över appar eller webbplatser. Eftersom utvecklaren inte samlar in några uppgifter finns inget att dela eller sälja.
@@ -165,12 +165,12 @@ Behandlingen sker på din enhet för att tillhandahålla de funktioner du använ
 
 ## Dina rättigheter (EU/EES)
 
-Eftersom utvecklaren inte har någon kopia av dina uppgifter ligger tillgång, rättelse och radering i dina egna händer: ändra eller återkalla behörigheter i systeminställningarna, ange en manuell plats, ta bort poster i appen, stäng av synk eller **avinstallera** appen för att ta bort all lokal data. Du kan också skriva till [mihrab@elghamri.se](mailto:mihrab@elghamri.se) med frågor om integritet, och du kan klaga hos Integritetsskyddsmyndigheten (IMY, [imy.se](https://www.imy.se)) eller din lokala tillsynsmyndighet.
+Eftersom utvecklaren inte har någon kopia av dina uppgifter ligger tillgång, rättelse och radering i dina egna händer: ändra eller återkalla behörigheter i systeminställningarna, ange en manuell plats, ta bort poster i appen, stäng av synk eller **avinstallera** appen för att ta bort all lokal data. Du kan också skriva till [anazaza492@gmail.com](mailto:anazaza492@gmail.com) med frågor om integritet, och du kan klaga hos din lokala tillsynsmyndighet.
 
 ## Barn
 
-Mihrab riktar sig inte till barn under 13 år och samlar inte medvetet in personuppgifter från någon. Det finns inget konto och ingen central databas, så det finns inget för utvecklaren att radera för ett barns räkning; hör av dig om du har några frågor.
+صلاتي riktar sig inte till barn under 13 år och samlar inte medvetet in personuppgifter från någon. Det finns inget konto och ingen central databas, så det finns inget för utvecklaren att radera för ett barns räkning; hör av dig om du har några frågor.
 
 ## Ändringar
 
-Om appens datahantering ändras uppdateras denna policy och datumet. Aktuell version finns alltid på [https://github.com/MihrabHQ/Mihrab/blob/main/PRIVACY_POLICY.md](https://github.com/MihrabHQ/Mihrab/blob/main/PRIVACY_POLICY.md).
+Om appens datahantering ändras uppdateras denna policy och datumet. Aktuell version finns alltid på [https://github.com/goma2001/Mihrab/blob/main/PRIVACY_POLICY.md](https://github.com/goma2001/Mihrab/blob/main/PRIVACY_POLICY.md).

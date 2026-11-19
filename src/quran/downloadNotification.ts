@@ -63,10 +63,10 @@ import i18n from '../i18n';
  * The bar. Ongoing, and the foreground service's own notification —
  * cancelling it stops the service, which is why nothing else may share it.
  */
-const PROGRESS_ID = 'mihrab.quran.download';
+const PROGRESS_ID = 'salaty.quran.download';
 /** The result. An ordinary notification the user can swipe away. */
-const DONE_ID = 'mihrab.quran.download.done';
-const CHANNEL_ID = 'mihrab.quran.download';
+const DONE_ID = 'salaty.quran.download.done';
+const CHANNEL_ID = 'salaty.quran.download';
 
 /** Resolves the foreground-service task; see `foregroundServiceTask`. */
 let releaseService: (() => void) | null = null;

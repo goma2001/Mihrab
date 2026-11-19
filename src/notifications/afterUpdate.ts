@@ -14,7 +14,7 @@
  * 'AlertsResync' task in index.js) — the alerts are written again from what
  * is on the phone, and the widget payload with them. Once per version: the
  * version it was done for is stored under its own key, apart from
- * `mihrab.lastSeenVersion`, which is the what's-new sheet's.
+ * `salaty.lastSeenVersion`, which is the what's-new sheet's.
  */
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Appearance } from 'react-native';
@@ -42,7 +42,7 @@ import {
 import { quiet } from '../utils/quiet';
 
 /** The installed version the alerts were last written for. */
-export const ALERTS_VERSION_KEY = 'mihrab.alertsWrittenForVersion';
+export const ALERTS_VERSION_KEY = 'salaty.alertsWrittenForVersion';
 
 /**
  * The installed build, as `versionName+buildNumber` — a rebuild under the

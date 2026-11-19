@@ -21,11 +21,11 @@ const bridge = read('src', 'notifications', 'liveActivity.ts');
 // other by the contract fixtures.
 const shared = read('src', 'liveActivity', 'liveActivityV2.ts');
 const adapter = read(
-  'android', 'app', 'src', 'main', 'java', 'com', 'prayer_times', 'contract',
+  'android', 'app', 'src', 'main', 'java', 'com', 'goma', 'salat', 'contract',
   'LiveActivityV1.kt',
 );
 const kotlin = read(
-  'android', 'app', 'src', 'main', 'java', 'com', 'prayer_times',
+  'android', 'app', 'src', 'main', 'java', 'com', 'goma', 'salat',
   'MihrabLiveActivityModule.kt',
 );
 
@@ -175,7 +175,7 @@ describe('timeline and markers show one countdown, not two', () => {
  */
 describe('with the screen off, hours and minutes that keep moving', () => {
   const service = read(
-    'android', 'app', 'src', 'main', 'java', 'com', 'prayer_times',
+    'android', 'app', 'src', 'main', 'java', 'com', 'goma', 'salat',
     'MihrabLiveActivityService.kt',
   );
 

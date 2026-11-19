@@ -52,7 +52,7 @@ _spec = importlib.util.spec_from_file_location("xc", ROOT / "scripts" / "xcode-c
 xc = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(xc)
 
-BUNDLE_ID = "com.hassan.prayerapp"
+BUNDLE_ID = "com.goma.salat"
 IOS = ROOT / "fastlane" / "metadata" / "ios"
 ANDROID = ROOT / "fastlane" / "metadata" / "android"
 # App Store locale -> the Android directory whose changelog is "What's New".

@@ -225,7 +225,7 @@ describe('the readers', () => {
 
   it('explains itself the first time, once per device', () => {
     const phone = read('src/quran/MushafPhoneReader.tsx');
-    expect(phone).toMatch(/LOCK_EXPLAINED_KEY = 'mihrab\.quran\.touchLockExplained\.v1'/);
+    expect(phone).toMatch(/LOCK_EXPLAINED_KEY = 'salaty\.quran\.touchLockExplained\.v1'/);
     expect(phone).toMatch(/AsyncStorage\.getItem\(LOCK_EXPLAINED_KEY\)[\s\S]{0,300}showLockHint\('explain'\)/);
   });
 

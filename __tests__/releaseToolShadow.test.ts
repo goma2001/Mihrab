@@ -210,7 +210,7 @@ describe('the publish shadow', () => {
       .on('git diff-tree', { stdout: 'android/app/build.gradle\ndocs/index.html\ndocs/release-log.md\n' })
       .on('git rev-parse -q --verify', { stdout: 'feedbeef' })
       .on('git tag -l', { stdout: 'Mihrab 2.28.0 (283)\n' })
-      .on('gh release view', { stdout: 'Mihrab-v2.28.0.apk\nMihrab-macOS-2.28.0.zip\n' })
+      .on('gh release view', { stdout: 'Salaty-v2.28.0.apk\nMihrab-macOS-2.28.0.zip\n' })
       .on('git show HEAD^:Casks/mihrab.rb', { stdout: GOOD_CASK });
     const res = await shadowPublish(shadowCtx(w.io(), ROOT, HOME, 'release'), rel, { releaseSha: 'feedbeef', ios: '1', zip: true });
     expect(res.comparison).toEqual({ compared: 8, onlyShell: [], onlyTs: [] });

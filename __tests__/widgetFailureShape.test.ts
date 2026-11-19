@@ -30,7 +30,7 @@ import path from 'path';
 
 const ROOT = path.join(__dirname, '..');
 const read = (p: string) => readFileSync(path.join(ROOT, p), 'utf-8');
-const JAVA = 'android/app/src/main/java/com/prayer_times';
+const JAVA = 'android/app/src/main/java/com/goma/salat';
 const PROVIDER = read(`${JAVA}/PrayerWidgetProvider.kt`);
 // The widgets are drawn by Glance now; these are where its guards live.
 const SUPPORT = read(`${JAVA}/glance/GlanceSupport.kt`);
@@ -40,7 +40,7 @@ const CONTRACT = read(`${JAVA}/contract/WidgetContract.kt`);
 
 describe('a tapped prayer widget has somewhere to go', () => {
   it('opens Today rather than wherever the app was left', () => {
-    expect(PRAYER_GLANCE).toContain('openRoute(context, "mihrab://today", clearTop = true)');
+    expect(PRAYER_GLANCE).toContain('openRoute(context, "salaty://today", clearTop = true)');
     // A bare MainActivity intent is the bug, not a style.
     expect(PRAYER_GLANCE).not.toMatch(/Intent\(context, MainActivity::class\.java\)/);
     expect(SUPPORT).toMatch(/Intent\(Intent\.ACTION_VIEW, Uri\.parse\(uri\)\)/);
@@ -116,7 +116,7 @@ describe('the day the widget thinks it is', () => {
   // Activity share; the rules are held there, and by the Kotlin contract
   // tests (WallClockCalendarTest) under every calendar a locale can pick.
   const WALLCLOCK = readFileSync(
-    path.join(ROOT, 'android/app/src/main/java/com/prayer_times/contract/WallClock.kt'),
+    path.join(ROOT, 'android/app/src/main/java/com/goma/salat/contract/WallClock.kt'),
     'utf8',
   );
 

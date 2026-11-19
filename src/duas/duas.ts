@@ -1726,7 +1726,7 @@ export function sectionedCategories(): DuaCategory[] {
  * Whether a value that came from outside the app names a category.
  *
  * Deep links and notification payloads are strings until something
- * checks them — issue #39 sends `mihrab://duas/evening` from a reminder,
+ * checks them — issue #39 sends `salaty://duas/evening` from a reminder,
  * and a link is the one thing here whose contents nothing else
  * guarantees. An unknown name opens the index rather than a blank page.
  */

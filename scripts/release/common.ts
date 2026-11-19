@@ -5,10 +5,10 @@
 import type { ExecResult, Io } from './io.ts';
 import type { Kind, Reporter } from './report.ts';
 
-export const REPO = 'MihrabHQ/Mihrab';
+export const REPO = 'goma2001/Mihrab';
 export const TEAM = 'GAW23HT439';
-export const APP_GROUP = 'group.com.prayerapp';
-export const WIDGET_EXT_ID = 'maccatalyst.com.hassan.prayerapp.PrayerWidgetExtension';
+export const APP_GROUP = 'group.com.goma.salat';
+export const WIDGET_EXT_ID = 'maccatalyst.com.goma.salat.PrayerWidgetExtension';
 export const INSTALLED_APP = '/Applications/Mihrab.app';
 export const INSTALLED_EXT = `${INSTALLED_APP}/Contents/PlugIns/PrayerWidgetExtension.appex`;
 export const LSREGISTER =
@@ -16,11 +16,11 @@ export const LSREGISTER =
 export const JDK = '/Library/Java/JavaVirtualMachines/temurin-21.jdk/Contents/Home';
 export const PLAY_LOCALES = ['en-US', 'sv-SE', 'ar'];
 export const RELEASE_CERT = 'e66c0dabc898856bd0f6057a8fe0aaa440fa1d04f0da5a213104f41f89e6f997';
-export const SITE_URL = 'https://mihrab.elghamri.se/';
+export const SITE_URL = 'https://github.com/goma2001/Mihrab';
 /** Play's limit on a release note, in characters. */
 export const PLAY_NOTE_LIMIT = 500;
 
-export const apkName = (version: string) => `Mihrab-v${version}.apk`;
+export const apkName = (version: string) => `Salaty-v${version}.apk`;
 export const zipName = (version: string) => `Mihrab-macOS-${version}.zip`;
 export const assetUrl = (tag: string, name: string) =>
   `https://github.com/${REPO}/releases/download/${tag}/${name}`;

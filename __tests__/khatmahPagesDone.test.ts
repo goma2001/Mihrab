@@ -682,7 +682,7 @@ describe('the widget says the pages are missing too', () => {
       join(
         __dirname,
         '..',
-        'android/app/src/main/java/com/prayer_times/glance/ReadingGlanceWidget.kt',
+        'android/app/src/main/java/com/goma/salat/glance/ReadingGlanceWidget.kt',
       ),
       'utf8',
     );

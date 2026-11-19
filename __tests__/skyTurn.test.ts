@@ -10,7 +10,7 @@
 import fs from 'fs';
 import path from 'path';
 import { HERO_SPAN, MUTED_INK_FLOOR, SKY_FADE_LOW_MID_AT, SKY_GLOW_FALL, SKY_THEME_MID_AT, SKY_TURN_HALF_AT, SUN_HORIZON_Y, luminance, skyColorAt, skyFrame, skyInkAcross, skyInkAt, skyMoment, skyStops, themedSkyFrame } from '../src/screens/home/skyModel';
-import { ACCENT_CROSSING, accentCrossing, contrastOf, mixHexHorizon, mixHexOklab, mixMoods, skyMoodOf, skyMoodsOf } from '../src/theme/skyMoods';
+import { ACCENT_CROSSING, accentCrossing, contrastOf, mixHexHorizon, mixHexOklab, mixHexRound, mixMoods, skyMoodOf, skyMoodsOf } from '../src/theme/skyMoods';
 import { hexToOklch } from '../src/theme/oklch';
 
 // A night sky and a day's, each whole — glow, block, its own foot — over a page that is not its polarity.
@@ -115,6 +115,43 @@ describe('the horizon between the haze and the blue-white', () => {
         const mid = skyMoodOf('day', 0.5, { sun, daylight }, 'realistic').heroMid;
         expect(green(mid)).toBeLessThan(0.009);
       }
+    }
+  });
+});
+
+describe('the hue’s way round green', () => {
+  // The dusk’s violet top and the dawn’s green-grey one: the meeting of
+  // the two limbs of a polar twilight. The hue’s way round (hueWay) used
+  // to route every blend whose short way crossed the greens the long way
+  // round — through magenta — because a sky went from its evening ember
+  // to its night blue by magenta and violet, never by green. But the
+  // dawn IS green now, so the short way to it IS the way through blue:
+  // routing round magenta made the polar noon purple (#41307a) instead
+  // of twilight blue. An end that is green is the journey’s destination,
+  // not a crossing; only a meeting of two non-green hues is still routed
+  // round green.
+  const DUSK_TOP = '#1a3172'; // hue ~266
+  const DAWN_TOP = '#00422e'; // hue ~166, inside the green band
+
+  it('a violet dusk and a green dawn meet through blue, not magenta', () => {
+    for (let u = 0; u <= 1.0001; u += 0.05) {
+      const h = hexToOklch(mixHexRound(DUSK_TOP, DAWN_TOP, u)).h;
+      // the short arc between the two ends: never magenta (280–360)
+      expect(h).toBeGreaterThanOrEqual(160);
+      expect(h).toBeLessThanOrEqual(270);
+    }
+    // halfway it is blue, as the short way says
+    const mid = hexToOklch(mixHexRound(DUSK_TOP, DAWN_TOP, 0.5)).h;
+    expect(mid).toBeGreaterThan(200);
+    expect(mid).toBeLessThan(230);
+  });
+
+  it('a meeting of two non-green hues is still routed round green', () => {
+    // ochre to midday blue: the short way runs through green, so the
+    // meeting goes the long way, by rose and lilac
+    for (let u = 0; u <= 1.0001; u += 0.05) {
+      const h = hexToOklch(mixHexRound('#c98a3d', '#2b5cb8', u)).h;
+      expect(h > 95 && h < 175).toBe(false);
     }
   });
 });

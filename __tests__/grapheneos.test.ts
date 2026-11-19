@@ -23,7 +23,7 @@ import os from 'os';
 import path from 'path';
 
 const repo = (...parts: string[]) => readFileSync(path.join(__dirname, '..', ...parts), 'utf8');
-const kt = (name: string) => repo('android', 'app', 'src', 'main', 'java', 'com', 'prayer_times', `${name}.kt`);
+const kt = (name: string) => repo('android', 'app', 'src', 'main', 'java', 'com', 'goma', 'salat', `${name}.kt`);
 
 describe('the Sensors switch', () => {
   const module = kt('CompassModule');
@@ -306,7 +306,7 @@ describe('what the APK promises a hardened Android', () => {
   const good = elf([[LOAD, 5, 0x4000], [LOAD, 6, 0x4000], [STACK, 6, 16]]);
 
   it('passes an APK that keeps them, and says what it could not look at', () => {
-    const r = run({ 'classes.dex': Buffer.from('dex\n035 Lcom/prayer_times/MainActivity;'), 'lib/arm64-v8a/libx.so': good });
+    const r = run({ 'classes.dex': Buffer.from('dex\n035 Lcom/goma/salat/MainActivity;'), 'lib/arm64-v8a/libx.so': good });
     expect(r.status).toBe(0);
     expect(r.out).toContain('skipped: the manifest');
     expect(r.out).not.toContain('memory tagging asked for');
@@ -365,7 +365,7 @@ describe('R8 runs in every release flavor, F-Droid included', () => {
   });
 
   it('the recipe mirrored here turns nothing of it off', () => {
-    const recipe = repo('contrib', 'fdroid', 'com.prayer_times.yml');
+    const recipe = repo('contrib', 'fdroid', 'com.goma.salat.yml');
     expect(recipe).not.toMatch(/minifyEnabled false|fdroidNoR8/);
   });
 });
@@ -378,14 +378,14 @@ describe('R8 runs in every release flavor, F-Droid included', () => {
  * shape is the same picture.
  */
 describe('the widgets’ practice graph is drawn once for the same question', () => {
-  const src = repo('android', 'app', 'src', 'main', 'java', 'com', 'prayer_times', 'glance', 'StreakGlanceWidget.kt');
+  const src = repo('android', 'app', 'src', 'main', 'java', 'com', 'goma', 'salat', 'glance', 'StreakGlanceWidget.kt');
 
   it('is kept by everything it is drawn from, the day included', () => {
     expect(src).toContain('val key = "$today|$rows|$columns|$cellWPx|$cellHPx|$gapPx|$accent|$mirror|$since|$days"');
     expect(src).toMatch(/return GridCache\.get\(key\) \{/);
     // Every card draws through it.
     for (const card of ['LogGlanceWidget', 'PrayerGlanceWidget', 'StreakGlanceWidget']) {
-      const kt = repo('android', 'app', 'src', 'main', 'java', 'com', 'prayer_times', 'glance', `${card}.kt`);
+      const kt = repo('android', 'app', 'src', 'main', 'java', 'com', 'goma', 'salat', 'glance', `${card}.kt`);
       expect(kt).toMatch(/practiceGrid\(pr, /);
       expect(kt.replace(src, '')).not.toMatch(/PracticeGridBitmap\.render\(/);
     }

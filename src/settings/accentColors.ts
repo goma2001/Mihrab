@@ -190,14 +190,14 @@ export function contrast(a: string, b: string): number {
  * ── WHY IT ASKS ABOUT ONE GROUND AND NOT BOTH ─────────────────────────
  *
  * An earlier version checked the light ground AND the dark one. It was
- * wrong, and the app's own default proves it: the deep emerald #1F5F4A
- * reads 7.03:1 on warm paper and 2.49:1 on the night ground. The
+ * wrong, and the app's own default proves it: the deep green #01543F
+ * reads 8.39:1 on warm paper and 2.08:1 on the night ground. The
  * shipped, hand-tuned default accent would have been rejected, and so
  * would nearly every other sensible colour, because no single hex is a
  * good accent on both a near-white and a near-black.
  *
  * That is exactly why every preset carries TWO values — `ACCENT_SWATCHES`
- * gives green as #1F5F4A light and #46A081 dark — and it is the real
+ * gives green as #01543F light and #46A081 dark — and it is the real
  * weakness of a custom accent, which is used verbatim in both. Given
  * that, the honest range to offer is the one that works in the theme the
  * person is looking at, which they can see. Constraining to both would

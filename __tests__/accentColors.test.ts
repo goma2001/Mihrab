@@ -48,7 +48,7 @@ describe('reading a colour a person typed', () => {
 
 describe('hsv round trip', () => {
   it('survives a round trip for the colours the app ships', () => {
-    for (const hex of ['#1F5F4A', '#0D9488', '#2563EB', '#B45309', '#9F2D4D', '#5B4B9E']) {
+    for (const hex of ['#01543F', '#0D9488', '#2563EB', '#B45309', '#9F2D4D', '#5B4B9E']) {
       expect(hsvToHex(hexToHsv(hex))).toBe(hex);
     }
   });
@@ -158,8 +158,8 @@ describe('which colours the picker is allowed to offer', () => {
     // exclude the app's own hand-tuned default, and nearly every other
     // sensible colour with it, because no single hex is a good accent on
     // both a near-white and a near-black.
-    expect(isLegibleAccent('#1F5F4A', LIGHT)).toBe(true);
-    expect(isLegibleAccent('#1F5F4A', DARK)).toBe(false);
+    expect(isLegibleAccent('#01543F', LIGHT)).toBe(true);
+    expect(isLegibleAccent('#01543F', DARK)).toBe(false);
     // …and the preset's own dark variant is fine there, as designed.
     expect(isLegibleAccent('#46A081', DARK)).toBe(true);
   });
@@ -239,7 +239,7 @@ describe('which colours the picker is allowed to offer', () => {
     });
 
     it('leaves a colour that already works exactly where it is', () => {
-      const ok = hexToHsv('#1F5F4A');
+      const ok = hexToHsv('#01543F');
       expect(constrainToLegible(ok, LIGHT)).toEqual(ok);
     });
 
@@ -291,7 +291,7 @@ describe('which colours the picker is allowed to offer', () => {
     // without passing through the picker. `legibleAccent` is the floor
     // at the point the accent actually resolves.
     it('passes a colour that already works through untouched', () => {
-      expect(legibleAccent('#1F5F4A', LIGHT)).toBe('#1F5F4A');
+      expect(legibleAccent('#01543F', LIGHT)).toBe('#01543F');
       expect(legibleAccent('#46A081', DARK)).toBe('#46A081');
     });
 

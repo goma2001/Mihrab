@@ -182,7 +182,7 @@ const LOCK_HINT_MS = 2200;
 /** The first time the lock goes on, its note stays long enough to read. */
 const LOCK_EXPLAIN_MS = 6000;
 /** Written once the first-lock note has been shown (#75). */
-export const LOCK_EXPLAINED_KEY = 'mihrab.quran.touchLockExplained.v1';
+export const LOCK_EXPLAINED_KEY = 'salaty.quran.touchLockExplained.v1';
 
 const WINDOW_OPENING = 1;
 const WINDOW_READING = 5;

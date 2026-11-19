@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Validate contrib/fdroid/com.prayer_times.yml against every known F-Droid CI
+Validate contrib/fdroid/com.goma.salat.yml against every known F-Droid CI
 pitfall.  Run from the repo root:
 
     python3 contrib/fdroid/validate_recipe.py
@@ -37,7 +37,7 @@ except ImportError:
     print("ERROR: pyyaml not installed — run: pip install pyyaml")
     sys.exit(2)
 
-YAML_PATH = Path("contrib/fdroid/com.prayer_times.yml")
+YAML_PATH = Path("contrib/fdroid/com.goma.salat.yml")
 
 # Entries at or above this versionCode must use the canonical new template.
 NEW_TEMPLATE_MIN_VC = 167  # v2.3.9

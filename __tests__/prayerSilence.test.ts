@@ -307,10 +307,10 @@ describe('the Android side is wired', () => {
 
   it('registers the package and exposes the methods the wrapper calls', () => {
     expect(
-      read('android/app/src/main/java/com/prayer_times/MainApplication.kt'),
+      read('android/app/src/main/java/com/goma/salat/MainApplication.kt'),
     ).toMatch(/add\(PrayerSilencePackage\(\)\)/);
     const module = read(
-      'android/app/src/main/java/com/prayer_times/PrayerSilenceModule.kt',
+      'android/app/src/main/java/com/goma/salat/PrayerSilenceModule.kt',
     );
     for (const name of [
       'hasAccess',
@@ -326,7 +326,7 @@ describe('the Android side is wired', () => {
 
   it('turns the quiet on through a rule of its own, never the global switch (Q+)', () => {
     const core = read(
-      'android/app/src/main/java/com/prayer_times/PrayerSilence.kt',
+      'android/app/src/main/java/com/goma/salat/PrayerSilence.kt',
     );
     expect(core).toMatch(/addAutomaticZenRule/);
     expect(core).toMatch(/setAutomaticZenRuleState/);

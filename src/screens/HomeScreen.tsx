@@ -57,6 +57,7 @@ import { syncPrayerWidget } from '../widget/syncPrayerWidget';
 import { collectWidgetExtras } from '../widget/collectWidgetExtras';
 import { useWidgetDataRevision } from '../widget/useWidgetDataRevision';
 import { syncLiveActivity } from '../liveActivity/syncLiveActivity';
+import { syncFloatingButton } from '../services/floatingButton';
 import {
   addDays,
   daysOnDeviceClock,
@@ -1301,6 +1302,14 @@ export function HomeScreen() {
           // Tinted surfaces: colourise the Live Activity card with the accent.
           tinted: settings.tintedSurfaces,
         }).catch(e => console.warn('syncLiveActivity (focus):', e));
+        // Floating button — the same cadence as the Live Activity, so
+        // the pill above other apps stays in step with the home screen.
+        syncFloatingButton({
+          enabled: settings.floatingButtonEnabled,
+          today: phoneView.la.today,
+          tomorrow: phoneView.la.tomorrow,
+          now: new Date(),
+        }).catch(e => console.warn('syncFloatingButton (focus):', e));
       }
 
       if (settings.notificationsEnabled) {
@@ -1346,6 +1355,9 @@ export function HomeScreen() {
       phoneView,
       locationLabel,
       settings.liveActivityEnabled,
+      // Re-push the floating button the instant its toggle changes
+      // (HomeScreen stays mounted, so this fires even from Settings).
+      settings.floatingButtonEnabled,
       // `palette.accentSolid` is derived from the accent id and its custom
       // hex, so it moves whenever either of them does — listing all three
       // said the same thing three times, and hid the linter's real
@@ -1470,6 +1482,13 @@ export function HomeScreen() {
       // Tinted surfaces: colourise the Live Activity card with the accent.
       tinted: settings.tintedSurfaces,
     }).catch(e => console.warn('syncLiveActivity (effect):', e));
+    // Floating button — same cadence as the Live Activity above.
+    syncFloatingButton({
+      enabled: settings.floatingButtonEnabled,
+      today: phoneView.la.today,
+      tomorrow: phoneView.la.tomorrow,
+      now: new Date(),
+    }).catch(e => console.warn('syncFloatingButton (effect):', e));
   }, [
     afterFirstPaint,
     hydrated,
@@ -1482,6 +1501,8 @@ export function HomeScreen() {
     nextInfo,
     locationLabel,
     settings.liveActivityEnabled,
+    // Re-push the floating button the instant its toggle changes.
+    settings.floatingButtonEnabled,
     palette.accentSolid,
     settings.appAccentId,
     settings.appAccentCustomHex,

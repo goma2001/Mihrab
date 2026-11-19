@@ -29,7 +29,7 @@ function listing(opts: { state?: string; haveLocales?: string[]; cats?: [string,
   }
   const json = (data: unknown) => ({ text: JSON.stringify(data) });
   const state = opts.state ?? 'PREPARE_FOR_SUBMISSION';
-  w.url(`${BASE}/v1/apps?limit=10`, json({ data: [{ id: 'APP', attributes: { bundleId: 'com.hassan.prayerapp' } }] }));
+  w.url(`${BASE}/v1/apps?limit=10`, json({ data: [{ id: 'APP', attributes: { bundleId: 'com.goma.salat' } }] }));
   w.url(`${BASE}/v1/apps/APP/appStoreVersions?limit=5`, json({
     data: [{ id: 'VER', attributes: { appStoreState: state, platform: 'IOS', versionString: '2.28.0' } }],
   }));
@@ -50,8 +50,8 @@ function listing(opts: { state?: string; haveLocales?: string[]; cats?: [string,
       description: loc === 'en-US' ? 'old words' : `${loc} description`,
       keywords: `${loc} keywords`,
       promotionalText: `${loc} promotional_text`,
-      marketingUrl: 'https://mihrab.elghamri.se/',
-      supportUrl: 'https://github.com/MihrabHQ/Mihrab/issues',
+      marketingUrl: 'https://github.com/goma2001/Mihrab',
+      supportUrl: 'https://github.com/goma2001/Mihrab/issues',
       whatsNew: loc === 'sv' ? 'Svenska' : 'English notes',
     },
   });
@@ -61,7 +61,7 @@ function listing(opts: { state?: string; haveLocales?: string[]; cats?: [string,
       locale: ascLocale(loc),
       name: `${loc} name`,
       subtitle: `${loc} subtitle`,
-      privacyPolicyUrl: 'https://github.com/MihrabHQ/Mihrab/blob/main/PRIVACY_POLICY.md',
+      privacyPolicyUrl: 'https://github.com/goma2001/Mihrab/blob/main/PRIVACY_POLICY.md',
     },
   });
   w.url(`${BASE}/v1/appInfos/INFO/appInfoLocalizations?limit=50`, json({ data: have.map(infoLoc) }));

@@ -115,7 +115,7 @@ export function surahBody(
  * fake one and assert what the header was told.
  */
 type DuasScreenProps = {
-  /** `mihrab://duas/evening` arrives here — #39. */
+  /** `salaty://duas/evening` arrives here — #39. */
   route?: { params?: { category?: string } };
   navigation?: {
     setParams?: (params: { category?: string }) => void;
@@ -189,7 +189,7 @@ export function DuasScreen({ route, navigation }: DuasScreenProps = {}) {
    * The morning and evening adhkār reminders name a window of the day
    * and the duas that belong in it, and a tap used to land on whatever
    * screen was last open — the index at best, the Qur'an at worst. The
-   * link carries the category now (`mihrab://duas/evening`), and this is
+   * link carries the category now (`salaty://duas/evening`), and this is
    * where it becomes the open page. The initial state above answers the
    * cold start, where the screen mounts with the param already on it;
    * this answers the app that was already running.

@@ -4,7 +4,7 @@
  * Feature-local persistent store for everything the reader remembers:
  * last-read position, bookmarks, starred ayahs, khatmah plans, and
  * playback/memorization preferences. Deliberately its OWN AsyncStorage
- * blob (`mihrab.quran.v1`) rather than a new field on the settings
+ * blob (`salaty.quran.v1`) rather than a new field on the settings
  * context — the reader state changes on every page turn and must not
  * re-render every settings consumer in the app.
  *
@@ -49,7 +49,7 @@ import { KHATMAH_MARK_LIMIT } from './khatmahEdits';
 import { coerceHifz, type HifzState } from './hifz';
 
 /** The Quran blob's key. Exported so the snapshot layer names it once. */
-export const QURAN_STORAGE_KEY = 'mihrab.quran.v1';
+export const QURAN_STORAGE_KEY = 'salaty.quran.v1';
 const STORAGE_KEY = QURAN_STORAGE_KEY;
 
 export const BOOKMARK_COLORS: Record<BookmarkColor, string> = {
@@ -695,7 +695,7 @@ export function hydrateQuranState(): Promise<void> {
 /**
  * Adopt a blob the caller has just written to disk itself.
  *
- * Backup restore writes `mihrab.quran.v1` straight to AsyncStorage, because
+ * Backup restore writes `salaty.quran.v1` straight to AsyncStorage, because
  * it is merging whole categories rather than making one edit. That left this
  * module holding the pre-restore state with `hydrated` already true — so
  * `hydrateQuranState()` no-opped, every reader kept the old value, and the

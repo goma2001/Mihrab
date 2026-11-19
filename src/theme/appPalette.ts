@@ -201,12 +201,13 @@ const ACCENT_SWATCHES: Record<
   Exclude<AppAccentId, 'custom'>,
   { light: string; dark: string; lightBg: string; darkBg: string }
 > = {
-  // Reverent deep/lifted emerald (task #36) — replaces the old neon tailwind
-  // green. `light` is a deep emerald that reads as ink on warm paper; `dark`
-  // is a lifted emerald tuned to ~5.9:1 on the ink-blue bg so small accent
-  // text stays legible. Backgrounds are soft, low-saturation tints used only
-  // for gentle highlights (active row, countdown chip) — never a full block.
-  green: { light: '#1F5F4A', dark: '#46A081', lightBg: '#E2EEE9', darkBg: '#152F25' },
+  // صلاتي's deep green (task #36's emerald, deepened to #01543F) — replaces
+  // the old neon tailwind green. `light` is a deep green that reads as ink
+  // on warm paper (8.39:1); `dark` is a lifted emerald tuned to ~5.9:1 on
+  // the ink-blue bg so small accent text stays legible. Backgrounds are
+  // soft, low-saturation tints used only for gentle highlights (active row,
+  // countdown chip) — never a full block.
+  green: { light: '#01543F', dark: '#46A081', lightBg: '#E0EAE8', darkBg: '#0F2A21' },
   teal: { light: '#0d9488', dark: '#5eead4', lightBg: '#ccfbf1', darkBg: '#134e4a' },
   blue: { light: '#2563eb', dark: '#7dd3fc', lightBg: '#dbeafe', darkBg: '#0c2a52' },
   amber: { light: '#b45309', dark: '#fbbf24', lightBg: '#fef3c7', darkBg: '#3f2a05' },

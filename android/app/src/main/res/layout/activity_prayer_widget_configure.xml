@@ -53,7 +53,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!-- ── Every Mihrab widget follows these ── -->
+            <!-- ── Every صلاتي widget follows these ── -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

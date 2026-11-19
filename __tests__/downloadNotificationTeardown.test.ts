@@ -35,7 +35,7 @@ const mockNotifee = notifee as unknown as {
   createChannel: jest.Mock;
 };
 
-const PROGRESS_ID = 'mihrab.quran.download';
+const PROGRESS_ID = 'salaty.quran.download';
 
 import {
   clearStaleDownloadNotification,

@@ -47,7 +47,7 @@ export type ListenProgress = {
   riwayah?: RiwayahId;
 };
 
-export const LISTEN_PROGRESS_KEY = 'mihrab.listenProgress.v1';
+export const LISTEN_PROGRESS_KEY = 'salaty.listenProgress.v1';
 
 /**
  * How long a pause lasts before the session counts as stale and the

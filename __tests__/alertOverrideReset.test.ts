@@ -193,7 +193,7 @@ describe('reset reaches both copies, and the schedule', () => {
 
   it('has a native method to clear, which repaints the card', () => {
     const kt = read(
-      'android/app/src/main/java/com/prayer_times/MihrabLiveActivityModule.kt',
+      'android/app/src/main/java/com/goma/salat/MihrabLiveActivityModule.kt',
     );
     expect(kt).toMatch(/fun clearAlertOverride\(promise: Promise\)/);
     expect(kt).toMatch(
@@ -254,7 +254,7 @@ describe('every language can say it', () => {
 describe('the row and the card agree about whether anything is temporary', () => {
   const card = todayCardSource();
   const kt = read(
-    'android/app/src/main/java/com/prayer_times/LiveActivityAlertModes.kt',
+    'android/app/src/main/java/com/goma/salat/LiveActivityAlertModes.kt',
   );
 
   it('drops the line when the standing setting has caught up with it', () => {
@@ -322,7 +322,7 @@ describe('an occurrence survives its own clock time changing', () => {
   const card = todayCardSource();
   const ts = read('src/notifications/adhanMute.ts');
   const kt = read(
-    'android/app/src/main/java/com/prayer_times/LiveActivityAlertModes.kt',
+    'android/app/src/main/java/com/goma/salat/LiveActivityAlertModes.kt',
   );
 
   it('is the day, not the millisecond, on the JS side', () => {

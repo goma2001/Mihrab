@@ -20,7 +20,7 @@ import { generateKeyPairSync } from 'crypto';
 
 const rel = { version: '2.28.0', tag: 'v2.28.0', oldVersion: '2.27.1', oldCode: 282, code: 283 };
 const SDK = `${HOME}/Library/Android/sdk/build-tools/35.0.0`;
-const DL = 'https://github.com/MihrabHQ/Mihrab/releases/download/v2.28.0';
+const DL = 'https://github.com/goma2001/Mihrab/releases/download/v2.28.0';
 const BASE = 'https://api.appstoreconnect.apple.com';
 const ZIP = `${ROOT}/ios/build/catalyst-dist/Mihrab-macOS-2.28.0.zip`;
 
@@ -43,7 +43,7 @@ const READ_ONLY: RegExp[] = [
   // gh: listing and viewing. `gh api` without -X is a GET.
   /^gh run list /,
   /^gh release view /,
-  /^gh api repos\/MihrabHQ\/Mihrab\/pages\/builds\/latest --jq \.status$/,
+  /^gh api repos\/goma2001\/Mihrab\/pages\/builds\/latest --jq \.status$/,
   // The generated files, checked and not written.
   /^node \/repo\/scripts\/(build-site|build-release-notes)\.js --check$/,
   // The APK and the zip: read, or unpacked into a temp directory only —
@@ -81,7 +81,7 @@ function ascWorld(w: World) {
   const runs = { text: JSON.stringify({ data: [{ id: 'r', attributes: { number: 741, executionProgress: 'COMPLETE', sourceCommit: { commitSha: 'feedbeef' } } }] }) };
   w.url(`${BASE}/v1/ciProducts/P/buildRuns?limit=1&sort=-number`, runs);
   w.url(`${BASE}/v1/ciProducts/P/buildRuns?limit=10&sort=-number`, runs);
-  w.url(`${BASE}/v1/apps?limit=10`, { text: JSON.stringify({ data: [{ id: 'APP', attributes: { bundleId: 'com.hassan.prayerapp' } }] }) });
+  w.url(`${BASE}/v1/apps?limit=10`, { text: JSON.stringify({ data: [{ id: 'APP', attributes: { bundleId: 'com.goma.salat' } }] }) });
 }
 
 /** Answers for the APK and the zip, as a healthy release has them. */
@@ -158,13 +158,13 @@ describe('every shadow phase only reads', () => {
     const zipBytes = 'ZIPBYTES';
     const w = new World()
       .file(TAP, GOOD_CASK.replace('version "2.27.1"', 'version "2.28.0"').replace('a'.repeat(64), sha(zipBytes)))
-      .file(`${ROOT}/contrib/fdroid/com.prayer_times.yml`, 'CurrentVersion: 2.28.0\n')
+      .file(`${ROOT}/contrib/fdroid/com.goma.salat.yml`, 'CurrentVersion: 2.28.0\n')
       .file(`${ROOT}/docs/index.html`, '<p>Version 2.28.0 (283)</p><title>Mihrab 2.28.0 (283)</title>')
       .file(`${ROOT}/android/app/build.gradle`, GRADLE.replace('282', '283'))
       .on(/./, {})
       .on('git ls-remote', { stdout: 'abc\trefs/tags/v2.28.0\n' })
       .on('gh release view', {
-        stdout: JSON.stringify({ isDraft: false, assets: [{ name: 'Mihrab-v2.28.0.apk' }, { name: 'Mihrab-macOS-2.28.0.zip' }] }),
+        stdout: JSON.stringify({ isDraft: false, assets: [{ name: 'Salaty-v2.28.0.apk' }, { name: 'Mihrab-macOS-2.28.0.zip' }] }),
       })
       .on('git rev-parse -q --verify', { stdout: 'feedbeefcafe\n' })
       .on('gh run list', { stdout: 'completed|success|https://ci/1\n' });
@@ -172,9 +172,9 @@ describe('every shadow phase only reads', () => {
     artifacts(w);
     w.on(`${SDK}/apksigner verify`, { stdout: 'certificate SHA-256 digest: x\n' });
     w.url(`${DL}/Mihrab-macOS-2.28.0.zip`, { body: zipBytes });
-    w.url(`${DL}/Mihrab-v2.28.0.apk`, { body: 'APK' });
+    w.url(`${DL}/Salaty-v2.28.0.apk`, { body: 'APK' });
     // The live site is stale, so the Pages diagnosis runs too.
-    w.url('https://mihrab.elghamri.se/', { text: '<p>Version 2.27.1 (282)</p>' });
+    w.url('https://github.com/goma2001/Mihrab', { text: '<p>Version 2.27.1 (282)</p>' });
     w.url('https://www.githubstatus.com/api/v2/components.json', { text: '{"components":[]}' });
     ascWorld(w);
     const before = snapshot(w);

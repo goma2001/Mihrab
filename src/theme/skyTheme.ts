@@ -78,8 +78,8 @@ export function skyDayKey(d: Date): string {
   return `${d.getFullYear()}-${m < 10 ? '0' : ''}${m}-${day < 10 ? '0' : ''}${day}`;
 }
 
-/** The night, until the hero has drawn anything. */
-export const DEFAULT_SKY_THEME: SkyThemeColors = { top: '#0B1230', bottom: '#1E2B5A', passage: 'night', t: 0.5 };
+/** The dawn, until the hero has drawn anything. */
+export const DEFAULT_SKY_THEME: SkyThemeColors = { top: '#0B2E25', bottom: '#1E5A48', passage: 'dawn', t: 0.5 };
 
 /**
  * A day of times for a sky before there are any: an install that has
@@ -105,7 +105,7 @@ export function nominalSkyTheme(now: Date): SkyThemeColors {
 }
 const PASSAGES: ReadonlySet<string> = new Set(['night', 'dawn', 'day', 'sunset', 'dusk']);
 
-const STORAGE_KEY = '@mihrab/skyTheme/v1';
+const STORAGE_KEY = '@salaty/skyTheme/v1';
 /** How old a kept day's times may be and still place a launch in its passage. */
 const STALE_DAY_LIMIT = 60;
 /** Whole days between two yyyy-mm-dd keys; a large number for one that does not parse. */

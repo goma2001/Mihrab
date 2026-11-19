@@ -81,7 +81,7 @@ import { quiet } from '../utils/quiet';
  * honour (see `parseNextAlertOverride`). A new key would have silently
  * un-muted a prayer somebody had just muted.
  */
-export const MUTED_NEXT_ADHAN_KEY = 'mihrab.muted_next_adhan';
+export const MUTED_NEXT_ADHAN_KEY = 'salaty.muted_next_adhan';
 
 /** Must match PRAYER_NOTIFICATION_ID_PREFIX in prayerNotifications.ts. */
 const PRAYER_NOTIFICATION_ID_PREFIX = 'pt-';

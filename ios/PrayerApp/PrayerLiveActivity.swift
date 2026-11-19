@@ -41,7 +41,7 @@ final class PrayerLiveActivity: NSObject {
 
   // Serial queue — prevents concurrent start() calls from racing each other
   // into a create/destroy spiral when multiple React effects fire at once.
-  private let queue = DispatchQueue(label: "com.hassan.prayerapp.liveactivity", qos: .userInitiated)
+  private let queue = DispatchQueue(label: "com.goma.salat.liveactivity", qos: .userInitiated)
   private var isStarting = false
 
   // Last content pushed while the feature was enabled. Used by `reassert()` to
@@ -422,7 +422,7 @@ final class PrayerLiveActivity: NSObject {
 // under BGTaskSchedulerPermittedIdentifiers in Info.plist.
 
 enum LiveActivityRefresher {
-  static let taskIdentifier = "com.hassan.prayerapp.liveactivity.refresh"
+  static let taskIdentifier = "com.goma.salat.liveactivity.refresh"
 
   /// Register the BG task handler. Call once from AppDelegate before launch
   /// finishes. Safe to call when ActivityKit is unavailable (handler no-ops).

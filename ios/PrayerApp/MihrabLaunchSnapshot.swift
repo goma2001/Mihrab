@@ -49,7 +49,7 @@ final class LaunchSnapshotStore {
   /// follows this and the fade).
   private static let mountGrace: TimeInterval = 0.04
   private static let fade: TimeInterval = 0.22
-  private static let prefix = "mihrab.launchSnapshot."
+  private static let prefix = "salaty.launchSnapshot."
 
   /** Main thread only. */
   var eligible = false
@@ -60,7 +60,7 @@ final class LaunchSnapshotStore {
   private var heroPosed = false
   private var pending: DispatchSemaphore?
   private let lock = NSLock()
-  private let io = DispatchQueue(label: "mihrab.launch-snapshot", qos: .userInitiated)
+  private let io = DispatchQueue(label: "salaty.launch-snapshot", qos: .userInitiated)
   private let defaults = UserDefaults.standard
 
   private struct Meta {
@@ -262,7 +262,7 @@ final class LaunchSnapshotStore {
     let pending = self.pending
     self.pending = nil
     guard first else { return }
-    // A link opens something in the app, not the app — except `mihrab://today`
+    // A link opens something in the app, not the app — except `salaty://today`
     // on its own, the widgets' tap, which lands where a plain launch does.
     let todayOnly = options.urlContexts.allSatisfy { c in
       c.url.scheme == "mihrab" && c.url.host == "today" && c.url.path.isEmpty && c.url.query == nil

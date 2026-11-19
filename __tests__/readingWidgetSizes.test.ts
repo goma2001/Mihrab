@@ -22,7 +22,7 @@ const REPO = path.join(__dirname, '..');
 const read = (rel: string) => fs.readFileSync(path.join(REPO, rel), 'utf8');
 
 const GLANCE = read(
-  'android/app/src/main/java/com/prayer_times/glance/ReadingGlanceWidget.kt',
+  'android/app/src/main/java/com/goma/salat/glance/ReadingGlanceWidget.kt',
 );
 // Tier thresholds, type sizes and the tier logic are unchanged from the old
 // provider; they live in the Glance widget now.
@@ -123,7 +123,7 @@ describe('the stack fits the card it is drawn in', () => {
   );
   // MihrabCard's default contentPadding / verticalPadding.
   const CARD_PADDING_DP = Number(
-    read('android/app/src/main/java/com/prayer_times/glance/GlanceSupport.kt').match(
+    read('android/app/src/main/java/com/goma/salat/glance/GlanceSupport.kt').match(
       /contentPadding: Dp = (\d+)\.dp/,
     )![1],
   );

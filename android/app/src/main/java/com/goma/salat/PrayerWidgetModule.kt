@@ -1,0 +1,538 @@
+package com.goma.salat
+
+import android.content.Context
+import android.util.Log
+import com.facebook.react.bridge.Arguments
+import com.facebook.react.bridge.LifecycleEventListener
+import com.facebook.react.bridge.Promise
+import com.facebook.react.bridge.ReactApplicationContext
+import com.facebook.react.bridge.ReactContextBaseJavaModule
+import com.facebook.react.bridge.ReactMethod
+import com.facebook.react.common.LifecycleState
+import com.goma.salat.contract.WidgetContract
+import java.util.concurrent.atomic.AtomicBoolean
+import kotlinx.coroutines.launch
+
+class PrayerWidgetModule(private val reactContext: ReactApplicationContext) :
+  ReactContextBaseJavaModule(reactContext), LifecycleEventListener {
+
+  override fun getName(): String = NAME
+
+  /**
+   * THE REDRAW WAITS UNTIL THE APP IS LEFT.
+   *
+   * Glance composes a card on THIS process's main thread — its session
+   * worker runs on `Dispatchers.Main` — and a redraw of the placed cards is
+   * a recomposition of each. Measured on a Pixel 10 Pro with three cards on
+   * the home screen: 125–145 ms of the main thread, three `Compose:recompose`
+   * slices back to back, a second and a half after every page turned in the
+   * reader (the payload's coalescing delay) — a dozen dropped frames in
+   * whatever the reader was doing by then, the next page's swipe as often as
+   * not. The same after a prayer logged, a bead counted, a tab returned to,
+   * and in the first second of a launch.
+   *
+   * None of it could be seen: a card on the home screen is behind the app
+   * for as long as the app is in front. So everything this module is asked
+   * to write is still written at once — the payload, the looks, the sky —
+   * and the redraw is owed, and paid when the activity is paused: once,
+   * with whatever was written last, as the home screen comes into view.
+   *
+   * Not deferred: a call with no activity in front (the headless refresh,
+   * a launch for an alarm), and a window that shares the screen — split
+   * screen, a freeform window on a tablet — where the home screen may well
+   * be showing beside it. The redraws that do not come through here are
+   * untouched: a prayer time passing, the clock changing, the card's own
+   * settings page.
+   */
+  private val redrawOwed = AtomicBoolean(false)
+
+  init {
+    reactContext.addLifecycleEventListener(this)
+  }
+
+  private fun fanOut() {
+    val activity = reactContext.currentActivity
+    val inFront = reactContext.lifecycleState == LifecycleState.RESUMED && activity != null
+    if (inFront && activity?.isInMultiWindowMode != true) {
+      redrawOwed.set(true)
+      return
+    }
+    redrawOwed.set(false)
+    PrayerWidgetProvider.requestUpdate(reactContext)
+  }
+
+  private fun payRedraw() {
+    if (!redrawOwed.getAndSet(false)) return
+    try {
+      PrayerWidgetProvider.requestUpdate(reactContext)
+    } catch (t: Throwable) {
+      Log.w(NAME, "the owed widget redraw failed", t)
+    }
+  }
+
+  override fun onHostResume() = Unit
+
+  override fun onHostPause() = payRedraw()
+
+  override fun onHostDestroy() = payRedraw()
+
+  override fun invalidate() {
+    reactContext.removeLifecycleEventListener(this)
+    payRedraw()
+    super.invalidate()
+  }
+
+  /** The samples are composed and drawn on the main thread, one request after another; packed off it. */
+  private val previewScope = kotlinx.coroutines.MainScope()
+
+  @ReactMethod
+  fun getAndroidWidgetAppearance(promise: Promise) {
+    try {
+      val prefs = reactContext.getSharedPreferences(PrayerWidgetProvider.PREFS_NAME, Context.MODE_PRIVATE)
+      if (!prefs.contains(PrayerWidgetProvider.PREFS_WIDGET_BG_OPACITY)) {
+        promise.resolve(null)
+        return
+      }
+      val map = Arguments.createMap()
+      map.putInt("opacity", prefs.getInt(PrayerWidgetProvider.PREFS_WIDGET_BG_OPACITY, 88))
+      map.putString("highlightId", prefs.getString(PrayerWidgetProvider.PREFS_WIDGET_HIGHLIGHT_ID, "green"))
+      map.putString("highlightHex", prefs.getString(PrayerWidgetProvider.PREFS_WIDGET_HIGHLIGHT_HEX, ""))
+      map.putBoolean("highlightDynamic", prefs.getBoolean(PrayerWidgetProvider.PREFS_WIDGET_HIGHLIGHT_DYNAMIC, false))
+      map.putBoolean("tinted", prefs.getBoolean(PrayerWidgetProvider.PREFS_WIDGET_TINTED, false))
+      promise.resolve(map)
+    } catch (e: Exception) {
+      promise.reject("E_WIDGET_APPEARANCE_GET", e.message, e)
+    }
+  }
+
+  /**
+   * The widgets on the home screen as they are drawn now, each on the
+   * sample's wallpaper, as PNGs for Settings → Widgets — one of each kind
+   * placed, the prayer times first (WidgetLivePreview: the widgets' own
+   * compositions, at the sizes they are placed at). With none placed, the
+   * two prayer-times cards.
+   *
+   * Resolves a list of { uri, width, height, kind } with the sizes in dp;
+   * `widthDp` is the room the page has for one.
+   */
+  @ReactMethod
+  fun renderPreviews(widthDp: Double, promise: Promise) {
+    previewScope.launch {
+      try {
+        val density = reactContext.resources.displayMetrics.density
+        val widthPx = (widthDp * density).toInt().coerceIn(200, 4000)
+        val roomDp = (widthPx / density - 2 * WidgetPreviewCard.WALL_PAD_DP).toInt()
+        val shown = WidgetLivePreview.placed(reactContext)
+          .ifEmpty { WidgetLivePreview.DEFAULTS.map { it to null } }
+        val out = Arguments.createArray()
+        // The sizes first: every wallpaper in the row is as tall as the tallest card.
+        val sized = shown.mapNotNull { (cls, id) ->
+          WidgetLivePreview.widgetOf(cls)?.let { Triple(cls, it, WidgetLivePreview.sizeOf(reactContext, id, cls, roomDp)) }
+        }
+        val tallestDp = sized.maxOfOrNull { it.third.height.value } ?: 0f
+        for ((cls, widget, size) in sized) {
+          // One card failing costs that card, not the page's sample.
+          try {
+            val views = WidgetLivePreview.compose(reactContext, widget, size, emptyMap())
+            val bitmap = WidgetLivePreview.bitmap(reactContext, views, size, widthPx, tallestDp)
+            // Composing and drawing need the main thread; packing the picture
+            // does not, and it was the longer half: 37–44 ms a card of
+            // `Bitmap.compress` on the main thread, back to back, in the
+            // middle of the page sliding in. Packed off it, and the main
+            // thread is handed back between one card and the next.
+            val width = bitmap.width
+            val height = bitmap.height
+            val uri = kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.Default) {
+              val bytes = java.io.ByteArrayOutputStream()
+              bitmap.compress(android.graphics.Bitmap.CompressFormat.PNG, 100, bytes)
+              bitmap.recycle()
+              "data:image/png;base64," + android.util.Base64.encodeToString(bytes.toByteArray(), android.util.Base64.NO_WRAP)
+            }
+            val map = Arguments.createMap()
+            map.putString("uri", uri)
+            map.putDouble("width", (width / density).toDouble())
+            map.putDouble("height", (height / density).toDouble())
+            map.putString("kind", cls.substringAfterLast('.'))
+            out.pushMap(map)
+            kotlinx.coroutines.yield()
+          } catch (e: kotlinx.coroutines.CancellationException) {
+            throw e
+          } catch (e: Exception) {
+            Log.w(PrayerWidgetProvider.WIDGET_LOG_TAG, "widget sample failed: $cls", e)
+          }
+        }
+        promise.resolve(out)
+      } catch (e: Exception) {
+        promise.reject("E_WIDGET_PREVIEW", e.message, e)
+      }
+    }
+  }
+
+  /**
+   * Hand over every tap the Log Today widget has queued, and clear it.
+   *
+   * Returns a JSON string rather than a WritableArray so the JS side can run
+   * it through the same `coerceLogQueue` it uses on anything else that
+   * crosses a process boundary — a bridge array would arrive pre-shaped and
+   * skip the validation, which is the wrong direction for something whose
+   * contents end up in the journal.
+   */
+  @ReactMethod
+  fun takeLogQueue(promise: Promise) {
+    try {
+      val entries = WidgetLogQueue.take(reactContext)
+      if (entries.isNotEmpty()) forceNextFanout()
+      promise.resolve(WidgetLogQueue.serialize(entries))
+      // NO REDRAW HERE. See takeTasbihQueue below for the whole story: the
+      // hand-over is not the moment the app owns these taps, it is the
+      // moment the app has WRITTEN them, and redrawing in between shows a
+      // card from which they have vanished.
+    } catch (e: Exception) {
+      promise.reject("E_WIDGET_LOG_QUEUE", e.message, e)
+    }
+  }
+
+  /**
+   * The same hand-over for the Tasbih widget's queue.
+   *
+   * A separate call rather than one queue with a `kind` field: the two have
+   * different rules — a log tap is a set member and a dhikr tap is a
+   * sequence — and one string that two sets of rules both parse is a string
+   * that will eventually be parsed by the wrong one.
+   */
+  @ReactMethod
+  fun takeTasbihQueue(promise: Promise) {
+    try {
+      val entries = WidgetTasbihQueue.take(reactContext)
+      if (entries.isNotEmpty()) forceNextFanout()
+      promise.resolve(WidgetTasbihQueue.serialize(entries))
+      // NO REDRAW HERE, AND THIS IS THE WHOLE OF THE BUG IT USED TO CAUSE.
+      //
+      // There used to be a `requestUpdate` on this line, to stop the widget
+      // counting the same taps twice — once from its own queue and once from
+      // the payload the app was about to push. The reasoning was right and
+      // the timing was wrong, because "the app owns these taps now" is not
+      // true yet at this line. Three things have to happen for a tap to move
+      // from the queue into the payload:
+      //
+      //   1. the queue is cleared            ← `take`, one line above
+      //   2. the app applies it to the store ← a promise the JS side has not
+      //                                        even resolved yet
+      //   3. the app republishes the payload ← later still, and debounced
+      //
+      // Redrawing at 1 draws the one state in which the tap exists NOWHERE:
+      // gone from the queue the widget projects, absent from the payload it
+      // projects onto. So the number fell back to what it was before the
+      // tap — to zero on a counter that had just been started, or to the
+      // previous dhikr's count after Next — and stayed there for as long as
+      // 2 and 3 took. Reported as "the count becomes zero for a second and
+      // then reacts to the button".
+      //
+      // The redraw was also never needed. Step 3 ends in `setData`, which
+      // fans `requestUpdate` out to every widget kind including this one, so
+      // the correct redraw already happens at the only moment it is correct.
+      // Until then the projection is right: the queue we just took is still
+      // the truth about these taps as far as the payload is concerned.
+    } catch (e: Exception) {
+      promise.reject("E_WIDGET_TASBIH_QUEUE", e.message, e)
+    }
+  }
+
+  @ReactMethod
+  fun setData(json: String, promise: Promise) {
+    store(json, null, promise)
+  }
+
+  /**
+   * The widget contract's v2 (docs/rewrite-plan.md, step 1.4), with v1 beside
+   * it in one edit — or, since step 1.7, an EMPTY v1: the app writes v2
+   * alone, and the v1 it wrote before is removed so no renderer is left
+   * reading its times. One edit because the providers read v2 in preference
+   * to v1: a v2 written by an earlier call and left behind would outrank a
+   * newer v1. That is also why plain `setData` REMOVES v2 — an older JS
+   * bundle, or the app's fallback when v2 could not be built, must not leave
+   * the widgets on a payload it did not write.
+   *
+   * A v2 that does not read is not stored (the widgets would skip it
+   * anyway), and a call that leaves nothing readable — an empty v1 and no
+   * readable v2 — is rejected rather than wiping what the widgets draw.
+   */
+  @ReactMethod
+  fun setDataV2(json: String, v2: String, promise: Promise) {
+    store(json, v2, promise)
+  }
+
+  private fun store(json: String, v2In: String?, promise: Promise) {
+    try {
+      val v2 = v2In?.takeIf { readable(it) }
+      if (v2In != null && v2 == null) Log.w(NAME, "setDataV2: payload v2 does not read; not stored")
+      if (json.isEmpty() && v2 == null) {
+        promise.reject("E_WIDGET", "no readable payload: v1 is empty and v2 does not read")
+        return
+      }
+      // The language travels beside the payload rather than being dug back out
+      // of it on every redraw: seven providers read this, several of them more
+      // than once per update, and re-parsing the whole payload to find one
+      // string is work the widget can least afford.
+      // From v2 when the app wrote no v1 (step 1.7): both carry `language`.
+      val language =
+        try {
+          org.json.JSONObject(json.ifEmpty { v2 ?: "{}" }).optString("language", "").trim()
+        } catch (e: Exception) {
+          ""
+        }
+      val prefs = reactContext.getSharedPreferences(PrayerWidgetProvider.PREFS_NAME, Context.MODE_PRIVATE)
+      // The app pushes the payload from more than one place at launch — the
+      // focus pass, the data effect, each state phase that settles — and
+      // most of those pushes are byte-identical. Every one used to fan out a
+      // full redraw of every placed widget, up to three size variants each
+      // and a painted bitmap for Log: ten redraws per widget in the first
+      // second of every launch, on the launcher's main thread. A push that
+      // changes nothing, within a minute of the last one that was drawn, is
+      // stored and left at that. The minute keeps "open the app" a real
+      // refresh — the countdown moves with the clock even when the payload
+      // does not — and every other path to a redraw (a prayer time passing,
+      // the half-hour period, a placement, an appearance change) is
+      // untouched.
+      val now = System.currentTimeMillis()
+      // An empty v1 is a removed key (step 1.7), which reads back as null.
+      val unchanged = json.ifEmpty { null } == prefs.getString(PrayerWidgetProvider.PREFS_KEY, null) &&
+        v2 == prefs.getString(WidgetPayloadSource.PREFS_KEY_V2, null)
+      val drawnRecently = now - prefs.getLong(PREFS_LAST_FANOUT_MS, 0L) in 0..FANOUT_COALESCE_MS
+      if (unchanged && drawnRecently) {
+        promise.resolve(null)
+        return
+      }
+      prefs
+        .edit()
+        .also { e ->
+          // An empty v1 is the app writing v2 alone (step 1.7): drop the v1
+          // it wrote before, so no renderer is left parsing its times.
+          if (json.isNotEmpty()) e.putString(PrayerWidgetProvider.PREFS_KEY, json)
+          else e.remove(PrayerWidgetProvider.PREFS_KEY)
+        }
+        .also { e ->
+          if (v2 != null) e.putString(WidgetPayloadSource.PREFS_KEY_V2, v2)
+          else e.remove(WidgetPayloadSource.PREFS_KEY_V2)
+        }
+        .putString(PrayerWidgetProvider.PREFS_LANGUAGE, language)
+        .putLong(PREFS_LAST_FANOUT_MS, now)
+        .apply()
+      // Every widget kind reads the same payload, so every one of them has
+      // to be told — and `requestUpdate` is the ONE place that knows the
+      // full list. It fans out to Log, Streak, Reading, Hijri and Tasbih
+      // itself, each behind its own guard.
+      //
+      // This used to name five of them again here, after the fan-out had
+      // already drawn them: four redrew twice per payload, and the Log
+      // widget — the only kind the list left out — was the one relying
+      // entirely on the fan-out it was written to duplicate. A list of
+      // widget kinds maintained in two places is a list that will be wrong
+      // in one of them, and it already was.
+      fanOut()
+      // The Garmin watch draws from this same schedule (GarminWatch.kt).
+      GarminWatch.onPayloadWritten(reactContext)
+      promise.resolve(null)
+    } catch (e: Exception) {
+      promise.reject("E_WIDGET", e.message, e)
+    }
+  }
+
+  @ReactMethod
+  fun setAndroidWidgetAppearance(
+    opacity: Int,
+    highlightId: String,
+    highlightHex: String?,
+    highlightDynamic: Boolean,
+    tinted: Boolean,
+    promise: Promise,
+  ) {
+    try {
+      val o = opacity.coerceIn(0, 100)
+      val hid = highlightId.trim().ifEmpty { "green" }
+      val hex =
+        highlightHex
+          ?.trim()
+          ?.takeIf { it.isNotEmpty() }
+          ?: ""
+      reactContext
+        .getSharedPreferences(PrayerWidgetProvider.PREFS_NAME, Context.MODE_PRIVATE)
+        .edit()
+        .putInt(PrayerWidgetProvider.PREFS_WIDGET_BG_OPACITY, o)
+        .putString(PrayerWidgetProvider.PREFS_WIDGET_HIGHLIGHT_ID, hid)
+        .putString(PrayerWidgetProvider.PREFS_WIDGET_HIGHLIGHT_HEX, hex)
+        .putBoolean(
+          PrayerWidgetProvider.PREFS_WIDGET_HIGHLIGHT_DYNAMIC,
+          highlightDynamic,
+        )
+        .putBoolean(PrayerWidgetProvider.PREFS_WIDGET_TINTED, tinted)
+        .apply()
+      fanOut()
+      promise.resolve(null)
+    } catch (e: Exception) {
+      promise.reject("E_WIDGET_APPEARANCE", e.message, e)
+    }
+  }
+
+  /**
+   * The app's Sky theme on the widgets: the card and the accent in the
+   * hour's colours, or both empty to let the widget's own settings decide
+   * again. See PrayerWidgetProvider.WidgetStyle.skyBg.
+   */
+  @ReactMethod
+  fun setAndroidWidgetSky(bgHex: String?, accentHex: String?, promise: Promise) {
+    try {
+      reactContext
+        .getSharedPreferences(PrayerWidgetProvider.PREFS_NAME, Context.MODE_PRIVATE)
+        .edit()
+        .putString(PrayerWidgetProvider.PREFS_WIDGET_SKY_BG, bgHex?.trim() ?: "")
+        .putString(PrayerWidgetProvider.PREFS_WIDGET_SKY_ACCENT, accentHex?.trim() ?: "")
+        .apply()
+      fanOut()
+      promise.resolve(null)
+    } catch (e: Exception) {
+      promise.reject("E_WIDGET_SKY", e.message, e)
+    }
+  }
+
+  /**
+   * The Sky theme's whole day on the widgets: `[[minuteOfDay, "#bg",
+   * "#accent"], …]`, from JS's `widgetSkySchedule`, which every widget
+   * reads for the minute it is drawn at (WidgetSkySchedule.kt) — so a card
+   * drawn at Isha wears the night whether or not the app has been open
+   * since the afternoon. Null clears it: the theme is off.
+   */
+  @ReactMethod
+  fun setWidgetSkySchedule(json: String?, promise: Promise) {
+    try {
+      reactContext
+        .getSharedPreferences(PrayerWidgetProvider.PREFS_NAME, Context.MODE_PRIVATE)
+        .edit()
+        .putString(PrayerWidgetProvider.PREFS_WIDGET_SKY_SCHEDULE, json?.trim() ?: "")
+        .apply()
+      fanOut()
+      promise.resolve(null)
+    } catch (e: Exception) {
+      promise.reject("E_WIDGET_SKY", e.message, e)
+    }
+  }
+
+  /**
+   * The prayer-times widget's display options as stored — they can be
+   * changed from the widget's own settings screen, so the app reads them
+   * back. Null until either side has written them.
+   */
+  @ReactMethod
+  fun getAndroidPrayerWidgetDisplay(promise: Promise) {
+    try {
+      val prefs = reactContext.getSharedPreferences(PrayerWidgetProvider.PREFS_NAME, Context.MODE_PRIVATE)
+      if (!prefs.contains(PrayerWidgetDisplay.KEY_TIME_SCALE)) {
+        promise.resolve(null)
+        return
+      }
+      val map = Arguments.createMap()
+      map.putString("textHex", prefs.getString(PrayerWidgetDisplay.KEY_TEXT_HEX, "") ?: "")
+      map.putBoolean("showLocation", prefs.getBoolean(PrayerWidgetDisplay.KEY_SHOW_LOCATION, true))
+      map.putBoolean("showCountdown", prefs.getBoolean(PrayerWidgetDisplay.KEY_SHOW_COUNTDOWN, true))
+      map.putBoolean("showTable", prefs.getBoolean(PrayerWidgetDisplay.KEY_SHOW_TABLE, true))
+      map.putInt("timeScale", prefs.getInt(PrayerWidgetDisplay.KEY_TIME_SCALE, 100))
+      // -1: never stored, so there is nothing for the app to adopt.
+      map.putInt("sinceAdhan", if (prefs.contains(PrayerWidgetDisplay.KEY_SINCE_ADHAN)) prefs.getInt(PrayerWidgetDisplay.KEY_SINCE_ADHAN, 0) else -1)
+      promise.resolve(map)
+    } catch (e: Exception) {
+      promise.reject("E_WIDGET_DISPLAY_GET", e.message, e)
+    }
+  }
+
+  /** The prayer-times widget's display options — see `PrayerWidgetDisplay`. */
+  @ReactMethod
+  fun setAndroidPrayerWidgetDisplay(
+    textHex: String,
+    showLocation: Boolean,
+    showCountdown: Boolean,
+    showTable: Boolean,
+    timeScalePercent: Int,
+    sinceAdhanMinutes: Int,
+    promise: Promise,
+  ) {
+    try {
+      val prefs = reactContext.getSharedPreferences(PrayerWidgetProvider.PREFS_NAME, Context.MODE_PRIVATE)
+      val hex = textHex.trim().takeIf { it.matches(Regex("^#[0-9A-Fa-f]{6}$")) } ?: ""
+      val scale = timeScalePercent.coerceIn(PrayerWidgetDisplay.SCALE_MIN, PrayerWidgetDisplay.SCALE_MAX)
+      val since = sinceAdhanMinutes.coerceIn(0, PrayerWidgetDisplay.SINCE_ADHAN_CHOICES.last())
+      // Redrawn only when something changed: this runs on every settings
+      // change in the app, and a redraw of every widget is not free.
+      val same =
+        prefs.getString(PrayerWidgetDisplay.KEY_TEXT_HEX, "") == hex &&
+          prefs.getBoolean(PrayerWidgetDisplay.KEY_SHOW_LOCATION, true) == showLocation &&
+          prefs.getBoolean(PrayerWidgetDisplay.KEY_SHOW_COUNTDOWN, true) == showCountdown &&
+          prefs.getBoolean(PrayerWidgetDisplay.KEY_SHOW_TABLE, true) == showTable &&
+          prefs.getInt(PrayerWidgetDisplay.KEY_TIME_SCALE, 100) == scale &&
+          prefs.contains(PrayerWidgetDisplay.KEY_SINCE_ADHAN) &&
+          prefs.getInt(PrayerWidgetDisplay.KEY_SINCE_ADHAN, 0) == since
+      if (!same) {
+        prefs.edit()
+          .putString(PrayerWidgetDisplay.KEY_TEXT_HEX, hex)
+          .putBoolean(PrayerWidgetDisplay.KEY_SHOW_LOCATION, showLocation)
+          .putBoolean(PrayerWidgetDisplay.KEY_SHOW_COUNTDOWN, showCountdown)
+          .putBoolean(PrayerWidgetDisplay.KEY_SHOW_TABLE, showTable)
+          .putInt(PrayerWidgetDisplay.KEY_TIME_SCALE, scale)
+          .putInt(PrayerWidgetDisplay.KEY_SINCE_ADHAN, since)
+          .apply()
+        fanOut()
+      }
+      promise.resolve(null)
+    } catch (e: Exception) {
+      promise.reject("E_WIDGET_DISPLAY", e.message, e)
+    }
+  }
+
+  @ReactMethod
+  fun setUiHints(style: String, oledBackground: Boolean, promise: Promise) {
+    try {
+      reactContext
+        .getSharedPreferences(PrayerWidgetProvider.PREFS_NAME, Context.MODE_PRIVATE)
+        .edit()
+        .putString(PrayerWidgetProvider.PREFS_UI_STYLE_KEY, style)
+        .putBoolean(PrayerWidgetProvider.PREFS_UI_OLED, oledBackground)
+        .apply()
+      fanOut()
+      promise.resolve(null)
+    } catch (e: Exception) {
+      promise.reject("E_WIDGET_UI", e.message, e)
+    }
+  }
+
+  /**
+   * The card has projected taps the app has not written yet. Whatever the
+   * app's next payload says — even if it says exactly what the last one did,
+   * because the app judged the taps already counted — the card must be
+   * redrawn from it, so the projection gives way to the truth. Clearing the
+   * fan-out mark makes `setData`'s coalescing step stand aside once.
+   */
+  private fun forceNextFanout() {
+    reactContext
+      .getSharedPreferences(PrayerWidgetProvider.PREFS_NAME, Context.MODE_PRIVATE)
+      .edit()
+      .remove(PREFS_LAST_FANOUT_MS)
+      .apply()
+  }
+
+  /** Whether the widgets could draw from this v2: it parses, at the schema they read. */
+  private fun readable(v2: String): Boolean =
+    try {
+      WidgetContract.Payload.parse(v2)?.schemaVersion == WidgetContract.VERSION
+    } catch (e: Exception) {
+      false
+    }
+
+  companion object {
+    const val NAME = "PrayerWidget"
+
+    /** When the last `setData` fanned a redraw out, epoch ms. */
+    const val PREFS_LAST_FANOUT_MS = "payload_last_fanout_ms"
+
+    /** An identical payload inside this window after a drawn one is stored, not redrawn. */
+    const val FANOUT_COALESCE_MS = 60_000L
+  }
+}

@@ -145,7 +145,7 @@ describe('before any of it', () => {
     const w = mac();
     const BASE = 'https://api.appstoreconnect.apple.com';
     w.file(`${HOME}/keys/AuthKey.p8`, require('crypto').generateKeyPairSync('ec', { namedCurve: 'P-256' }).privateKey.export({ type: 'pkcs8', format: 'pem' }));
-    w.url(`${BASE}/v1/apps?limit=10`, { text: JSON.stringify({ data: [{ id: 'APP', attributes: { bundleId: 'com.hassan.prayerapp' } }] }) });
+    w.url(`${BASE}/v1/apps?limit=10`, { text: JSON.stringify({ data: [{ id: 'APP', attributes: { bundleId: 'com.goma.salat' } }] }) });
     w.url(
       `${BASE}/v1/builds?filter[app]=APP&limit=30&sort=-uploadedDate&include=preReleaseVersion&fields[builds]=version,processingState,uploadedDate,preReleaseVersion&fields[preReleaseVersions]=version`,
       { text: JSON.stringify({ data: [{ attributes: {}, relationships: { preReleaseVersion: { data: { id: 'p' } } } }], included: [{ id: 'p', attributes: { version: '2.28.0' } }] }) },

@@ -406,7 +406,7 @@ def shipped(version: str, commit: str | None = None) -> None:
     """
     app = call("/v1/apps?limit=10")["data"]
     app_id = next((a["id"] for a in app
-                   if a["attributes"].get("bundleId") == "com.hassan.prayerapp"), None)
+                   if a["attributes"].get("bundleId") == "com.goma.salat"), None)
     if app_id is None:
         print("could not find the app in App Store Connect")
         raise SystemExit(2)
