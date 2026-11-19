@@ -85,7 +85,7 @@ jobs:
           {
             printf 'The weekly reuse check found a change. Most changes are harmless — an\n'
             printf 'F-Droid index mirror, a package-name dataset used in security research,\n'
-            printf 'or an unrelated app that happens to share the `com.prayer_times` package\n'
+            printf 'or an unrelated app that happens to share the `com.goma.salat` package\n'
             printf 'id have all turned up before. Copied source is not harmless.\n\n'
             printf '%s\n\n' "$REPORT"
             printf -- '---\n'
@@ -118,7 +118,7 @@ jobs:
 
             Most changes are harmless — an F-Droid index mirror, a package-name
             dataset used in security research, or an unrelated app that happens
-            to share the com.prayer_times package id have all turned up before.
+            to share the com.goma.salat package id have all turned up before.
             Copied source is not harmless.
 
             ${{ steps.check.outputs.report }}
