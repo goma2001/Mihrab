@@ -18,7 +18,7 @@ import { readWidgetContractLiveActivityAndroid } from '../src/widget/contract.ge
 
 const ROOT = path.join(__dirname, '..');
 const read = (...p: string[]) => readFileSync(path.join(ROOT, ...p), 'utf8');
-const KT = ['android', 'app', 'src', 'main', 'java', 'com', 'prayer_times'];
+const KT = ['android', 'app', 'src', 'main', 'java', 'com', 'goma', 'salat'];
 
 describe('the stored setting', () => {
   it('is off by default: the card all day, as it has always been', () => {

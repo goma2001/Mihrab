@@ -12,14 +12,14 @@
   and PrayerLiveActivityAttributes import ActivityKit, SwiftUI, WidgetKit,
   UIKit and Foundation, and touch no storage at all.
 
-  Claiming group.com.prayerapp anyway was not free. An entitlement has to be
+  Claiming group.com.goma.salat anyway was not free. An entitlement has to be
   authorised by a provisioning profile, the profile is generated from the App
   ID's capabilities, and automatic signing on Xcode Cloud will not create or
   reconfigure an App ID for you. So the export step failed on every build from
   phase 0 onward, first with
 
     Automatic signing cannot register bundle identifier
-    "com.hassan.prayerapp.MihrabLiveActivity"
+    "com.goma.salat.MihrabLiveActivity"
 
   and then, once the App ID was registered by hand, with "cannot update" it,
   because the App Group still had to be attached to it and that is portal-only.

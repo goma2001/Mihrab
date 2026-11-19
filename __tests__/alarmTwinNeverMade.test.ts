@@ -60,7 +60,7 @@ describe('a notification is never addressed to a twin that was not made', () => 
 
 describe('the twin of the system\'s own tone', () => {
   const sync = read('src/notifications/prayerNotifications.ts');
-  const native = read('android/app/src/main/java/com/prayer_times/CustomAdhanModule.kt');
+  const native = read('android/app/src/main/java/com/goma/salat/CustomAdhanModule.kt');
 
   it('is made with the phone\'s notification tone, not handed over as "the imported recording"', () => {
     expect(SYSTEM_DEFAULT_ALARM_SOUND).toBe('@default');

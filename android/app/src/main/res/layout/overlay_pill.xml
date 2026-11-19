@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Floating prayer pill shown above other apps by FloatingButtonService:
+     dark green pill, gold text (next prayer + live countdown). -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/overlay_pill_root"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/overlay_pill_bg"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:paddingStart="14dp"
+    android:paddingEnd="14dp"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp">
+
+    <TextView
+        android:id="@+id/overlay_pill_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="صلاتي"
+        android:textColor="#C9A227"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+</LinearLayout>

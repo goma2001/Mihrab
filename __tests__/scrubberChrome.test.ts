@@ -31,7 +31,7 @@ describe('scrubber chrome follows the page mode, not the app mode', () => {
   it('paper page takes the light accent over the tone\'s own chrome', () => {
     const page = resolveThemePaletteForMode(verdantGreen, toneIsDark('paper'));
     const c = scrubberChrome('paper', page);
-    expect(c.accent).toBe('#1F5F4A');
+    expect(c.accent).toBe('#01543F');
     expect(c.card).toBe(TONE_CHROME.paper.card);
     expect(c.ink).toBe(TONE_CHROME.paper.ink);
   });

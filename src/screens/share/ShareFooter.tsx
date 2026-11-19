@@ -4,7 +4,7 @@
 import { memo } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import type { TFunction } from 'i18next';
-import { MIHRAB_WEBSITE_LABEL } from '../../config/links';
+import { SALATY_WEBSITE_LABEL } from '../../config/links';
 
 /**
  * The foot of the sheet: where the times came from, and a caution.
@@ -45,7 +45,7 @@ function ShareFooterImpl({ t, sourceLine, rtl }: Props) {
           )}
         </Text>
       </View>
-      <Text style={styles.site}>{MIHRAB_WEBSITE_LABEL}</Text>
+      <Text style={styles.site}>{SALATY_WEBSITE_LABEL}</Text>
     </View>
   );
 }

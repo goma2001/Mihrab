@@ -45,7 +45,7 @@ import {
 } from './HomeFeaturesOffer';
 
 /** Asked once per device; the answer is the asking. */
-export const SKY_OFFER_KEY = 'mihrab.skyThemeOffer.v1';
+export const SKY_OFFER_KEY = 'salaty.skyThemeOffer.v1';
 /** How long the page gets to itself before the question, ms. */
 export const OFFER_DELAY_MS = 2500;
 

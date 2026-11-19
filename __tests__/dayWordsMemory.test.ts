@@ -6,7 +6,7 @@ import {
   rememberedDayWord,
 } from '../src/screens/home/dayWordsMemory';
 
-const KEY = '@mihrab/dayWords/v1';
+const KEY = '@salaty/dayWords/v1';
 
 beforeEach(async () => {
   jest.useFakeTimers();

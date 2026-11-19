@@ -34,7 +34,7 @@ export type TodayLayout = {
   table?: number;
 };
 
-const STORAGE_KEY = '@mihrab/todayLayout/v1';
+const STORAGE_KEY = '@salaty/todayLayout/v1';
 /** How many keys are kept: a phone and its text sizes, both layouts. */
 const KEEP = 8;
 

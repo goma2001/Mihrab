@@ -11,7 +11,7 @@ import { SKY_VARIANTS } from '../src/theme/skyMoods';
 
 const root = path.join(__dirname, '..');
 const read = (p: string) => fs.readFileSync(path.join(root, p), 'utf8');
-const kt = 'android/app/src/main/java/com/prayer_times/';
+const kt = 'android/app/src/main/java/com/goma/salat/';
 
 /** WCAG contrast of two #RRGGBB colours — PrayerWidgetDisplay.contrast, in the app's language. */
 function contrast(a: string, b: string): number {

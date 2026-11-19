@@ -38,7 +38,7 @@ appends (empty suggestion), ③ remove MaintainerNotes. All applied in
 fork commit `a4b7826c` (pushed via the GitLab web Replace-file flow —
 Desktop Commander was down; the sandbox's pip-installed `fdroidserver`
 validated `rewritemeta` no-diff + lint BEFORE pushing, and CI's
-rewritemeta job then passed). `contrib/fdroid/com.prayer_times.yml`
+rewritemeta job then passed). `contrib/fdroid/com.goma.salat.yml`
 matches the fork (local commit 612ea6a, unpushed). All three threads
 auto-resolved by the push; summary comment posted tagging @linsui with
 the heap-cap history caveat. NOTE: `gradleprops` = command-line `-P`

@@ -13,7 +13,7 @@ import { readFileSync } from 'fs';
 import path from 'path';
 
 const repo = (...parts: string[]) => readFileSync(path.join(__dirname, '..', ...parts), 'utf8');
-const kt = (name: string) => repo('android', 'app', 'src', 'main', 'java', 'com', 'prayer_times', `${name}.kt`);
+const kt = (name: string) => repo('android', 'app', 'src', 'main', 'java', 'com', 'goma', 'salat', `${name}.kt`);
 const manifest = repo('android', 'app', 'src', 'main', 'AndroidManifest.xml');
 
 describe('the download service stops when Android says so', () => {

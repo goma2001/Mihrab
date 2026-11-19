@@ -7,7 +7,7 @@
  *   node tools/startup-trace/patch-require.js restore  # always, after it
  *
  * The record is printed to logcat by `reportBoot` (src/boot/bootTimeline.ts)
- * through `global.__mihrabTraceDump`, which only a patched build defines.
+ * through `global.__salatyTraceDump`, which only a patched build defines.
  * Never ship a patched build: run.sh restores the file even on failure.
  */
 const fs = require('fs');
@@ -23,7 +23,7 @@ var __mtNow = function () {
 };
 var __mtRows = [];
 var __mtStack = [];
-global.__mihrabTraceDump = function () {
+global.__salatyTraceDump = function () {
   var rows = __mtRows.map(function (r) { return r[0] + ':' + r[1].toFixed(1) + ':' + r[2].toFixed(1); });
   var CHUNK = 60;
   var n = Math.ceil(rows.length / CHUNK);

@@ -95,8 +95,8 @@ export const LEGACY_BASELINE_VERSION = '2.18.5';
 /**
  * The version to treat as last seen, from what storage actually holds.
  *
- * `stored` is the value under `mihrab.lastSeenVersion`; `legacyTourSeen`
- * is whether `mihrab.featureTour.v1` was ever written. Pure, so the
+ * `stored` is the value under `salaty.lastSeenVersion`; `legacyTourSeen`
+ * is whether `salaty.featureTour.v1` was ever written. Pure, so the
  * three cases can be pinned without a storage mock.
  */
 export function lastSeenFrom(

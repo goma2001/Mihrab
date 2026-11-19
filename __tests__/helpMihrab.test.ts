@@ -1,10 +1,11 @@
 /**
- * Settings → About → Help Mihrab: rate, tell people, share the month.
+ * Settings → About → Help صلاتي: rate, tell people, share the month.
  *
  * What it must get right: the page hangs off About; the rating button
- * says where it goes and goes there (the App Store's review page on iOS,
- * not the rationed in-app sheet that can silently show nothing); the
- * month row opens the month screen on its printable sheet.
+ * says where it goes and goes there. This fork has no store listing
+ * yet, so the only rating place is a GitHub star — never a Play or
+ * App Store page that does not exist for it. The month row opens the
+ * month screen on its printable sheet.
  */
 import { readFileSync } from 'fs';
 import path from 'path';
@@ -13,68 +14,44 @@ import { todayCardSource } from './fixtures/todayCardSource';
 const REPO = path.resolve(__dirname, '..');
 const read = (p: string) => readFileSync(path.join(REPO, p), 'utf8');
 
-const load = (os: 'ios' | 'android', distribution?: string, failFirst = 0) => {
+const load = (os: 'ios' | 'android', distribution?: string) => {
   jest.resetModules();
-  let calls = 0;
-  const openURL = jest.fn(() =>
-    calls++ < failFirst ? Promise.reject(new Error('no handler')) : Promise.resolve(),
-  );
-  const requestReview = jest.fn();
+  const openURL = jest.fn(() => Promise.resolve());
   jest.doMock('react-native', () => ({
     Platform: { OS: os },
     NativeModules: {
       PrayerBuildInfo: distribution ? { distribution } : undefined,
-      RateApp: { requestReview },
     },
     Linking: { openURL },
   }));
   const mod = require('../src/polish/rateApp');
-  return { ...mod, openURL, requestReview };
+  return { ...mod, openURL };
 };
 
 describe('where a rating goes', () => {
+  // No store listing exists for this fork yet: every platform and every
+  // distribution rates it the same way — a GitHub star.
   it.each([
-    ['ios', undefined, ['appStore']],
-    ['android', 'play', ['play']],
-    // Off Google Play the Play listing is still offered, first: many of
-    // these users have a Google account, and it is where most people
-    // find the app.
-    ['android', 'github', ['play', 'github']],
-    ['android', 'fdroid', ['play', 'github']],
-  ] as const)('%s %s → %j', (os, dist, expected) => {
-    expect(load(os, dist).ratingPlaces()).toEqual(expected);
+    ['ios', undefined],
+    ['android', 'play'],
+    ['android', 'github'],
+    ['android', 'fdroid'],
+  ] as const)('%s %s → github only', (os, dist) => {
+    expect(load(os, dist).ratingPlaces()).toEqual(['github']);
   });
 
-  it('opens the Play listing from an F-Droid build, on the web without the Play app', async () => {
-    const { openRatingPlace, openURL } = load('android', 'fdroid', 1);
-    await openRatingPlace('play');
-    expect(openURL).toHaveBeenNthCalledWith(1, 'market://details?id=com.prayer_times');
-    expect(openURL).toHaveBeenNthCalledWith(
-      2,
-      'https://play.google.com/store/apps/details?id=com.prayer_times',
-    );
+  it('opens the fork on GitHub, from any build', async () => {
+    const { openRatingPlace, openURL } = load('android', 'fdroid');
+    await openRatingPlace('github');
+    expect(openURL).toHaveBeenCalledWith('https://github.com/goma2001/Mihrab');
   });
 
-  it('opens the App Store review page on iOS', async () => {
-    const { rateApp, openURL, requestReview } = load('ios');
-    await rateApp();
-    expect(openURL).toHaveBeenCalledWith(
-      'itms-apps://itunes.apple.com/app/id6762085256?action=write-review',
-    );
-    expect(requestReview).not.toHaveBeenCalled();
-  });
-
-  it('falls back to the web listing, then to the in-app sheet', async () => {
-    const web = load('ios', undefined, 1);
-    await web.rateApp();
-    expect(web.openURL).toHaveBeenLastCalledWith(
-      'https://apps.apple.com/app/id6762085256?action=write-review',
-    );
-    expect(web.requestReview).not.toHaveBeenCalled();
-
-    const sheet = load('ios', undefined, 2);
-    await sheet.rateApp();
-    expect(sheet.requestReview).toHaveBeenCalledTimes(1);
+  it('rateApp goes to GitHub on iOS and on Android', async () => {
+    for (const os of ['ios', 'android'] as const) {
+      const { rateApp, openURL } = load(os);
+      await rateApp();
+      expect(openURL).toHaveBeenCalledWith('https://github.com/goma2001/Mihrab');
+    }
   });
 });
 
@@ -96,7 +73,7 @@ describe('the page', () => {
   });
 
   it('shares the website, and opens the month on its sheet', () => {
-    expect(page).toMatch(/MIHRAB_WEBSITE/);
+    expect(page).toMatch(/SALATY_WEBSITE/);
     expect(page).toMatch(/navigate\('MonthTimes', \{ share: true \}\)/);
     expect(read('src/screens/MonthTimesScreen.tsx')).toMatch(
       /useState\(route\.params\?\.share === true\)/,
@@ -139,7 +116,7 @@ describe('the page', () => {
       const json = JSON.parse(read(`src/i18n/locales/${l}.json`));
       expect(json.settings.helpMihrab).toBeTruthy();
       expect(json.home.helpMihrabChip).toBeTruthy();
-      expect(json.helpMihrab.ratePlayElsewhereHelp).toBeTruthy();
+      expect(json.helpMihrab.rateGithubHelp).toBeTruthy();
       expect(json.helpMihrab.shareMessage).toContain('{{url}}');
     }
   });

@@ -3,7 +3,7 @@
 /**
  * One name per platform, both spelling the same group.
  *
- * iOS: `group.com.prayerapp`, unchanged since the widget shipped.
+ * iOS: `group.com.goma.salat`, unchanged since the widget shipped.
  *
  * Mac Catalyst: the same string with the Team ID in front. Apple's guidance
  * contradicts itself here — DTS says Catalyst keeps the plain iOS identifier,
@@ -14,7 +14,7 @@
  * OBSERVED (2026-08-07). With the plain name, the widget extension launched
  * under chronod and faulted on every read:
  *
- *   Couldn't read values in CFPrefsPlistSource (Domain: group.com.prayerapp,
+ *   Couldn't read values in CFPrefsPlistSource (Domain: group.com.goma.salat,
  *   Container: (null)): accessing preferences outside an application's
  *   container requires user-preference-read or file-read-data sandbox access
  *
@@ -42,9 +42,9 @@
  * made the prefix rule look like a myth.
  */
 #if TARGET_OS_MACCATALYST
-static NSString *const kGroup = @"GAW23HT439.group.com.prayerapp";
+static NSString *const kGroup = @"GAW23HT439.group.com.goma.salat";
 #else
-static NSString *const kGroup = @"group.com.prayerapp";
+static NSString *const kGroup = @"group.com.goma.salat";
 #endif
 
 NSString *MihrabAppGroupSuiteName(void) { return kGroup; }

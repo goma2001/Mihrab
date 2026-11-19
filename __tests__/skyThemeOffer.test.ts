@@ -35,7 +35,7 @@ describe('skyOfferDue', () => {
   });
   it('keys are distinct from the alerts offer', () => {
     expect(SKY_OFFER_KEY).not.toBe(SKY_ASKED_KEY);
-    expect(SKY_OFFER_KEY).toMatch(/^mihrab\./);
+    expect(SKY_OFFER_KEY).toMatch(/^salaty\./);
   });
 });
 

@@ -1,4 +1,4 @@
-appId: com.prayer_times
+appId: com.goma.salat
 ---
 - launchApp
 - extendedWaitUntil:

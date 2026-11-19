@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  What a Glance widget shows when its composition throws: the Mihrab card
+  What a Glance widget shows when its composition throws: the صلاتي card
   and one line, filled in by WidgetErrorCard.errorCard with the exception's
-  class name (MihrabGlanceWidget.onCompositionError). Also Glance's
-  `errorUiLayout`, so even a failure Glance handles itself is a Mihrab card
+  class name (صلاتيGlanceWidget.onCompositionError). Also Glance's
+  `errorUiLayout`, so even a failure Glance handles itself is a صلاتي card
   rather than the library's grey box.
 -->
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"

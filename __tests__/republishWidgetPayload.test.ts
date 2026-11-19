@@ -4,7 +4,7 @@
  * This is the regression test for the structural bug behind every stale-widget
  * report: the payload used to have exactly one writer, and it lived inside
  * HomeScreen. The tabs are lazy, so every deep link the widgets themselves
- * fire — `mihrab://log`, `mihrab://tasbih`, `mihrab://quran` — opened the app
+ * fire — `salaty://log`, `salaty://tasbih`, `salaty://quran` — opened the app
  * on a screen that could not refresh them, and a prayer logged there reached
  * the journal but never the home screen.
  *

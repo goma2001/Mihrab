@@ -13,7 +13,7 @@ import { readFileSync } from 'fs';
 import path from 'path';
 
 const kotlin = readFileSync(
-  path.join(__dirname, '..', 'android/app/src/main/java/com/prayer_times/SyncFolderModule.kt'),
+  path.join(__dirname, '..', 'android/app/src/main/java/com/goma/salat/SyncFolderModule.kt'),
   'utf8',
 );
 

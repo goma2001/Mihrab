@@ -10,7 +10,7 @@
 # "Continue reading", and a page turned forward is turned back.
 export PATH=$PATH:~/Library/Android/sdk/platform-tools
 [ -z "$ANDROID_SERIAL" ] && { echo "set ANDROID_SERIAL"; exit 2; }
-P=com.prayer_times
+P=com.goma.salat
 read W H <<<"$(adb shell wm size | tail -1 | sed 's/.*: //; s/x/ /')"
 X() { echo $(( $1 * W / 1280 )); }; Y() { echo $(( $1 * H / 2856 )); }
 infocus() { adb shell dumpsys window | grep -m1 mCurrentFocus | grep -q "$P/"; }

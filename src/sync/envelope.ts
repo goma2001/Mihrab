@@ -42,7 +42,7 @@ import {
   utf8Encode,
 } from './secureRandom';
 
-export const ENVELOPE_FORMAT = 'mihrab.envelope';
+export const ENVELOPE_FORMAT = 'salaty.envelope';
 export const ENVELOPE_VERSION = 1;
 
 /** Who sent this, in the clear, so an unknown device can introduce itself. */

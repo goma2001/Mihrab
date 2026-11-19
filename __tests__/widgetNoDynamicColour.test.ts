@@ -18,11 +18,11 @@ const repo = (...parts: string[]) =>
   readFileSync(path.join(__dirname, '..', ...parts), 'utf8');
 
 const CONFIGURE_ACTIVITY = [
-  'android', 'app', 'src', 'main', 'java', 'com', 'prayer_times',
+  'android', 'app', 'src', 'main', 'java', 'com', 'goma', 'salat',
   'PrayerWidgetConfigureActivity.kt',
 ];
 const PROVIDER = [
-  'android', 'app', 'src', 'main', 'java', 'com', 'prayer_times',
+  'android', 'app', 'src', 'main', 'java', 'com', 'goma', 'salat',
   'PrayerWidgetProvider.kt',
 ];
 const LAYOUT = [

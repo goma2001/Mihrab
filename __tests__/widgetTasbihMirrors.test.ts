@@ -20,7 +20,7 @@ const REPO = path.join(__dirname, '..');
 const read = (rel: string) => fs.readFileSync(path.join(REPO, rel), 'utf8');
 
 const KOTLIN = read(
-  'android/app/src/main/java/com/prayer_times/WidgetTasbihQueue.kt',
+  'android/app/src/main/java/com/goma/salat/WidgetTasbihQueue.kt',
 );
 const SWIFT = read('ios/PrayerWidgetExtension/TasbihWidget.swift');
 const CONTRACT = read('scripts/contract/widget-contract.js');

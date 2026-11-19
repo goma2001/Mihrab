@@ -11,12 +11,12 @@ N=${2:-5}
 i=0
 while [ $i -lt $N ]; do
   i=$((i+1))
-  adb -s "$S" shell am force-stop com.prayer_times
+  adb -s "$S" shell am force-stop com.goma.salat
   sleep 3
-  adb -s "$S" shell am force-stop com.prayer_times
+  adb -s "$S" shell am force-stop com.goma.salat
   sleep 1
   adb -s "$S" logcat -c
-  total=$(adb -s "$S" shell am start -W -n com.prayer_times/.MainActivity 2>/dev/null | grep TotalTime | tr -dc '0-9')
+  total=$(adb -s "$S" shell am start -W -n com.goma.salat/.MainActivity 2>/dev/null | grep TotalTime | tr -dc '0-9')
   sleep 5
   adb -s "$S" logcat -d | grep -E "\[boot\] js0|\[boot-native\]" | sed 's/^.*ReactNativeJS: //' | python3 -c "
 import sys,re
