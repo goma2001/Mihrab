@@ -21,7 +21,7 @@ type Mark = { label: string; ms: number };
 
 declare const global: {
   nativePerformanceNow?: () => number;
-  __mihrabTraceDump?: () => void;
+  __salatyTraceDump?: () => void;
 };
 
 const now: () => number =
@@ -62,7 +62,7 @@ export function reportBoot(): void {
   console.log(`[boot] js0=${wallStart} ${parts.join(' ')}`);
   // The module-level trace, when a build was made with
   // tools/startup-trace (never in a shipped build).
-  global.__mihrabTraceDump?.();
+  global.__salatyTraceDump?.();
   // The JS heap, once the boot has settled and again a minute on: what the
   // app holds when it is standing still, in the log beside the timeline,
   // so a build can be checked against the last without a profiler.

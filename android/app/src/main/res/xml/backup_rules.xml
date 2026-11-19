@@ -4,7 +4,7 @@
 
   WHAT PERSISTS: the AsyncStorage database (RKStorage) carries every user
   preference and feature state — settings blob, journal, fasting log,
-  tasbih, Quran bookmarks/khatmah/last-read (mihrab.quran.v1) — plus all
+  tasbih, Quran bookmarks/khatmah/last-read (salaty.quran.v1) — plus all
   shared preferences (widget/live-activity native prefs).
 
   WHAT'S EXCLUDED: everything else — most importantly the managed Quran

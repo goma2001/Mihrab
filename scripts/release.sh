@@ -247,7 +247,7 @@ reap() {  # <what> <pgrep -f pattern>
 keep_installed_widget_registered() {
   local app=/Applications/Mihrab.app
   local ext="$app/Contents/PlugIns/PrayerWidgetExtension.appex"
-  local id=maccatalyst.com.hassan.prayerapp.PrayerWidgetExtension
+  local id=maccatalyst.com.goma.salat.PrayerWidgetExtension
   local i seen
   if [ ! -d "$ext" ]; then return 0; fi
   for i in 1 2 3 4 5 6 7 8; do
@@ -361,7 +361,7 @@ JOURNAL="$ROOT/docs/release-log.md"
 # site is fourteen files and a list of them here goes stale the moment it
 # grows. An abort that leaves half the site stamped is an abort that makes
 # the next run refuse to start on a dirty tree, with no clue why.
-REVERT="git checkout -- android/app/build.gradle ios/PrayerApp.xcodeproj/project.pbxproj docs contrib/fdroid/com.prayer_times.yml src/polish/releaseNotes.generated.ts package.json package-lock.json desktop/package.json desktop/package-lock.json"
+REVERT="git checkout -- android/app/build.gradle ios/PrayerApp.xcodeproj/project.pbxproj docs contrib/fdroid/com.goma.salat.yml src/polish/releaseNotes.generated.ts package.json package-lock.json desktop/package.json desktop/package-lock.json"
 
 current_version() { grep -o 'versionName "[^"]*"' "$GRADLE_FILE" | head -1 | cut -d'"' -f2; }
 current_code()    { grep -o 'versionCode [0-9]*'  "$GRADLE_FILE" | head -1 | awk '{print $2}'; }
@@ -779,7 +779,7 @@ has "$SIG" "TeamIdentifier=GAW23HT439" \
   || die "the app about to be published is not signed by the Developer ID — this is the 2.11.0 failure"
 ok "signed by team GAW23HT439"
 ENTS="$(codesign -d --entitlements - --xml "$APP" 2>/dev/null)"
-has "$ENTS" "group.com.prayerapp" \
+has "$ENTS" "group.com.goma.salat" \
   || die "no App Group entitlement — widgets would have no data"
 ok "App Group sealed in"
 
@@ -938,7 +938,7 @@ step "Publishing"
 # F-Droid build from the tag would ship a changelog one release short,
 # and `releaseNotes.test.ts` would fail on the tagged commit.
 git add "$GRADLE_FILE" "$PBXPROJ" "$ROOT/docs" \
-        "$ROOT/contrib/fdroid/com.prayer_times.yml" \
+        "$ROOT/contrib/fdroid/com.goma.salat.yml" \
         "$JOURNAL" \
         "$ROOT/fastlane/metadata/android" \
         "$ROOT/src/polish/releaseNotes.generated.ts" \
@@ -1260,7 +1260,7 @@ if command -v brew >/dev/null 2>&1; then
   # No launch anywhere above. If this is registered, it is because the
   # cask's postflight did it — which is the whole widget fix, proven on a
   # real install rather than asserted from the cask's source.
-  INST_ID=maccatalyst.com.hassan.prayerapp.PrayerWidgetExtension
+  INST_ID=maccatalyst.com.goma.salat.PrayerWidgetExtension
   INST_SEEN="$(pluginkit -m -i "$INST_ID" 2>/dev/null || true)"
   [ -n "$INST_SEEN" ] \
     || die "the widget extension is NOT registered after a real install — the cask postflight did not do its job, and every Mac upgrading to $VERSION loses its widgets"

@@ -470,12 +470,12 @@ struct ReadingEntryView: View {
     return r.khatmah != nil ? "&sessionKhatmah=1" : ""
   }
 
-  /// mihrab://read/2?initialPage=3 or ?scrollToAyah=1 — the surah screen
+  /// salaty://read/2?initialPage=3 or ?scrollToAyah=1 — the surah screen
   /// picks its reader from which of the two it is given, which is why the
   /// app resolves `mode` rather than this side guessing.
   private func readingURL(_ r: WidgetPayload.Reading) -> URL? {
     let position = r.mode == "mushaf" ? "initialPage=\(r.page)" : "scrollToAyah=\(r.ayah)"
-    return URL(string: "mihrab://read/\(r.surah)?\(position)\(sessionParam(r))")
+    return URL(string: "salaty://read/\(r.surah)?\(position)\(sessionParam(r))")
   }
 
   /// The same destination, arriving out loud — issue #25.
@@ -486,7 +486,7 @@ struct ReadingEntryView: View {
   /// the ayah goes every time, whichever reader the app resolved.
   private func playURL(_ r: WidgetPayload.Reading) -> URL? {
     let position = r.mode == "mushaf" ? "initialPage=\(r.page)" : "scrollToAyah=\(r.ayah)"
-    return URL(string: "mihrab://read/\(r.surah)?\(position)&playFromAyah=\(r.ayah)\(sessionParam(r))")
+    return URL(string: "salaty://read/\(r.surah)?\(position)&playFromAyah=\(r.ayah)\(sessionParam(r))")
   }
 
   /// The same amber the Log screen marks a slipping plan with.

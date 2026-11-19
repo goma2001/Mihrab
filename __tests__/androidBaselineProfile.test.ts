@@ -23,10 +23,10 @@ describe('the Baseline Profile', () => {
 
   it('covers the start: the application, the activity, React Native and the widget', () => {
     const has = (s: string) => rules.some(r => r.includes(s));
-    expect(has('Lcom/prayer_times/MainApplication;')).toBe(true);
-    expect(has('Lcom/prayer_times/MainActivity;')).toBe(true);
+    expect(has('Lcom/goma/salat/MainApplication;')).toBe(true);
+    expect(has('Lcom/goma/salat/MainActivity;')).toBe(true);
     expect(has('Lcom/facebook/react/fabric/')).toBe(true);
-    expect(has('Lcom/prayer_times/contract/WidgetContract')).toBe(true);
+    expect(has('Lcom/goma/salat/contract/WidgetContract')).toBe(true);
   });
 
   it('has an installer that knows Android 15 and later', () => {
@@ -42,7 +42,7 @@ describe('the Baseline Profile', () => {
 
 describe('restartApp', () => {
   it('starts the new activity from the one on screen, before anything is finished', () => {
-    const src = read('src', 'main', 'java', 'com', 'prayer_times', 'SystemThemeModule.kt');
+    const src = read('src', 'main', 'java', 'com', 'goma', 'salat', 'SystemThemeModule.kt');
     const body = src.slice(src.indexOf('fun restartApp()'), src.indexOf('exitProcess(0)'));
     expect(body).toContain('activity.startActivity(intent)');
     expect(body).not.toMatch(/^\s*activity\.finishAffinity\(\)/m);

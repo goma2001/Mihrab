@@ -42,7 +42,7 @@ import path from 'path';
 import os from 'os';
 
 const ANDROID = path.join(__dirname, '..', 'android', 'app', 'src', 'main');
-const KT = path.join(ANDROID, 'java', 'com', 'prayer_times');
+const KT = path.join(ANDROID, 'java', 'com', 'goma', 'salat');
 
 describe('android tells every widget kind, exactly once', () => {
   const provider = readFileSync(
@@ -147,7 +147,7 @@ describe('android tells every widget kind, exactly once', () => {
     // The old name stays a plain receiver: unlock, boot and the alarm.
     const plain = manifest.slice(manifest.indexOf('android:name=".PrayerWidgetProvider"'));
     const block = plain.slice(0, plain.indexOf('</receiver>'));
-    expect(block).toContain('com.prayer_times.ACTION_PRAYER_TIME_ELAPSED');
+    expect(block).toContain('com.goma.salat.ACTION_PRAYER_TIME_ELAPSED');
     expect(block).toContain('android.intent.action.USER_PRESENT');
     expect(block).not.toContain('android.appwidget.provider');
   });
@@ -202,7 +202,7 @@ describe('the macOS cask restarts the widget daemon after an upgrade', () => {
   // states what it needs and skips rather than failing on a machine that
   // does not have it. `verify-release.sh` checks the published cask, where
   // being absent is not something to be relaxed about.
-  const cask = path.join(os.homedir(), 'git', 'homebrew-tap', 'Casks', 'mihrab.rb');
+  const cask = path.join(os.homedir(), 'git', 'homebrew-tap', 'Casks', 'salaty.rb');
 
   (existsSync(cask) ? it : it.skip)(
     'carries the postflight that clears the frozen archives',

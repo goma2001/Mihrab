@@ -195,7 +195,7 @@ describe('the alarm screen keeps deciding while it is open', () => {
 
   it('the native screen reads exactly those keys and uses the same 15-minute rule', () => {
     const kt = fs.readFileSync(
-      path.join(__dirname, '../android/app/src/main/java/com/prayer_times/PrayerAlarmActivity.kt'),
+      path.join(__dirname, '../android/app/src/main/java/com/goma/salat/PrayerAlarmActivity.kt'),
       'utf8',
     );
     for (const key of ['fsDeadline', 'fsMainOpts', 'fsChipOpts', 'fsLastChance']) {

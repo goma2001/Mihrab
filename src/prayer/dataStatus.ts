@@ -20,7 +20,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import type { DataSource } from '../providers/types';
 
-const KEY = 'mihrab.dataStatus.v1';
+const KEY = 'salaty.dataStatus.v1';
 
 export type ServerStatus = 'ok' | 'warning' | 'unknown';
 

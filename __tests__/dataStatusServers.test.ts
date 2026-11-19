@@ -16,7 +16,7 @@ import {
   _resetDataStatusMemoForTests,
 } from '../src/prayer/dataStatus';
 
-const KEY = 'mihrab.dataStatus.v1';
+const KEY = 'salaty.dataStatus.v1';
 
 beforeEach(async () => {
   await AsyncStorage.clear();

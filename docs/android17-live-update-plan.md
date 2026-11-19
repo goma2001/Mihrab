@@ -1,7 +1,7 @@
 # Android 17 Live Activity — assessment & implementation plan
 
 Status: proposal (June 2026). Owner: Live Activity / notifications.
-Related code: `android/app/src/main/java/com/prayer_times/MihrabLiveActivityModule.kt`,
+Related code: `android/app/src/main/java/com/goma/salat/MihrabLiveActivityModule.kt`,
 `MihrabLiveActivityService.kt`, `src/notifications/liveActivity.ts`,
 `src/liveActivity/syncLiveActivity.ts`.
 

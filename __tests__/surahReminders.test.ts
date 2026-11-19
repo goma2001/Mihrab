@@ -136,12 +136,12 @@ describe('tapping one opens the surah', () => {
       await notificationRoute({
         data: { route: ROUTE_SURAH, surah: String(KAHF) },
       } as never),
-    ).toBe('mihrab://read/18?scrollToAyah=1');
+    ).toBe('salaty://read/18?scrollToAyah=1');
     expect(
       await notificationRoute({
         data: { route: ROUTE_SURAH, surah: String(MULK) },
       } as never),
-    ).toBe('mihrab://read/67?scrollToAyah=1');
+    ).toBe('salaty://read/67?scrollToAyah=1');
   });
 
   it('opens the muṣḥaf at the page the surah begins on', async () => {
@@ -153,9 +153,9 @@ describe('tapping one opens the surah', () => {
       data: { route: ROUTE_SURAH, surah: String(KAHF) },
     } as never);
     // The ayah rides along, so another print of Ḥafṣ opens at the surah.
-    expect(url).toMatch(/^mihrab:\/\/read\/18\?initialPage=\d+&scrollToAyah=1$/);
+    expect(url).toMatch(/^salaty:\/\/read\/18\?initialPage=\d+&scrollToAyah=1$/);
     expect(url).not.toContain('initialPage=1&');
-    expect(url).toBe('mihrab://read/18?initialPage=293&scrollToAyah=1');
+    expect(url).toBe('salaty://read/18?initialPage=293&scrollToAyah=1');
   });
 
   it('has a channel of its own, not the adhan’s', () => {

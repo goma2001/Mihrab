@@ -18,7 +18,7 @@ import {
   useQuranState,
 } from '../src/quran/quranState';
 
-const STORAGE_KEY = 'mihrab.quran.v1';
+const STORAGE_KEY = 'salaty.quran.v1';
 
 /** What `mushafReaderCore` and `QuranSurahScreen` both compute. */
 function pageBg(hydrated: boolean, nightMode: boolean): string {

@@ -6,7 +6,7 @@
 #     and the profiler's start time), <out>.logcat
 #
 # MainActivity enables the profiler when the activity is started with
-# `--ez mihrab.profile true` and dumps it, gzip + base64, to logcat 2.5 s
+# `--ez salaty.profile true` and dumps it, gzip + base64, to logcat 2.5 s
 # later (MainActivity.kt, "PROFILE"). The sampler runs at 100 Hz, so one
 # launch is too coarse to read: take ten or more and aggregate them —
 #
@@ -20,10 +20,10 @@
 # runs, by leaf function and by the first frame in src/.
 OUT=${1:-/tmp/launch}
 S=${2:-5A250DLCH00166}
-adb -s "$S" shell am force-stop com.prayer_times; sleep 3
-adb -s "$S" shell am force-stop com.prayer_times; sleep 1
+adb -s "$S" shell am force-stop com.goma.salat; sleep 3
+adb -s "$S" shell am force-stop com.goma.salat; sleep 1
 adb -s "$S" logcat -c
-adb -s "$S" shell am start -W -n com.prayer_times/.MainActivity --ez mihrab.profile true > /dev/null
+adb -s "$S" shell am start -W -n com.goma.salat/.MainActivity --ez salaty.profile true > /dev/null
 sleep 7
 adb -s "$S" logcat -d > "$OUT.logcat"
 grep -E "\[boot\]|\[boot-native\]|MihrabProfile: enabled|MihrabProfile: DONE" "$OUT.logcat" | sed 's/^.*ReactNativeJS: //; s/^.*MihrabProfile: //' | tee "$OUT.txt"

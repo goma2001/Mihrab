@@ -221,7 +221,7 @@ export function SalamScreen({ onAdvance }: { onAdvance: () => void }) {
       <View style={styles.tail}>
         <Text
           style={[typeStyle('title2'), styles.name, { color: palette.text }]}>
-          {t('onboarding.welcome.title', 'Welcome to Mihrab')}
+          {t('onboarding.welcome.title', 'Welcome to صلاتي')}
         </Text>
         <Text
           style={[typeStyle('body'), styles.line, { color: palette.muted }]}>

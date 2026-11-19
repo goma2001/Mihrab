@@ -71,7 +71,7 @@ function apple(opts: {
       ? { status: opts.startStatus, text: '{"errors":[{"status":"500","code":"UNEXPECTED_ERROR"}]}' }
       : json({ data: { id: 'NEW', attributes: { number: 741, executionProgress: 'PENDING' } } }),
   );
-  w.url(`${BASE}/v1/apps?limit=10`, json({ data: [{ id: 'APP', attributes: { bundleId: 'com.hassan.prayerapp' } }] }));
+  w.url(`${BASE}/v1/apps?limit=10`, json({ data: [{ id: 'APP', attributes: { bundleId: 'com.goma.salat' } }] }));
   const builds = opts.builds ?? [];
   w.url(
     `${BASE}/v1/builds?filter[app]=APP&limit=30&sort=-uploadedDate&include=preReleaseVersion&fields[builds]=version,processingState,uploadedDate,preReleaseVersion&fields[preReleaseVersions]=version`,

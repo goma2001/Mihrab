@@ -53,10 +53,10 @@ import * as xc from './xcodeCloud.ts';
 /** What the tag's Desktop run attaches: an .exe, an AppImage, a .deb and
  *  an .rpm, each for x64 and arm64. */
 export const DESKTOP_INSTALLERS = 8;
-/** The version the apt, dnf and pacman repositories serve (MihrabHQ/packages). */
-export const PACKAGES_VERSION_URL = 'https://mihrabhq.github.io/packages/version.txt';
-/** The tag Mihrab Web was built from (MihrabHQ.github.io's publish workflow). */
-export const WEB_VERSION_URL = 'https://mihrabhq.github.io/version.txt';
+/** The version the apt, dnf and pacman repositories serve (goma2001/packages). */
+export const PACKAGES_VERSION_URL = 'https://goma2001.github.io/packages/version.txt';
+/** The tag Mihrab Web was built from (goma2001.github.io's publish workflow). */
+export const WEB_VERSION_URL = 'https://goma2001.github.io/version.txt';
 
 export function caskVersion(cask: string): string {
   return /.*version "(.*)".*/.exec(cask)?.[1] ?? '';
@@ -236,7 +236,7 @@ export async function verify(ctx: Ctx, tag: string, opts: { self?: string } = {}
   }
 
   // ── V8 ──
-  const recipe = fs.readText(`${ctx.root}/contrib/fdroid/com.prayer_times.yml`);
+  const recipe = fs.readText(`${ctx.root}/contrib/fdroid/com.goma.salat.yml`);
   if (has(recipe, `CurrentVersion: ${version}`)) ok('V8', `F-Droid recipe CurrentVersion is ${version}`);
   else fail('V8', `F-Droid recipe CurrentVersion != ${version}`);
 
@@ -355,9 +355,9 @@ export async function verify(ctx: Ctx, tag: string, opts: { self?: string } = {}
   // ── V13 — WINDOWS, LINUX AND THE WEB ──
   //
   // None of them is built on this Mac: the tag's Desktop run builds the
-  // installers and attaches them (about 40 minutes), MihrabHQ/packages
+  // installers and attaches them (about 40 minutes), goma2001/packages
   // serves the deb and rpm from the release within the hour after, and
-  // MihrabHQ.github.io rebuilds Mihrab Web from the tag within the hour.
+  // goma2001.github.io rebuilds Mihrab Web from the tag within the hour.
   // So "not yet" is pending, and only a run that finished red, or a
   // finished run with nothing attached, is a failure.
   const installers = (rel?.assets ?? [])
@@ -390,10 +390,10 @@ export async function verify(ctx: Ctx, tag: string, opts: { self?: string } = {}
   };
   const repoVersion = await served(PACKAGES_VERSION_URL);
   if (repoVersion === version) ok('V13', `apt, dnf and pacman repositories serve ${version}`);
-  else pend('V13', `apt, dnf and pacman repositories serve ${repoVersion || 'nothing readable'} — MihrabHQ/packages publishes hourly once the deb and rpm are attached`);
+  else pend('V13', `apt, dnf and pacman repositories serve ${repoVersion || 'nothing readable'} — goma2001/packages publishes hourly once the deb and rpm are attached`);
   const webVersion = await served(WEB_VERSION_URL);
   if (webVersion === tag) ok('V13', `Mihrab Web is built from ${tag}`);
-  else pend('V13', `Mihrab Web is built from ${webVersion || 'an unknown version'} — MihrabHQ.github.io rebuilds hourly from the latest release`);
+  else pend('V13', `Mihrab Web is built from ${webVersion || 'an unknown version'} — goma2001.github.io rebuilds hourly from the latest release`);
 
   r.say('');
   if (!r.failed && r.pending) {

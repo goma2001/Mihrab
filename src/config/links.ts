@@ -7,15 +7,26 @@
  * people to, and Settings sent everyone to the source tree rather than to
  * the page written for them.
  *
- * The website is the front door. GitHub is for people who want the source,
- * which is a different audience and a different link.
+ * This fork (صلاتي) has no website yet, so the front door is its own
+ * repository: the releases page is where the app is downloaded from,
+ * and the source is where issues are filed. When a site exists, point
+ * SALATY_WEBSITE at it and keep SALATY_REPO for the source.
+ *
+ * The upstream project (Mihrab, MihrabHQ/Mihrab) is named only in the
+ * About screen's lineage note — nowhere else does the app point at it.
  */
 
-/** The project's own site. What a stranger should be handed. */
-export const MIHRAB_WEBSITE = 'https://mihrab.elghamri.se';
+/** The project's own front door. What a stranger should be handed. */
+export const SALATY_WEBSITE = 'https://github.com/goma2001/Mihrab';
 
 /** Shown rather than linked — a bare host reads better than a URL. */
-export const MIHRAB_WEBSITE_LABEL = 'mihrab.elghamri.se';
+export const SALATY_WEBSITE_LABEL = 'github.com/goma2001/Mihrab';
 
 /** The source. Still linked from the attributions, where it belongs. */
-export const MIHRAB_REPO = 'https://github.com/MihrabHQ/Mihrab';
+export const SALATY_REPO = 'https://github.com/goma2001/Mihrab';
+
+/**
+ * The upstream project this fork is built on. Used ONLY for the lineage
+ * note on the About screen — nowhere else does the app point at upstream.
+ */
+export const UPSTREAM_MIHRAB_REPO = 'https://github.com/MihrabHQ/Mihrab';

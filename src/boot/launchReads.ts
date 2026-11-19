@@ -31,10 +31,10 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 export const LAUNCH_KEYS = {
   settings: 'prayerapp.settings.v1',
   secureFallback: 'prayerapp.location.fallback.v1',
-  sky: '@mihrab/skyTheme/v1',
-  layout: '@mihrab/todayLayout/v1',
-  clocks: 'mihrab.prayer.utcOffset.v1',
-  words: '@mihrab/dayWords/v1',
+  sky: '@salaty/skyTheme/v1',
+  layout: '@salaty/todayLayout/v1',
+  clocks: 'salaty.prayer.utcOffset.v1',
+  words: '@salaty/dayWords/v1',
 } as const;
 const KEYS: ReadonlySet<string> = new Set(Object.values(LAUNCH_KEYS));
 
@@ -51,7 +51,7 @@ function store(): Fast | null {
   try {
     // Lazy: nothing of the native module loads until the first read.
     const { MMKV } = require('react-native-mmkv') as { MMKV: new (c: { id: string }) => Fast };
-    fast = new MMKV({ id: 'mihrab.launch' });
+    fast = new MMKV({ id: 'salaty.launch' });
   } catch {
     fast = null;
   }

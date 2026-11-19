@@ -19,6 +19,7 @@ import { useTranslation } from 'react-i18next';
 import { usePrayerSettings } from '../../../context/PrayerSettingsContext';
 import { useAppPalette } from '../../../hooks/useAppPalette';
 import { LiveActivityCard } from '../LiveActivityCard';
+import { FloatingButtonCard } from '../FloatingButtonCard';
 import { LIVE_ACTIVITY_SHOW_BEFORE_OPTIONS } from '../../../settings/prePrayerReminder';
 import { MalikiAlertsCard } from '../MalikiAlertsCard';
 import { NestedPageRows } from '../NestedPageRows';
@@ -165,6 +166,11 @@ export function NotificationSettingsScreen() {
             nobody thought to look. It owns no modals, so the page's
             back-deferral is unaffected. */}
         <LiveActivityCard onOpenShowFromPicker={openShowFrom} />
+        {/* The floating prayer button is a notification too, in the
+            same sense: a countdown to the next prayer that lives
+            outside the app, above whatever else is on screen. Android
+            only, and the card renders nothing anywhere else. */}
+        <FloatingButtonCard />
       </SettingsPage>
 
       <SoundPickerModal

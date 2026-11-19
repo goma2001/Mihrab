@@ -74,7 +74,7 @@ describe('a run that stops partway can be undone in one line', () => {
       // Every locale page the stamp reaches, not just the English one.
       'docs/sv/index.html',
       'docs/ar/index.html',
-      'contrib/fdroid/com.prayer_times.yml',
+      'contrib/fdroid/com.goma.salat.yml',
       // The one that was missing: the entry is appended BEFORE the release
       // commit, so rerunning after a failed publish would add a second
       // entry for the same version.

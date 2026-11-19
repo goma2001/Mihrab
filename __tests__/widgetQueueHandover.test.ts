@@ -32,7 +32,7 @@ import { readFileSync } from 'fs';
 import path from 'path';
 
 const KOTLIN = path.join(
-  __dirname, '..', 'android', 'app', 'src', 'main', 'java', 'com', 'prayer_times',
+  __dirname, '..', 'android', 'app', 'src', 'main', 'java', 'com', 'goma', 'salat',
 );
 const src = (name: string) => readFileSync(path.join(KOTLIN, `${name}.kt`), 'utf8');
 

@@ -360,7 +360,7 @@ describe('the store', () => {
     // location and so no times: the walkthrough at 16:14 was the night.
     const AsyncStorage = require('@react-native-async-storage/async-storage').default;
     const at = async (h: number, m: number) => {
-      await AsyncStorage.removeItem("@mihrab/skyTheme/v1");
+      await AsyncStorage.removeItem("@salaty/skyTheme/v1");
       _resetSkyThemeForTests();
       await restoreSkyTheme(() => new Date(2026, 9, 13, h, m));
       return getSkyTheme().passage;
@@ -371,7 +371,7 @@ describe('the store', () => {
     expect(await at(19, 0)).toBe('dusk');
     expect(await at(23, 0)).toBe('night');
     // The hero's first real sky still wins.
-    await AsyncStorage.removeItem("@mihrab/skyTheme/v1");
+    await AsyncStorage.removeItem("@salaty/skyTheme/v1");
     _resetSkyThemeForTests();
     publishSkyTheme(SKIES.dawn);
     await restoreSkyTheme(() => new Date(2026, 9, 13, 16, 14));

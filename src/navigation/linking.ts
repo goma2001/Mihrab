@@ -1,5 +1,5 @@
 /**
- * Where a `mihrab://` link lands.
+ * Where a `salaty://` link lands.
  *
  * Widgets were the only sender, and notifications are the second — see
  * `notificationRoute`, and #27, where every tapped reminder left you
@@ -16,7 +16,7 @@
  *
  * The scheme is app-private. Nothing outside the app is expected to send one,
  * and nothing a link can ask for is destructive — the worst a forged
- * `mihrab://` does is change which tab is showing.
+ * `salaty://` does is change which tab is showing.
  */
 import { isDesktop } from '../responsive/breakpoints';
 import {
@@ -31,10 +31,10 @@ import { Linking, Platform } from 'react-native';
 import { notificationRoute } from '../notifications/notificationRoute';
 import type { RootStackParamList } from './types';
 
-export const MIHRAB_SCHEME = 'mihrab://';
+export const SALATY_SCHEME = 'salaty://';
 
 /** The month's prayer times, opened on the sheet that is shared and printed. */
-export const MONTH_SHARE_LINK = `${MIHRAB_SCHEME}month?share=1`;
+export const MONTH_SHARE_LINK = `${SALATY_SCHEME}month?share=1`;
 
 /** A link's boolean: present and `1` is true, anything else is not. */
 function flag(value: string): boolean {
@@ -68,7 +68,7 @@ function positiveInt(value: string): number | undefined {
  * A settings page opened by a link has Settings under it.
  *
  * React Navigation builds a link's state from the path alone, so
- * mihrab://downloads on a cold start — the "download stopped"
+ * salaty://downloads on a cold start — the "download stopped"
  * notification, tapped hours later — produced a stack of one: the page,
  * with nothing to go back to. Its back control then did nothing and
  * Android's back left the app. Every `Settings…` page is a page OF the
@@ -139,7 +139,7 @@ function withoutBase(path: string): string {
 }
 
 export const linking: LinkingOptions<RootStackParamList> = {
-  prefixes: [MIHRAB_SCHEME],
+  prefixes: [SALATY_SCHEME],
   ...(WEB_BASE_PATH
     ? {
         getPathFromState: (state, options) =>
@@ -189,7 +189,7 @@ export const linking: LinkingOptions<RootStackParamList> = {
           QuranTab: 'quran',
           TasbihTab: 'tasbih',
           /**
-           * mihrab://duas — the index; mihrab://duas/evening — that
+           * salaty://duas — the index; salaty://duas/evening — that
            * category, opened (#39).
            *
            * The name is checked by the screen rather than here: a
@@ -203,7 +203,7 @@ export const linking: LinkingOptions<RootStackParamList> = {
         },
       },
       /**
-       * mihrab://read/2?initialPage=3&scrollToAyah=5
+       * salaty://read/2?initialPage=3&scrollToAyah=5
        *
        * The query keys are the ROUTE PARAM names, spelled exactly as in
        * `parse` below — React Navigation matches on those, so a link
@@ -239,7 +239,7 @@ export const linking: LinkingOptions<RootStackParamList> = {
         },
       },
       /**
-       * mihrab://sync
+       * salaty://sync
        *
        * Pairing is the one settings destination worth reaching directly:
        * it is what a "sync could not finish" notice would link to, and it
@@ -247,27 +247,27 @@ export const linking: LinkingOptions<RootStackParamList> = {
        * the other device with its code on screen.
        */
       /**
-       * mihrab://khatmah — the page that starts a plan. (A khatmah reminder
+       * salaty://khatmah — the page that starts a plan. (A khatmah reminder
        * does NOT land here: it opens the reader at the plan's next page, or
        * the Qur'an tab — see `notificationRoute`.) Opened while a plan is
        * running, the screen steps aside to the Qur'an tab.
        */
       Khatmah: 'khatmah',
-      /** mihrab://hifz — the Hifz page (#121); the hifz reminder lands here. */
+      /** salaty://hifz — the Hifz page (#121); the hifz reminder lands here. */
       Hifz: 'hifz',
       SettingsDevices: 'sync',
       /**
-       * mihrab://downloads — Settings → Downloads.
+       * salaty://downloads — Settings → Downloads.
        *
        * Where a download that stopped is picked up again (#55), and so
        * where the "download stopped" notification lands.
        */
       SettingsDownloads: 'downloads',
-      /** mihrab://widgets — Settings → Widgets (Android). */
+      /** salaty://widgets — Settings → Widgets (Android). */
       SettingsWidgets: 'widgets',
       QuranTajweed: 'tajweed',
       /**
-       * mihrab://month — the month's table; mihrab://month?share=1 — the
+       * salaty://month — the month's table; salaty://month?share=1 — the
        * same screen already on its shareable sheet (`MONTH_SHARE_LINK`),
        * with the share buttons under it. The sheet is the app's one
        * thing worth handing to someone without the app, so it gets a
@@ -277,7 +277,7 @@ export const linking: LinkingOptions<RootStackParamList> = {
         path: 'month',
         parse: { share: flag as (v: string) => boolean },
       },
-      /** mihrab://help — Settings → About → Help Mihrab. */
+      /** salaty://help — Settings → About → Help Mihrab. */
       SettingsHelpMihrab: 'help',
       /**
        * Absent on a Mac, where `RootNavigator` does not register the

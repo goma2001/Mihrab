@@ -22,8 +22,8 @@ Bundle ids:
 
 | Channel | Android applicationId | iOS bundle id |
 |---|---|---|
-| Stable | `com.prayer_times` | `com.hassan.prayerapp` |
-| Beta | `com.prayer_times.beta` | — (TestFlight uses the same `com.hassan.prayerapp`) |
+| Stable | `com.goma.salat` | `com.hassan.prayerapp` |
+| Beta | `com.goma.salat.beta` | — (TestFlight uses the same `com.hassan.prayerapp`) |
 
 ## 2. Stack
 
@@ -111,14 +111,14 @@ fastlane/metadata/            Play / App Store listing copy and the Play changel
 - `src/widget/buildWidgetPayload.ts` — JSON pushed to both platform widgets; rolls to tomorrow after Isha.
 - `src/widget/syncPrayerWidget.ts` — called from HomeScreen on every focus.
 - `src/native/PrayerWidget.ts` — typed wrapper for the `PrayerWidget` native module (Android + iOS).
-- `android/app/src/main/java/com/prayer_times/PrayerWidget*.kt` — Android widget providers + module.
+- `android/app/src/main/java/com/goma/salat/PrayerWidget*.kt` — Android widget providers + module.
 - `ios/PrayerWidgetExtension/PrayerWidgetExtension.swift` — WidgetKit timeline provider; handles day-rollover.
 
 **Live Activity (v2.1.0+)**
 - `src/liveActivity/syncLiveActivity.ts` — platform-dispatch orchestrator.
 - `src/notifications/liveActivity.ts` — JS-side Android renderer (channel + notifee fallback).
 - `src/native/MihrabLiveActivity.ts` — typed wrapper for the Android Kotlin module.
-- `android/app/src/main/java/com/prayer_times/MihrabLiveActivityModule.kt` — Kotlin module with platform `Notification.Builder` + `setShortCriticalText` + `setRequestPromotedOngoing` for Android 16 status-bar chip.
+- `android/app/src/main/java/com/goma/salat/MihrabLiveActivityModule.kt` — Kotlin module with platform `Notification.Builder` + `setShortCriticalText` + `setRequestPromotedOngoing` for Android 16 status-bar chip.
 - `src/native/PrayerLiveActivity.ts` — iOS ActivityKit wrapper.
 - `ios/PrayerApp/PrayerLiveActivity.swift` + `.m` — ActivityKit bridge.
 - `ios/PrayerWidgetExtension/PrayerLiveActivityWidget.swift` — SwiftUI Lock Screen + Dynamic Island views.
@@ -166,7 +166,7 @@ Or just open `ios/PrayerApp.xcworkspace` in Xcode and Run.
 
 ## 5. Native modules
 
-All Android Kotlin modules live in `android/app/src/main/java/com/prayer_times/`. All iOS Swift / Obj-C live in `ios/PrayerApp/` (main app target) or `ios/PrayerWidgetExtension/` (widget extension target).
+All Android Kotlin modules live in `android/app/src/main/java/com/goma/salat/`. All iOS Swift / Obj-C live in `ios/PrayerApp/` (main app target) or `ios/PrayerWidgetExtension/` (widget extension target).
 
 | Module | Android | iOS | JS wrapper | What it does |
 |---|---|---|---|---|

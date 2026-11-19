@@ -144,7 +144,7 @@ private final class ScannerViewController: UIViewController,
   var onFinish: ((String?) -> Void)?
 
   private let session = AVCaptureSession()
-  private let sessionQueue = DispatchQueue(label: "mihrab.scanqr.session")
+  private let sessionQueue = DispatchQueue(label: "salaty.scanqr.session")
   private var previewLayer: AVCaptureVideoPreviewLayer?
   private let hintText: String
   private let cancelTitle: String

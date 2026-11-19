@@ -125,10 +125,10 @@ scripts/check-apk-hardening.py android/app/build/outputs/apk/github/release/app-
 cd android && ./gradlew assembleGithubRelease -PreactNativeArchitectures=arm64-v8a -PmemtagMode=sync
 
 # the switches, on a GrapheneOS phone over adb (they are permissions there)
-adb shell pm revoke com.prayer_times android.permission.OTHER_SENSORS   # then open mihrab://qibla
-adb shell pm grant  com.prayer_times android.permission.OTHER_SENSORS
-adb shell pm revoke com.prayer_times android.permission.INTERNET
-adb shell pm grant  com.prayer_times android.permission.INTERNET
+adb shell pm revoke com.goma.salat android.permission.OTHER_SENSORS   # then open mihrab://qibla
+adb shell pm grant  com.goma.salat android.permission.OTHER_SENSORS
+adb shell pm revoke com.goma.salat android.permission.INTERNET
+adb shell pm grant  com.goma.salat android.permission.INTERNET
 ```
 
 The exploit-protection switches themselves (dynamic code loading, memory

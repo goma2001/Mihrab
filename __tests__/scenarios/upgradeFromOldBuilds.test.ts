@@ -146,7 +146,7 @@ beforeEach(async () => {
   // The utcOffset this phone last stored under, so the upgrade is not
   // mistaken for the clocks changing.
   await AsyncStorage.setItem(
-    'mihrab.prayer.utcOffset.v1',
+    'salaty.prayer.utcOffset.v1',
     JSON.stringify({ minutes: 120, at: '2026-10-10T08:00:00.000Z' }),
   );
 });
@@ -289,7 +289,7 @@ describe('from 2.31', () => {
       },
     );
     await AsyncStorage.setItem(
-      'mihrab.prayer.utcOffset.v1',
+      'salaty.prayer.utcOffset.v1',
       JSON.stringify({ minutes: 60, at: '2026-10-10T08:00:00.000Z' }),
     );
     const s = await loadSettings();

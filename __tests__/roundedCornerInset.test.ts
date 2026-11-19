@@ -100,7 +100,7 @@ describe('the platform is the one that knows', () => {
     'main',
     'java',
     'com',
-    'prayer_times',
+    'goma', 'salat',
     'DisplayCutoutModule.kt',
   );
   const js = read('src', 'native', 'DisplayCutout.ts');

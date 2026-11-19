@@ -23,7 +23,7 @@ from qrcode.constants import ERROR_CORRECT_H
 from PIL import Image, ImageDraw
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
-URL = "https://mihrab.elghamri.se/"
+URL = "https://github.com/goma2001/Mihrab"
 LOGO = ROOT / "assets" / "app-icon-rounded.png"
 OUT = ROOT / "assets" / "qr-code.png"
 SIZE = 1024

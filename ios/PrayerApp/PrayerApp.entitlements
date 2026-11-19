@@ -4,7 +4,7 @@
 <dict>
 	<key>com.apple.security.application-groups</key>
 	<array>
-		<string>group.com.prayerapp</string>
+		<string>group.com.goma.salat</string>
 	</array>
 	<!--
 	  Keychain access group — required for react-native-encrypted-storage's

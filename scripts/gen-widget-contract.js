@@ -8,7 +8,7 @@
  *                                                          and the reference
  *                                                          readers
  *   ios/Contract/WidgetContract.generated.swift            Codable structs
- *   android/app/src/main/java/com/prayer_times/contract/WidgetContract.kt
+ *   android/app/src/main/java/com/goma/salat/contract/WidgetContract.kt
  *                                                          data classes
  *   contract-tests/{swift,kotlin}/…Registry…               type name → reader,
  *                                                          for the native
@@ -48,7 +48,7 @@ const OUT = {
     'main',
     'java',
     'com',
-    'prayer_times',
+    'goma', 'salat',
     'contract',
     'WidgetContract.kt',
   ),
@@ -461,7 +461,7 @@ function genKotlinRegistry(model) {
   const o = [
     `// ${BANNER}`,
     '',
-    'package com.prayer_times.contract',
+    'package com.goma.salat.contract',
     '',
     'import org.json.JSONArray',
     'import org.json.JSONObject',
@@ -866,7 +866,7 @@ function genKotlin(model) {
     '// null; a list drops the elements it cannot read. Formatting and time',
   );
   o.push('// maths live in WallClock.kt, never here.', '');
-  o.push('package com.prayer_times.contract', '');
+  o.push('package com.goma.salat.contract', '');
   o.push('import org.json.JSONArray');
   o.push('import org.json.JSONException');
   o.push('import org.json.JSONObject', '');

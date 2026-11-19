@@ -1,0 +1,521 @@
+package com.goma.salat
+
+import android.app.Activity
+import android.content.Context
+import android.content.Intent
+import android.content.res.Configuration
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.os.Build
+import android.os.Handler
+import android.os.Looper
+import android.util.Log
+import android.view.PixelCopy
+import android.view.View
+import android.view.ViewGroup
+import android.view.animation.DecelerateInterpolator
+import android.widget.ImageView
+import java.io.File
+import java.io.FileOutputStream
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
+import java.util.concurrent.Executors
+import java.util.concurrent.Future
+import java.util.concurrent.TimeUnit
+
+/**
+ * THE LAST SCREEN, AS THE FIRST FRAME.
+ *
+ * A cold start used to go: the system's splash, then an empty window in
+ * the theme colour while React Native started, then a skeleton, then the
+ * Today screen arriving in pieces — about a second of nothing useful
+ * (measured with tools/startup-trace/video.sh). Most of that second is
+ * before any JavaScript runs, so no amount of caching in the screens could
+ * cover it.
+ *
+ * So the screen itself is kept. When the app is left while Today is on
+ * screen (JS says when that is: `setEligible`), the window's pixels are
+ * copied, exactly as drawn, into a file in no-backup storage. On the next
+ * cold start the file is decoded on a background thread from the moment
+ * the process exists, and the activity's FIRST frame is that picture laid
+ * over the whole window — the blank never draws. React Native, the
+ * skeleton and the live screen all build underneath, unseen; when Today
+ * has settled, JS calls `hide` and the picture fades into the live screen,
+ * so a countdown that has moved on changes in the fade instead of jumping.
+ *
+ * The picture is only used when it is the screen the person is about to
+ * get: the same app version, less than a month old, the
+ * same window size, night mode, font scale and density, the same in-app
+ * look (every setting — `setLookKey`), and a start that opens the app
+ * rather than something in it. A deep link, a widget tap or a notification opens another screen
+ * and gets no picture. Whatever happens on the JS side, it is gone after
+ * a few seconds.
+ *
+ * Android 12+ still draws its own starting window (icon on the theme
+ * colour) before the process exists; nothing in an app can replace that.
+ */
+internal object LaunchSnapshot {
+  private const val TAG = "MihrabSnapshot"
+  private const val PREFS = "launch_snapshot"
+  /**
+   * A month. Not "the same day": the first open of a morning is the
+   * launch that most needs the picture, and nor is a few days away a
+   * reason for a blank one — the hero runs from the picture's hour to
+   * now whatever lies between (src/boot/launchWarp.ts), and the rest of
+   * the screen fades. Past a month the day's times have moved by most of
+   * an hour and the picture is another season's screen.
+   */
+  private const val MAX_AGE_MS = 30L * 24 * 60 * 60 * 1000L
+  /** Longest the first frame will wait for a decode still in flight. */
+  private const val DECODE_WAIT_MS = 600L
+  /** The picture comes down by itself after this, whatever JS does. */
+  private const val SAFETY_HIDE_MS = 5000L
+  private const val FADE_MS = 220L
+  /**
+   * From JS's commit of the live screen to the fade: the UI thread mounts
+   * that commit and draws it in the next frame or two, whatever the JS
+   * thread is busy with afterwards. Measured on a Pixel 10 Pro: the hero
+   * is still, with the picture's numbers, for every millisecond of this and
+   * the fade, so both are as short as a frame or two of margin allows
+   * (src/boot/launchWarp.ts, WARP_AFTER_HIDE_MS, follows them).
+   */
+  private const val MOUNT_GRACE_MS = 80L
+
+  private val io = Executors.newSingleThreadExecutor { r -> Thread(r, "mihrab-snapshot").apply { isDaemon = true } }
+  private val main = Handler(Looper.getMainLooper())
+
+  @Volatile private var eligible = false
+  @Volatile private var preloaded: Future<Bitmap?>? = null
+  private var overlay: ImageView? = null
+  /** The picture this window opened on, for JS: "at,targetAt,fromAt,posed". */
+  @Volatile var shownState: String = ""
+    private set
+  @Volatile private var heroTarget = 0L
+  @Volatile private var heroFrom = 0L
+  @Volatile private var heroPosed = false
+
+  /**
+   * What the hero counts down to, and from — kept with the next picture.
+   * `posed`: the next picture shows the hero at `fromAt` (src/boot/poseHero.ts).
+   */
+  fun setHeroState(targetAt: Long, fromAt: Long, posed: Boolean) {
+    heroTarget = targetAt
+    heroFrom = fromAt
+    heroPosed = posed
+  }
+
+  // ── What JS tells us ─────────────────────────────────────────────────
+
+  /** Today is on screen, settled, scrolled to the top: worth keeping. */
+  fun setEligible(value: Boolean) {
+    eligible = value
+  }
+
+  /**
+   * The app's look (theme, accent, language…), as one opaque string.
+   * `nightMatters`: the app's own screens follow the system's night mode
+   * (appearance "system"), so a picture taken under the other one is not
+   * this screen. Under an explicit light or dark theme, or the Sky theme,
+   * which paints its own hour, the system's night mode decides nothing
+   * on screen — and a phone on a scheduled dark theme flips it at dusk
+   * and dawn, which refused every picture kept across them and opened
+   * the app on its skeleton.
+   */
+  fun setLookKey(context: Context, key: String, nightMatters: Boolean) {
+    val p = prefs(context)
+    if (p.getString("look_current", null) != key || p.getBoolean("look_night_matters", true) != nightMatters) {
+      p.edit().putString("look_current", key).putBoolean("look_night_matters", nightMatters).apply()
+    }
+  }
+
+  // ── Keeping the screen ───────────────────────────────────────────────
+
+  /**
+   * MainActivity.onPause, or JS: copy the window if Today is what it
+   * shows. With `heroFile` (a PNG, from JS's posed twin of the hero), that
+   * image is drawn over the window's hero at (`heroX`, `heroY`) dp, so the
+   * picture shows the hero at the prayer rather than as it was.
+   */
+  fun capture(activity: Activity, heroFile: String? = null, heroX: Float = 0f, heroY: Float = 0f, fromJs: Boolean = false) {
+    // JS asks to keep the screen only once the live one is up and settled:
+    // a picture still over it at that point has outlived its hide — it
+    // comes down now rather than on the safety timer.
+    if (fromJs && overlay != null) hide()
+    // JS asks only when the screen is worth keeping, and may have turned
+    // `eligible` off again (for its posed picture) before this ran.
+    if ((!eligible && !fromJs) || overlay != null || Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
+      Log.i(TAG, "not kept: eligible=$eligible showing=${overlay != null}")
+      return
+    }
+    // The pose is JS's, and only JS's capture carries it: a copy native
+    // takes on its own shows the hero as it is.
+    val posed = heroFile != null && heroPosed
+    val density = activity.resources.displayMetrics.density
+    val window = activity.window ?: return
+    val decor = window.decorView
+    val w = decor.width
+    val h = decor.height
+    if (w <= 0 || h <= 0) return
+    val bitmap = try {
+      Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888)
+    } catch (e: Throwable) {
+      return
+    }
+    val meta = Meta.current(activity, w, h, System.currentTimeMillis(), posed)
+    try {
+      PixelCopy.request(window, bitmap, { result ->
+        if (result == PixelCopy.SUCCESS) {
+          val app = activity.applicationContext
+          io.execute {
+            if (heroFile != null) drawHero(bitmap, heroFile, heroX * density, heroY * density)
+            write(app, bitmap, meta)
+          }
+        } else {
+          bitmap.recycle()
+        }
+      }, main)
+    } catch (e: Throwable) {
+      bitmap.recycle()
+    }
+  }
+
+  /** The posed hero over the window's: the file is JS's to make and ours to delete. */
+  private fun drawHero(window: Bitmap, file: String, x: Float, y: Float) {
+    try {
+      val path = file.removePrefix("file://")
+      val hero = BitmapFactory.decodeFile(path) ?: return
+      android.graphics.Canvas(window).drawBitmap(hero, x, y, null)
+      hero.recycle()
+      File(path).delete()
+    } catch (e: Throwable) {
+      Log.w(TAG, "could not draw the posed hero", e)
+    }
+  }
+
+  private fun write(context: Context, bitmap: Bitmap, meta: Meta) {
+    try {
+      val dir = dir(context)
+      val name = "snapshot-${meta.at}.webp"
+      val tmp = File(dir, "$name.tmp")
+      FileOutputStream(tmp).use { out ->
+        @Suppress("DEPRECATION")
+        val format = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) Bitmap.CompressFormat.WEBP_LOSSY else Bitmap.CompressFormat.WEBP
+        bitmap.compress(format, 88, out)
+      }
+      val file = File(dir, name)
+      if (!tmp.renameTo(file)) return
+      // The record names the file, so a picture and a record from two
+      // different moments can never be paired.
+      meta.save(prefs(context), name)
+      Log.i(TAG, "kept ${bitmap.width}x${bitmap.height} as $name (${file.length() / 1024} KB)")
+      dir.listFiles()?.forEach { if (it.name != name) it.delete() }
+    } catch (e: Throwable) {
+      Log.w(TAG, "could not keep the screen", e)
+    } finally {
+      bitmap.recycle()
+    }
+  }
+
+  // ── Showing it ───────────────────────────────────────────────────────
+
+  /**
+   * MainApplication.onCreate, before anything else is slow: start decoding
+   * the kept screen if it could still be used, so the first frame need not
+   * wait. A process started for a widget or an alarm decodes it for
+   * nothing and lets it go a few seconds later.
+   */
+  fun preload(context: Context) {
+    val app = context.applicationContext
+    val stored = Meta.load(prefs(app)) ?: return
+    if (!stored.stillCurrent(app)) {
+      Log.i(TAG, "kept screen is out of date: $stored look_current=${prefs(app).getString("look_current", null)}")
+      return
+    }
+    val file = File(dir(app), stored.file ?: return)
+    if (!file.exists()) return
+    preloaded = io.submit<Bitmap?> {
+      try {
+        val opts = BitmapFactory.Options()
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) opts.inPreferredConfig = Bitmap.Config.HARDWARE
+        BitmapFactory.decodeFile(file.path, opts)
+      } catch (e: Throwable) {
+        null
+      }
+    }
+    main.postDelayed({ preloaded = null }, SAFETY_HIDE_MS)
+  }
+
+  /**
+   * MainActivity.onCreate, after super: lay the kept screen over the
+   * window. Every window that opens the app, not only a process's first:
+   * a task swiped away in Recents leaves the process behind, and the next
+   * launch is a new window in it — a launch to the person, with the same
+   * wait for the live screen and the same run to come. A window that is
+   * not one (a rotation's, a deep link's) fails the checks below.
+   */
+  fun show(activity: Activity) {
+    shownState = ""
+    val warm = preloaded
+    preloaded = null
+    if (!isPlainLaunch(activity.intent)) {
+      Log.i(TAG, "not a plain launch: ${activity.intent}")
+      return
+    }
+    val stored = Meta.load(prefs(activity)) ?: return
+    if (!stored.matches(activity)) {
+      Log.i(TAG, "kept screen does not fit this window")
+      return
+    }
+    val pending = warm ?: decodeNow(activity, stored) ?: return
+    val bitmap = try {
+      pending.get(DECODE_WAIT_MS, TimeUnit.MILLISECONDS)
+    } catch (e: Throwable) {
+      null
+    } ?: return
+    if (bitmap.width != stored.width || bitmap.height != stored.height) return
+    val view = ImageView(activity).apply {
+      setImageBitmap(bitmap)
+      scaleType = ImageView.ScaleType.FIT_XY
+      // A tap on a picture of a button must not fall through to whatever
+      // is half-built underneath it.
+      isClickable = true
+      importantForAccessibility = View.IMPORTANT_FOR_ACCESSIBILITY_NO_HIDE_DESCENDANTS
+    }
+    (activity.window.decorView as? ViewGroup)?.addView(
+      view,
+      ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT),
+    ) ?: return
+    overlay = view
+    shownState = "${stored.at},${stored.heroTarget},${stored.heroFrom},${if (stored.heroPosed) 1 else 0}"
+    Log.i(TAG, "showing the kept screen")
+    main.postDelayed({ hide() }, SAFETY_HIDE_MS)
+  }
+
+  /**
+   * A window of a process that decoded nothing for it — started before it
+   * had one (a widget's refresh, an alarm), or a process that already had
+   * a window and let its decode go: a few dozen milliseconds on the main
+   * thread, against a blank window for the whole of the screen's build.
+   */
+  private fun decodeNow(context: Context, stored: Meta): Future<Bitmap?>? {
+    val file = File(dir(context), stored.file ?: return null)
+    if (!file.exists()) return null
+    return io.submit<Bitmap?> {
+      try {
+        val opts = BitmapFactory.Options()
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) opts.inPreferredConfig = Bitmap.Config.HARDWARE
+        BitmapFactory.decodeFile(file.path, opts)
+      } catch (e: Throwable) {
+        null
+      }
+    }
+  }
+
+  /**
+   * A still of the screen as it is now, laid over the window and faded out
+   * over `durationMs` once the screen underneath has changed — so a change
+   * of the whole page at once (the Sky theme's switch from the dawn's dark
+   * to the morning's light, and back in the evening) is a crossfade rather
+   * than a cut. In memory only, nothing kept. Idempotent while one is up.
+   */
+  private var crossfadeView: ImageView? = null
+  fun crossfade(activity: Activity, durationMs: Long) {
+    if (overlay != null || crossfadeView != null || Build.VERSION.SDK_INT < Build.VERSION_CODES.O) return
+    val window = activity.window ?: return
+    val decor = window.decorView as? ViewGroup ?: return
+    val w = decor.width
+    val h = decor.height
+    if (w <= 0 || h <= 0) return
+    val bitmap = try {
+      Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888)
+    } catch (e: Throwable) {
+      return
+    }
+    try {
+      PixelCopy.request(window, bitmap, { result ->
+        if (result != PixelCopy.SUCCESS || crossfadeView != null) {
+          bitmap.recycle()
+          return@request
+        }
+        val view = ImageView(activity).apply {
+          setImageBitmap(bitmap)
+          scaleType = ImageView.ScaleType.FIT_XY
+          isClickable = false
+          importantForAccessibility = View.IMPORTANT_FOR_ACCESSIBILITY_NO_HIDE_DESCENDANTS
+        }
+        decor.addView(view, ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT))
+        crossfadeView = view
+        // Two frames for the new screen to be drawn underneath, then the fade.
+        main.postDelayed({
+          view.animate()
+            .alpha(0f)
+            .setDuration(durationMs)
+            .setInterpolator(DecelerateInterpolator())
+            .withEndAction {
+              decor.removeView(view)
+              view.setImageDrawable(null)
+              bitmap.recycle()
+              if (crossfadeView === view) crossfadeView = null
+            }
+            .start()
+        }, 2 * MOUNT_GRACE_MS)
+      }, main)
+    } catch (e: Throwable) {
+      bitmap.recycle()
+    }
+  }
+
+  /** The live screen is committed: fade the picture into it. Idempotent. */
+  fun hide() {
+    Log.i(TAG, "hide asked (showing=${overlay != null})")
+    main.postDelayed({
+      val view = overlay ?: return@postDelayed
+      overlay = null
+      view.isClickable = false
+      view.animate()
+        .alpha(0f)
+        .setDuration(FADE_MS)
+        .setInterpolator(DecelerateInterpolator())
+        .withEndAction {
+          (view.parent as? ViewGroup)?.removeView(view)
+          view.setImageDrawable(null)
+        }
+        .start()
+    }, MOUNT_GRACE_MS)
+  }
+
+  /**
+   * Started to open the app, not to open something in it: no link (a
+   * deep link's `salaty://…`) and no extras of anyone but the system's (a
+   * notification's press action carries its own). The launcher's
+   * MAIN/LAUNCHER and Recents both pass; so does a bare `am start -n`,
+   * which is how tools/startup-trace measures it. So does `salaty://today`
+   * on its own — the widgets' tap — which lands on the very screen a plain
+   * launch does, and is how many people open the app every day.
+   */
+  private fun isPlainLaunch(intent: Intent?): Boolean {
+    if (intent == null) return false
+    val data = intent.data
+    if (data != null) {
+      if (intent.action != Intent.ACTION_VIEW || !isTodayLink(data)) return false
+    } else if (intent.action != null && intent.action != Intent.ACTION_MAIN) return false
+    val extras = intent.extras ?: return true
+    return extras.keySet().all { it.startsWith("android.") || it.startsWith("com.android.") }
+  }
+
+  /** `salaty://today`, and nothing more: no path, no query. */
+  private fun isTodayLink(uri: android.net.Uri): Boolean =
+    uri.scheme == "mihrab" && uri.host == "today" && uri.path.isNullOrEmpty() && uri.query == null
+
+  private fun prefs(context: Context) = context.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
+
+  private fun dir(context: Context): File =
+    File(context.noBackupFilesDir, "launch-snapshot").apply { mkdirs() }
+
+  /** What the screen was taken under, and what it must match to be used. */
+  private data class Meta(
+    val width: Int,
+    val height: Int,
+    val night: Int,
+    val fontScale: Float,
+    val densityDpi: Int,
+    val version: Int,
+    val day: String,
+    val at: Long,
+    val look: String,
+    val heroTarget: Long = 0L,
+    val heroFrom: Long = 0L,
+    val file: String? = null,
+    val heroPosed: Boolean = false,
+    /**
+     * What the system decides about the screen's look and the app's
+     * settings do not say: the language and its direction when the app
+     * follows the system's, the 12/24-hour clock when it follows the
+     * system's, and the wallpaper's colour under Material You. A change
+     * to any of them is a different screen.
+     */
+    val system: String = "",
+  ) {
+    fun save(p: android.content.SharedPreferences, name: String) {
+      p.edit()
+        .putInt("w", width).putInt("h", height).putInt("night", night)
+        .putFloat("font", fontScale).putInt("dpi", densityDpi).putInt("version", version)
+        .putString("day", day).putLong("at", at).putString("look", look)
+        .putLong("heroTarget", heroTarget).putLong("heroFrom", heroFrom)
+        .putBoolean("heroPosed", heroPosed)
+        .putString("file", name).putString("system", system)
+        .commit()
+    }
+
+    /** Could this still be today's screen, before any window exists? */
+    fun stillCurrent(context: Context): Boolean {
+      val now = System.currentTimeMillis()
+      if (version != BuildConfig.VERSION_CODE) return false
+      // Either way round: a clock set back after the picture was kept
+      // (corrected by hand, a time zone) leaves a picture from "the
+      // future", and it is still this screen — the hero runs from the
+      // prayer it is in whatever the picture's (launchWarp.ts).
+      if (Math.abs(now - at) > MAX_AGE_MS) return false
+      val look = context.getSharedPreferences(PREFS, Context.MODE_PRIVATE).getString("look_current", null)
+      return look != null && look == this.look
+    }
+
+    /** …and is it, for this window? */
+    fun matches(activity: Activity): Boolean {
+      if (!stillCurrent(activity)) return false
+      val c = activity.resources.configuration
+      // -1: taken under a look the system's night mode has no say in.
+      if (night >= 0 && (c.uiMode and Configuration.UI_MODE_NIGHT_MASK) != night) return false
+      if (c.fontScale != fontScale || c.densityDpi != densityDpi) return false
+      if (systemLook(activity) != system) return false
+      val (w, h) = windowSize(activity)
+      return w == width && h == height
+    }
+
+    companion object {
+      fun current(activity: Activity, w: Int, h: Int, at: Long, posed: Boolean): Meta {
+        val c = activity.resources.configuration
+        val p = activity.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
+        val look = p.getString("look_current", "") ?: ""
+        val night = if (p.getBoolean("look_night_matters", true)) c.uiMode and Configuration.UI_MODE_NIGHT_MASK else -1
+        return Meta(w, h, night, c.fontScale, c.densityDpi,
+          BuildConfig.VERSION_CODE, dayOf(at), at, look, heroTarget, heroFrom, heroPosed = posed, system = systemLook(activity))
+      }
+
+      fun systemLook(context: Context): String {
+        val c = context.resources.configuration
+        val locales = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) c.locales.toLanguageTags() else @Suppress("DEPRECATION") c.locale.toString()
+        val accent = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+          try { context.getColor(android.R.color.system_accent1_500) } catch (e: Throwable) { 0 }
+        } else 0
+        return "$locales|${android.text.format.DateFormat.is24HourFormat(context)}|$accent"
+      }
+
+      fun load(p: android.content.SharedPreferences): Meta? {
+        val file = p.getString("file", null) ?: return null
+        return Meta(
+          p.getInt("w", 0), p.getInt("h", 0), p.getInt("night", -1), p.getFloat("font", 0f),
+          p.getInt("dpi", 0), p.getInt("version", -1), p.getString("day", "") ?: "",
+          p.getLong("at", 0L), p.getString("look", "") ?: "",
+          p.getLong("heroTarget", 0L), p.getLong("heroFrom", 0L), file,
+          p.getBoolean("heroPosed", false),
+          p.getString("system", "") ?: "",
+        )
+      }
+
+      private fun dayOf(ms: Long): String = SimpleDateFormat("yyyy-MM-dd", Locale.US).format(Date(ms))
+
+      private fun windowSize(activity: Activity): Pair<Int, Int> =
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+          val b = activity.windowManager.currentWindowMetrics.bounds
+          b.width() to b.height()
+        } else {
+          val p = android.graphics.Point()
+          @Suppress("DEPRECATION")
+          activity.windowManager.defaultDisplay.getRealSize(p)
+          p.x to p.y
+        }
+    }
+  }
+}

@@ -15,7 +15,7 @@
 -dontwarn com.facebook.hermes.**
 
 # ── App native modules ────────────────────────────────────────────────────────
--keep class com.prayer_times.** { *; }
+-keep class com.goma.salat.** { *; }
 
 # ── notifee ───────────────────────────────────────────────────────────────────
 -keep class io.invertase.notifee.** { *; }

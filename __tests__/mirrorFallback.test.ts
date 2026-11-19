@@ -68,7 +68,7 @@ let server: http.Server;
 let base = '';
 const realDir = process.env.MIRROR_DIR;
 
-const MIRROR = 'https://github.com/MihrabHQ/Mihrab/releases/download/';
+const MIRROR = 'https://github.com/goma2001/Mihrab/releases/download/';
 const ORIGINALS = [
   'https://cdn.jsdelivr.net/',
   'https://quranenc.com/',

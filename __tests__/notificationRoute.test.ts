@@ -57,7 +57,7 @@ describe('the ayah of the day opens its own ayah', () => {
       await notificationRoute({
         data: { route: ROUTE_AYAH_OF_DAY, surah: '18', ayah: '10' },
       } as never),
-    ).toBe('mihrab://read/18?scrollToAyah=10');
+    ).toBe('salaty://read/18?scrollToAyah=10');
   });
 
   it('still routes the ones scheduled before the route existed', async () => {
@@ -66,7 +66,7 @@ describe('the ayah of the day opens its own ayah', () => {
     // make the bug survive the fix for seven days.
     expect(
       await notificationRoute({ data: { surah: '2', ayah: '255' } } as never),
-    ).toBe('mihrab://read/2?scrollToAyah=255');
+    ).toBe('salaty://read/2?scrollToAyah=255');
   });
 
   it('refuses nonsense rather than routing to surah NaN', async () => {
@@ -87,11 +87,11 @@ describe('the khatmah reminder opens where the plan is NOW', () => {
     const url = await notificationRoute({
       data: { route: ROUTE_KHATMAH },
     } as never);
-    expect(url).toBe('mihrab://read/3?scrollToAyah=7&sessionKhatmah=1');
+    expect(url).toBe('salaty://read/3?scrollToAyah=7&sessionKhatmah=1');
     mockTarget = { page: 100, surah: 5, ayah: 1 };
     expect(
       await notificationRoute({ data: { route: ROUTE_KHATMAH } } as never),
-    ).toBe('mihrab://read/5?scrollToAyah=1&sessionKhatmah=1');
+    ).toBe('salaty://read/5?scrollToAyah=1&sessionKhatmah=1');
   });
 
   it('sends a muṣḥaf reader to the page instead', async () => {
@@ -100,7 +100,7 @@ describe('the khatmah reminder opens where the plan is NOW', () => {
       await notificationRoute({ data: { route: ROUTE_KHATMAH } } as never),
     // The ayah rides with the page: in another print of Ḥafṣ (IndoPak) the
     // reader opens where the ayah is, not at the Madinah page number.
-    ).toBe('mihrab://read/3?initialPage=42&scrollToAyah=7&sessionKhatmah=1');
+    ).toBe('salaty://read/3?initialPage=42&scrollToAyah=7&sessionKhatmah=1');
   });
 
   it('and says the visit is the plan’s, as the home card does', async () => {
@@ -143,7 +143,7 @@ describe('the khatmah reminder opens where the plan is NOW', () => {
     mockActive = null;
     expect(
       await notificationRoute({ data: { route: ROUTE_KHATMAH } } as never),
-    ).toBe('mihrab://quran');
+    ).toBe('salaty://quran');
   });
 });
 
@@ -153,7 +153,7 @@ describe('the adhkār reminder opens its own category — issue #39', () => {
       await notificationRoute({
         data: { route: ROUTE_DUA_CATEGORY, duaCategory: 'evening' },
       } as never),
-    ).toBe('mihrab://duas/evening');
+    ).toBe('salaty://duas/evening');
   });
 
   it('still routes the week already on the system’s queue', async () => {
@@ -162,7 +162,7 @@ describe('the adhkār reminder opens its own category — issue #39', () => {
     // needed, for the same reason.
     expect(
       await notificationRoute({ data: { duaCategory: 'morning' } } as never),
-    ).toBe('mihrab://duas/morning');
+    ).toBe('salaty://duas/morning');
   });
 
   it('opens the index for a name that is not a category', async () => {
@@ -172,11 +172,11 @@ describe('the adhkār reminder opens its own category — issue #39', () => {
       await notificationRoute({
         data: { route: ROUTE_DUA_CATEGORY, duaCategory: 'sunrise' },
       } as never),
-    ).toBe('mihrab://duas');
+    ).toBe('salaty://duas');
   });
 });
 
-describe('mihrab://duas/<category> is a route the navigator knows', () => {
+describe('salaty://duas/<category> is a route the navigator knows', () => {
   const duasRoute = (url: string) => {
     const state = getStateFromPath(url, linkingOptions.config) as never;
     return JSON.parse(JSON.stringify(state)) as {
@@ -194,7 +194,7 @@ describe('mihrab://duas/<category> is a route the navigator knows', () => {
   });
 
   it('and the bare tab still opens the index', () => {
-    // The optional segment has to stay optional: `mihrab://duas` is what
+    // The optional segment has to stay optional: `salaty://duas` is what
     // every other sender uses, and a path that stopped matching it would
     // break them silently.
     const tab = duasRoute('duas').routes[0].state?.routes[0];
@@ -260,8 +260,8 @@ describe('the senders say what they are', () => {
 
   it('the Log widget opens the Log', () => {
     const log = src(
-      'android/app/src/main/java/com/prayer_times/glance/LogGlanceWidget.kt',
+      'android/app/src/main/java/com/goma/salat/glance/LogGlanceWidget.kt',
     );
-    expect(log).toContain('openRoute(context, "mihrab://log")');
+    expect(log).toContain('openRoute(context, "salaty://log")');
   });
 });

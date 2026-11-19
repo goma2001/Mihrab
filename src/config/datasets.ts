@@ -4,24 +4,24 @@
 // `tools/national-tables/`, read through `providers/nationalTable.ts`.
 
 export const MUIS_DATASET_BASE_URL =
-  'https://raw.githubusercontent.com/MihrabHQ/Mihrab/main/data/prayer-times/singapore/v1';
+  'https://raw.githubusercontent.com/goma2001/Mihrab/main/data/prayer-times/singapore/v1';
 export const JAKIM_DATASET_BASE_URL =
-  'https://raw.githubusercontent.com/MihrabHQ/Mihrab/main/data/prayer-times/malaysia/v1';
+  'https://raw.githubusercontent.com/goma2001/Mihrab/main/data/prayer-times/malaysia/v1';
 
 export const LONDON_DATASET_BASE_URL =
-  'https://raw.githubusercontent.com/MihrabHQ/Mihrab/main/data/prayer-times/london/v1';
+  'https://raw.githubusercontent.com/goma2001/Mihrab/main/data/prayer-times/london/v1';
 
 export const KMDB_DATASET_BASE_URL =
-  'https://raw.githubusercontent.com/MihrabHQ/Mihrab/main/data/prayer-times/kyrgyzstan/v1';
+  'https://raw.githubusercontent.com/goma2001/Mihrab/main/data/prayer-times/kyrgyzstan/v1';
 
 export const SHURO_DATASET_BASE_URL =
-  'https://raw.githubusercontent.com/MihrabHQ/Mihrab/main/data/prayer-times/tajikistan/v1';
+  'https://raw.githubusercontent.com/goma2001/Mihrab/main/data/prayer-times/tajikistan/v1';
 
 export const DAGESTAN_DATASET_BASE_URL =
-  'https://raw.githubusercontent.com/MihrabHQ/Mihrab/main/data/prayer-times/dagestan/v1';
+  'https://raw.githubusercontent.com/goma2001/Mihrab/main/data/prayer-times/dagestan/v1';
 
 export const BASHKORTOSTAN_DATASET_BASE_URL =
-  'https://raw.githubusercontent.com/MihrabHQ/Mihrab/main/data/prayer-times/bashkortostan/v1';
+  'https://raw.githubusercontent.com/goma2001/Mihrab/main/data/prayer-times/bashkortostan/v1';
 
 /** Fallback refresh when the index poll cannot reach the server. */
 export const NATIONAL_TABLE_REFRESH_TTL_MS = 3 * 24 * 60 * 60 * 1000; // 3 days
@@ -48,7 +48,7 @@ export function nextNationalTableServerRunAfter(from: Date = new Date()): Date {
 // `years.ts`), the site itself only behind it. See `providers/namazvakti.ts`.
 
 export const NAMAZVAKTI_DATASET_BASE_URL =
-  'https://raw.githubusercontent.com/MihrabHQ/Mihrab/main/data/prayer-times/namazvakti/v1';
+  'https://raw.githubusercontent.com/goma2001/Mihrab/main/data/prayer-times/namazvakti/v1';
 
 /** The site itself, asked for a city's year only when Mihrab's mirror does not have it. */
 export const NAMAZVAKTI_ORIGIN = 'https://www.namazvakti.com';
@@ -95,7 +95,7 @@ export function nextNamazvaktiServerRunAfter(from: Date = new Date()): Date {
 // announcement; see `hijri/overrides.ts`.
 
 export const HIJRI_OVERRIDES_URL =
-  'https://raw.githubusercontent.com/MihrabHQ/Mihrab/main/data/hijri/v1/overrides.json';
+  'https://raw.githubusercontent.com/goma2001/Mihrab/main/data/hijri/v1/overrides.json';
 
 /** How often a phone asks for it. An isbat is announced on the evening
  *  before the month begins, so a few hours is what keeps that night right. */

@@ -54,7 +54,7 @@ export type CityRegistry = {
   cities: Record<string, CityEntry>;
 };
 
-export const STORAGE_KEY = 'mihrab.cityRegistry.v1';
+export const STORAGE_KEY = 'salaty.cityRegistry.v1';
 
 /** Coarse grid used for the offline / no-geocode fallback id (~11 km). */
 const BUCKET_DEG = 0.1;

@@ -281,7 +281,7 @@ describe('alarm screen sky', () => {
     const fs = require('fs');
     const path = require('path');
     const kt = fs.readFileSync(
-      path.join(__dirname, '..', 'android/app/src/main/java/com/prayer_times/PrayerAlarmActivity.kt'),
+      path.join(__dirname, '..', 'android/app/src/main/java/com/goma/salat/PrayerAlarmActivity.kt'),
       'utf-8',
     );
     for (const key of ['fsSkyMid', 'fsText', 'fsAccent', 'fsOnAccent']) expect(kt).toContain(`"${key}"`);

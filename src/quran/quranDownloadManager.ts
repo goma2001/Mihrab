@@ -922,7 +922,7 @@ export function dismissResumableJob(): void {
  * The note on disk. Device-local by nature — it is about this phone's
  * files — so it is a plain key rather than anything the sync blob carries.
  */
-const PENDING_KEY = 'mihrab.quran.download.pending';
+const PENDING_KEY = 'salaty.quran.download.pending';
 let pendingJob: QuranDownloadJob | null = null;
 
 function validJob(value: unknown): QuranDownloadJob | null {

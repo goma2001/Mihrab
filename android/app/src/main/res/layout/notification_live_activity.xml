@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  Custom collapsed content view for the Mihrab Live Activity notification.
+  Custom collapsed content view for the صلاتي Live Activity notification.
   DecoratedCustomViewStyle wraps this in the standard notification chrome
   (app icon + app name header row), so this view is only the content area.
 

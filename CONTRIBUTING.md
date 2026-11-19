@@ -86,7 +86,7 @@ These are **non-negotiable**. The `reviewer` subagent in `.claude/agents/reviewe
 ## Reporting bugs
 
 - **Security issues** — read [SECURITY.md](SECURITY.md) first; do not file public issues.
-- **Anything else** — open a GitHub issue with the device + OS version + build number (`com.prayer_times` → About → Build).
+- **Anything else** — open a GitHub issue with the device + OS version + build number (`com.goma.salat` → About → Build).
 
 ## Licensing of contributions
 

@@ -32,10 +32,10 @@ import {
 } from '../theme/skyMoods';
 
 /** The native activity Notifee launches; resolved by class name. */
-export const PRAYER_ALARM_ACTIVITY = 'com.prayer_times.PrayerAlarmActivity';
+export const PRAYER_ALARM_ACTIVITY = 'com.goma.salat.PrayerAlarmActivity';
 
 /** See `fullScreenAlarmAndroid`. */
-export const PRAYER_ALARM_COMPONENT = 'mihrab-prayer-alarm';
+export const PRAYER_ALARM_COMPONENT = 'salaty-prayer-alarm';
 
 /** The alarm screen's Snooze button — the notification's own default. */
 export const FULL_SCREEN_SNOOZE_MIN = 10;

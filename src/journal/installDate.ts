@@ -38,7 +38,7 @@ import { dayKeyOf, isDayKey } from './backfill';
 import { quiet } from '../utils/quiet';
 
 /** AsyncStorage key holding the ISO day this build first ran. */
-export const FIRST_SEEN_KEY = 'mihrab.first_seen_day';
+export const FIRST_SEEN_KEY = 'salaty.first_seen_day';
 
 type BuildInfoNative = { firstInstallTime?: number };
 

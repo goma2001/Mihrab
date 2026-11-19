@@ -7,7 +7,7 @@ import {
 } from '../src/screens/home/todayLayoutMemory';
 import { todayCardSource } from './fixtures/todayCardSource';
 
-const KEY = '@mihrab/todayLayout/v1';
+const KEY = '@salaty/todayLayout/v1';
 
 describe('the page\'s settled sizes', () => {
   beforeEach(async () => {

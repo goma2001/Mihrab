@@ -329,7 +329,7 @@ describe('where a tapped reminder lands', () => {
     return notificationRoute({
       data: { route: ROUTE_DHIKR, dhikr: 'astaghfirullah' },
     } as never).then(url => {
-      expect(url).toBe('mihrab://tasbih');
+      expect(url).toBe('salaty://tasbih');
       expect(mockActive).toBe('astaghfirullah');
     });
   });
@@ -338,7 +338,7 @@ describe('where a tapped reminder lands', () => {
     const url = await notificationRoute({
       data: { route: ROUTE_DHIKR },
     } as never);
-    expect(url).toBe('mihrab://tasbih');
+    expect(url).toBe('salaty://tasbih');
     expect(mockActive).toBeNull();
   });
 });

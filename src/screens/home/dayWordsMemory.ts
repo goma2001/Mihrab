@@ -18,7 +18,7 @@
  */
 import { launchRead, launchWrite } from '../../boot/launchReads';
 
-const STORAGE_KEY = '@mihrab/dayWords/v1';
+const STORAGE_KEY = '@salaty/dayWords/v1';
 /** A fortnight of days in two kinds, with room for a language change. */
 const KEEP = 48;
 

@@ -38,7 +38,7 @@ import { resolveRiwayah, riwayahById } from './riwayat';
 export type QuranFeature = 'tajweedColours' | 'wordReader';
 
 /** Asked once per device; the answer is the asking. */
-export const OFFER_KEY = 'mihrab.quran.featuresOffer.v1';
+export const OFFER_KEY = 'salaty.quran.featuresOffer.v1';
 
 /** What there is to offer. Pure, for the tests. */
 export function offerableQuranFeatures(input: {

@@ -11,7 +11,7 @@
  * install date, the muted-adhan flag, the feature-tour flag, and every
  * downloaded mushaf page, font, recitation and tafsir file. Those are either
  * derived (they rebuild themselves), device-local (they describe THIS phone,
- * not the user), or enormous. Carrying `mihrab.first_seen_day` across would
+ * not the user), or enormous. Carrying `salaty.first_seen_day` across would
  * be actively wrong: the Log's "fill in earlier days" button uses it as the
  * earliest day it may offer, so importing it would let a phone claim days it
  * never saw.

@@ -8,7 +8,7 @@ The brief: "pleasant, rich in features, magical in simplicity, and elegant in de
 
 **The arched niche in the wall of every mosque that points toward Mecca.**
 
-Why it fits: Mihrab is the literal architecture of prayer orientation. A user opens the app to know where Mecca is, when the next prayer is, what surah to read — Mihrab is *the* word for "the place that orients you toward Allah." It is also one of the most visually distinctive shapes in Islamic architecture: the pointed arch reads as Islamic from across the room, but it is not heavy or sectarian — Sunni, Shia, Sufi mosques all have a mihrab. As a name it is short, two syllables, easy to pronounce in any of the 13 supported locales, and is already a loanword in many of them.
+Why it fits: Mihrab is the literal architecture of prayer orientation. A user opens the app to know where Mecca is, when the next prayer is, what surah to read — Mihrab is *the* word for "the place that orients you toward Allah." It is also one of the most visually distinctive shapes in Islamic architecture: the pointed arch reads as Islamic from across the room, but it is not heavy or sectarian — Sunni, Shia, Sufi mosques all have a salaty. As a name it is short, two syllables, easy to pronounce in any of the 13 supported locales, and is already a loanword in many of them.
 
 Tone: reverent, architectural, elegant. The icon writes itself — a pointed-arch silhouette.
 

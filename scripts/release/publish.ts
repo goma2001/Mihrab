@@ -107,7 +107,7 @@ export const RELEASE_COMMIT_PATHS = [
   GRADLE,
   PBXPROJ,
   'docs',
-  'contrib/fdroid/com.prayer_times.yml',
+  'contrib/fdroid/com.goma.salat.yml',
   JOURNAL,
   'fastlane/metadata/android',
   'release-notes',
@@ -676,8 +676,8 @@ export function summary(rel: Release, built: Built, ios: IosState, ci: { state: 
 `);
   out.push(`  On their own, after the tag's Desktop run:
     Windows and Linux installers   attached to ${rel.tag} by that run
-    apt, dnf, zypper, pacman       MihrabHQ/packages, within the hour after
-    Mihrab Web                     MihrabHQ.github.io, within the hour
+    apt, dnf, zypper, pacman       goma2001/packages, within the hour after
+    Mihrab Web                     goma2001.github.io, within the hour
   An hour on, ./scripts/verify-release.sh ${rel.tag} checks all three.
 `);
   return out;

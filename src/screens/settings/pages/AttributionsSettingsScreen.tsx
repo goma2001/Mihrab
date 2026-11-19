@@ -254,7 +254,7 @@ export function AttributionsSettingsScreen() {
         title={t('attributions.groupTypefaces', 'Typefaces')}
         footer={t('attributions.footer', {
           defaultValue:
-            'Every line links to the source it came from. What Mihrab downloads is served from its own copy of these sources, and asked of the source itself only when that copy cannot answer.',
+            'Every line links to the source it came from. What صلاتي downloads is served from its own copy of these sources, and asked of the source itself only when that copy cannot answer.',
         })}>
         {typefaces.map(c => (
           <CreditRow key={c.url + c.label} credit={c} />

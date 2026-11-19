@@ -12,7 +12,7 @@ import { generateKeyPairSync } from 'crypto';
 
 const TAG = 'v2.28.0';
 const V = '2.28.0';
-const DL = `https://github.com/MihrabHQ/Mihrab/releases/download/${TAG}`;
+const DL = `https://github.com/goma2001/Mihrab/releases/download/${TAG}`;
 const BASE = 'https://api.appstoreconnect.apple.com';
 const SDK = `${HOME}/Library/Android/sdk/build-tools`;
 const PEM = generateKeyPairSync('ec', { namedCurve: 'P-256' }).privateKey.export({ type: 'pkcs8', format: 'pem' }) as string;
@@ -28,7 +28,7 @@ const INSTALLERS = [
   `Mihrab-${'2.28.0'}-linux-x86_64.rpm`,
   `Mihrab-${'2.28.0'}-linux-aarch64.rpm`,
 ].map(name => ({ name }));
-const RELEASE_ASSETS = [{ name: 'Mihrab-v2.28.0.apk' }, { name: 'Mihrab-macOS-2.28.0.zip' }, ...INSTALLERS];
+const RELEASE_ASSETS = [{ name: 'Salaty-v2.28.0.apk' }, { name: 'Mihrab-macOS-2.28.0.zip' }, ...INSTALLERS];
 
 /** A release that is fine on every channel. */
 function published() {
@@ -36,7 +36,7 @@ function published() {
   const zipBytes = 'ZIPBYTES';
   const cask = GOOD_CASK.replace('version "2.27.1"', `version "${V}"`).replace('a'.repeat(64), sha(zipBytes));
   w.file(TAP, cask);
-  w.file(`${ROOT}/contrib/fdroid/com.prayer_times.yml`, `CurrentVersion: ${V}\n`);
+  w.file(`${ROOT}/contrib/fdroid/com.goma.salat.yml`, `CurrentVersion: ${V}\n`);
   w.file(`${ROOT}/docs/index.html`, `<p>Version ${V} (283)</p><title>Mihrab ${V} (283)</title>`);
   w.file(`${ROOT}/android/app/build.gradle`, GRADLE.replace('282', '283'));
   for (const loc of ['en-US', 'sv-SE', 'ar']) w.file(`${ROOT}/fastlane/metadata/android/${loc}/changelogs/283.txt`, 'notes');
@@ -57,27 +57,27 @@ function published() {
       w.dir(`${c.args[2]}/Mihrab.app`);
       return {};
     })
-    .on('codesign -dv', { stderr: 'Identifier=com.hassan.prayerapp\nTeamIdentifier=GAW23HT439\n' })
-    .on('codesign -d --entitlements', { stdout: '<string>GAW23HT439.group.com.prayerapp</string>' })
+    .on('codesign -dv', { stderr: 'Identifier=com.goma.salat\nTeamIdentifier=GAW23HT439\n' })
+    .on('codesign -d --entitlements', { stdout: '<string>GAW23HT439.group.com.goma.salat</string>' })
     .on('xcrun stapler validate', {})
     .on(/plutil -extract LSMinimumSystemVersion/, { stdout: '12.1\n' })
     .on(/plutil -extract CFBundleExecutable/, { stdout: 'PrayerApp\n' })
     .on('lipo -archs', { stdout: 'arm64\n' })
     .on('pluginkit -a', {})
-    .on('pluginkit -m', { stdout: '+ maccatalyst.com.hassan.prayerapp.PrayerWidgetExtension(2.28.0)\n' })
+    .on('pluginkit -m', { stdout: '+ maccatalyst.com.goma.salat.PrayerWidgetExtension(2.28.0)\n' })
     .on('git diff --quiet', {})
     .on('git log origin/main..main', {})
     .on('git rev-parse -q --verify', { stdout: 'feedbeefcafe\n' })
     .on('gh run list', { stdout: 'completed|success|https://ci/1\n' });
   w.url(`${DL}/Mihrab-macOS-${V}.zip`, { body: zipBytes });
-  w.url(`${DL}/Mihrab-v${V}.apk`, { body: 'APK' });
-  w.url('https://mihrab.elghamri.se/', { text: `<p>Version ${V} (283)</p>` });
-  w.url('https://mihrabhq.github.io/packages/version.txt', { text: `${V}\n` });
-  w.url('https://mihrabhq.github.io/version.txt', { text: `${TAG}\n` });
+  w.url(`${DL}/Salaty-v${V}.apk`, { body: 'APK' });
+  w.url('https://github.com/goma2001/Mihrab', { text: `<p>Version ${V} (283)</p>` });
+  w.url('https://goma2001.github.io/packages/version.txt', { text: `${V}\n` });
+  w.url('https://goma2001.github.io/version.txt', { text: `${TAG}\n` });
   // App Store Connect: the build is there.
   w.file(`${HOME}/.config/mihrab/asc.json`, JSON.stringify({ keyPath: '/k.p8', keyId: 'K', issuerId: 'I' }));
   w.file('/k.p8', PEM);
-  w.url(`${BASE}/v1/apps?limit=10`, { text: JSON.stringify({ data: [{ id: 'APP', attributes: { bundleId: 'com.hassan.prayerapp' } }] }) });
+  w.url(`${BASE}/v1/apps?limit=10`, { text: JSON.stringify({ data: [{ id: 'APP', attributes: { bundleId: 'com.goma.salat' } }] }) });
   asc(w, [{ version: '283', marketing: V }], []);
   return w;
 }
@@ -178,8 +178,8 @@ describe('Windows, Linux and the web (V13)', () => {
 
   it('repositories and the web still on the last release are pending', async () => {
     const w = published();
-    w.url('https://mihrabhq.github.io/packages/version.txt', { text: '2.27.1\n' });
-    w.url('https://mihrabhq.github.io/version.txt', { text: 'v2.27.1\n' });
+    w.url('https://goma2001.github.io/packages/version.txt', { text: '2.27.1\n' });
+    w.url('https://goma2001.github.io/version.txt', { text: 'v2.27.1\n' });
     const { pends, fails } = await run(w);
     expect(fails).toEqual([]);
     expect(pends).toEqual(
@@ -195,14 +195,14 @@ describe('what has gone wrong live', () => {
   it('a DRAFT fails, with the fix (v2.7.39)', async () => {
     const w = published().on('gh release view', { stdout: JSON.stringify({ isDraft: true, assets: [] }) });
     const { fails, code } = await run(w);
-    expect(fails).toContain(`release is a DRAFT — assets 404 publicly. Fix: gh release edit ${TAG} -R MihrabHQ/Mihrab --draft=false --latest`);
-    expect(fails).toContain(`asset MISSING from release: Mihrab-v${V}.apk`);
+    expect(fails).toContain(`release is a DRAFT — assets 404 publicly. Fix: gh release edit ${TAG} -R goma2001/Mihrab --draft=false --latest`);
+    expect(fails).toContain(`asset MISSING from release: Salaty-v${V}.apk`);
     expect(code).toBe(1);
   });
 
   it('two APKs fail — Obtainium needs exactly one', async () => {
     const w = published().on('gh release view', {
-      stdout: JSON.stringify({ isDraft: false, assets: [{ name: `Mihrab-v${V}.apk` }, { name: 'app-fdroid-release.apk' }, { name: `Mihrab-macOS-${V}.zip` }] }),
+      stdout: JSON.stringify({ isDraft: false, assets: [{ name: `Salaty-v${V}.apk` }, { name: 'app-fdroid-release.apk' }, { name: `Mihrab-macOS-${V}.zip` }] }),
     });
     expect((await run(w)).fails[0]).toMatch(/^2 APKs on the release/);
   });
@@ -261,7 +261,7 @@ describe('what has gone wrong live', () => {
 
   it('the live site serving the old version fails, and says whose side it is', async () => {
     const w = published()
-      .url('https://mihrab.elghamri.se/', { text: '<p>Version 2.27.1 (282)</p>' })
+      .url('https://github.com/goma2001/Mihrab', { text: '<p>Version 2.27.1 (282)</p>' })
       .url('https://www.githubstatus.com/api/v2/components.json', { text: JSON.stringify({ components: [{ name: 'Pages', status: 'major_outage' }] }) })
       .on('gh api', { stdout: 'built\n' });
     const { fails } = await run(w);

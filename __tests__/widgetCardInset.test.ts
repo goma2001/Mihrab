@@ -39,7 +39,7 @@ const ANDROID_RES = path.join(
   __dirname, '..', 'android', 'app', 'src', 'main', 'res',
 );
 const PROVIDER_DIR = path.join(
-  __dirname, '..', 'android', 'app', 'src', 'main', 'java', 'com', 'prayer_times',
+  __dirname, '..', 'android', 'app', 'src', 'main', 'java', 'com', 'goma', 'salat',
 );
 const GLANCE_DIR = path.join(PROVIDER_DIR, 'glance');
 

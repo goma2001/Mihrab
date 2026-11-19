@@ -8,7 +8,7 @@
  *
  *   - The bottom tabs are lazy, so `HomeScreen` only mounts once Today has
  *     been focused. Every deep link the widgets themselves fire —
- *     `mihrab://log`, `mihrab://tasbih`, `mihrab://quran`, `mihrab://read/:id`
+ *     `salaty://log`, `salaty://tasbih`, `salaty://quran`, `salaty://read/:id`
  *     — opens the app WITHOUT mounting it. Tap a widget, do the thing it asked
  *     you to do, and the widget kept its old numbers for the whole session.
  *   - `notifyPracticeChanged()` from the notification actions and the

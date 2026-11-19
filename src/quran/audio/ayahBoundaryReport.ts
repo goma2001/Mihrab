@@ -12,7 +12,7 @@
  * Nothing personal goes in it, and nothing is sent until the reader
  * submits the issue themselves.
  */
-import { MIHRAB_REPO } from '../../config/links';
+import { SALATY_REPO } from '../../config/links';
 import { getInstalledAppVersionLabel } from '../../appVersion';
 import { findSurah } from '../quran';
 import { RECITERS, reciterRiwayah } from './reciters';
@@ -70,5 +70,5 @@ export function ayahBoundaryReportUrl(
     '',
   ].join('\n');
   const q = (v: string) => encodeURIComponent(v);
-  return `${MIHRAB_REPO}/issues/new?labels=ayah-boundary&title=${q(title)}&body=${q(body)}`;
+  return `${SALATY_REPO}/issues/new?labels=ayah-boundary&title=${q(title)}&body=${q(body)}`;
 }

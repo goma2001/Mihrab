@@ -49,7 +49,7 @@ import { hasSecureRandom } from '../../sync/secureRandom';
  */
 
 /** Which screens the user has waved away. Small, plaintext, device-local. */
-const DISMISSED_KEY = 'mihrab.syncHint.dismissed.v1';
+const DISMISSED_KEY = 'salaty.syncHint.dismissed.v1';
 
 export type SyncHintPlace = 'quran' | 'log';
 
