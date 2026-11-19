@@ -22,9 +22,6 @@ const LINK_ONLY: Record<string, string> = {
   'qul.tarteel.ai': 'attribution link',
   'api-docs.quran.com': 'attribution link',
   'mp3quran.net': 'attribution link (the audio comes from cdn.mp3quran.net)',
-  'mihrab.elghamri.se': 'the website, opened from About',
-  'play.google.com': 'Rate, opens the store',
-  'apps.apple.com': 'Rate, opens the store',
 };
 
 function files(dir: string): string[] {

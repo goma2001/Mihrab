@@ -6,12 +6,12 @@
 	<true/>
 	<!-- The sync folder is the app's own Documents directory, and these two
 	     keys are what make it reachable. UIFileSharingEnabled puts it in the
-	     Files app as "On My iPhone > Mihrab"; LSSupportsOpeningDocumentsInPlace
+	     Files app as "On My iPhone > صلاتي"; LSSupportsOpeningDocumentsInPlace
 	     lets other apps work on the files where they are rather than on
 	     copies, which is what a sync client needs. Without both, the folder
 	     exists and nothing else can see it. -->
 	<key>NSCameraUsageDescription</key>
-	<string>Mihrab uses the camera only to read the pairing code shown on your other device. Nothing is recorded or sent anywhere.</string>
+	<string>صلاتي uses the camera only to read the pairing code shown on your other device. Nothing is recorded or sent anywhere.</string>
 	<key>UIFileSharingEnabled</key>
 	<true/>
 	<key>LSSupportsOpeningDocumentsInPlace</key>
@@ -19,20 +19,20 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>Mihrab</string>
+	<string>صلاتي</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
-	<!-- Literal "Mihrab", NOT $(PRODUCT_NAME) (= "PrayerApp", the Xcode
+	<!-- Literal "صلاتي", NOT $(PRODUCT_NAME) (= "PrayerApp", the Xcode
 	     target name). macOS reads CFBundleName for the menu-bar app title
 	     and the About/Quit menu items, so on Mac Catalyst the menu bar
 	     read "PrayerApp". CFBundleDisplayName above only covers the iOS
 	     home screen. -->
 	<key>CFBundleName</key>
-	<string>Mihrab</string>
+	<string>صلاتي</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
@@ -63,24 +63,24 @@
 		<true/>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Mihrab uses your approximate location to compute prayer times and Qibla direction for your area. Your coordinates are used with the prayer-time source you select in Settings (for example to request today’s schedule from that service) and, rounded to about a kilometre, to look up your town’s name on OpenStreetMap. You can turn off GPS and enter coordinates or search for a place manually instead.</string>
+	<string>صلاتي uses your approximate location to compute prayer times and Qibla direction for your area. Your coordinates are used with the prayer-time source you select in Settings (for example to request today’s schedule from that service) and, rounded to about a kilometre, to look up your town’s name on OpenStreetMap. You can turn off GPS and enter coordinates or search for a place manually instead.</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Mihrab uses your location only to compute prayer times and Qibla—not for advertising. Location is normally used while you use the app; if the system offers broader access for the same features, it is still limited to prayer-time and Qibla functionality. You can use manual location in Settings instead of GPS.</string>
+	<string>صلاتي uses your location only to compute prayer times and Qibla—not for advertising. Location is normally used while you use the app; if the system offers broader access for the same features, it is still limited to prayer-time and Qibla functionality. You can use manual location in Settings instead of GPS.</string>
 	<key>NSAlarmKitUsageDescription</key>
-	<string>If you turn on full-screen prayer alerts, Mihrab uses alarms so each prayer rings like an alarm clock, even when the phone is silent or in a Focus. Nothing else is scheduled.</string>
+	<string>If you turn on full-screen prayer alerts, صلاتي uses alarms so each prayer rings like an alarm clock, even when the phone is silent or in a Focus. Nothing else is scheduled.</string>
 	<key>NSMotionUsageDescription</key>
 	<string>Motion is used to show the Qibla compass direction.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Mihrab saves the monthly prayer-times image you export to your photo library.</string>
+	<string>صلاتي saves the monthly prayer-times image you export to your photo library.</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>Mihrab saves the monthly prayer-times image you export to your photo library.</string>
+	<string>صلاتي saves the monthly prayer-times image you export to your photo library.</string>
 	<key>NSSupportsLiveActivities</key>
 	<true/>
 	<key>NSSupportsLiveActivitiesFrequentUpdates</key>
 	<true/>
 	<key>BGTaskSchedulerPermittedIdentifiers</key>
 	<array>
-		<string>com.hassan.prayerapp.liveactivity.refresh</string>
+		<string>com.goma.salat.liveactivity.refresh</string>
 	</array>
 	<key>UIBackgroundModes</key>
 	<array>
@@ -171,7 +171,7 @@
 		<string>SurahNames.ttf</string>
 	</array>
 	<!--
-	mihrab:// — how a widget says WHERE it wants to be opened.
+	salaty:// — how a widget says WHERE it wants to be opened.
 
 	Until this existed a widget tap landed on whatever screen the app was
 	last on, which is fine for a prayer table and useless for a widget whose
@@ -186,7 +186,7 @@
 			<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>mihrab</string>
+				<string>salaty</string>
 			</array>
 		</dict>
 	</array>

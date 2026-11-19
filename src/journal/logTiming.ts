@@ -33,7 +33,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import type { JournalPrayer } from './journal';
 import { quiet } from '../utils/quiet';
 
-export const LOG_TIMING_KEY = '@mihrab/logTiming/v1';
+export const LOG_TIMING_KEY = '@salaty/logTiming/v1';
 
 /** The share of the window after which a log counts as late. */
 export const LATE_AFTER_FRACTION = 0.5;

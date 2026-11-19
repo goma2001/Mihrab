@@ -10,13 +10,13 @@ import path from 'path';
 
 import { getStateFromPath } from '@react-navigation/native';
 
-import { linking, MIHRAB_SCHEME, MONTH_SHARE_LINK } from '../src/navigation/linking';
+import { linking, SALATY_SCHEME, MONTH_SHARE_LINK } from '../src/navigation/linking';
 
 const src = (p: string) => readFileSync(path.join(__dirname, '..', p), 'utf8');
 
-/** What `linking` hands React Navigation, for a given mihrab:// URL. */
+/** What `linking` hands React Navigation, for a given salaty:// URL. */
 function stateFor(url: string) {
-  const path = url.replace(MIHRAB_SCHEME, '');
+  const path = url.replace(SALATY_SCHEME, '');
   return getStateFromPath(path, linking.config);
 }
 
@@ -45,30 +45,30 @@ function params(url: string): Record<string, unknown> {
   return p;
 }
 
-describe('mihrab:// route table', () => {
+describe('salaty:// route table', () => {
   it('opens the month on its shareable sheet', () => {
-    expect(MONTH_SHARE_LINK).toBe('mihrab://month?share=1');
+    expect(MONTH_SHARE_LINK).toBe('salaty://month?share=1');
     expect(leaf(stateFor(MONTH_SHARE_LINK))).toBe('MonthTimes');
     expect(params(MONTH_SHARE_LINK)).toEqual({ share: true });
     // The plain link is still the table.
-    expect(params('mihrab://month')).toEqual({});
+    expect(params('salaty://month')).toEqual({});
   });
 
   it('opens Help Mihrab', () => {
-    expect(leaf(stateFor('mihrab://help'))).toBe('SettingsHelpMihrab');
+    expect(leaf(stateFor('salaty://help'))).toBe('SettingsHelpMihrab');
   });
 
   it('opens the Log', () => {
-    expect(leaf(stateFor('mihrab://log'))).toBe('LogTab');
+    expect(leaf(stateFor('salaty://log'))).toBe('LogTab');
   });
 
   it('opens the Quran tab', () => {
-    expect(leaf(stateFor('mihrab://quran'))).toBe('QuranTab');
+    expect(leaf(stateFor('salaty://quran'))).toBe('QuranTab');
   });
 
   it('opens a surah at a mushaf page', () => {
-    expect(leaf(stateFor('mihrab://read/2?initialPage=3'))).toBe('QuranSurah');
-    expect(params('mihrab://read/2?initialPage=3')).toMatchObject({
+    expect(leaf(stateFor('salaty://read/2?initialPage=3'))).toBe('QuranSurah');
+    expect(params('salaty://read/2?initialPage=3')).toMatchObject({
       surahNumber: 2,
       initialPage: 3,
     });
@@ -79,21 +79,21 @@ describe('mihrab:// route table', () => {
   it('carries a play position alongside the page, not instead of it', () => {
     // The muṣḥaf still has to open on its page. `playFromAyah` says what
     // to recite, which is a different question from what to draw.
-    expect(params('mihrab://read/2?initialPage=3&playFromAyah=5')).toMatchObject(
+    expect(params('salaty://read/2?initialPage=3&playFromAyah=5')).toMatchObject(
       { surahNumber: 2, initialPage: 3, playFromAyah: 5 },
     );
   });
 
   it('carries it alongside the ayah in the translation reader too', () => {
     expect(
-      params('mihrab://read/7?scrollToAyah=22&playFromAyah=22'),
+      params('salaty://read/7?scrollToAyah=22&playFromAyah=22'),
     ).toMatchObject({ surahNumber: 7, scrollToAyah: 22, playFromAyah: 22 });
   });
 
   it('leaves a plain read link silent', () => {
     // Every link that existed before this one still opens a page and says
     // nothing. Silence is what a tap has always meant.
-    expect(params('mihrab://read/2?initialPage=3')).not.toHaveProperty(
+    expect(params('salaty://read/2?initialPage=3')).not.toHaveProperty(
       'playFromAyah',
     );
   });
@@ -104,14 +104,14 @@ describe('mihrab:// route table', () => {
     // reach the audio queue with a nonsense index.
     for (const bad of ['0', '-3', 'abc', '']) {
       expect(
-        params(`mihrab://read/2?initialPage=3&playFromAyah=${bad}`)
+        params(`salaty://read/2?initialPage=3&playFromAyah=${bad}`)
           .playFromAyah,
       ).toBeUndefined();
     }
   });
 
   it('opens a surah at an ayah in the translation reader', () => {
-    expect(params('mihrab://read/4?scrollToAyah=12')).toMatchObject({
+    expect(params('salaty://read/4?scrollToAyah=12')).toMatchObject({
       surahNumber: 4,
       scrollToAyah: 12,
     });
@@ -119,13 +119,13 @@ describe('mihrab:// route table', () => {
 
   it('parses the numbers as numbers, not strings', () => {
     // The screen indexes arrays with these. "2" would silently miss.
-    const p = params('mihrab://read/2?initialPage=3');
+    const p = params('salaty://read/2?initialPage=3');
     expect(typeof p.surahNumber).toBe('number');
     expect(typeof p.initialPage).toBe('number');
   });
 
   it('refuses a surah number that is not one', () => {
-    expect(params('mihrab://read/0').surahNumber).toBeUndefined();
+    expect(params('salaty://read/0').surahNumber).toBeUndefined();
   });
 
   // ── the khatmah's doors, outside the app ───────────────────────────
@@ -133,9 +133,9 @@ describe('mihrab:// route table', () => {
   it('carries sessionKhatmah as a boolean, not the string "1"', () => {
     // The screen branches on it to claim the visit for the plan. A
     // truthy "0" would make every door the khatmah's.
-    const p = params('mihrab://read/3?initialPage=42&sessionKhatmah=1');
+    const p = params('salaty://read/3?initialPage=42&sessionKhatmah=1');
     expect(p.sessionKhatmah).toBe(true);
-    expect(params('mihrab://read/3?initialPage=42&sessionKhatmah=0').sessionKhatmah)
+    expect(params('salaty://read/3?initialPage=42&sessionKhatmah=0').sessionKhatmah)
       .toBe(false);
   });
 
@@ -143,7 +143,7 @@ describe('mihrab:// route table', () => {
     // The trap this table's own comment warns about: a query key that is
     // not listed in `parse` is dropped in silence. That is what made the
     // widget and the reminder behave unlike the home card.
-    expect(params('mihrab://read/2?initialPage=3')).not.toHaveProperty(
+    expect(params('salaty://read/2?initialPage=3')).not.toHaveProperty(
       'sessionKhatmah',
     );
   });
@@ -153,7 +153,7 @@ describe('mihrab:// route table', () => {
     // the plan's own page, so its presence IS the question — and the
     // "play from here" link is the same destination, out loud.
     const kotlin = src(
-      'android/app/src/main/java/com/prayer_times/glance/ReadingGlanceWidget.kt',
+      'android/app/src/main/java/com/goma/salat/glance/ReadingGlanceWidget.kt',
     );
     expect(kotlin).toContain(
       'val session = if (r.khatmah != null) "&sessionKhatmah=1" else ""',

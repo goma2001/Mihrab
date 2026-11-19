@@ -8,9 +8,9 @@ SURAH_Y="${2:-1168}"   # y of the surah row to open (Al-Fatihah by default)
 OUT="$(cd "$(dirname "$0")/../.." && pwd)/build/shots"
 mkdir -p "$OUT"
 
-adb shell am force-stop com.prayer_times
+adb shell am force-stop com.goma.salat
 sleep 2
-adb shell monkey -p com.prayer_times -c android.intent.category.LAUNCHER 1 >/dev/null 2>&1
+adb shell monkey -p com.goma.salat -c android.intent.category.LAUNCHER 1 >/dev/null 2>&1
 sleep 12
 adb shell input tap 539 1463      # Open the Quran
 sleep 5

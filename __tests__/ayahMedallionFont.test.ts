@@ -78,7 +78,7 @@ describe('the mark on each platform', () => {
 });
 
 describe('bundled faces answer every weight on Android', () => {
-  const app = read('android', 'app', 'src', 'main', 'java', 'com', 'prayer_times', 'MainApplication.kt').toString();
+  const app = read('android', 'app', 'src', 'main', 'java', 'com', 'goma', 'salat', 'MainApplication.kt').toString();
 
   it('registers them with ReactFontManager before React Native loads', () => {
     expect(app).toMatch(/registerBundledFonts\(\)\s*\n\s*loadReactNative\(this\)/);

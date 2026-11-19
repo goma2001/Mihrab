@@ -8,7 +8,7 @@
   which only expand during a build; this one is handed straight to `codesign`
   after the fact by scripts/build-catalyst.sh, so every value has to be
   literal. It also has to name the Catalyst bundle identifier
-  (maccatalyst.com.hassan.prayerapp), which is not the identifier the iOS
+  (maccatalyst.com.goma.salat), which is not the identifier the iOS
   build uses.
 
   On the app group identifier, which is NOT the plain iOS one: Apple's own
@@ -18,17 +18,17 @@
   requestor's team ID to allow access on this platform". Settled by experiment
   on 2026-08-07, and the answer is that both are true of different processes.
 
-  This app is not sandboxed, and with `group.com.prayerapp` it wrote the whole
-  payload to ~/Library/Group Containers/group.com.prayerapp — from this side
+  This app is not sandboxed, and with `group.com.goma.salat` it wrote the whole
+  payload to ~/Library/Group Containers/group.com.goma.salat — from this side
   everything looked finished. The widget extension is the other side, and it
   must be sandboxed (macOS refuses to host an extension that isn't). Under
   that name it launched, rendered, and faulted on every read:
 
-    Couldn't read values in CFPrefsPlistSource (Domain: group.com.prayerapp,
+    Couldn't read values in CFPrefsPlistSource (Domain: group.com.goma.salat,
     Container: (null)): accessing preferences outside an application's
     container requires user-preference-read or file-read-data sandbox access
 
-  i.e. a widget that draws an empty card. Under `GAW23HT439.group.com.prayerapp`
+  i.e. a widget that draws an empty card. Under `GAW23HT439.group.com.goma.salat`
   that fault does not appear, so that is the name this channel uses.
 
   Being careful about what that does and does not establish: a probe binary
@@ -48,7 +48,7 @@
 <dict>
 	<key>com.apple.security.application-groups</key>
 	<array>
-		<string>GAW23HT439.group.com.prayerapp</string>
+		<string>GAW23HT439.group.com.goma.salat</string>
 	</array>
 	<!--
 	  NO keychain-access-groups here, however much this build would like one.
@@ -58,7 +58,7 @@
 	  not degrade — it makes the app unlaunchable. Tried on 2026-08-07 and
 	  the app was SIGKILLed before main(), with amfid logging:
 
-	    maccatalyst.com.hassan.prayerapp: Unsatisfied entitlements:
+	    maccatalyst.com.goma.salat: Unsatisfied entitlements:
 	      keychain-access-groups
 	    Restricted entitlements not validated, bailing out.
 	      Error … Code=-413 "No matching profile found"

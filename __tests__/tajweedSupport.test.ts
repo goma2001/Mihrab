@@ -83,7 +83,7 @@ describe('a switch turned on elsewhere', () => {
 });
 
 describe('the night ink on Android 10 to 12', () => {
-  const kt = read('android/app/src/main/java/com/prayer_times/TajweedInkPatch.kt');
+  const kt = read('android/app/src/main/java/com/goma/salat/TajweedInkPatch.kt');
   it('is patched below Android 13, which draws it itself', () => {
     expect(kt).toMatch(/FOREGROUND_SDK = 33/);
   });
@@ -91,7 +91,7 @@ describe('the night ink on Android 10 to 12', () => {
     expect(kt).toMatch(/QCF4T\\\\d\{3\}D\\\\.ttf/);
   });
   it('is applied where the page fonts are registered', () => {
-    expect(read('android/app/src/main/java/com/prayer_times/MushafFontModule.kt')).toMatch(
+    expect(read('android/app/src/main/java/com/goma/salat/MushafFontModule.kt')).toMatch(
       /TajweedInkPatch\.fileFor\(/,
     );
   });

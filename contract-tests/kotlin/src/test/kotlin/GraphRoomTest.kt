@@ -1,6 +1,6 @@
-import com.prayer_times.cardfit.GraphRoom
-import com.prayer_times.cardfit.graphBoxDp
-import com.prayer_times.cardfit.graphRoom
+import com.goma.salat.cardfit.GraphRoom
+import com.goma.salat.cardfit.graphBoxDp
+import com.goma.salat.cardfit.graphRoom
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue

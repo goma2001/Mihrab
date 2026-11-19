@@ -12,8 +12,8 @@ import RNShare from 'react-native-share';
 import type { ExportResult } from '../src/sync/exportFile';
 
 const result: ExportResult = {
-  path: '/mock/cache/exports/mihrab-backup-2026-09-15.json',
-  fileName: 'mihrab-backup-2026-09-15.json',
+  path: '/mock/cache/exports/salaty-backup-2026-09-15.json',
+  fileName: 'salaty-backup-2026-09-15.json',
   bytes: 7,
   snapshot: {} as ExportResult['snapshot'],
   text: '{"a":1}',
@@ -38,13 +38,13 @@ afterEach(() => {
 describe('saveExportToFiles', () => {
   test('Android: writes through the native create-document call', async () => {
     Platform.OS = 'android';
-    const saveFile = jest.fn().mockResolvedValue({ name: 'mihrab-backup-2026-09-15.json' });
+    const saveFile = jest.fn().mockResolvedValue({ name: 'salaty-backup-2026-09-15.json' });
     (NativeModules as { SyncFolder?: unknown }).SyncFolder = { saveFile };
     const { saveExportToFiles } = load();
 
     await expect(saveExportToFiles(result)).resolves.toBe(true);
     expect(saveFile).toHaveBeenCalledWith(
-      'mihrab-backup-2026-09-15.json',
+      'salaty-backup-2026-09-15.json',
       '{"a":1}',
       'application/json',
     );
@@ -75,7 +75,7 @@ describe('saveExportToFiles', () => {
     expect(RNShare.open).toHaveBeenCalledWith(
       expect.objectContaining({
         saveToFiles: true,
-        filename: 'mihrab-backup-2026-09-15.json',
+        filename: 'salaty-backup-2026-09-15.json',
         url: `file://${result.path}`,
       }),
     );

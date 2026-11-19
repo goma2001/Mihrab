@@ -10,7 +10,7 @@ import {
   hydrateQuranState,
 } from '../src/quran/quranState';
 
-const STORAGE_KEY = 'mihrab.quran.v1';
+const STORAGE_KEY = 'salaty.quran.v1';
 
 describe('quranState companionMode migration', () => {
   beforeEach(() => {

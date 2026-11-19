@@ -22,11 +22,24 @@ describe('the polar day', () => {
       for (const variant of ['realistic', 'vibrant'] as const) {
         const mood = skyMoodFor(m.passage, m.t, PALETTE_STEPS, variant, f.light);
         expect(mood.isDark).toBe(true);
-        // The colours the dawn or the dusk at that depth wears, to the
-        // quantisation's rounding.
-        const twin = skyMoodFor(h < 12 ? 'dawn' : 'dusk', h < 12 ? 1 : 0, PALETTE_STEPS, variant, f.light);
+        // The polar noon is a BLEND of the morning's and the evening's
+        // low-sun stations, not a jump between them (see skyMoodOf: the
+        // two limbs are blended by how far through the day it is, around
+        // solar noon) — so the day's colours sit between the dawn's and
+        // the dusk's at that depth, to the quantisation's rounding.
+        // They used to be one limb's colours outright, because the dawn
+        // and the dusk were both violet; the dawn is green-grey now, so
+        // the blend shows. The ends are still the limbs themselves (see
+        // "is the morning's limb" below).
+        const dawn = skyMoodFor('dawn', 1, PALETTE_STEPS, variant, f.light);
+        const dusk = skyMoodFor('dusk', 0, PALETTE_STEPS, variant, f.light);
         const rgb = (hex: string) => [1, 3, 5].map(i => parseInt(hex.slice(i, i + 2), 16));
-        rgb(mood.heroTop).forEach((c, i) => expect(Math.abs(c - rgb(twin.heroTop)[i])).toBeLessThanOrEqual(4));
+        rgb(mood.heroTop).forEach((c, i) => {
+          const lo = Math.min(rgb(dawn.heroTop)[i], rgb(dusk.heroTop)[i]) - 4;
+          const hi = Math.max(rgb(dawn.heroTop)[i], rgb(dusk.heroTop)[i]) + 4;
+          expect(c).toBeGreaterThanOrEqual(lo);
+          expect(c).toBeLessThanOrEqual(hi);
+        });
       }
       // No sun on the arc: it is under the horizon.
       expect(f.body.kind).toBe('sun');

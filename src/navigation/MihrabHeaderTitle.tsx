@@ -7,8 +7,8 @@ import { SPACING } from '../theme/tokens';
 const isIOS = Platform.OS === 'ios';
 
 /**
- * Home screen header title — always renders "Mihrab" in English regardless of
- * the user's selected language, because "Mihrab" is the app's proper name, not
+ * Home screen header title — always renders "صلاتي" regardless of
+ * the user's selected language, because "صلاتي" is the app's proper name, not
  * a translated label. The outline logo icon sits left of the text; its interior
  * is transparent so the navigation bar background (light or dark theme) shows
  * through it.
@@ -27,7 +27,7 @@ export function MihrabHeaderTitle() {
           fontWeight: isIOS ? '400' : '500',
           letterSpacing: isIOS ? -0.3 : 0,
         }}>
-        Mihrab
+        صلاتي
       </Text>
     </View>
   );

@@ -101,7 +101,7 @@ describe('the window', () => {
   it('starts only from the five, never Sunrise or a night mark — on every platform', () => {
     for (const file of [
       'src/widget/widgetPayloadV2.ts',
-      'android/app/src/main/java/com/prayer_times/contract/WidgetPayloadV1.kt',
+      'android/app/src/main/java/com/goma/salat/contract/WidgetPayloadV1.kt',
       'ios/Contract/WidgetPayloadV1.swift',
     ]) {
       const src = read(file);
@@ -111,7 +111,7 @@ describe('the window', () => {
   });
 
   it('wakes the Android card where each count-up ends, so it does not count on', () => {
-    expect(read('android/app/src/main/java/com/prayer_times/PrayerWidgetProvider.kt')).toMatch(
+    expect(read('android/app/src/main/java/com/goma/salat/PrayerWidgetProvider.kt')).toMatch(
       /WidgetInstants\.sinceEnds\(/,
     );
     expect(read('ios/PrayerWidgetExtension/PrayerWidgetExtension.swift')).toMatch(

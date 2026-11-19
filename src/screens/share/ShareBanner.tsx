@@ -4,7 +4,7 @@
 import { memo } from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
 import type { TFunction } from 'i18next';
-import { MIHRAB_WEBSITE_LABEL } from '../../config/links';
+import { SALATY_WEBSITE_LABEL } from '../../config/links';
 
 /**
  * The head of the month sheet.
@@ -100,7 +100,7 @@ function ShareBannerImpl({
             resizeMode="contain"
           />
         </View>
-        <Text style={styles.siteLink}>{MIHRAB_WEBSITE_LABEL}</Text>
+        <Text style={styles.siteLink}>{SALATY_WEBSITE_LABEL}</Text>
       </View>
     </View>
   );

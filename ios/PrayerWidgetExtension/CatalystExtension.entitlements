@@ -28,7 +28,7 @@
   empty card.
 
   And the identifier is the team-ID-prefixed one, not the plain iOS
-  `group.com.prayerapp`: with the plain name this extension faulted on every
+  `group.com.goma.salat`: with the plain name this extension faulted on every
   read under chronod. MihrabAppGroup.m has the evidence and its limits.
 -->
 <plist version="1.0">
@@ -37,7 +37,7 @@
 	<true/>
 	<key>com.apple.security.application-groups</key>
 	<array>
-		<string>GAW23HT439.group.com.prayerapp</string>
+		<string>GAW23HT439.group.com.goma.salat</string>
 	</array>
 </dict>
 </plist>

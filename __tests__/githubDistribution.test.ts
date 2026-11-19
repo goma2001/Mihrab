@@ -33,24 +33,24 @@ describe('distribution', () => {
   });
 });
 
-describe('Rate Mihrab', () => {
+describe('Rate صلاتي', () => {
   it('opens GitHub from the GitHub build', async () => {
     const { rateApp, openURL } = load('github');
     await rateApp();
     expect(openURL).toHaveBeenCalledTimes(1);
-    expect(openURL).toHaveBeenCalledWith('https://github.com/MihrabHQ/Mihrab');
+    expect(openURL).toHaveBeenCalledWith('https://github.com/goma2001/Mihrab');
   });
 
   it('opens GitHub from the F-Droid build', async () => {
     const { rateApp, openURL } = load('fdroid');
     await rateApp();
-    expect(openURL).toHaveBeenCalledWith('https://github.com/MihrabHQ/Mihrab');
+    expect(openURL).toHaveBeenCalledWith('https://github.com/goma2001/Mihrab');
   });
 
   it('opens the Play listing from the Play build', async () => {
     const { rateApp, openURL } = load('play');
     await rateApp();
-    expect(openURL).toHaveBeenCalledWith('market://details?id=com.prayer_times');
+    expect(openURL).toHaveBeenCalledWith('https://github.com/goma2001/Mihrab');
   });
 });
 

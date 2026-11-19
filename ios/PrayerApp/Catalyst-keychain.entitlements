@@ -28,11 +28,11 @@
   These are not guesses. They are what the Catalyst profile Xcode had
   already made on this machine actually authorises:
 
-    application-identifier              GAW23HT439.maccatalyst.com.hassan.prayerapp
+    application-identifier              GAW23HT439.maccatalyst.com.goma.salat
     com.apple.application-identifier    the same
     com.apple.developer.team-identifier GAW23HT439
     keychain-access-groups              GAW23HT439.* and com.apple.token
-    application-groups                  group.com.prayerapp
+    application-groups                  group.com.goma.salat
 
   Two things follow. The Keychain group below is covered by that
   wildcard, so it needs no capability enabled anywhere — which is why
@@ -54,15 +54,15 @@
 <dict>
 	<key>com.apple.security.application-groups</key>
 	<array>
-		<string>GAW23HT439.group.com.prayerapp</string>
+		<string>GAW23HT439.group.com.goma.salat</string>
 	</array>
 	<key>com.apple.application-identifier</key>
-	<string>GAW23HT439.maccatalyst.com.hassan.prayerapp</string>
+	<string>GAW23HT439.maccatalyst.com.goma.salat</string>
 	<key>com.apple.developer.team-identifier</key>
 	<string>GAW23HT439</string>
 	<key>keychain-access-groups</key>
 	<array>
-		<string>GAW23HT439.maccatalyst.com.hassan.prayerapp</string>
+		<string>GAW23HT439.maccatalyst.com.goma.salat</string>
 	</array>
 </dict>
 </plist>

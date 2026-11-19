@@ -29,7 +29,7 @@ type TabIconProps = { color: string; size: number; focused?: boolean };
 const iconSize = (size: number) => desktopSize(size);
 
 /**
- * The wordmark's own logo, not the plain arch. The header says "⌂ Mihrab"
+ * The wordmark's own logo, not the plain arch. The header says "⌂ صلاتي"
  * with one mark and the tab said "Today" with a different one, so the two
  * places that name the same screen disagreed about what it looks like.
  */

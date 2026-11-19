@@ -41,7 +41,7 @@ describe('what the watch is told to show', () => {
   const path = require('path');
   const read = (...p: string[]) => fs.readFileSync(path.join(__dirname, '..', ...p), 'utf8');
   const watch = read('garmin', 'shared', 'source', 'Mihrab.mc');
-  const kotlin = read('android', 'app', 'src', 'main', 'java', 'com', 'prayer_times', 'GarminWatch.kt');
+  const kotlin = read('android', 'app', 'src', 'main', 'java', 'com', 'goma', 'salat', 'GarminWatch.kt');
 
   it('is 0 for the face as it always was, so a watch never told shows that', () => {
     expect(garminOptionFlags(DEFAULT_GARMIN_WATCH)).toBe(0);

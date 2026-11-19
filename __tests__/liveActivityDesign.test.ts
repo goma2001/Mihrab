@@ -22,7 +22,7 @@ const read = (p: string) => readFileSync(join(__dirname, '..', p), 'utf8');
 describe('which builder draws the card', () => {
   it('matches the native dispatch', () => {
     // The Kotlin `when`: >= 37 → Android 17 path, >= 36 → Android 16, else legacy.
-    const kt = read('android/app/src/main/java/com/prayer_times/MihrabLiveActivityModule.kt');
+    const kt = read('android/app/src/main/java/com/goma/salat/MihrabLiveActivityModule.kt');
     expect(kt).toMatch(/Build\.VERSION\.SDK_INT >= 37 ->/);
     expect(kt).toMatch(/Build\.VERSION\.SDK_INT >= 36 ->/);
     expect(liveActivityRenderer(35)).toBe('legacy');
@@ -33,7 +33,7 @@ describe('which builder draws the card', () => {
   });
 
   it('the legacy builder ignores the design, so nothing is enabled there', () => {
-    const kt = read('android/app/src/main/java/com/prayer_times/MihrabLiveActivityModule.kt');
+    const kt = read('android/app/src/main/java/com/goma/salat/MihrabLiveActivityModule.kt');
     // `design` is read inside the 16 and 17 builders only.
     const legacy = kt.slice(kt.indexOf('private fun buildLegacy'), kt.indexOf('private fun buildLegacy') + 3000);
     expect(legacy).not.toMatch(/optString\("design"/);

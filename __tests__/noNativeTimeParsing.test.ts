@@ -44,7 +44,7 @@ const PARSERS: RegExp[] = [
 
 const ALLOWED = new Set([
   'ios/Contract/WallClock.swift',
-  'android/app/src/main/java/com/prayer_times/contract/WallClock.kt',
+  'android/app/src/main/java/com/goma/salat/contract/WallClock.kt',
 ]);
 
 describe('native code', () => {
@@ -56,7 +56,7 @@ describe('native code', () => {
   it('is all scanned', () => {
     expect(files.length).toBeGreaterThan(40);
     // The Glance widgets live in main/java/.../glance now.
-    expect(files.some(f => f.includes('/com/prayer_times/glance/'))).toBe(true);
+    expect(files.some(f => f.includes('/com/goma/salat/glance/'))).toBe(true);
   });
 
   it('parses no formatted time outside WallClock', () => {

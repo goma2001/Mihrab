@@ -15,7 +15,7 @@ set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
 OUT="$ROOT/tools/startup-trace/out"
-PKG="com.prayer_times"
+PKG="com.goma.salat"
 RUNS="${RUNS:-8}"
 TRACE=0
 BUILD=1

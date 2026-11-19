@@ -122,7 +122,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     window.rootViewController?.view.backgroundColor = LaunchSnapshotStore.launchColor
   }
 
-  /// Hand `mihrab://…` to React Native's Linking module, which turns it into
+  /// Hand `salaty://…` to React Native's Linking module, which turns it into
   /// the `url` event React Navigation's linking config listens for.
   func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
     for context in URLContexts {

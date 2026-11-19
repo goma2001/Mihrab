@@ -1,5 +1,5 @@
-import com.prayer_times.cardfit.LogFit
-import com.prayer_times.cardfit.fitLogCard
+import com.goma.salat.cardfit.LogFit
+import com.goma.salat.cardfit.fitLogCard
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Test

@@ -3,7 +3,7 @@
 Everything here is **upstream preparation**. The real merge request goes to **[fdroiddata on GitLab](https://gitlab.com/fdroid/fdroiddata)** (separate account/repo).
 
 > **Status: merged.** Mihrab has been in F-Droid since the MR merged on
-> 1 August 2026 — https://f-droid.org/packages/com.prayer_times/. The
+> 1 August 2026 — https://f-droid.org/packages/com.goma.salat/. The
 > recipe carries `AutoUpdateMode: Version` + `UpdateCheckMode: Tags`, so a
 > routine release needs **nothing** here: pushing the `vX.Y.Z` tag is the
 > whole of it, and F-Droid's checkupdates bot adds the build. The steps
@@ -15,7 +15,7 @@ Everything here is **upstream preparation**. The real merge request goes to **[f
 
 | File | Purpose |
 |------|---------|
-| [`com.prayer_times.yml`](com.prayer_times.yml) | **Paste into** `metadata/com.prayer_times.yml` in your fdroiddata fork (delete the 2-line comment at the top when committing). |
+| [`com.goma.salat.yml`](com.goma.salat.yml) | **Paste into** `metadata/com.goma.salat.yml` in your fdroiddata fork (delete the 2-line comment at the top when committing). |
 | [`MERGE_REQUEST.md`](MERGE_REQUEST.md) | Suggested **MR title, description, branch name** for GitLab. |
 | [`SUGGESTED_ITEMS.md`](SUGGESTED_ITEMS.md) | Honest **Suggested**-section answers (submodules / reproducible / split APKs). |
 | [`PRE_MERGE_CHECKLIST.md`](PRE_MERGE_CHECKLIST.md) | Local build check + syncing YAML to your fdroiddata fork. |
@@ -29,8 +29,8 @@ Everything here is **upstream preparation**. The real merge request goes to **[f
 ## Steps (you do on GitLab)
 
 1. Sign in at [gitlab.com](https://gitlab.com) and **fork** [fdroid/fdroiddata](https://gitlab.com/fdroid/fdroiddata).
-2. Create branch e.g. `add-com.prayer_times`.
-3. Add **`metadata/com.prayer_times.yml`** using the contents of **`com.prayer_times.yml`** from this folder.
+2. Create branch e.g. `add-com.goma.salat`.
+3. Add **`metadata/com.goma.salat.yml`** using the contents of **`com.goma.salat.yml`** from this folder.
 4. Open a **Merge Request** to `fdroid/fdroiddata` — copy text from **`MERGE_REQUEST.md`**.
 5. Iterate with reviewers (Node/NDK/`scanignore` tweaks are common for React Native).
 

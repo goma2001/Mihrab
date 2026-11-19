@@ -13,15 +13,16 @@ import type { AppAccentId, WidgetHighlightId } from './types';
 /**
  * App accent swatches — kept in sync with `ACCENT_SWATCHES` in
  * src/theme/appPalette.ts, so the preview dot matches the accent that
- * actually gets applied in the current mode (the green default is a
- * refined deep/lifted emerald, not neon).
+ * actually gets applied in the current mode (the green default is صلاتي's
+ * deep green #01543F, lifted to #46A081 in the dark, with gold #C9A227
+ * for the dawn's highlights — not neon).
  */
 export const APP_ACCENT_SWATCHES: {
   id: Exclude<AppAccentId, 'custom'>;
   light: string;
   dark: string;
 }[] = [
-  { id: 'green', light: '#1F5F4A', dark: '#46A081' },
+  { id: 'green', light: '#01543F', dark: '#46A081' },
   { id: 'teal', light: '#0d9488', dark: '#5eead4' },
   { id: 'blue', light: '#2563eb', dark: '#7dd3fc' },
   { id: 'amber', light: '#b45309', dark: '#fbbf24' },
@@ -67,7 +68,7 @@ export function widgetPatchForAccent(
   const sw = APP_ACCENT_SWATCHES.find(s => s.id === id);
   return {
     widgetHighlightId: 'custom',
-    widgetHighlightCustomHex: sw?.light ?? '#1F5F4A',
+    widgetHighlightCustomHex: sw?.light ?? '#01543F',
   };
 }
 

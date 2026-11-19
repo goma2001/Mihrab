@@ -28,7 +28,7 @@ import { collectData } from './snapshotStore';
 import { quiet } from '../utils/quiet';
 
 /**
- * `mihrab-backup-2026-08-19.json`.
+ * `salaty-backup-2026-08-19.json`.
  *
  * Dated, not timestamped: a user exporting twice in one day almost always
  * means to replace yesterday's, and a folder of second-resolution filenames
@@ -40,7 +40,7 @@ export function exportFileName(now: Date = new Date()): string {
   const y = now.getFullYear();
   const m = String(now.getMonth() + 1).padStart(2, '0');
   const d = String(now.getDate()).padStart(2, '0');
-  return `mihrab-backup-${y}-${m}-${d}.json`;
+  return `salaty-backup-${y}-${m}-${d}.json`;
 }
 
 function exportDir(): string {

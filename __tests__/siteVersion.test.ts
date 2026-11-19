@@ -33,7 +33,7 @@ describe('F-Droid recipe mirror', () => {
   // — but it IS what verify-release.sh reads, and it had gone three
   // versions stale while still naming a tag that had been deleted.
   const recipe = fs.readFileSync(
-    path.join(ROOT, 'contrib', 'fdroid', 'com.prayer_times.yml'),
+    path.join(ROOT, 'contrib', 'fdroid', 'com.goma.salat.yml'),
     'utf-8',
   );
 
