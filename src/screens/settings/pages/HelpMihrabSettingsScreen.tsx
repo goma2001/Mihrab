@@ -15,7 +15,7 @@
  *      It is the one thing the app makes that is useful to someone who
  *      does not have the app, and it carries the site's address, so it
  *      travels as an introduction too. The row opens the month screen
- *      already on the shareable sheet — `mihrab://month?share=1`, the
+ *      already on the shareable sheet — `salaty://month?share=1`, the
  *      same in-app link anything else can use — with the month switcher
  *      and the share buttons beside it.
  *
@@ -33,7 +33,7 @@ import {
   ratingPlaces,
   type RatingPlace,
 } from '../../../polish/rateApp';
-import { MIHRAB_WEBSITE } from '../../../config/links';
+import { SALATY_WEBSITE } from '../../../config/links';
 import {
   SettingsBlock,
   SettingsGroup,
@@ -53,40 +53,20 @@ export function HelpMihrabSettingsScreen() {
   const { settings, updateSettings } = usePrayerSettings();
 
   /**
-   * One row per place this build can be rated, most useful first: the
-   * App Store, the Play listing, or — on F-Droid and the GitHub APK —
-   * Google Play and then GitHub (`ratingPlaces`). Each says where it goes.
+   * One row: a GitHub star. There is no store listing for this fork yet,
+   * so no Play or App Store row is offered (see rateApp.ts).
    */
   const places = ratingPlaces();
-  const elsewhere = places.includes('github');
   const rateRow = (place: RatingPlace) => {
-    const title =
-      place === 'appStore'
-        ? t('helpMihrab.rateAppStore', 'Rate it on the App Store')
-        : place === 'play'
-          ? t('helpMihrab.ratePlay', 'Rate it on Google Play')
-          : t('helpMihrab.rateGithub', 'Star it on GitHub');
-    const help =
-      place === 'github'
-        ? t(
-            'helpMihrab.rateGithubHelp',
-            'A star on GitHub helps people looking for open-source apps find it.',
-          )
-        : place === 'play' && elsewhere
-          ? t(
-              'helpMihrab.ratePlayElsewhereHelp',
-              'Most people find Mihrab on Google Play. If you have a Google account, a rating there helps, wherever you installed it from.',
-            )
-          : t(
-              'helpMihrab.rateStoreHelp',
-              'A rating and a few words help people find it when they search the store.',
-            );
     return (
       <SettingsLinkRow
         key={place}
         testID={`help-mihrab-rate-${place}`}
-        title={title}
-        help={help}
+        title={t('helpMihrab.rateGithub', 'Star it on GitHub')}
+        help={t(
+          'helpMihrab.rateGithubHelp',
+          'A star on GitHub helps people looking for open-source apps find it.',
+        )}
         onPress={() => {
           void openRatingPlace(place);
         }}
@@ -99,8 +79,8 @@ export function HelpMihrabSettingsScreen() {
 
   const tellPeople = () => {
     const message = t('helpMihrab.shareMessage', {
-      url: MIHRAB_WEBSITE,
-      defaultValue: 'I use Mihrab for prayer times and the Quran. Have a look: {{url}}',
+      url: SALATY_WEBSITE,
+      defaultValue: 'I use صلاتي for prayer times and the Quran. Have a look: {{url}}',
     });
     // `message` alone: on iOS a separate `url` is sent as a second item
     // and some apps then post the link twice.
@@ -114,23 +94,23 @@ export function HelpMihrabSettingsScreen() {
           <Text style={[styles.intro, { color: palette.text }]}>
             {t(
               'helpMihrab.intro',
-              'Mihrab grows by word of mouth. If it has been useful to you, here are three ways to pass it on.',
+              'صلاتي grows by word of mouth. If it has been useful to you, here are three ways to pass it on.',
             )}
           </Text>
         </SettingsBlock>
       </SettingsGroup>
 
-      <SettingsGroup title={t('settings.rateApp', 'Rate Mihrab')}>
+      <SettingsGroup title={t('settings.rateApp', 'Rate صلاتي')}>
         {places.map(rateRow)}
       </SettingsGroup>
 
       <SettingsGroup title={t('helpMihrab.tellTitle', 'Tell family and friends')}>
         <SettingsLinkRow
           testID="help-mihrab-tell"
-          title={t('helpMihrab.tellRow', 'Send them Mihrab')}
+          title={t('helpMihrab.tellRow', 'Send them صلاتي')}
           help={t(
             'helpMihrab.tellRowHelp',
-            "A link to Mihrab's website, which has every way to download it, sent through any app you choose.",
+            "A link to صلاتي's website, which has every way to download it, sent through any app you choose.",
           )}
           onPress={tellPeople}
         />
@@ -154,7 +134,7 @@ export function HelpMihrabSettingsScreen() {
       <Text style={[styles.after, { color: palette.muted }]}>
         {t(
           'helpMihrab.monthFooter',
-          "Send it to the people you love, or print copies to hand out at your mosque, to family and to neighbours. Every sheet carries Mihrab's address, so whoever it reaches can find the app.",
+          "Send it to the people you love, or print copies to hand out at your mosque, to family and to neighbours. Every sheet carries صلاتي's address, so whoever it reaches can find the app.",
         )}
       </Text>
 

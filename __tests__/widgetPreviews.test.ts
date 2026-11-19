@@ -8,7 +8,7 @@ import path from 'path';
 
 const root = path.join(__dirname, '..');
 const read = (p: string) => fs.readFileSync(path.join(root, p), 'utf8');
-const kt = 'android/app/src/main/java/com/prayer_times/';
+const kt = 'android/app/src/main/java/com/goma/salat/';
 const live = read(kt + 'WidgetLivePreview.kt');
 const drawn = read(kt + 'WidgetPreviewCard.kt');
 const activity = read(kt + 'PrayerWidgetConfigureActivity.kt');
@@ -105,7 +105,7 @@ describe('Settings → Widgets in the app', () => {
     // while the page slid in (traced on the emulator; 93 ms on a Pixel 10
     // Pro with three cards).
     const module = fs.readFileSync(
-      path.join(__dirname, '..', 'android/app/src/main/java/com/prayer_times/PrayerWidgetModule.kt'),
+      path.join(__dirname, '..', 'android/app/src/main/java/com/goma/salat/PrayerWidgetModule.kt'),
       'utf8',
     );
     const body = module.slice(module.indexOf('fun renderPreviews('), module.indexOf('fun takeLogQueue('));

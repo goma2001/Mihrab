@@ -16,7 +16,7 @@ set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
 OUT="$ROOT/tools/startup-trace/out/video"
-PKG="com.prayer_times"
+PKG="com.goma.salat"
 RUNS="${RUNS:-6}"
 mkdir -p "$OUT"
 ACT="$(adb shell cmd package resolve-activity --brief "$PKG" | tail -1 | tr -d '\r')"
@@ -41,7 +41,7 @@ for i in $(seq 1 "$RUNS"); do
   # NOSNAP=1: an extra on the intent makes it "not a plain launch", so the
   # same build starts without the kept screen — the before, to compare.
   if [ -n "${NOSNAP:-}" ]; then
-    adb shell am start -n "$ACT" --es mihrab.nosnap 1 > /dev/null
+    adb shell am start -n "$ACT" --es salaty.nosnap 1 > /dev/null
   else
     adb shell am start -n "$ACT" > /dev/null
   fi

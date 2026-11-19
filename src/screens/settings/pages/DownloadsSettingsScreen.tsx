@@ -8,7 +8,7 @@
  * reciter, tafsir, word meanings and the riwayat.
  *
  * Every door in the app leads here (`SettingsDownloads`): the Quran
- * screen, the reader, the riwayah picker, and mihrab://downloads, which
+ * screen, the reader, the riwayah picker, and salaty://downloads, which
  * is where the "download stopped" notification lands.
  */
 import { QuranDownloadsContent } from '../../QuranDownloadsScreen';

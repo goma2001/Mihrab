@@ -18,7 +18,7 @@ import { readFileSync } from 'fs';
 import path from 'path';
 
 const ROOT = path.join(__dirname, '..');
-const KT = path.join(ROOT, 'android', 'app', 'src', 'main', 'java', 'com', 'prayer_times');
+const KT = path.join(ROOT, 'android', 'app', 'src', 'main', 'java', 'com', 'goma', 'salat');
 const read = (name: string) => readFileSync(path.join(KT, name), 'utf8');
 /** Source with `//` comment lines dropped: a claim about code, not prose. */
 const code = (s: string) =>

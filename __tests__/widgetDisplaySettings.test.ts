@@ -93,7 +93,7 @@ describe('options changed on the widget itself', () => {
 describe('the widget screen and the app offer the same colours', () => {
   it('lists the same presets, in the same order', () => {
     const kt = readFileSync(
-      join(__dirname, '../android/app/src/main/java/com/prayer_times/PrayerWidgetConfigureActivity.kt'),
+      join(__dirname, '../android/app/src/main/java/com/goma/salat/PrayerWidgetConfigureActivity.kt'),
       'utf8',
     );
     const native = [...kt.matchAll(/R\.string\.widget_configure_text_(\w+) to "(#[0-9A-F]{6})"/g)].map(m => ({
@@ -106,8 +106,8 @@ describe('the widget screen and the app offer the same colours', () => {
 
 describe('the widget\'s own settings screen', () => {
   const dir = join(__dirname, '../android/app/src/main');
-  const kt = readFileSync(join(dir, 'java/com/prayer_times/PrayerWidgetConfigureActivity.kt'), 'utf8');
-  const display = readFileSync(join(dir, 'java/com/prayer_times/PrayerWidgetDisplay.kt'), 'utf8');
+  const kt = readFileSync(join(dir, 'java/com/goma/salat/PrayerWidgetConfigureActivity.kt'), 'utf8');
+  const display = readFileSync(join(dir, 'java/com/goma/salat/PrayerWidgetDisplay.kt'), 'utf8');
   const layout = readFileSync(join(dir, 'res/layout/activity_prayer_widget_configure.xml'), 'utf8');
 
   it('shows a sample of the card above the controls, outside the scroll', () => {
@@ -127,8 +127,8 @@ describe('the widget\'s own settings screen', () => {
   });
 
   it('the card counts with the stored window, not only the published one', () => {
-    const card = readFileSync(join(dir, 'java/com/prayer_times/glance/PrayerGlanceWidget.kt'), 'utf8');
-    const provider = readFileSync(join(dir, 'java/com/prayer_times/PrayerWidgetProvider.kt'), 'utf8');
+    const card = readFileSync(join(dir, 'java/com/goma/salat/glance/PrayerGlanceWidget.kt'), 'utf8');
+    const provider = readFileSync(join(dir, 'java/com/goma/salat/PrayerWidgetProvider.kt'), 'utf8');
     expect(card).toMatch(/PrayerWidgetDisplay\.sinceAdhanMinutes\(context, p\.sinceAdhanMinutes\)/);
     expect(provider).toMatch(/PrayerWidgetDisplay\.sinceAdhanMinutes\(context,/);
   });

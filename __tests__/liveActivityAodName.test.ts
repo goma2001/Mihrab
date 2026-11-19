@@ -10,7 +10,7 @@
 import { readFileSync } from 'fs';
 import path from 'path';
 
-const KT = path.join(__dirname, '..', 'android/app/src/main/java/com/prayer_times');
+const KT = path.join(__dirname, '..', 'android/app/src/main/java/com/goma/salat');
 const module_ = readFileSync(path.join(KT, 'MihrabLiveActivityModule.kt'), 'utf8');
 const service = readFileSync(path.join(KT, 'MihrabLiveActivityService.kt'), 'utf8');
 

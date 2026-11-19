@@ -8,7 +8,7 @@ import { join } from 'path';
 const read = (p: string) => readFileSync(join(__dirname, '..', p), 'utf8');
 
 describe('the muṣḥaf line cache', () => {
-  const view = read('android/app/src/main/java/com/prayer_times/MushafLineView.kt');
+  const view = read('android/app/src/main/java/com/goma/salat/MushafLineView.kt');
 
   it('never draws a HARDWARE bitmap on a software canvas', () => {
     expect(view).toContain(

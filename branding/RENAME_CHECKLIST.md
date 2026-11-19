@@ -34,9 +34,9 @@ The `mushaf-assets-v2` release tag carries the same 604 PNGs after the rename �
 
 ## 2. F-Droid: rebrand on the existing MR (no resubmission needed)
 
-You're keeping `applicationId = com.prayer_times`, so this is a normal metadata update on the existing MR 36312, not a fresh app submission. F-Droid will pick up the new `Name: Mihrab` field on the next build cycle.
+You're keeping `applicationId = com.goma.salat`, so this is a normal metadata update on the existing MR 36312, not a fresh app submission. F-Droid will pick up the new `Name: Mihrab` field on the next build cycle.
 
-The change is already pushed to the GitLab fork branch `add-com.prayer_times` (commit `c2d69a7f93`). The MR auto-updates from the branch, so MR 36312 already shows the rebrand. No further action on F-Droid until a maintainer reviews.
+The change is already pushed to the GitLab fork branch `add-com.goma.salat` (commit `c2d69a7f93`). The MR auto-updates from the branch, so MR 36312 already shows the rebrand. No further action on F-Droid until a maintainer reviews.
 
 If a maintainer asks about the name change in MR comments, the answer is: "Same app, same package id, brand-only rename. Auto-update for existing v2.0.6 installs is preserved."
 
@@ -44,7 +44,7 @@ If a maintainer asks about the name change in MR comments, the answer is: "Same 
 
 ## 3. Apple App Store Connect: rename for the iOS listing
 
-Apple lets you rename a published app in the next version submission. You can't change the bundle ID (`com.prayer_times`), but the **App Name** that shows on the home screen and in search is editable.
+Apple lets you rename a published app in the next version submission. You can't change the bundle ID (`com.goma.salat`), but the **App Name** that shows on the home screen and in search is editable.
 
 1. Sign in to <https://appstoreconnect.apple.com/>.
 2. **My Apps** → select Prayer Times.
@@ -78,7 +78,7 @@ Google lets you change the Play Store name without touching the package id. The 
    - **Short description** (80-char limit): pull from `fastlane/metadata/android/en-US/short_description.txt` (already updated).
    - **Full description**: pull from `fastlane/metadata/android/en-US/full_description.txt` (already updated).
 5. Upload the new app icon:
-   - **App icon**: drop in `android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png` resized to 512×512 (Play Console expects 512×512). You can re-render with: `npx svgexport branding/01_mihrab.svg /tmp/play-icon.png 512:512`.
+   - **App icon**: drop in `android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png` resized to 512×512 (Play Console expects 512×512). You can re-render with: `npx svgexport branding/01_salaty.svg /tmp/play-icon.png 512:512`.
 6. **Save** at the top.
 7. Click **Send X changes for review** at the top right.
 
@@ -102,9 +102,9 @@ When you're ready to push the v2.0.7 AAB to Play, build it with `./android/gradl
 
 ## What I deliberately didn't change
 
-- **Android `applicationId` (`com.prayer_times`)** and **iOS bundle id**. Changing these makes v2.0.7 a different app from v2.0.6 — every existing user has to uninstall and reinstall, losing their journal, fasting log, location presets, tasbih state. The brand can be Mihrab without changing the underlying ID.
+- **Android `applicationId` (`com.goma.salat`)** and **iOS bundle id**. Changing these makes v2.0.7 a different app from v2.0.6 — every existing user has to uninstall and reinstall, losing their journal, fasting log, location presets, tasbih state. The brand can be Mihrab without changing the underlying ID.
 - **Xcode project file (`PrayerApp.xcodeproj`)**. Renaming this is a 30-minute manual surgery in Xcode + a fresh archive scheme, with non-trivial risk of breaking Xcode Cloud signing. Not worth it for a brand-only rename.
-- **F-Droid metadata file path (`metadata/com.prayer_times.yml`)**. The file is named after the package id; F-Droid wouldn't accept a rename without a fresh app submission.
+- **F-Droid metadata file path (`metadata/com.goma.salat.yml`)**. The file is named after the package id; F-Droid wouldn't accept a rename without a fresh app submission.
 - **Java package paths and notification channel ids**. Internal identifiers; users never see them.
 
 If at any point you want a clean break (new package id, new Play / App Store listing, fresh F-Droid submission), that's a separate one-week effort and we'd treat the existing v2.0.6 installs as a legacy app that no longer receives updates. Keep this in your back pocket; not recommended unless the brand pivot becomes broader than just renaming.

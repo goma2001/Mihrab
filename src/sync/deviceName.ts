@@ -28,7 +28,7 @@ import { quiet } from '../utils/quiet';
  * AsyncStorage means a failed secure read cannot cost the Sync screen its
  * title.
  */
-const DEVICE_NAME_KEY = 'mihrab.sync.deviceName.v1';
+const DEVICE_NAME_KEY = 'salaty.sync.deviceName.v1';
 
 /** Long enough for "Hassan's old iPad", short enough not to break a row. */
 export const MAX_DEVICE_NAME = 40;

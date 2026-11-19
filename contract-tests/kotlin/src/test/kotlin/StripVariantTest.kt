@@ -1,4 +1,4 @@
-import com.prayer_times.cardfit.stripVariant
+import com.goma.salat.cardfit.stripVariant
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue

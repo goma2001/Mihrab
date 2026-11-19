@@ -19,7 +19,7 @@ import { setQuranPrefs, useQuranPrefs } from '../quranState';
 import { readingOf, resolveRiwayah, riwayahById, type RiwayahId } from '../riwayat';
 import { findReciter, playableReciters, reciterRiwayah, sortedReciters } from './reciters';
 
-const DISMISSED_KEY = 'mihrab.voiceHint.dismissed';
+const DISMISSED_KEY = 'salaty.voiceHint.dismissed';
 /** At most this many voices on the line; the picker has the rest. */
 const OFFERED = 3;
 

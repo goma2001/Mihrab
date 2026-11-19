@@ -14,7 +14,7 @@ import path from 'path';
 
 const root = path.join(__dirname, '..');
 const kt = (f: string) =>
-  fs.readFileSync(path.join(root, 'android/app/src/main/java/com/prayer_times', f), 'utf8');
+  fs.readFileSync(path.join(root, 'android/app/src/main/java/com/goma/salat', f), 'utf8');
 const moduleSrc = kt('MihrabLiveActivityModule.kt');
 const serviceSrc = kt('MihrabLiveActivityService.kt');
 const card = fs.readFileSync(path.join(root, 'src/screens/settings/LiveActivityCard.tsx'), 'utf8');

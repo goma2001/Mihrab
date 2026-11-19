@@ -90,7 +90,7 @@ describe('wiring that would fail silently if it drifted', () => {
 
   it('the native channel uses USAGE_ALARM, not USAGE_NOTIFICATION', () => {
     const kt = read(
-      'android/app/src/main/java/com/prayer_times/CustomAdhanModule.kt',
+      'android/app/src/main/java/com/goma/salat/CustomAdhanModule.kt',
     );
     expect(kt).toMatch(/fun ensureAlarmChannel/);
     const fn = kt.slice(kt.indexOf('fun ensureAlarmChannel'));

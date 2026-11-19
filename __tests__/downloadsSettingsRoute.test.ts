@@ -15,7 +15,7 @@ import path from 'path';
 import { Linking } from 'react-native';
 import { getStateFromPath } from '@react-navigation/native';
 
-import { linking, MIHRAB_SCHEME, withSettingsUnder } from '../src/navigation/linking';
+import { linking, SALATY_SCHEME, withSettingsUnder } from '../src/navigation/linking';
 import { previousIsSettings } from '../src/screens/settings/SettingsPage';
 
 const REPO = path.resolve(__dirname, '..');
@@ -73,7 +73,7 @@ describe('every door in the app opens it', () => {
     }
   });
 
-  it('mihrab://downloads — what the "download stopped" notification sends', () => {
+  it('salaty://downloads — what the "download stopped" notification sends', () => {
     const state = getStateFromPath('downloads', linking.config);
     expect(state?.routes.map(r => r.name)).toEqual(['SettingsDownloads']);
   });
@@ -117,8 +117,8 @@ describe('a link that launches the app has Settings under its page', () => {
   it('only for the launch link — a link while running is pushed, not a reset', async () => {
     const spy = jest
       .spyOn(Linking, 'getInitialURL')
-      .mockResolvedValue(`${MIHRAB_SCHEME}downloads`);
-    await expect(linking.getInitialURL!()).resolves.toBe(`${MIHRAB_SCHEME}downloads`);
+      .mockResolvedValue(`${SALATY_SCHEME}downloads`);
+    await expect(linking.getInitialURL!()).resolves.toBe(`${SALATY_SCHEME}downloads`);
     const launched = linking.getStateFromPath!('downloads', linking.config);
     expect(launched?.routes.map(r => r.name)).toEqual(['Home', 'SettingsDownloads']);
     // The next link is not the launch link.

@@ -125,12 +125,12 @@ describe('dismissal storage', () => {
   it('is idempotent', async () => {
     await dismissSyncHint('log');
     await dismissSyncHint('log');
-    expect(JSON.parse(mockStore.get('mihrab.syncHint.dismissed.v1') ?? '[]'))
+    expect(JSON.parse(mockStore.get('salaty.syncHint.dismissed.v1') ?? '[]'))
       .toEqual(['log']);
   });
 
   it('treats a corrupt value as nothing dismissed', async () => {
-    mockStore.set('mihrab.syncHint.dismissed.v1', 'not json');
+    mockStore.set('salaty.syncHint.dismissed.v1', 'not json');
     // Showing a hint once more is a smaller failure than a hint that can
     // never be dismissed again because the store is unreadable.
     expect(await shouldShowSyncHint('quran')).toBe(true);

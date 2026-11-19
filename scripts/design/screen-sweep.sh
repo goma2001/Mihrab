@@ -4,7 +4,7 @@
 #
 #   scripts/design/screen-sweep.sh [out-dir] [package]
 #
-# Defaults: out-dir = .shots/<timestamp>, package = com.prayer_times.beta.
+# Defaults: out-dir = .shots/<timestamp>, package = com.goma.salat.beta.
 # Takes light, dark and Arabic (RTL) passes of the tabs, the reader, Month,
 # Qibla, Fasting, Sync and the Settings pages. Deep links do the
 # navigation; a few taps reach what has no link. Coordinates are for a
@@ -15,7 +15,7 @@
 set -u
 export PATH="$PATH:$HOME/Library/Android/sdk/platform-tools"
 OUT=${1:-.shots/$(date +%Y%m%d-%H%M%S)}
-PKG=${2:-com.prayer_times.beta}
+PKG=${2:-com.goma.salat.beta}
 SCALE=${SWEEP_SCALE:-1}
 mkdir -p "$OUT"
 

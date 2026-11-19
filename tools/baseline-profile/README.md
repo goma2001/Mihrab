@@ -28,14 +28,14 @@ and rules for code that no longer exists are ignored.
 
 3. Start from nothing, walk the app, and take what the device recorded:
 
-       adb shell am force-stop com.prayer_times
-       adb shell cmd package compile -m verify -f com.prayer_times
-       adb shell pm art clear-app-profiles com.prayer_times
+       adb shell am force-stop com.goma.salat
+       adb shell cmd package compile -m verify -f com.goma.salat
+       adb shell pm art clear-app-profiles com.goma.salat
        tools/baseline-profile/journey.sh          # about five minutes; ends "JOURNEY DONE"
        adb shell am broadcast -a androidx.profileinstaller.action.SAVE_PROFILE \
-           com.prayer_times/androidx.profileinstaller.ProfileInstallReceiver
-       adb shell pm dump-profiles --dump-classes-and-methods com.prayer_times
-       adb pull /data/misc/profman/com.prayer_times-primary.prof.txt /tmp/prof.txt
+           com.goma.salat/androidx.profileinstaller.ProfileInstallReceiver
+       adb shell pm dump-profiles --dump-classes-and-methods com.goma.salat
+       adb pull /data/misc/profman/com.goma.salat-primary.prof.txt /tmp/prof.txt
 
    An empty file means the device does not record (step 1).
 4. Keep the class and method lines (array classes, `[L…`, are not rules), sorted without

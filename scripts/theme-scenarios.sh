@@ -23,8 +23,8 @@
 #
 set -u
 S=${1:?usage: theme-scenarios.sh <adb-serial> [package]}
-P=${2:-com.prayer_times}
-A=$P/com.prayer_times.MainActivity
+P=${2:-com.goma.salat}
+A=$P/com.goma.salat.MainActivity
 OUT=${TMPDIR:-/tmp}/theme-scenarios
 
 mkdir -p $OUT

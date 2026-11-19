@@ -94,7 +94,7 @@ describe('the Android UI font', () => {
     const xml = read('android', 'app', 'src', 'main', 'res', 'font', 'roboto.xml');
     for (const w of ['400', '500', '600', '700']) expect(xml).toContain(`android:fontWeight="${w}"`);
     expect(xml).toContain('android:fontStyle="italic"');
-    const app = read('android', 'app', 'src', 'main', 'java', 'com', 'prayer_times', 'MainApplication.kt');
+    const app = read('android', 'app', 'src', 'main', 'java', 'com', 'goma', 'salat', 'MainApplication.kt');
     expect(app).toContain('manager.addCustomFont(this, UI_FONT, R.font.roboto)');
     expect(app).toContain('const val UI_FONT = "Roboto"');
     expect(() => read('android', 'fonts', 'OFL-Roboto.txt')).not.toThrow();

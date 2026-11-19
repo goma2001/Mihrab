@@ -108,9 +108,9 @@ test('a rebuild under the same version name is a new build', async () => {
 });
 
 test('the what’s-new sheet’s version is left alone', async () => {
-  await AsyncStorage.setItem('mihrab.lastSeenVersion', '2.32.0');
+  await AsyncStorage.setItem('salaty.lastSeenVersion', '2.32.0');
   await resyncAfterUpdate();
-  expect(await AsyncStorage.getItem('mihrab.lastSeenVersion')).toBe('2.32.0');
+  expect(await AsyncStorage.getItem('salaty.lastSeenVersion')).toBe('2.32.0');
 });
 
 test('a write that failed is tried again on the next start', async () => {
@@ -162,7 +162,7 @@ test('the Android side starts the task on an update, and index.js registers it',
   const receiver = fs.readFileSync(
     path.join(
       root,
-      'android/app/src/main/java/com/prayer_times/MihrabRestartReceiver.kt',
+      'android/app/src/main/java/com/goma/salat/MihrabRestartReceiver.kt',
     ),
     'utf8',
   );
@@ -184,7 +184,7 @@ test('the Android side starts the task on an update, and index.js registers it',
   const service = fs.readFileSync(
     path.join(
       root,
-      'android/app/src/main/java/com/prayer_times/AlertsResyncHeadlessService.kt',
+      'android/app/src/main/java/com/goma/salat/AlertsResyncHeadlessService.kt',
     ),
     'utf8',
   );

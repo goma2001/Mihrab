@@ -104,7 +104,7 @@ describe('the native side', () => {
   const root = path.join(__dirname, '..');
   const read = (p: string) => readFileSync(path.join(root, p), 'utf8');
   const kt = (f: string) =>
-    read(`android/app/src/main/java/com/prayer_times/${f}`);
+    read(`android/app/src/main/java/com/goma/salat/${f}`);
 
   it('is registered, and named the way JS asks for it', () => {
     expect(kt('MainApplication.kt')).toContain('VolumeKeysPackage()');

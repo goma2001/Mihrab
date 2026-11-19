@@ -28,7 +28,7 @@ const module_ = readFileSync(
     'main',
     'java',
     'com',
-    'prayer_times',
+    'goma', 'salat',
     'MihrabLiveActivityModule.kt',
   ),
   'utf8',

@@ -79,10 +79,10 @@ describe('the fullscreen phone reader', () => {
   });
 
   it('is registered natively', () => {
-    expect(read('android/app/src/main/java/com/prayer_times/MainApplication.kt')).toMatch(
+    expect(read('android/app/src/main/java/com/goma/salat/MainApplication.kt')).toMatch(
       /add\(DisplayCutoutPackage\(\)\)/,
     );
-    expect(read('android/app/src/main/java/com/prayer_times/DisplayCutoutModule.kt')).toMatch(
+    expect(read('android/app/src/main/java/com/goma/salat/DisplayCutoutModule.kt')).toMatch(
       /rootWindowInsets\?\.displayCutout/,
     );
   });

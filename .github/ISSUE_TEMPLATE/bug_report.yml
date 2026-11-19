@@ -50,7 +50,7 @@ body:
         - Homebrew (Mac)
         - App Store (iOS)
         - TestFlight beta (iOS)
-        - Android beta (com.prayer_times.beta)
+        - Android beta (com.goma.salat.beta)
         - Other / not sure
     validations:
       required: true

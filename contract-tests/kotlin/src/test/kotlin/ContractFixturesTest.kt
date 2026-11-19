@@ -1,4 +1,4 @@
-package com.prayer_times.contract
+package com.goma.salat.contract
 
 import java.io.File
 import java.util.TimeZone

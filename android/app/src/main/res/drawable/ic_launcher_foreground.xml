@@ -1,13 +1,15 @@
-<!-- Vector drawable for the Mihrab adaptive-icon foreground.
+<!-- Vector drawable for the صلاتي adaptive-icon foreground.
      Rendered at 108dp × 108dp per the Material adaptive-icon spec, with
      the artwork scaled to 0.66 of the canvas so the launcher mask (typically
      a circle/squircle inscribed in a 66dp safe zone) crops only into
-     transparent pixels — the deep teal field comes from the background
+     transparent pixels — the deep green field comes from the background
      layer (@color/ic_launcher_background) underneath.
 
-     Geometry mirrors branding/01_mihrab_foreground.svg: outer arch
-     spans y=212..812 (centre 512, matching the canvas centre), so the
-     icon reads visually centred on every launcher mask. -->
+     The motif is صلاتي's own: a gold pointed-arch ring holding a crescent
+     over a dome and a minaret, drawn from the launcher master
+     (branding/app-icon-source.png). The arch ring is one path with the
+     niche punched out via evenOdd, so it never depends on the background
+     colour matching a painted cutout. -->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="108dp"
     android:height="108dp"
@@ -20,32 +22,32 @@
         android:scaleX="0.66"
         android:scaleY="0.66">
 
-        <!-- Outer pointed-arch silhouette, cream. -->
+        <!-- Pointed-arch ring, gold: outer arch + inner niche, evenOdd. -->
         <path
-            android:pathData="M 312 812 L 312 460 Q 312 356 408 292 L 512 212 L 616 292 Q 712 356 712 460 L 712 812 Z"
-            android:fillColor="#F2E7D2" />
+            android:fillColor="#C9A227"
+            android:fillType="evenOdd"
+            android:pathData="M 312 812 L 312 460 Q 312 356 408 292 L 512 212 L 616 292 Q 712 356 712 460 L 712 812 Z M 360 780 L 360 468 Q 360 380 444 328 L 512 276 L 580 328 Q 664 380 664 468 L 664 780 Z" />
 
-        <!-- Inner arch: niche cutout. Painted in the background's
-             deep teal so it composes seamlessly over @color/ic_launcher_background. -->
+        <!-- Crescent over the dome: outer circle + offset inner circle, evenOdd.
+             The bite is up and to the right, as in the launcher master. -->
         <path
-            android:pathData="M 360 780 L 360 468 Q 360 380 444 328 L 512 276 L 580 328 Q 664 380 664 468 L 664 780 Z"
-            android:fillColor="#0F4D44" />
+            android:fillColor="#C9A227"
+            android:fillType="evenOdd"
+            android:pathData="M 505 398 A 52 52 0 1 1 505 502 A 52 52 0 1 1 505 398 Z M 531 434 A 46 46 0 1 1 531 526 A 46 46 0 1 1 531 434 Z" />
 
-        <!-- Eight-pointed star (two squares rotated 45° apart) centred at (512, 560). -->
-        <group
-            android:pivotX="512"
-            android:pivotY="560">
-            <path
-                android:pathData="M 440 488 L 584 488 L 584 632 L 440 632 Z"
-                android:fillColor="#F2E7D2" />
-        </group>
-        <group
-            android:pivotX="512"
-            android:pivotY="560"
-            android:rotation="45">
-            <path
-                android:pathData="M 440 488 L 584 488 L 584 632 L 440 632 Z"
-                android:fillColor="#F2E7D2" />
-        </group>
+        <!-- Dome with its finial, gold. -->
+        <path
+            android:fillColor="#C9A227"
+            android:pathData="M 408 752 L 408 700 A 80 62 0 0 1 568 700 L 568 752 Z M 483 600 L 493 600 L 493 642 L 483 642 Z M 488 585 A 9 9 0 1 1 488 603 A 9 9 0 1 1 488 585 Z" />
+
+        <!-- Minaret with its finial, gold. -->
+        <path
+            android:fillColor="#C9A227"
+            android:pathData="M 592 752 L 592 580 A 15 18 0 0 1 622 580 L 622 752 Z M 604 540 L 610 540 L 610 564 L 604 564 Z M 607 534 A 6 6 0 1 1 607 546 A 6 6 0 1 1 607 534 Z" />
+
+        <!-- Shared base the dome and minaret stand on, gold. -->
+        <path
+            android:fillColor="#C9A227"
+            android:pathData="M 400 752 L 630 752 L 630 768 L 400 768 Z" />
     </group>
 </vector>

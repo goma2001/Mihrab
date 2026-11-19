@@ -1,9 +1,9 @@
 //  Which App Group the app and its widget share.
 //
-//  iOS uses the plain `group.com.prayerapp` and always has; changing it would
+//  iOS uses the plain `group.com.goma.salat` and always has; changing it would
 //  orphan every existing user's widget, so it is fixed.
 //
-//  Mac Catalyst uses `GAW23HT439.group.com.prayerapp` — the same name with the
+//  Mac Catalyst uses `GAW23HT439.group.com.goma.salat` — the same name with the
 //  Team ID in front, because that is the one the widget extension has been
 //  seen to read successfully and the plain one has not. The .m file has the
 //  evidence, including the part of it that is still unexplained.

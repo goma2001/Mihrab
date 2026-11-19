@@ -13,7 +13,7 @@
   draws the graph once stretched (STRETCHABLE_SIZES).
 -->
 <appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
-    android:configure="com.prayer_times.PrayerWidgetConfigureActivity"
+    android:configure="com.goma.salat.PrayerWidgetConfigureActivity"
     android:description="@string/widget_description_tall"
     android:initialLayout="@layout/glance_default_loading_layout"
     android:minWidth="250dp"

@@ -93,9 +93,9 @@ describe('the onboarding links land somewhere', () => {
 
 describe('the text colour is common to every widget', () => {
   const LAYOUT = read('android/app/src/main/res/layout/activity_prayer_widget_configure.xml');
-  const ACTIVITY = read('android/app/src/main/java/com/prayer_times/PrayerWidgetConfigureActivity.kt');
-  const SUPPORT = read('android/app/src/main/java/com/prayer_times/glance/GlanceSupport.kt');
-  const BASE = read('android/app/src/main/java/com/prayer_times/glance/MihrabGlanceWidget.kt');
+  const ACTIVITY = read('android/app/src/main/java/com/goma/salat/PrayerWidgetConfigureActivity.kt');
+  const SUPPORT = read('android/app/src/main/java/com/goma/salat/glance/GlanceSupport.kt');
+  const BASE = read('android/app/src/main/java/com/goma/salat/glance/MihrabGlanceWidget.kt');
 
   it('is in the "All widgets" card, not the prayer-times one', () => {
     expect(CARD).toContain('<WidgetTextColor />');

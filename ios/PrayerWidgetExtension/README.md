@@ -4,8 +4,8 @@ Two of them, and which code lives in which is not arbitrary.
 
 | Target | Bundle id | Min iOS | Ships |
 |---|---|---|---|
-| `PrayerWidgetExtension` | `com.hassan.prayerapp.PrayerWidgetExtension` | **17.0** | Home-screen + Lock-Screen-accessory widgets |
-| `MihrabLiveActivity` | `com.hassan.prayerapp.MihrabLiveActivity` | **16.1** | Live Activity (Lock Screen + Dynamic Island) |
+| `PrayerWidgetExtension` | `com.goma.salat.PrayerWidgetExtension` | **17.0** | Home-screen + Lock-Screen-accessory widgets |
+| `MihrabLiveActivity` | `com.goma.salat.MihrabLiveActivity` | **16.1** | Live Activity (Lock Screen + Dynamic Island) |
 
 ## Why they are split, and why this way round
 
@@ -43,7 +43,7 @@ must see the same type identity.
 
 ## App Group
 
-Both extensions read `group.com.prayerapp` (Team-ID-prefixed on Catalyst — see
+Both extensions read `group.com.goma.salat` (Team-ID-prefixed on Catalyst — see
 `MihrabAppGroup.m`, which carries the evidence for why). The app writes the
 payload and reloads timelines via `PrayerApp/PrayerWidget.m`.
 

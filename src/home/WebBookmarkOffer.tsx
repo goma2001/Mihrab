@@ -24,7 +24,7 @@ import { ResponsiveModal } from '../responsive/ResponsiveModal';
 import { RADIUS, SPACING } from '../theme/tokens';
 import { typeStyle } from '../theme/typography';
 
-export const WEB_BOOKMARK_OFFER_KEY = 'mihrab.webBookmarkOffer.v1';
+export const WEB_BOOKMARK_OFFER_KEY = 'salaty.webBookmarkOffer.v1';
 /** Long enough to see the times first. */
 const OFFER_DELAY_MS = 2500;
 
@@ -76,7 +76,7 @@ export function WebBookmarkOffer({ ready }: { ready: boolean }) {
       <View style={styles.sheet}>
         <View style={styles.head}>
           <Text accessibilityRole="header" style={[typeStyle('title3'), { color: palette.text }]}>
-            {t('webApp.keepTitle', 'Keep Mihrab close')}
+            {t('webApp.keepTitle', 'Keep صلاتي close')}
           </Text>
           <Text style={[typeStyle('footnote'), { color: palette.muted }]}>
             {t(
@@ -104,7 +104,7 @@ export function WebBookmarkOffer({ ready }: { ready: boolean }) {
               pressed ? styles.pressed : null,
             ]}>
             <Text style={[typeStyle('headline'), { color: palette.onAccent }]}>
-              {t('webApp.install', 'Add Mihrab to this device')}
+              {t('webApp.install', 'Add صلاتي to this device')}
             </Text>
           </Pressable>
         ) : null}

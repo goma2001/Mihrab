@@ -22,7 +22,7 @@ import * as path from 'path';
 const REPO = path.join(__dirname, '..');
 const MAIN_ACTIVITY = path.join(
   REPO,
-  'android/app/src/main/java/com/prayer_times/MainActivity.kt',
+  'android/app/src/main/java/com/goma/salat/MainActivity.kt',
 );
 
 describe('MainActivity', () => {
