@@ -1,0 +1,130 @@
+name: Build صلاتي release APK
+
+# Builds صلاتي (the Mihrab fork, com.goma.salat) as a signed release APK
+# with the ONE shared keystore, and publishes it as a GitHub release.
+#
+# This is the fork's Android release path, replacing upstream's
+# `scripts/release.sh` for the APK: the fork has no store listings yet,
+# and its releases are GitHub Releases (the app's own updater and
+# Obtainium read them). The tag is the version in package.json
+# (v1.0.0 for the first release); a version bump retags the next one.
+#
+# Triggers: manual dispatch, plus push to main (the first push must start
+# the build itself, as the Muse GitHub App connector exposes no
+# workflow-dispatch API). Every push re-publishes the current version's
+# release with a fresh APK.
+#
+# Required repository Actions secrets (set once by the owner):
+#   SALATY_MIHRAB_KEYSTORE_B64      — base64 of ~/workspace/keystores/salaty-release.jks
+#   SALATY_MIHRAB_KEYSTORE_PASSWORD — the keystore store/key password (same value)
+#   SALATY_MIHRAB_KEY_ALIAS         — the key alias (salaty)
+#     Get the values with (password never leaves the owner's machine):
+#       base64 -w0 ~/workspace/keystores/salaty-release.jks
+#       (password is in ~/workspace/keystores/salaty-release.README, mode 600)
+#   The keystore is the same one the old Flutter Salaty used, so the APK
+#   installs over it. Expected SHA-256:
+#   8B:C1:D3:25:46:CD:FD:E3:B0:75:32:41:D4:CD:9D:6A:4D:E0:5F:94:A9:63:58:09:7B:6D:80:BB:20:87:63:B2
+#
+# NOTE: there is NO upload-artifact step here, on purpose — the Salaty
+# workflow's run #97 built + signed the APK fine, then failed ONLY
+# because the account's Actions artifact storage quota was hit
+# ("Artifact storage quota has been hit"). The release is published by
+# "Publish release" below straight from the renamed file, so the artifact
+# copy is not needed. Do NOT re-add an upload-artifact step.
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write # needed to create the GitHub Release
+
+concurrency:
+  group: build-apk-main
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 75
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci --no-audit
+
+      - name: Typecheck + lint
+        run: |
+          npx tsc --noEmit
+          npm run lint:errors
+
+      - name: Restore shared release keystore
+        # ONE keystore for this app and all future builds, or Android
+        # refuses in-place updates (INSTALL_FAILED_UPDATE_INCOMPATIBLE).
+        # android/keystore.properties and *.jks are gitignored — the
+        # keystore never enters the repository.
+        run: |
+          echo "${{ secrets.SALATY_MIHRAB_KEYSTORE_B64 }}" | base64 -d > android/app/salaty-release.jks
+          test -s android/app/salaty-release.jks
+          cat > android/keystore.properties <<EOF
+          storePassword=${{ secrets.SALATY_MIHRAB_KEYSTORE_PASSWORD }}
+          keyPassword=${{ secrets.SALATY_MIHRAB_KEYSTORE_PASSWORD }}
+          keyAlias=${{ secrets.SALATY_MIHRAB_KEY_ALIAS }}
+          storeFile=salaty-release.jks
+          EOF
+          echo "keystore + keystore.properties OK"
+
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: 21
+
+      - uses: gradle/actions/setup-gradle@v5
+
+      - name: Verify keystore fingerprint
+        run: |
+          keytool -list -v -keystore android/app/salaty-release.jks -storepass "${{ secrets.SALATY_MIHRAB_KEYSTORE_PASSWORD }}" -alias "${{ secrets.SALATY_MIHRAB_KEY_ALIAS }}" | grep -E 'SHA256|Alias name'
+          keytool -list -v -keystore android/app/salaty-release.jks -storepass "${{ secrets.SALATY_MIHRAB_KEYSTORE_PASSWORD }}" -alias "${{ secrets.SALATY_MIHRAB_KEY_ALIAS }}" | grep -F 'SHA256: 8B:C1:D3:25:46:CD:FD:E3:B0:75:32:41:D4:CD:9D:6A:4D:E0:5F:94:A9:63:58:09:7B:6D:80:BB:20:87:63:B2'
+
+      - name: Build release APK (github flavor)
+        working-directory: android
+        run: >-
+          ./gradlew assembleGithubRelease
+          -PreactNativeArchitectures=arm64-v8a,armeabi-v7a
+          --no-daemon --stacktrace
+
+      - name: Verify APK signature matches the shared keystore
+        run: |
+          APK=android/app/build/outputs/apk/github/release/app-github-release.apk
+          ls -l "$APK"
+          sha256sum "$APK"
+          "$ANDROID_HOME/build-tools/37.0.0/apksigner" verify --print-certs "$APK" | grep -F 'SHA-256 digest: 8bc1d32546cdfde3b0753241d4cd9d6a4de05f94a96358097b6d80bb208763b2'
+
+      - name: Set release tag and APK name
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          echo "RELEASE_TAG=v$VERSION" >> "$GITHUB_ENV"
+          echo "APK_NAME=Salaty-v$VERSION.apk" >> "$GITHUB_ENV"
+
+      - name: Rename APK for release
+        run: mv android/app/build/outputs/apk/github/release/app-github-release.apk "$APK_NAME"
+
+      - name: Publish release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ env.RELEASE_TAG }}
+          name: صلاتي ${{ env.RELEASE_TAG }}
+          body: |
+            صلاتي ${{ env.RELEASE_TAG }} — أول إصدار من صلاتي، مبنية على مشروع Mihrab مفتوح المصدر (AGPLv3).
+
+            First release of صلاتي, based on the open-source Mihrab project (AGPLv3): prayer times, Qur'an and dhikr — offline-first, no ads, no account — with the dawn-calm (فجر هادئ) look, a floating prayer button above other apps (Settings → Notifications), and Umm al-Qura in Saudi Arabia / Egyptian in Egypt by location.
+
+            Signed with the shared keystore (SHA256 8B:C1:D3:25:...).
+          files: |
+            ${{ env.APK_NAME }}
+          fail_on_unmatched_files: true
