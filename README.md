@@ -8,12 +8,6 @@
 
 تطبيق صلاة كامل: مواقيت دقيقة مطابِقة للتقاويم الرسمية المنشورة، ومصحف المدينة مع التلاوة والتجويد، وتتبّع الحفظ، والأدعية والأذكار، ودفتر الصلاة، والقبلة، والأدوات — كل ذلك دون اتصال ودون حساب.
 
-## النسب
-
-صلاتي مبنية على مشروع [Mihrab](https://github.com/MihrabHQ/Mihrab) مفتوح المصدر، برخصة AGPLv3 — أُخذ كوده وعُدّل ليصبح تطبيقًا مستقلًا باسم وهوية جديدين، مع بقاء المصدر مفتوحًا بنفس الرخصة. الشكر لمؤلف Mihrab الأصلي ولكل المساهمين فيه.
-
-_Salaty is a fork of the open-source [Mihrab](https://github.com/MihrabHQ/Mihrab) project (AGPLv3), rebranded as an independent app. Upstream's name, icon and store listings stay with upstream._
-
 ## التنزيل
 
 التنزيل حاليًا من [صفحة الإصدارات على GitHub](https://github.com/goma2001/Mihrab/releases/latest) (ملف APK). روابط المتاجر (Google Play وF-Droid وApp Store) قادمة لاحقًا.
@@ -55,7 +49,7 @@ Prayer times computed with **[mihrab-methods](https://github.com/MihrabHQ/mihrab
 | United Kingdom: Wifaqul Ulama (Britain) | 350,400 | **0** |
 | Tunisia: Institut National de la Météorologie | 94,855 | **0** |
 
-<sub>Last checked 17 November 2026. Generated from mihrab-methods’ <code>certification.json</code> by <code>scripts/build-copy.js</code>. Mihrab is independent and not affiliated with any of these authorities.</sub>
+<sub>Last checked 17 November 2026. Generated from mihrab-methods’ <code>certification.json</code> by <code>scripts/build-copy.js</code>. صلاتي is independent and not affiliated with any of these authorities.</sub>
 <!-- accuracy:end -->
 
 ---
@@ -64,12 +58,12 @@ Prayer times computed with **[mihrab-methods](https://github.com/MihrabHQ/mihrab
 
 <div align="center">
 
-<img src="branding/readme/xplat.jpg" width="100%" alt="Mihrab on every device at once: a MacBook with Today, an iPad with the muṣḥaf open as a two-page spread, an Android foldable, an Android phone with the countdown to Maghrib and an iPhone in Minimal mode at dawn">
+<img src="branding/readme/xplat.jpg" width="100%" alt="صلاتي on every device at once: a MacBook with Today, an iPad with the muṣḥaf open as a two-page spread, an Android foldable, an Android phone with the countdown to Maghrib and an iPhone in Minimal mode at dawn">
 <br><sub>Android phones, tablets and foldables, iPhone, iPad, Mac, Windows, Linux and the web.</sub>
 
 <img src="branding/readme/panels-phone.jpg" width="100%" alt="The eight store panels: For every prayer, and everything between — no ads, open source, no account, no tracking, works offline; to the printed minute, checked against the published timetables of Diyanet, Islamiska Förbundet, Morocco’s Habous, Algeria’s ministry and Kemenag; the Madinah muṣḥaf in tajwīd colour; Tilāwah, surah into surah; translation, tafsīr and tajwīd; hifz, revised on its own cycle; duas, tasbīḥ and fasting; and the adhan, full-screen alerts, widgets and the qibla">
 
-<img src="branding/readme/panels-wide.jpg" width="100%" alt="One panel per platform: the iPad’s two-page muṣḥaf, Mihrab on a Mac, the remembrance between prayers on Windows, and the month on a Chromebook">
+<img src="branding/readme/panels-wide.jpg" width="100%" alt="One panel per platform: the iPad’s two-page muṣḥaf, صلاتي on a Mac, the remembrance between prayers on Windows, and the month on a Chromebook">
 
 </div>
 
@@ -450,7 +444,7 @@ npm run dev          # build and run
 npm run dist:linux   # or dist:win
 ```
 
-### Mihrab Web
+### صلاتي Web
 
 ```sh
 cd desktop
@@ -458,7 +452,7 @@ npx webpack --mode production --env web
 node scripts/build-web.js
 ```
 
-It is published from [MihrabHQ.github.io](https://github.com/MihrabHQ/MihrabHQ.github.io).
+No web build is published for this fork yet.
 
 ### Checks
 
@@ -485,7 +479,7 @@ Pull requests, translations and reproducible bug reports are welcome.
 
 ## Supporting the project
 
-**Mihrab does not take money.** There is no donation link, no sponsorship, no
+**صلاتي does not take money.** There is no donation link, no sponsorship, no
 in-app purchase and no tip jar — the billing library was removed from the
 project outright, and no build pulls one back in. Several people have kindly
 offered; the answer is the same to everyone. It is not that kind of project,
@@ -498,8 +492,8 @@ Four kinds of support are welcome, and they are worth more:
   translation that reads wrong, a screen that fights you. Say what you saw and
   what you expected in [an issue](https://github.com/MihrabHQ/Mihrab/issues);
   that is how the bugs get found.
-- **Pass it on** — rate Mihrab where you got it, and tell family and friends.
-  The app's own month sheet (Settings → About → Help Mihrab) is an easy thing to
+- **Pass it on** — rate صلاتي where you got it, and tell family and friends.
+  The app's own month sheet (Settings → About → Help صلاتي) is an easy thing to
   send. A project with no marketing reaches the next person this way.
 - **Code** — pull requests, translations, and reproducible bug reports. The
   build instructions are above and the whole thing is AGPL.
@@ -534,7 +528,7 @@ builds them; the `data-…` tags hold them, a release per text edition
 The app asks that mirror **first** and the original source only when the
 mirror cannot answer. So a source changing its terms, moving, or going away
 does not take a downloaded feature with it, and none of these projects is
-asked to carry Mihrab's traffic for it. Mihrab Web is the one exception: a
+asked to carry صلاتي's traffic for it. صلاتي Web is the one exception: a
 browser cannot read a release asset (no CORS header), so it reads from the
 sources directly. Forks: point `MIRROR_BASE` in `src/config/mirrors.ts` at
 your own releases.
@@ -547,16 +541,16 @@ your own releases.
 distribute a modified version, or run one as a network service, you must
 publish your source under the same terms.
 
-**Why AGPL** (#116). It keeps Mihrab and every version of it free for
+**Why AGPL** (#116). It keeps صلاتي and every version of it free for
 everyone: no one can take the work and close it off, which is what a
-waqf-style licence sets out to protect. Mihrab has no clause limiting who may
+waqf-style licence sets out to protect. صلاتي has no clause limiting who may
 use it or for what: a restriction like that would make it non-free, so
 F-Droid and most Linux distributions could no longer carry it, and the
 licences of what it bundles (SIL OFL for the fonts, MPL-2.0 for the
 prayer-time methods, MIT for other parts) allow no added restrictions, which
 the AGPL itself forbids too.
 
-The **name "Mihrab" and the app icon are not covered by the licence** —
+The **original project's name and app icon are not covered by the licence** —
 no free-software licence grants trademark rights. Builds of this project
 carry the name freely, whoever distributes them — build and packaging
 patches, security backports and translations included, so F-Droid's recipe

@@ -1,4 +1,4 @@
-• Android-widgetarna ritas nu av en ny motor. Widgetar du redan placerat ligger kvar och behåller sina inställningar; visar någon ”Öppna Mihrab” efter uppdateringen öppnar du appen en gång.
+• Android-widgetarna ritas nu av en ny motor. Widgetar du redan placerat ligger kvar och behåller sina inställningar; visar någon ”Öppna صلاتي” efter uppdateringen öppnar du appen en gång.
 • På arabiska och urdu öppnar karusellen på Idag åter på dagens datum på Android.
 • När du vänder telefonen tonar mushafens sida in igen.
-• På iPhone och iPad öppnas Mihrab igen på iOS 27; uppdateringsknappen på bönetidswidgeten är borta (den uppdaterar sig själv).
+• På iPhone och iPad öppnas صلاتي igen på iOS 27; uppdateringsknappen på bönetidswidgeten är borta (den uppdaterar sig själv).

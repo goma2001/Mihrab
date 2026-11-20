@@ -585,8 +585,7 @@
     "garminFieldProgressHelp": "Bilah dari salat terakhir ke salat berikutnya, di bawah hitung mundur.",
     "garminInstallWidget": "Pasang atau pasang ulang widget dan glance",
     "garminInstallField": "Pasang atau pasang ulang kolom data",
-    "garminInstallHelp": "Mengirim ulang waktu salat, lalu membuka Gadgetbridge untuk memasang aplikasi jam yang disertakan dengan versi صلاتي ini.",
-    "lineage": "Based on the open-source Mihrab project (AGPLv3)"
+    "garminInstallHelp": "Mengirim ulang waktu salat, lalu membuka Gadgetbridge untuk memasang aplikasi jam yang disertakan dengan versi صلاتي ini."
   },
   "locationSetup": {
     "headline": "Tetapkan lokasi Anda",

@@ -1,4 +1,4 @@
-Mihrab är en lugn följeslagare genom muslimens dag: bönerna, Koranen och åminnelsen däremellan, i en och samma privata app.
+صلاتي är en lugn följeslagare genom muslimens dag: bönerna, Koranen och åminnelsen däremellan, i en och samma privata app.
 
 BE
 - Bönetider för i dag, veckan och månaden framåt — på den tryckta minuten enligt de publicerade tidtabellerna från Diyanet, Islamiska Förbundet, Marockos och Algeriets ministerier och Kemenag, uträknade på telefonen; MUIS, JAKIM och Türkiye Takvimi som de publiceras; AlAdhan på andra platser — att dela som bild eller PDF
@@ -37,6 +37,6 @@ DITT EGET
 
 Över nätet: för Sverige, Diyanets orter, Marocko, Algeriet och Indonesien räknas tiderna ut på telefonen, utan någon förfrågan; på andra platser får AlAdhan dina koordinater och datumet. Med automatisk plats frågar appen OpenStreetMap om ortens namn, med positionen avrundad till ungefär en kilometer. Appen läser små uppdateringsfiler från projektets GitHub och laddar ned Koranens sidor, översättningar, tafsir och recitation när du ber om det. Inget skickas till utvecklaren.
 
-Mihrab är oberoende och inte knutet till någon av de myndigheter vars publicerade tidtabeller appen stämmer med, och talar inte för dem.
+صلاتي är oberoende och inte knutet till någon av de myndigheter vars publicerade tidtabeller appen stämmer med, och talar inte för dem.
 
-Mihrab är öppen källkod under AGPL-3.0-or-later.
+صلاتي är öppen källkod under AGPL-3.0-or-later.

@@ -91,7 +91,7 @@ describe('the wording', () => {
     }
   });
 
-  it('every store description and the FAQ say Mihrab is independent', () => {
+  it('every store description and the FAQ say صلاتي is independent', () => {
     for (const t of english) expect(t).toMatch(/not affiliated with/);
   });
 

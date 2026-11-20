@@ -585,8 +585,7 @@
     "garminFieldProgressHelp": "Ein Balken vom letzten Gebet zum nächsten, unter dem Countdown.",
     "garminInstallWidget": "Widget und Glance installieren oder neu installieren",
     "garminInstallField": "Datenfeld installieren oder neu installieren",
-    "garminInstallHelp": "Sendet die Gebetszeiten erneut und öffnet dann Gadgetbridge, um die Uhren-App aus dieser صلاتي-Version zu installieren.",
-    "lineage": "Based on the open-source Mihrab project (AGPLv3)"
+    "garminInstallHelp": "Sendet die Gebetszeiten erneut und öffnet dann Gadgetbridge, um die Uhren-App aus dieser صلاتي-Version zu installieren."
   },
   "locationSetup": {
     "headline": "Legen Sie Ihren Standort fest",

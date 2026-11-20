@@ -585,8 +585,7 @@
     "garminFieldProgressHelp": "پچھلی نماز سے اگلی نماز تک ایک پٹی، الٹی گنتی کے نیچے۔",
     "garminInstallWidget": "ویجیٹ اور گلانس انسٹال یا دوبارہ انسٹال کریں",
     "garminInstallField": "ڈیٹا فیلڈ انسٹال یا دوبارہ انسٹال کریں",
-    "garminInstallHelp": "نماز کے اوقات دوبارہ بھیجتا ہے، پھر صلاتي کے اس ورژن کے ساتھ آنے والی گھڑی کی ایپ انسٹال کرنے کے لیے Gadgetbridge کھولتا ہے۔",
-    "lineage": "Based on the open-source Mihrab project (AGPLv3)"
+    "garminInstallHelp": "نماز کے اوقات دوبارہ بھیجتا ہے، پھر صلاتي کے اس ورژن کے ساتھ آنے والی گھڑی کی ایپ انسٹال کرنے کے لیے Gadgetbridge کھولتا ہے۔"
   },
   "locationSetup": {
     "headline": "اپنا مقام متعین کریں۔",

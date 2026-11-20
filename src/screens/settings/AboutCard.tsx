@@ -21,7 +21,7 @@ import {
   SettingsLinkRow,
   SettingsToggleRow,
 } from './SettingsGroup';
-import { SALATY_WEBSITE, SALATY_WEBSITE_LABEL, UPSTREAM_MIHRAB_REPO } from '../../config/links';
+import { SALATY_WEBSITE, SALATY_WEBSITE_LABEL } from '../../config/links';
 import { SPACING } from '../../theme/tokens';
 import { TYPE } from '../../theme/typography';
 
@@ -212,19 +212,6 @@ function AboutCardImpl() {
             void Linking.openURL(SALATY_WEBSITE);
           }}>
           {SALATY_WEBSITE_LABEL}
-        </Text>
-        {/* Lineage: this fork is built on the open-source Mihrab project.
-            The link goes to upstream's repo, so anyone can check the
-            origin — and report a problem with this build to us, not to
-            a project that cannot fix it. */}
-        <Text
-          accessibilityRole="link"
-          accessibilityLabel={t('settings.lineage')}
-          style={[styles.versionLink, { color: palette.muted }]}
-          onPress={() => {
-            void Linking.openURL(UPSTREAM_MIHRAB_REPO);
-          }}>
-          {t('settings.lineage')}
         </Text>
       </View>
 

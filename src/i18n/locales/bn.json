@@ -585,8 +585,7 @@
     "garminFieldProgressHelp": "গত নামাজ থেকে পরের নামাজ পর্যন্ত একটি বার, কাউন্টডাউনের নিচে।",
     "garminInstallWidget": "উইজেট ও গ্ল্যান্স ইনস্টল বা পুনরায় ইনস্টল করুন",
     "garminInstallField": "ডেটা ফিল্ড ইনস্টল বা পুনরায় ইনস্টল করুন",
-    "garminInstallHelp": "নামাজের সময় আবার পাঠায়, তারপর صلاتي-এর এই সংস্করণের সঙ্গে আসা ঘড়ির অ্যাপ ইনস্টল করতে Gadgetbridge খোলে।",
-    "lineage": "Based on the open-source Mihrab project (AGPLv3)"
+    "garminInstallHelp": "নামাজের সময় আবার পাঠায়, তারপর صلاتي-এর এই সংস্করণের সঙ্গে আসা ঘড়ির অ্যাপ ইনস্টল করতে Gadgetbridge খোলে।"
   },
   "locationSetup": {
     "headline": "আপনার অবস্থান সেট করুন",

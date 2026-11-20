@@ -1,4 +1,4 @@
-Mihrab adalah pendamping yang tenang bagi hari seorang Muslim: sholat, Al-Quran, dan dzikir di antaranya, dalam satu aplikasi yang menjaga privasi.
+صلاتي adalah pendamping yang tenang bagi hari seorang Muslim: sholat, Al-Quran, dan dzikir di antaranya, dalam satu aplikasi yang menjaga privasi.
 
 SHOLAT
 - Jadwal hari ini, minggu ini, dan bulan depan — sesuai sampai ke menit yang tercetak dengan jadwal terbitan Diyanet, Islamiska Förbundet, kementerian Maroko dan Aljazair, serta Kemenag, dihitung di ponsel; MUIS, JAKIM, dan Türkiye Takvimi sebagaimana diterbitkan; AlAdhan di tempat lain — bisa dibagikan sebagai gambar atau PDF
@@ -37,6 +37,6 @@ MILIK ANDA
 
 Lewat jaringan: untuk Swedia, tempat-tempat Diyanet, Maroko, Aljazair, dan Indonesia, jadwal dihitung di ponsel tanpa permintaan apa pun; di tempat lain AlAdhan menerima koordinat dan tanggal. Dengan lokasi otomatis, nama kota Anda ditanyakan ke OpenStreetMap, dengan posisi dibulatkan sekitar satu kilometer. Aplikasi membaca file pembaruan kecil dari GitHub proyek, dan mengunduh halaman Al-Quran, terjemahan, tafsir, dan tilawah saat Anda minta. Tidak ada yang dikirim ke pengembang.
 
-Mihrab independen dan tidak berafiliasi dengan otoritas mana pun yang jadwal terbitannya dicocokkan, serta tidak berbicara atas nama mereka.
+صلاتي independen dan tidak berafiliasi dengan otoritas mana pun yang jadwal terbitannya dicocokkan, serta tidak berbicara atas nama mereka.
 
-Mihrab bersumber terbuka dengan lisensi AGPL-3.0-or-later.
+صلاتي bersumber terbuka dengan lisensi AGPL-3.0-or-later.

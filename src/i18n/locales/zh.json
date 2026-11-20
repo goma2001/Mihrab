@@ -585,8 +585,7 @@
     "garminFieldProgressHelp": "倒计时下方，从上一次礼拜到下一次礼拜的进度条。",
     "garminInstallWidget": "安装或重新安装小组件和速览",
     "garminInstallField": "安装或重新安装数据栏",
-    "garminInstallHelp": "重新发送礼拜时间，然后打开 Gadgetbridge 安装此版本 صلاتي 附带的手表应用。",
-    "lineage": "Based on the open-source Mihrab project (AGPLv3)"
+    "garminInstallHelp": "重新发送礼拜时间，然后打开 Gadgetbridge 安装此版本 صلاتي 附带的手表应用。"
   },
   "locationSetup": {
     "headline": "设置您的位置",

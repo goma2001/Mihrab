@@ -5,7 +5,7 @@
 
 ## About this policy
 
-This policy covers the app **صلاتي** ("the app"), for Android and iOS/iPadOS/macOS, and **صلاتي Web**, the same app in a browser (see "صلاتي Web" below for what differs). صلاتي is a fork of [Mihrab](https://github.com/MihrabHQ/Mihrab), under the AGPLv3 licence.
+This policy covers the app **صلاتي** ("the app"), for Android and iOS/iPadOS/macOS, and **صلاتي Web**, the same app in a browser (see "صلاتي Web" below for what differs). صلاتي is open source under the AGPLv3 licence.
 
 | | |
 |---|---|
@@ -94,7 +94,7 @@ If the app's data handling changes, this policy and its effective date will be u
 
 ## Om policyn
 
-Den här policyn gäller appen **صلاتي** ("appen") för Android och iOS/iPadOS/macOS, och **صلاتي Web**, samma app i en webbläsare (se "صلاتي Web" nedan för det som skiljer sig). صلاتي är en fork av [Mihrab](https://github.com/MihrabHQ/Mihrab), under AGPLv3-licensen.
+Den här policyn gäller appen **صلاتي** ("appen") för Android och iOS/iPadOS/macOS, och **صلاتي Web**, samma app i en webbläsare (se "صلاتي Web" nedan för det som skiljer sig). صلاتي är öppen källkod under AGPLv3-licensen.
 
 | | |
 |---|---|

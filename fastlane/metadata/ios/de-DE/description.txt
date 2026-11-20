@@ -1,4 +1,4 @@
-Mihrab ist ein ruhiger Begleiter für den Tag eines Muslims: die Gebete, der Koran und das Gedenken dazwischen – in einer App, die privat bleibt.
+صلاتي ist ein ruhiger Begleiter für den Tag eines Muslims: die Gebete, der Koran und das Gedenken dazwischen – in einer App, die privat bleibt.
 
 BETEN
 - Gebetszeiten für heute, die Woche und den kommenden Monat – auf die gedruckte Minute gleich mit den veröffentlichten Zeitplänen der Diyanet, von Islamiska Förbundet, der Ministerien Marokkos und Algeriens und von Kemenag, auf dem Telefon berechnet; MUIS, JAKIM und Türkiye Takvimi wie veröffentlicht; anderswo AlAdhan – als Bild oder PDF teilbar
@@ -37,6 +37,6 @@ DEINS
 
 Übers Netz: Für Schweden, Diyanets Orte, Marokko, Algerien und Indonesien werden die Zeiten auf dem Telefon berechnet, ohne Anfrage; anderswo erhält AlAdhan deine Koordinaten und das Datum. Mit automatischem Standort wird OpenStreetMap nach dem Namen deines Ortes gefragt, die Position auf etwa einen Kilometer gerundet. Die App liest kleine Update-Dateien vom GitHub des Projekts und lädt Koranseiten, Übersetzungen, Tafsir und Rezitationen, wenn du sie anforderst. Nichts geht an den Entwickler.
 
-Mihrab ist unabhängig und mit keiner der Stellen verbunden, deren veröffentlichte Zeitpläne es trifft; es spricht nicht für sie.
+صلاتي ist unabhängig und mit keiner der Stellen verbunden, deren veröffentlichte Zeitpläne es trifft; es spricht nicht für sie.
 
-Mihrab ist Open Source unter AGPL-3.0-or-later.
+صلاتي ist Open Source unter AGPL-3.0-or-later.
