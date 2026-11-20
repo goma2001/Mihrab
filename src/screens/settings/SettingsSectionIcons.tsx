@@ -129,6 +129,28 @@ export const AboutIcon = memo(({ size = S, color }: P) => (
   </Svg>
 ));
 
+/** A circular arrow — a new version coming around. */
+export const UpdatesIcon = memo(({ size = S, color }: P) => (
+  <Svg width={size} height={size} viewBox="0 0 24 24">
+    <Path
+      d="M20.5 15a8.5 8.5 0 1 1-2-8.8L23 10"
+      stroke={color}
+      strokeWidth={1.8}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      fill="none"
+    />
+    <Path
+      d="M23 4v6h-6"
+      stroke={color}
+      strokeWidth={1.8}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      fill="none"
+    />
+  </Svg>
+));
+
 /** The chevron on the trailing edge of every row. Mirrors under RTL. */
 export const ChevronIcon = memo(
   ({ size = 18, color, rtl = false }: P & { rtl?: boolean }) => (

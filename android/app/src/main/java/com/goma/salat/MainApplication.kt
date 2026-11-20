@@ -62,6 +62,7 @@ class MainApplication : Application(), ReactApplication, androidx.work.Configura
           add(RotationCoverPackage())
           add(VolumeKeysPackage())
           add(LaunchSnapshotPackage())
+          add(AppUpdatePackage())
         },
     )
   }

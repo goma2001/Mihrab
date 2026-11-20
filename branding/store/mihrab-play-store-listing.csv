@@ -3,12 +3,12 @@
 Each authority’s own method is calculated on your phone and checked, day by day, against its published timetables: 0 of 77.6 million times off the printed minute, last checked 17 November 2026.
 Singapore (MUIS), Malaysia (JAKIM) and Türkiye Takvimi are their published tables, used as printed. Everywhere else, times come from AlAdhan or a calculation method you choose, with per-prayer offsets to match your mosque.
 
-Around the prayers, صلاتي is a calm companion for a Muslim’s day: the Quran, and the remembrance in between, with no ads and no account.
+Around the prayers, صلاتي is a calm companion for a Muslim’s day: the Quran, and the remembrance in between.
 
 PRAY
 - Today, the week and the month ahead — shareable as an image or a PDF
 - The adhan for each prayer, from built-in recordings or your own, a reminder before it, and a snooze that offers only what the prayer’s time still allows
-- A full-screen prayer alert over the lock screen, like an alarm clock, with Stop, Snooze and Log prayer
+- A full-screen prayer alert over the lock screen, with Stop, Snooze and Log prayer
 - Silence the phone for the prayer itself and let it come back on its own, with its own length for Jumu'ah
 - A pinned countdown to the next prayer on the lock screen and in the notification shade
 - Minimal: only the sky and the countdown on Today, and the day's times a swipe away
@@ -34,12 +34,13 @@ REMEMBER
 
 YOURS
 - No ads, no analytics, no trackers, no account
-- Sync between your own devices with no account and no server of ours: sealed files in a folder you already keep in sync
+- Sync between your own devices with no account and no server of ours: sealed files in a folder you keep in sync
 - Backup and restore to a file you keep
 - Android, iPhone, iPad and Mac, with Arabic and Urdu fully right-to-left
 
 WHAT GOES OVER THE NETWORK
 Where your times come from decides what is sent. For Sweden, Diyanet’s places, Morocco, Algeria and Indonesia the times are calculated on the phone and no prayer-time request is made. Elsewhere, AlAdhan (api.aladhan.com) receives your coordinates and the date. Malaysia’s and Singapore’s tables come from صلاتي’s GitHub repository by city, with the authority’s own service as a backup; Türkiye Takvimi by a map tile around you, and namazvakti.com only a city’s number. With automatic location, your city’s name is looked up from your coordinates through OpenStreetMap Nominatim; place search sends what you type. The app checks GitHub for correction-list and Hijri-date updates, and downloads Quran pages, translations, tafsir and recitation when you ask. Nothing is sent to the developer.
+On Android it also checks for app updates and installs one when you ask.
 
 صلاتي is independent. It is not affiliated with or endorsed by Diyanet, Islamiska Förbundet, the Moroccan or Algerian ministries, Kemenag, MUIS, JAKIM or Türkiye Takvimi: it matches their published timetables and does not speak for them. Open source under AGPL-3.0-or-later."
 "ar","Arabic","صلاتي: رفيق المسلم","مواقيت الصلاة والأذان والقرآن والأدعية والقبلة في تطبيق هادئ يحفظ خصوصيتك.","صلاتي رفيقٌ هادئ في يوم المسلم: الصلوات، والقرآن الكريم، والذكر فيما بينها، في تطبيق واحد يحفظ خصوصيتك.
