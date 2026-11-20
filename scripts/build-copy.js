@@ -137,7 +137,7 @@ function readmeBlock(cert) {
     '',
     ...rows,
     '',
-    `<sub>Last checked ${longDate(total.checkedAt)}. Generated from mihrab-methods’ <code>certification.json</code> by <code>scripts/build-copy.js</code>. Mihrab is independent and not affiliated with any of these authorities.</sub>`,
+    `<sub>Last checked ${longDate(total.checkedAt)}. Generated from mihrab-methods’ <code>certification.json</code> by <code>scripts/build-copy.js</code>. صلاتي is independent and not affiliated with any of these authorities.</sub>`,
   ].join('\n');
 }
 

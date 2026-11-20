@@ -1,4 +1,4 @@
-Mihrab es un compañero sereno para el día de un musulmán: las oraciones, el Corán y el recuerdo de Dios entre ellas, en una sola app privada.
+صلاتي es un compañero sereno para el día de un musulmán: las oraciones, el Corán y el recuerdo de Dios entre ellas, en una sola app privada.
 
 REZAR
 - Horarios de hoy, la semana y el mes siguiente: coinciden al minuto impreso con los calendarios publicados por Diyanet, Islamiska Förbundet, los ministerios de Marruecos y Argelia y Kemenag, calculados en el teléfono; MUIS, JAKIM y Türkiye Takvimi tal como se publican; AlAdhan en el resto. Se comparten como imagen o PDF
@@ -37,6 +37,6 @@ TUYO
 
 Por la red: para Suecia, los lugares de Diyanet, Marruecos, Argelia e Indonesia los horarios se calculan en el teléfono, sin ninguna petición; en otros lugares AlAdhan recibe tus coordenadas y la fecha. Con la ubicación automática se pregunta a OpenStreetMap el nombre de tu ciudad, con la posición redondeada a un kilómetro aproximadamente. La app lee pequeños archivos de actualización del GitHub del proyecto y descarga páginas del Corán, traducciones, tafsir y recitaciones cuando lo pides. Nada va al desarrollador.
 
-Mihrab es independiente y no está afiliado a ninguna de las autoridades cuyos calendarios publicados reproduce; no habla en su nombre.
+صلاتي es independiente y no está afiliado a ninguna de las autoridades cuyos calendarios publicados reproduce; no habla en su nombre.
 
-Mihrab es de código abierto con licencia AGPL-3.0-or-later.
+صلاتي es de código abierto con licencia AGPL-3.0-or-later.

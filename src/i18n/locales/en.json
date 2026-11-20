@@ -585,8 +585,7 @@
     "garminFieldProgressHelp": "A bar from the last prayer to the next, under the countdown.",
     "garminInstallWidget": "Install or reinstall widget and glance",
     "garminInstallField": "Install or reinstall data field",
-    "garminInstallHelp": "Sends the prayer times again, then opens Gadgetbridge to install the watch app that came with this version of صلاتي.",
-    "lineage": "Based on the open-source Mihrab project (AGPLv3)"
+    "garminInstallHelp": "Sends the prayer times again, then opens Gadgetbridge to install the watch app that came with this version of صلاتي."
   },
   "locationSetup": {
     "headline": "Set your location",

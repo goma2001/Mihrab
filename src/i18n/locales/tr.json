@@ -585,8 +585,7 @@
     "garminFieldProgressHelp": "Son namazdan sonrakine uzanan bir çubuk, geri sayımın altında.",
     "garminInstallWidget": "Widget'ı ve bakışı yükle veya yeniden yükle",
     "garminInstallField": "Veri alanını yükle veya yeniden yükle",
-    "garminInstallHelp": "Namaz vakitlerini yeniden gönderir, sonra صلاتي'ın bu sürümüyle gelen saat uygulamasını yüklemek için Gadgetbridge'i açar.",
-    "lineage": "Based on the open-source Mihrab project (AGPLv3)"
+    "garminInstallHelp": "Namaz vakitlerini yeniden gönderir, sonra صلاتي'ın bu sürümüyle gelen saat uygulamasını yüklemek için Gadgetbridge'i açar."
   },
   "locationSetup": {
     "headline": "Konumunuzu ayarlayın",

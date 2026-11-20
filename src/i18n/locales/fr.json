@@ -586,8 +586,7 @@
     "garminFieldProgressHelp": "Une barre de la dernière prière à la suivante, sous le compte à rebours.",
     "garminInstallWidget": "Installer ou réinstaller le widget et l’aperçu",
     "garminInstallField": "Installer ou réinstaller le champ de données",
-    "garminInstallHelp": "Renvoie les horaires de prière, puis ouvre Gadgetbridge pour installer l’app de montre fournie avec cette version de صلاتي.",
-    "lineage": "Based on the open-source Mihrab project (AGPLv3)"
+    "garminInstallHelp": "Renvoie les horaires de prière, puis ouvre Gadgetbridge pour installer l’app de montre fournie avec cette version de صلاتي."
   },
   "locationSetup": {
     "headline": "Définissez votre emplacement",

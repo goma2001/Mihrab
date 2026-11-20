@@ -1,9 +1,9 @@
 "Language code","Language","App name","Short description","Full description"
-"en-US","English (United States)","Mihrab: The Muslim Companion","Prayer times matching Diyanet, Kemenag & more to the minute. Quran, dua, qibla.","Prayer times that match the published timetable to the printed minute: Diyanet’s in Türkiye and worldwide, Islamiska Förbundet’s in Sweden, and those of Morocco’s Ministry of Habous, Algeria’s Ministry of Religious Affairs and Indonesia’s Kemenag.
+"en-US","English (United States)","صلاتي: The Muslim Companion","Prayer times matching Diyanet, Kemenag & more to the minute. Quran, dua, qibla.","Prayer times that match the published timetable to the printed minute: Diyanet’s in Türkiye and worldwide, Islamiska Förbundet’s in Sweden, and those of Morocco’s Ministry of Habous, Algeria’s Ministry of Religious Affairs and Indonesia’s Kemenag.
 Each authority’s own method is calculated on your phone and checked, day by day, against its published timetables: 0 of 77.6 million times off the printed minute, last checked 17 November 2026.
 Singapore (MUIS), Malaysia (JAKIM) and Türkiye Takvimi are their published tables, used as printed. Everywhere else, times come from AlAdhan or a calculation method you choose, with per-prayer offsets to match your mosque.
 
-Around the prayers, Mihrab is a calm companion for a Muslim’s day: the Quran, and the remembrance in between, with no ads and no account.
+Around the prayers, صلاتي is a calm companion for a Muslim’s day: the Quran, and the remembrance in between, with no ads and no account.
 
 PRAY
 - Today, the week and the month ahead — shareable as an image or a PDF
@@ -39,10 +39,10 @@ YOURS
 - Android, iPhone, iPad and Mac, with Arabic and Urdu fully right-to-left
 
 WHAT GOES OVER THE NETWORK
-Where your times come from decides what is sent. For Sweden, Diyanet’s places, Morocco, Algeria and Indonesia the times are calculated on the phone and no prayer-time request is made. Elsewhere, AlAdhan (api.aladhan.com) receives your coordinates and the date. Malaysia’s and Singapore’s tables come from Mihrab’s GitHub repository by city, with the authority’s own service as a backup; Türkiye Takvimi by a map tile around you, and namazvakti.com only a city’s number. With automatic location, your city’s name is looked up from your coordinates through OpenStreetMap Nominatim; place search sends what you type. The app checks Mihrab’s GitHub repositories for correction-list and Hijri-date updates, and downloads Quran pages, translations, tafsir and recitation when you ask. Nothing is sent to the developer.
+Where your times come from decides what is sent. For Sweden, Diyanet’s places, Morocco, Algeria and Indonesia the times are calculated on the phone and no prayer-time request is made. Elsewhere, AlAdhan (api.aladhan.com) receives your coordinates and the date. Malaysia’s and Singapore’s tables come from صلاتي’s GitHub repository by city, with the authority’s own service as a backup; Türkiye Takvimi by a map tile around you, and namazvakti.com only a city’s number. With automatic location, your city’s name is looked up from your coordinates through OpenStreetMap Nominatim; place search sends what you type. The app checks GitHub for correction-list and Hijri-date updates, and downloads Quran pages, translations, tafsir and recitation when you ask. Nothing is sent to the developer.
 
-Mihrab is independent. It is not affiliated with or endorsed by Diyanet, Islamiska Förbundet, the Moroccan or Algerian ministries, Kemenag, MUIS, JAKIM or Türkiye Takvimi: it matches their published timetables and does not speak for them. Open source under AGPL-3.0-or-later."
-"ar","Arabic","محراب: رفيق المسلم","مواقيت الصلاة والأذان والقرآن والأدعية والقبلة في تطبيق هادئ يحفظ خصوصيتك.","محراب رفيقٌ هادئ في يوم المسلم: الصلوات، والقرآن الكريم، والذكر فيما بينها، في تطبيق واحد يحفظ خصوصيتك.
+صلاتي is independent. It is not affiliated with or endorsed by Diyanet, Islamiska Förbundet, the Moroccan or Algerian ministries, Kemenag, MUIS, JAKIM or Türkiye Takvimi: it matches their published timetables and does not speak for them. Open source under AGPL-3.0-or-later."
+"ar","Arabic","صلاتي: رفيق المسلم","مواقيت الصلاة والأذان والقرآن والأدعية والقبلة في تطبيق هادئ يحفظ خصوصيتك.","صلاتي رفيقٌ هادئ في يوم المسلم: الصلوات، والقرآن الكريم، والذكر فيما بينها، في تطبيق واحد يحفظ خصوصيتك.
 
 صلِّ
 - مواقيت اليوم والأسبوع والشهر القادم — مطابقة حتى الدقيقة المطبوعة لجداول ديانت ورابطة الإسلام في السويد (Islamiska Förbundet) ووزارتي المغرب والجزائر ووزارة الشؤون الدينية الإندونيسية (Kemenag)، تُحسب على الهاتف؛ وجداول MUIS وJAKIM وTürkiye Takvimi كما نُشرت؛ وAlAdhan في غيرها — قابلة للمشاركة صورةً أو PDF
@@ -82,10 +82,10 @@ Mihrab is independent. It is not affiliated with or endorsed by Diyanet, Islamis
 
 عبر الشبكة: تُحسب المواقيت على الهاتف للسويد وأماكن ديانت والمغرب والجزائر وإندونيسيا دون أي طلب؛ وفي غيرها تتلقى AlAdhan إحداثياتك والتاريخ. ومع الموقع التلقائي يُسأل OpenStreetMap عن اسم مدينتك، بموقع مقرَّب إلى نحو كيلومتر. ويقرأ التطبيق ملفات تحديث صغيرة من GitHub المشروع، وينزّل صفحات القرآن والترجمات والتفاسير والتلاوات حين تطلبها. لا يُرسَل شيء إلى المطوّر.
 
-محراب مستقل، ولا يتبع أي جهة يطابق جداولها المنشورة ولا يتحدث باسمها.
+صلاتي مستقل، ولا يتبع أي جهة يطابق جداولها المنشورة ولا يتحدث باسمها.
 
-محراب مفتوح المصدر برخصة AGPL-3.0-or-later."
-"bn-BD","Bengali","মিহরাব: মুসলিমের সঙ্গী","নামাজের সময়, আজান, কুরআন, দোয়া ও কিবলা — এক শান্ত, ব্যক্তিগত অ্যাপে।","মিহরাব একজন মুসলিমের দিনের শান্ত সঙ্গী: নামাজ, কুরআন এবং এর মাঝের জিকির — একটি ব্যক্তিগত অ্যাপে।
+صلاتي مفتوح المصدر برخصة AGPL-3.0-or-later."
+"bn-BD","Bengali","صلاتي: মুসলিমের সঙ্গী","নামাজের সময়, আজান, কুরআন, দোয়া ও কিবলা — এক শান্ত, ব্যক্তিগত অ্যাপে।","صلاتي একজন মুসলিমের দিনের শান্ত সঙ্গী: নামাজ, কুরআন এবং এর মাঝের জিকির — একটি ব্যক্তিগত অ্যাপে।
 
 নামাজ
 - আজ, এই সপ্তাহ ও সামনের মাসের নামাজের সময় — দিয়ানেত, ইসলামিস্কা ফোরবুন্দেত, মরক্কো ও আলজেরিয়ার মন্ত্রণালয় এবং কেমেনাগের প্রকাশিত সময়সূচির সঙ্গে ছাপা মিনিট পর্যন্ত মেলে, ফোনেই হিসাব; MUIS, JAKIM ও Türkiye Takvimi যেমন প্রকাশিত; অন্যত্র AlAdhan — ছবি বা PDF হিসেবে শেয়ার করা যায়
@@ -125,10 +125,10 @@ Mihrab is independent. It is not affiliated with or endorsed by Diyanet, Islamis
 
 নেটওয়ার্কে: সুইডেন, দিয়ানেতের স্থান, মরক্কো, আলজেরিয়া ও ইন্দোনেশিয়ার সময় ফোনেই হিসাব হয়, কোনো অনুরোধ ছাড়াই; অন্যত্র AlAdhan আপনার স্থানাঙ্ক ও তারিখ পায়। স্বয়ংক্রিয় অবস্থানে আপনার শহরের নাম OpenStreetMap-এর কাছে জানতে চাওয়া হয়, অবস্থান প্রায় এক কিলোমিটারে গোল করে। অ্যাপটি প্রকল্পের GitHub থেকে ছোট আপডেট ফাইল পড়ে, আর আপনি চাইলে কুরআনের পৃষ্ঠা, অনুবাদ, তাফসির ও তিলাওয়াত ডাউনলোড করে। ডেভেলপারের কাছে কিছুই যায় না।
 
-মিহরাব স্বাধীন; যে কর্তৃপক্ষগুলোর প্রকাশিত সময়সূচির সঙ্গে এটি মেলে, তাদের কারও সঙ্গে এর কোনো সম্পর্ক নেই এবং এটি তাদের হয়ে কথা বলে না।
+صلاتي স্বাধীন; যে কর্তৃপক্ষগুলোর প্রকাশিত সময়সূচির সঙ্গে এটি মেলে, তাদের কারও সঙ্গে এর কোনো সম্পর্ক নেই এবং এটি তাদের হয়ে কথা বলে না।
 
-মিহরাব AGPL-3.0-or-later লাইসেন্সে ওপেন সোর্স।"
-"de-DE","German","Mihrab: Begleiter für Muslime","Gebetszeiten, Adhan, Koran, Duas und Qibla in einer ruhigen, privaten App.","Mihrab ist ein ruhiger Begleiter für den Tag eines Muslims: die Gebete, der Koran und das Gedenken dazwischen – in einer App, die privat bleibt.
+صلاتي AGPL-3.0-or-later লাইসেন্সে ওপেন সোর্স।"
+"de-DE","German","صلاتي: Begleiter für Muslime","Gebetszeiten, Adhan, Koran, Duas und Qibla in einer ruhigen, privaten App.","صلاتي ist ein ruhiger Begleiter für den Tag eines Muslims: die Gebete, der Koran und das Gedenken dazwischen – in einer App, die privat bleibt.
 
 BETEN
 - Gebetszeiten für heute, die Woche und den kommenden Monat – auf die gedruckte Minute gleich mit den veröffentlichten Zeitplänen der Diyanet, von Islamiska Förbundet, der Ministerien Marokkos und Algeriens und von Kemenag, auf dem Telefon berechnet; MUIS, JAKIM und Türkiye Takvimi wie veröffentlicht; anderswo AlAdhan – als Bild oder PDF teilbar
@@ -167,10 +167,10 @@ DEINS
 
 Übers Netz: Für Schweden, Diyanets Orte, Marokko, Algerien und Indonesien werden die Zeiten auf dem Telefon berechnet, ohne Anfrage; anderswo erhält AlAdhan deine Koordinaten und das Datum. Mit automatischem Standort wird OpenStreetMap nach dem Namen deines Ortes gefragt, die Position auf etwa einen Kilometer gerundet. Die App liest kleine Update-Dateien vom GitHub des Projekts und lädt Koranseiten, Übersetzungen, Tafsir und Rezitationen, wenn du sie anforderst. Nichts geht an den Entwickler.
 
-Mihrab ist unabhängig und mit keiner der Stellen verbunden, deren veröffentlichte Zeitpläne es trifft; es spricht nicht für sie.
+صلاتي ist unabhängig und mit keiner der Stellen verbunden, deren veröffentlichte Zeitpläne es trifft; es spricht nicht für sie.
 
-Mihrab ist Open Source unter AGPL-3.0-or-later."
-"es-ES","Spanish","Mihrab: compañero musulmán","Horarios de oración, adhan, Corán, duas y alquibla en una app serena y privada.","Mihrab es un compañero sereno para el día de un musulmán: las oraciones, el Corán y el recuerdo de Dios entre ellas, en una sola app privada.
+صلاتي ist Open Source unter AGPL-3.0-or-later."
+"es-ES","Spanish","صلاتي: compañero musulmán","Horarios de oración, adhan, Corán, duas y alquibla en una app serena y privada.","صلاتي es un compañero sereno para el día de un musulmán: las oraciones, el Corán y el recuerdo de Dios entre ellas, en una sola app privada.
 
 REZAR
 - Horarios de hoy, la semana y el mes siguiente: coinciden al minuto impreso con los calendarios publicados por Diyanet, Islamiska Förbundet, los ministerios de Marruecos y Argelia y Kemenag, calculados en el teléfono; MUIS, JAKIM y Türkiye Takvimi tal como se publican; AlAdhan en el resto. Se comparten como imagen o PDF
@@ -209,10 +209,10 @@ TUYO
 
 Por la red: para Suecia, los lugares de Diyanet, Marruecos, Argelia e Indonesia los horarios se calculan en el teléfono, sin ninguna petición; en otros lugares AlAdhan recibe tus coordenadas y la fecha. Con la ubicación automática se pregunta a OpenStreetMap el nombre de tu ciudad, con la posición redondeada a un kilómetro aproximadamente. La app lee pequeños archivos de actualización del GitHub del proyecto y descarga páginas del Corán, traducciones, tafsir y recitaciones cuando lo pides. Nada va al desarrollador.
 
-Mihrab es independiente y no está afiliado a ninguna de las autoridades cuyos calendarios publicados reproduce; no habla en su nombre.
+صلاتي es independiente y no está afiliado a ninguna de las autoridades cuyos calendarios publicados reproduce; no habla en su nombre.
 
-Mihrab es de código abierto con licencia AGPL-3.0-or-later."
-"fr-FR","French","Mihrab : compagnon du musulman","Heures de prière, adhan, Coran, douas et qibla dans une app sereine et privée.","Mihrab est un compagnon serein pour la journée d'un musulman : les prières, le Coran et le rappel d'Allah entre les deux, dans une seule app privée.
+صلاتي es de código abierto con licencia AGPL-3.0-or-later."
+"fr-FR","French","صلاتي : compagnon du musulman","Heures de prière, adhan, Coran, douas et qibla dans une app sereine et privée.","صلاتي est un compagnon serein pour la journée d'un musulman : les prières, le Coran et le rappel d'Allah entre les deux, dans une seule app privée.
 
 PRIER
 - Les heures du jour, de la semaine et du mois à venir — conformes à la minute imprimée aux horaires publiés par Diyanet, Islamiska Förbundet, les ministères du Maroc et de l’Algérie et Kemenag, calculées sur le téléphone ; MUIS, JAKIM et Türkiye Takvimi tels que publiés ; AlAdhan ailleurs — à partager en image ou en PDF
@@ -251,10 +251,10 @@ SE SOUVENIR
 
 Sur le réseau : pour la Suède, les lieux de Diyanet, le Maroc, l’Algérie et l’Indonésie, les heures sont calculées sur le téléphone, sans requête ; ailleurs, AlAdhan reçoit vos coordonnées et la date. Avec la position automatique, le nom de votre ville est demandé à OpenStreetMap, la position arrondie à environ un kilomètre. L’application lit de petits fichiers de mise à jour sur le GitHub du projet et télécharge pages du Coran, traductions, tafsirs et récitations à votre demande. Rien ne va au développeur.
 
-Mihrab est indépendant : il n’est affilié à aucune des autorités dont il reproduit les horaires publiés et ne parle pas en leur nom.
+صلاتي est indépendant : il n’est affilié à aucune des autorités dont il reproduit les horaires publiés et ne parle pas en leur nom.
 
-Mihrab est open source sous licence AGPL-3.0-or-later."
-"hi-IN","Hindi","मिहराब: मुसलमान का साथी","नमाज़ का समय, अज़ान, क़ुरआन, दुआ और क़िबला — एक शांत, निजी ऐप में।","मिहराब एक मुसलमान के दिन का शांत साथी है: नमाज़ें, क़ुरआन और उनके बीच का ज़िक्र — एक ही निजी ऐप में।
+صلاتي est open source sous licence AGPL-3.0-or-later."
+"hi-IN","Hindi","صلاتي: मुसलमान का साथी","नमाज़ का समय, अज़ान, क़ुरआन, दुआ और क़िबला — एक शांत, निजी ऐप में।","صلاتي एक मुसलमान के दिन का शांत साथी है: नमाज़ें, क़ुरआन और उनके बीच का ज़िक्र — एक ही निजी ऐप में।
 
 नमाज़
 - आज, इस हफ़्ते और अगले महीने का नमाज़ का समय — दियानत, इस्लामिस्का फ़ोरबुंदेत, मोरक्को और अल्जीरिया के मंत्रालयों और केमेनाग की प्रकाशित समय-सारणी से छपे मिनट तक मेल खाता, फ़ोन पर गणना; MUIS, JAKIM और Türkiye Takvimi जैसे प्रकाशित; बाकी जगह AlAdhan — चित्र या PDF के रूप में साझा करें
@@ -294,10 +294,10 @@ Mihrab est open source sous licence AGPL-3.0-or-later."
 
 नेटवर्क पर: स्वीडन, दियानत की जगहों, मोरक्को, अल्जीरिया और इंडोनेशिया के समय फ़ोन पर ही गणना होते हैं, बिना किसी अनुरोध के; बाकी जगह AlAdhan को आपके निर्देशांक और तारीख़ मिलती है। स्वचालित स्थान में आपके शहर का नाम OpenStreetMap से पूछा जाता है, स्थिति लगभग एक किलोमीटर तक गोल करके। ऐप प्रोजेक्ट के GitHub से छोटी अपडेट फ़ाइलें पढ़ता है, और आपके माँगने पर क़ुरआन के पन्ने, अनुवाद, तफ़्सीर और तिलावत डाउनलोड करता है। डेवलपर के पास कुछ नहीं जाता।
 
-मिहराब स्वतंत्र है; जिन संस्थाओं की प्रकाशित समय-सारणी से यह मेल खाता है, उनमें से किसी से इसका कोई संबंध नहीं है और यह उनकी ओर से नहीं बोलता।
+صلاتي स्वतंत्र है; जिन संस्थाओं की प्रकाशित समय-सारणी से यह मेल खाता है, उनमें से किसी से इसका कोई संबंध नहीं है और यह उनकी ओर से नहीं बोलता।
 
-मिहराब AGPL-3.0-or-later के तहत ओपन सोर्स है।"
-"id","Indonesian","Mihrab: Pendamping Muslim","Jadwal sholat sesuai jadwal Kemenag sampai ke menitnya. Al-Quran, doa, kiblat.","Mihrab adalah pendamping yang tenang bagi hari seorang Muslim: sholat, Al-Quran, dan dzikir di antaranya, dalam satu aplikasi yang menjaga privasi.
+صلاتي AGPL-3.0-or-later के तहत ओपन सोर्स है।"
+"id","Indonesian","صلاتي: Pendamping Muslim","Jadwal sholat sesuai jadwal Kemenag sampai ke menitnya. Al-Quran, doa, kiblat.","صلاتي adalah pendamping yang tenang bagi hari seorang Muslim: sholat, Al-Quran, dan dzikir di antaranya, dalam satu aplikasi yang menjaga privasi.
 
 SHOLAT
 - Jadwal hari ini, minggu ini, dan bulan depan — sesuai sampai ke menit yang tercetak dengan jadwal terbitan Diyanet, Islamiska Förbundet, kementerian Maroko dan Aljazair, serta Kemenag, dihitung di ponsel; MUIS, JAKIM, dan Türkiye Takvimi sebagaimana diterbitkan; AlAdhan di tempat lain — bisa dibagikan sebagai gambar atau PDF
@@ -336,10 +336,10 @@ MILIK ANDA
 
 Lewat jaringan: untuk Swedia, tempat-tempat Diyanet, Maroko, Aljazair, dan Indonesia, jadwal dihitung di ponsel tanpa permintaan apa pun; di tempat lain AlAdhan menerima koordinat dan tanggal. Dengan lokasi otomatis, nama kota Anda ditanyakan ke OpenStreetMap, dengan posisi dibulatkan sekitar satu kilometer. Aplikasi membaca file pembaruan kecil dari GitHub proyek, dan mengunduh halaman Al-Quran, terjemahan, tafsir, dan tilawah saat Anda minta. Tidak ada yang dikirim ke pengembang.
 
-Mihrab independen dan tidak berafiliasi dengan otoritas mana pun yang jadwal terbitannya dicocokkan, serta tidak berbicara atas nama mereka.
+صلاتي independen dan tidak berafiliasi dengan otoritas mana pun yang jadwal terbitannya dicocokkan, serta tidak berbicara atas nama mereka.
 
-Mihrab bersumber terbuka dengan lisensi AGPL-3.0-or-later."
-"ru-RU","Russian","Mihrab: Спутник мусульманина","Время намазов, азан, Коран, дуа и кибла в одном тихом и приватном приложении.","Mihrab — спокойный спутник мусульманина на весь день: намазы, Коран и поминание Аллаха между ними, в одном приложении, которое бережёт вашу приватность.
+صلاتي bersumber terbuka dengan lisensi AGPL-3.0-or-later."
+"ru-RU","Russian","صلاتي: Спутник мусульманина","Время намазов, азан, Коран, дуа и кибла в одном тихом и приватном приложении.","صلاتي — спокойный спутник мусульманина на весь день: намазы, Коран и поминание Аллаха между ними, в одном приложении, которое бережёт вашу приватность.
 
 НАМАЗ
 - Время намазов на сегодня, неделю и месяц вперёд — до напечатанной минуты совпадает с опубликованными расписаниями Диянета, Islamiska Förbundet, министерств Марокко и Алжира и Kemenag и рассчитывается на телефоне; MUIS, JAKIM и Türkiye Takvimi — как опубликованы; в остальных местах AlAdhan. Можно поделиться картинкой или PDF
@@ -379,10 +379,10 @@ Mihrab bersumber terbuka dengan lisensi AGPL-3.0-or-later."
 
 Через сеть: для Швеции, мест Диянета, Марокко, Алжира и Индонезии время рассчитывается на телефоне, без запросов; в остальных местах AlAdhan получает ваши координаты и дату. При автоматическом определении места название города запрашивается у OpenStreetMap, позиция округляется примерно до километра. Приложение читает небольшие файлы обновлений с GitHub проекта и по вашему запросу загружает страницы Корана, переводы, тафсиры и чтения. Разработчику не уходит ничего.
 
-Mihrab независим и не связан ни с одним из ведомств, чьи опубликованные расписания он воспроизводит, и не говорит от их имени.
+صلاتي независим и не связан ни с одним из ведомств, чьи опубликованные расписания он воспроизводит, и не говорит от их имени.
 
-Mihrab — приложение с открытым исходным кодом под лицензией AGPL-3.0-or-later."
-"sv-SE","Swedish","Mihrab: Muslimens följeslagare","Bönetider på minuten enligt Islamiska Förbundets tidtabell. Koran, duor, qibla.","Mihrab är en lugn följeslagare genom muslimens dag: bönerna, Koranen och åminnelsen däremellan, i en och samma privata app.
+صلاتي — приложение с открытым исходным кодом под лицензией AGPL-3.0-or-later."
+"sv-SE","Swedish","صلاتي: Muslimens följeslagare","Bönetider på minuten enligt Islamiska Förbundets tidtabell. Koran, duor, qibla.","صلاتي är en lugn följeslagare genom muslimens dag: bönerna, Koranen och åminnelsen däremellan, i en och samma privata app.
 
 BE
 - Bönetider för i dag, veckan och månaden framåt — på den tryckta minuten enligt de publicerade tidtabellerna från Diyanet, Islamiska Förbundet, Marockos och Algeriets ministerier och Kemenag, uträknade på telefonen; MUIS, JAKIM och Türkiye Takvimi som de publiceras; AlAdhan på andra platser — att dela som bild eller PDF
@@ -422,10 +422,10 @@ DITT EGET
 
 Över nätet: för Sverige, Diyanets orter, Marocko, Algeriet och Indonesien räknas tiderna ut på telefonen, utan någon förfrågan; på andra platser får AlAdhan dina koordinater och datumet. Med automatisk plats frågar appen OpenStreetMap om ortens namn, med positionen avrundad till ungefär en kilometer. Appen läser små uppdateringsfiler från projektets GitHub och laddar ned Koranens sidor, översättningar, tafsir och recitation när du ber om det. Inget skickas till utvecklaren.
 
-Mihrab är oberoende och inte knutet till någon av de myndigheter vars publicerade tidtabeller appen stämmer med, och talar inte för dem.
+صلاتي är oberoende och inte knutet till någon av de myndigheter vars publicerade tidtabeller appen stämmer med, och talar inte för dem.
 
-Mihrab är öppen källkod under AGPL-3.0-or-later."
-"tr-TR","Turkish","Mihrab: Müslümanın Yoldaşı","Diyanet'in yayımladığı vakitlerle dakikası dakikasına namaz vakitleri ve Kuran.","Mihrab, bir Müslümanın gününe eşlik eden sakin bir yoldaştır: namazlar, Kuran ve aralarındaki zikir, gizliliğinize saygılı tek bir uygulamada.
+صلاتي är öppen källkod under AGPL-3.0-or-later."
+"tr-TR","Turkish","صلاتي: Müslümanın Yoldaşı","Diyanet'in yayımladığı vakitlerle dakikası dakikasına namaz vakitleri ve Kuran.","صلاتي, bir Müslümanın gününe eşlik eden sakin bir yoldaştır: namazlar, Kuran ve aralarındaki zikir, gizliliğinize saygılı tek bir uygulamada.
 
 NAMAZ
 - Bugünün, haftanın ve önümüzdeki ayın vakitleri — Diyanet, Islamiska Förbundet, Fas ve Cezayir bakanlıkları ve Kemenag’ın yayımladığı takvimlerle basılı dakikasına kadar eşleşir, telefonda hesaplanır; MUIS, JAKIM ve Türkiye Takvimi yayımlandığı gibi; diğer yerlerde AlAdhan — görsel ya da PDF olarak paylaşılabilir
@@ -465,10 +465,10 @@ SİZİN
 
 Ağ üzerinden: İsveç, Diyanet’in yerleri, Fas, Cezayir ve Endonezya için vakitler telefonda hesaplanır, hiçbir istek gönderilmez; diğer yerlerde AlAdhan koordinatlarınızı ve tarihi alır. Otomatik konumda şehrinizin adı OpenStreetMap’e sorulur; konum yaklaşık bir kilometreye yuvarlanır. Uygulama projenin GitHub’ından küçük güncelleme dosyaları okur, istediğinizde Kuran sayfalarını, mealleri, tefsirleri ve tilavetleri indirir. Geliştiriciye hiçbir şey gitmez.
 
-Mihrab bağımsızdır; yayımlanmış takvimleriyle eşleştiği kurumların hiçbiriyle bağlantısı yoktur ve onlar adına konuşmaz.
+صلاتي bağımsızdır; yayımlanmış takvimleriyle eşleştiği kurumların hiçbiriyle bağlantısı yoktur ve onlar adına konuşmaz.
 
-Mihrab, AGPL-3.0-or-later lisansıyla açık kaynaktır."
-"ur","Urdu","محراب: مسلمان کا رفیق","نماز کے اوقات، اذان، قرآن، دعائیں اور قبلہ — ایک پُرسکون، نجی ایپ میں۔","محراب ایک مسلمان کے دن کا پُرسکون رفیق ہے: نمازیں، قرآن اور ان کے درمیان کا ذکر — ایک ہی نجی ایپ میں۔
+صلاتي, AGPL-3.0-or-later lisansıyla açık kaynaktır."
+"ur","Urdu","صلاتي: مسلمان کا رفیق","نماز کے اوقات، اذان، قرآن، دعائیں اور قبلہ — ایک پُرسکون، نجی ایپ میں۔","صلاتي ایک مسلمان کے دن کا پُرسکون رفیق ہے: نمازیں، قرآن اور ان کے درمیان کا ذکر — ایک ہی نجی ایپ میں۔
 
 نماز
 - آج، اس ہفتے اور اگلے مہینے کے نماز کے اوقات — دیانت، اسلامسکا فوربوندیت، مراکش اور الجزائر کی وزارتوں اور کیمیناگ کے شائع شدہ اوقات سے چھپے ہوئے منٹ تک مطابق، فون پر حساب؛ MUIS، JAKIM اور Türkiye Takvimi جیسے شائع ہوئے؛ باقی جگہ AlAdhan — تصویر یا PDF کی صورت میں شیئر کریں
@@ -508,10 +508,10 @@ Mihrab, AGPL-3.0-or-later lisansıyla açık kaynaktır."
 
 نیٹ ورک پر: سویڈن، دیانت کے مقامات، مراکش، الجزائر اور انڈونیشیا کے اوقات فون پر حساب ہوتے ہیں، بغیر کسی درخواست کے؛ باقی جگہوں پر AlAdhan کو آپ کے کوآرڈینیٹس اور تاریخ ملتی ہے۔ خودکار مقام کے ساتھ آپ کے شہر کا نام OpenStreetMap سے پوچھا جاتا ہے، مقام تقریباً ایک کلومیٹر تک گول کر کے۔ ایپ پروجیکٹ کے GitHub سے چھوٹی اپڈیٹ فائلیں پڑھتی ہے، اور آپ کے کہنے پر قرآن کے صفحات، تراجم، تفاسیر اور تلاوت ڈاؤن لوڈ کرتی ہے۔ ڈویلپر کو کچھ نہیں جاتا۔
 
-محراب آزاد ہے؛ جن اداروں کے شائع شدہ اوقات سے یہ مطابقت رکھتی ہے، ان میں سے کسی سے اس کا کوئی تعلق نہیں اور یہ ان کی طرف سے بات نہیں کرتی۔
+صلاتي آزاد ہے؛ جن اداروں کے شائع شدہ اوقات سے یہ مطابقت رکھتی ہے، ان میں سے کسی سے اس کا کوئی تعلق نہیں اور یہ ان کی طرف سے بات نہیں کرتی۔
 
-محراب AGPL-3.0-or-later کے تحت اوپن سورس ہے۔"
-"zh-CN","Chinese (Simplified)","Mihrab：穆斯林的日常伴侣","礼拜时间、宣礼、古兰经、祈祷词与朝向，尽在一款安静、私密的应用。","Mihrab 是穆斯林一天中安静的伴侣：礼拜、古兰经，以及其间的记主赞念，尽在一款注重隐私的应用中。
+صلاتي AGPL-3.0-or-later کے تحت اوپن سورس ہے۔"
+"zh-CN","Chinese (Simplified)","صلاتي：穆斯林的日常伴侣","礼拜时间、宣礼、古兰经、祈祷词与朝向，尽在一款安静、私密的应用。","صلاتي 是穆斯林一天中安静的伴侣：礼拜、古兰经，以及其间的记主赞念，尽在一款注重隐私的应用中。
 
 礼拜
 - 今天、本周和未来一个月的礼拜时间——与 Diyanet、Islamiska Förbundet、摩洛哥和阿尔及利亚宗教部以及 Kemenag 公布的时间表精确到印刷的分钟，在手机上计算；MUIS、JAKIM 和 Türkiye Takvimi 按公布原样；其他地方使用 AlAdhan——可分享为图片或 PDF
@@ -551,6 +551,6 @@ Mihrab, AGPL-3.0-or-later lisansıyla açık kaynaktır."
 
 网络方面：瑞典、Diyanet 所列地点、摩洛哥、阿尔及利亚和印度尼西亚的时间在手机上计算，不发出任何请求；其他地方由 AlAdhan 接收你的坐标和日期。使用自动定位时，会向 OpenStreetMap 查询所在城镇的名称，位置约取整到一公里。应用会从项目的 GitHub 读取小型更新文件，并在你需要时下载古兰经页面、译本、经注与诵读。没有任何内容发给开发者。
 
-Mihrab 是独立的，与其所匹配公布时间表的任何机构均无隶属关系，也不代表它们发言。
+صلاتي 是独立的，与其所匹配公布时间表的任何机构均无隶属关系，也不代表它们发言。
 
-Mihrab 以 AGPL-3.0-or-later 许可开源。"
+صلاتي 以 AGPL-3.0-or-later 许可开源。"

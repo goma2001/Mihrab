@@ -1,4 +1,4 @@
-• The Android widgets are drawn by a new engine. Widgets you already placed stay where they are and keep their settings; if one says “Open Mihrab” after the update, open the app once.
+• The Android widgets are drawn by a new engine. Widgets you already placed stay where they are and keep their settings; if one says “Open صلاتي” after the update, open the app once.
 • In Arabic and Urdu the Today carousel opens on today again on Android.
 • Turning the phone fades the muṣḥaf page back in.
-• On iPhone and iPad, Mihrab opens again on iOS 27; the prayer widget’s refresh button is gone (it updates on its own).
+• On iPhone and iPad, صلاتي opens again on iOS 27; the prayer widget’s refresh button is gone (it updates on its own).
