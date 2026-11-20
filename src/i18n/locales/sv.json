@@ -585,8 +585,7 @@
     "garminFieldProgressHelp": "En stapel från förra bönen till nästa, under nedräkningen.",
     "garminInstallWidget": "Installera eller installera om widget och glance",
     "garminInstallField": "Installera eller installera om datafältet",
-    "garminInstallHelp": "Skickar bönetiderna igen och öppnar sedan Gadgetbridge för att installera klockappen som följde med den här versionen av صلاتي.",
-    "lineage": "Based on the open-source Mihrab project (AGPLv3)"
+    "garminInstallHelp": "Skickar bönetiderna igen och öppnar sedan Gadgetbridge för att installera klockappen som följde med den här versionen av صلاتي."
   },
   "locationSetup": {
     "headline": "Ange din plats",

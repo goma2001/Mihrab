@@ -142,7 +142,7 @@ describe('nothing is silently still in English', () => {
 describe('the title is not just the app name', () => {
   it.each(APP_LOCALES)('%s carries the name and what it is', locale => {
     const title = field(STORE_DIR[locale], 'title');
-    expect(title).not.toBe('Mihrab');
+    expect(title).not.toBe('صلاتي');
     // Half the field is the floor, not the target: `Mihrab` alone was six
     // characters of thirty and indexed for nothing.
     expect(title.length).toBeGreaterThanOrEqual(12);
@@ -196,7 +196,7 @@ describe('the listings are one listing', () => {
 
   it.each(APP_LOCALES)('%s leads its title with the name', locale => {
     const title = field(STORE_DIR[locale], 'title');
-    expect(title).toMatch(/^(Mihrab|محراب|মিহরাব|मिहराब)/);
+    expect(title).toMatch(/^صلاتي/);
   });
 });
 

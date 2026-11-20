@@ -1,4 +1,4 @@
-Mihrab, bir Müslümanın gününe eşlik eden sakin bir yoldaştır: namazlar, Kuran ve aralarındaki zikir, gizliliğinize saygılı tek bir uygulamada.
+صلاتي, bir Müslümanın gününe eşlik eden sakin bir yoldaştır: namazlar, Kuran ve aralarındaki zikir, gizliliğinize saygılı tek bir uygulamada.
 
 NAMAZ
 - Bugünün, haftanın ve önümüzdeki ayın vakitleri — Diyanet, Islamiska Förbundet, Fas ve Cezayir bakanlıkları ve Kemenag’ın yayımladığı takvimlerle basılı dakikasına kadar eşleşir, telefonda hesaplanır; MUIS, JAKIM ve Türkiye Takvimi yayımlandığı gibi; diğer yerlerde AlAdhan — görsel ya da PDF olarak paylaşılabilir
@@ -37,6 +37,6 @@ SİZİN
 
 Ağ üzerinden: İsveç, Diyanet’in yerleri, Fas, Cezayir ve Endonezya için vakitler telefonda hesaplanır, hiçbir istek gönderilmez; diğer yerlerde AlAdhan koordinatlarınızı ve tarihi alır. Otomatik konumda şehrinizin adı OpenStreetMap’e sorulur; konum yaklaşık bir kilometreye yuvarlanır. Uygulama projenin GitHub’ından küçük güncelleme dosyaları okur, istediğinizde Kuran sayfalarını, mealleri, tefsirleri ve tilavetleri indirir. Geliştiriciye hiçbir şey gitmez.
 
-Mihrab bağımsızdır; yayımlanmış takvimleriyle eşleştiği kurumların hiçbiriyle bağlantısı yoktur ve onlar adına konuşmaz.
+صلاتي bağımsızdır; yayımlanmış takvimleriyle eşleştiği kurumların hiçbiriyle bağlantısı yoktur ve onlar adına konuşmaz.
 
-Mihrab, AGPL-3.0-or-later lisansıyla açık kaynaktır.
+صلاتي, AGPL-3.0-or-later lisansıyla açık kaynaktır.

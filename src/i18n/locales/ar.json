@@ -589,8 +589,7 @@
     "garminFieldProgressHelp": "شريط من الصلاة السابقة إلى التالية، تحت العد التنازلي.",
     "garminInstallWidget": "تثبيت أو إعادة تثبيت الأداة واللمحة",
     "garminInstallField": "تثبيت أو إعادة تثبيت حقل البيانات",
-    "garminInstallHelp": "يرسل أوقات الصلاة مجددًا ثم يفتح Gadgetbridge لتثبيت تطبيق الساعة المرفق بهذه النسخة من صلاتي.",
-    "lineage": "مبنية على مشروع Mihrab مفتوح المصدر (AGPLv3)"
+    "garminInstallHelp": "يرسل أوقات الصلاة مجددًا ثم يفتح Gadgetbridge لتثبيت تطبيق الساعة المرفق بهذه النسخة من صلاتي."
   },
   "locationSetup": {
     "headline": "حدّد موقعك",

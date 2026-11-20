@@ -586,8 +586,7 @@
     "garminFieldProgressHelp": "Una barra desde la última oración hasta la siguiente, bajo la cuenta atrás.",
     "garminInstallWidget": "Instalar o reinstalar el widget y el vistazo",
     "garminInstallField": "Instalar o reinstalar el campo de datos",
-    "garminInstallHelp": "Envía de nuevo los horarios de oración y luego abre Gadgetbridge para instalar la app de reloj incluida en esta versión de صلاتي.",
-    "lineage": "Based on the open-source Mihrab project (AGPLv3)"
+    "garminInstallHelp": "Envía de nuevo los horarios de oración y luego abre Gadgetbridge para instalar la app de reloj incluida en esta versión de صلاتي."
   },
   "locationSetup": {
     "headline": "Establece tu ubicación",

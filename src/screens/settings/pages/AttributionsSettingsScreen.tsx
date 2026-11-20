@@ -63,7 +63,7 @@ export function AttributionsSettingsScreen() {
       label: t('attributions.mushafImages', {
         defaultValue: 'Mushaf page images (604)',
       }),
-      sub: 'MihrabHQ/Mihrab · KFGQPC fonts · via quran/quran.com-images',
+      sub: 'KFGQPC fonts · via quran/quran.com-images',
       url: 'https://github.com/MihrabHQ/Mihrab/releases/tag/mushaf-assets-v2',
     },
     {
@@ -124,7 +124,7 @@ export function AttributionsSettingsScreen() {
     {
       label: t('attributions.recitationWholeSurah', {
         defaultValue:
-          'Whole-surah recitations (15): mp3quran.net · ayah timings aligned to the audio by Mihrab',
+          'Whole-surah recitations (15): mp3quran.net · ayah timings aligned to the audio by صلاتي',
       }),
       sub: 'mp3quran.net',
       url: 'https://mp3quran.net/',

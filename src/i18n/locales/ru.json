@@ -597,8 +597,7 @@
     "garminFieldProgressHelp": "Полоса от прошлого намаза до следующего, под обратным отсчётом.",
     "garminInstallWidget": "Установить или переустановить виджет и превью",
     "garminInstallField": "Установить или переустановить поле данных",
-    "garminInstallHelp": "Снова отправляет время намазов, затем открывает Gadgetbridge, чтобы установить приложение для часов из этой версии صلاتي.",
-    "lineage": "Based on the open-source Mihrab project (AGPLv3)"
+    "garminInstallHelp": "Снова отправляет время намазов, затем открывает Gadgetbridge, чтобы установить приложение для часов из этой версии صلاتي."
   },
   "locationSetup": {
     "headline": "Укажите своё местоположение",

@@ -2,7 +2,7 @@ Prayer times that match the published timetable to the printed minute: Diyanet�
 Each authority’s own method is calculated on your phone and checked, day by day, against its published timetables: 0 of 77.6 million times off the printed minute, last checked 17 November 2026.
 Singapore (MUIS), Malaysia (JAKIM) and Türkiye Takvimi are their published tables, used as printed. Everywhere else, times come from AlAdhan or a calculation method you choose, with per-prayer offsets to match your mosque.
 
-Around the prayers, Mihrab is a calm companion for a Muslim’s day: the Quran, and the remembrance in between, with no ads and no account.
+Around the prayers, صلاتي is a calm companion for a Muslim’s day: the Quran, and the remembrance in between, with no ads and no account.
 
 PRAY
 - Today, the week and the month ahead — shareable as an image or a PDF
@@ -38,6 +38,6 @@ YOURS
 - Android, iPhone, iPad and Mac, with Arabic and Urdu fully right-to-left
 
 WHAT GOES OVER THE NETWORK
-Where your times come from decides what is sent. For Sweden, Diyanet’s places, Morocco, Algeria and Indonesia the times are calculated on the phone and no prayer-time request is made. Elsewhere, AlAdhan (api.aladhan.com) receives your coordinates and the date. Malaysia’s and Singapore’s tables come from Mihrab’s GitHub repository by city, with the authority’s own service as a backup; Türkiye Takvimi by a map tile around you, and namazvakti.com only a city’s number. With automatic location, your city’s name is looked up from your coordinates through OpenStreetMap Nominatim; place search sends what you type. The app checks Mihrab’s GitHub repositories for correction-list and Hijri-date updates, and downloads Quran pages, translations, tafsir and recitation when you ask. Nothing is sent to the developer.
+Where your times come from decides what is sent. For Sweden, Diyanet’s places, Morocco, Algeria and Indonesia the times are calculated on the phone and no prayer-time request is made. Elsewhere, AlAdhan (api.aladhan.com) receives your coordinates and the date. Malaysia’s and Singapore’s tables come from صلاتي’s GitHub repository by city, with the authority’s own service as a backup; Türkiye Takvimi by a map tile around you, and namazvakti.com only a city’s number. With automatic location, your city’s name is looked up from your coordinates through OpenStreetMap Nominatim; place search sends what you type. The app checks GitHub for correction-list and Hijri-date updates, and downloads Quran pages, translations, tafsir and recitation when you ask. Nothing is sent to the developer.
 
-Mihrab is independent. It is not affiliated with or endorsed by Diyanet, Islamiska Förbundet, the Moroccan or Algerian ministries, Kemenag, MUIS, JAKIM or Türkiye Takvimi: it matches their published timetables and does not speak for them. Open source under AGPL-3.0-or-later.
+صلاتي is independent. It is not affiliated with or endorsed by Diyanet, Islamiska Förbundet, the Moroccan or Algerian ministries, Kemenag, MUIS, JAKIM or Türkiye Takvimi: it matches their published timetables and does not speak for them. Open source under AGPL-3.0-or-later.
