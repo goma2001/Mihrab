@@ -50,6 +50,8 @@ import { isRtlLanguage } from '../../i18n/layoutDirection';
 import { HeroSky, type SkyRun } from './HeroSky';
 import { trackFrame, trackWindow } from './trackModel';
 import { TrackExplainer, useTrackExplain } from './TrackExplainer';
+import { DayNightToggle, SunArch } from './SunArch';
+import { archDots, resolveArchTimes, sunArchState } from './sunArch';
 import type { HeroLook } from '../../settings/types';
 import {
   HERO_Y,
@@ -69,7 +71,7 @@ import { skyMoodFor, type SkyVariant } from '../../theme/skyMoods';
 import { setHeroSkyBand } from './heroSkyBand';
 import { publishSkyTheme, skyDayKey } from '../../theme/skyTheme';
 import { useVerticalBar } from '../../native/VerticalBar';
-import { SPACING } from '../../theme/tokens';
+import { ARCH_GOLD, ARCH_GOLD_SOFT, SPACING } from '../../theme/tokens';
 import { HERO_COUNTDOWN_SIZE, HERO_SCENE_MIN, HERO_SECONDS_SIZE, type HomeTier } from './homeBudget';
 
 import { RAIL_LINE, RAIL_TICK, RAIL_TICK_TARGET, styles } from './todayCardStyles';
@@ -123,15 +125,19 @@ const HERO_ASCENT_EM = 0.93;
 const HeroTopRow = memo(function HeroTopRow({
   topRow,
   ink,
+  trailing,
   onLayout,
 }: {
   topRow: { renderLocation?: (ink: SkyInkColors, column?: boolean) => ReactNode; renderQibla?: (ink: SkyInkColors, column?: boolean) => ReactNode };
   ink: SkyInkColors;
+  /** Between the location and the Qibla: the Arch of Light's day/night toggle. */
+  trailing?: ReactNode;
   onLayout?: (e: LayoutChangeEvent) => void;
 }) {
   return (
     <View style={styles.heroTopRow} onLayout={onLayout}>
       <View style={styles.heroTopLeading}>{topRow.renderLocation?.(ink)}</View>
+      {trailing}
       {topRow.renderQibla?.(ink)}
     </View>
   );
@@ -236,6 +242,7 @@ export const HeroToday = memo(function HeroToday({
   recess,
   footer,
   onOpenTimes,
+  onToggleDayNight,
   layoutKey,
 }: {
   /** The band: the painted sky, or the Track (settings `heroLook`, trackModel.ts). */
@@ -253,6 +260,12 @@ export const HeroToday = memo(function HeroToday({
    * line. A finger opens them by the drag up on the page (TodayCardImpl).
    */
   onOpenTimes?: () => void;
+  /**
+   * The Arch of Light (1.0.4): pin the app to day or night from the
+   * hero's top row. TodayCard flips `appearance` between light and dark
+   * on the palette's resolved darkness; absent, no toggle is shown.
+   */
+  onToggleDayNight?: () => void;
   /**
    * What the hero's measured sizes depend on (TodayCardImpl, `layoutKey`):
    * with it the sizes kept under that key from the last launch stand in
@@ -521,6 +534,48 @@ export const HeroToday = memo(function HeroToday({
   const heroVariant: SkyVariant = skyTheme ? skyVariant : 'realistic';
   const pageBg = String(pagePalette.bg);
   const pageDark = pagePalette.isDark;
+  // ── The Arch of Light (1.0.4) ──────────────────────────────────────
+  // The arch hero replaces the painted sky when `heroLook` is 'arch'
+  // (and the page is not Minimal, whose hero is the whole page). Its
+  // state comes from the same times the sky reads — `skyToday`, Sunrise
+  // included — and the device's clock, through sunArch.ts: the times are
+  // the day's, so they are memoised on the local date, and the orb moves
+  // when the minute changes, not when the second does.
+  const isArch = heroLook === 'arch' && !minimal;
+  const archDayKey = `${now.getFullYear()}-${now.getMonth()}-${now.getDate()}`;
+  const archTimes = useMemo(
+    () => (isArch ? resolveArchTimes(skyToday ?? today, now, tomorrowFajr, dayClock) : null),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [isArch, skyToday, today, tomorrowFajr, dayClock, archDayKey],
+  );
+  const archMinute = Math.floor(now.getTime() / 60000);
+  const archState = useMemo(
+    () => sunArchState(archTimes, now.getTime()),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [archTimes, archMinute],
+  );
+  const archDotsList = useMemo(
+    () => (isArch ? archDots(skyToday ?? today, now, target.name, dayClock) : []),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [isArch, skyToday, today, target.name, dayClock, archMinute],
+  );
+  const archPhaseLabel = t(
+    `home.archPhase${archState.phase[0].toUpperCase()}${archState.phase.slice(1)}`,
+    archState.phase,
+  );
+  // The top row's chips take the sky's ink; on the stone card they take
+  // the page's — the same shape, the palette's solid strings. The track,
+  // fill and ring are the chips' unused fields; gold, for the shape.
+  const archInk: SkyInkColors = useMemo(
+    () => ({
+      text: pagePalette.textSolid,
+      muted: pagePalette.mutedSolid,
+      track: ARCH_GOLD,
+      fill: ARCH_GOLD,
+      ring: ARCH_GOLD_SOFT,
+    }),
+    [pagePalette],
+  );
   // Where the sky starts fading into a page of the other polarity: just
   // under the countdown block's foot, once the growing hero has measured
   // it (set below), so the block is all on the sky.
@@ -1075,6 +1130,62 @@ export const HeroToday = memo(function HeroToday({
     <View
       style={[styles.hero, expanded && styles.heroExpanded, fill && styles.heroFill]}
       onLayout={banded || onLayout ? onHeroLayout : undefined}>
+      {isArch ? (
+        <>
+          {/* The status bar sits over the stone card, so its glyphs take
+              the page's ink — only while this screen is the one on show,
+              the same gate as the sky branch below. */}
+          {ownsStatusBar && active ? (
+            <StatusBar barStyle={pageDark ? 'light-content' : 'dark-content'} animated />
+          ) : null}
+          <View
+            style={[
+              styles.archCardWrap,
+              fill && styles.heroFill,
+              { paddingTop: statusBarInset + SPACING.md },
+            ]}>
+            <HeroTopRow
+              topRow={topRow ?? {}}
+              ink={archInk}
+              trailing={
+                onToggleDayNight ? (
+                  <DayNightToggle isDark={pageDark} onPress={onToggleDayNight} />
+                ) : undefined
+              }
+              onLayout={banded ? onTopRowLayout : undefined}
+            />
+            <SunArch
+              state={archState}
+              phaseLabel={archPhaseLabel}
+              dots={archDotsList}
+              eyebrow={
+                <HeroEyebrow
+                  label={eyebrowLabel}
+                  chosen={chosen ? t('home.chosenTarget', 'chosen') : null}
+                  chosenA11y={t('a11y.countdownHere')}
+                  onClear={onExpire}
+                  ink={archInk}
+                  renderHelp={topRow?.renderHelp}
+                />
+              }
+              pieces={pieces}
+              units={units}
+              showSeconds={showSeconds}
+              countdownSize={countdownSize}
+              secondsSize={secondsSize}
+              atShift={atShift}
+              onCountdownLine={onCountdownLine}
+              onAtLine={onAtLine}
+              unitLang={unitLang}
+              targetLabel={targetLabel}
+              targetClock={targetClock}
+              rtl={rtl}
+              fill={fill}
+            />
+          </View>
+        </>
+      ) : (
+      <>
       {/* The sky, under everything and out to the card's edges — and, on
           the phone, up under the status bar. */}
       <HeroSky
@@ -1392,6 +1503,8 @@ export const HeroToday = memo(function HeroToday({
         </Text>
       ) : null}
       </Fore>
+      </>
+      )}
     </View>
   );
 });

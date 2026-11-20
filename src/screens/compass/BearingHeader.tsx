@@ -6,7 +6,7 @@ import {
   TABULAR_MAX_FONT_SCALE,
   tabularNumeralStyle,
 } from '../../theme/textScale';
-import { SPACING } from '../../theme/tokens';
+import { ARCH_GOLD, SPACING } from '../../theme/tokens';
 import { TYPE } from '../../theme/typography';
 
 /**
@@ -37,6 +37,9 @@ function BearingHeaderImpl({ qiblaDeg }: BearingHeaderProps) {
       <Text style={[styles.label, { color: palette.muted }]}>
         {t('compass.fromNorthLabel', 'from north')}
       </Text>
+      {/* The Arch of Light's gold, drawn once under the bearing (1.0.4):
+          the same gold as the dial's Qibla marks below it. */}
+      <View style={[styles.rule, { backgroundColor: ARCH_GOLD }]} />
     </View>
   );
 }
@@ -57,5 +60,11 @@ const styles = StyleSheet.create({
     fontWeight: '400',
     textAlign: 'center',
     marginTop: -2,
+  },
+  rule: {
+    width: 56,
+    height: 2,
+    borderRadius: 1,
+    marginTop: SPACING.md,
   },
 });

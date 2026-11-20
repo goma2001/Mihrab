@@ -1498,6 +1498,7 @@ function TodayCardImpl({
               skyTheme={settings.appearance === 'sky'}
               skyVariant={settings.skyVariant}
               heroLook={settings.heroLook}
+              onToggleDayNight={() => updateSettings({ appearance: palette.isDark ? 'light' : 'dark' })}
               band={desktopLayout}
             />
             </View>
@@ -1514,6 +1515,7 @@ function TodayCardImpl({
             skyTheme={settings.appearance === 'sky'}
             skyVariant={settings.skyVariant}
             heroLook={settings.heroLook}
+            onToggleDayNight={() => updateSettings({ appearance: palette.isDark ? 'light' : 'dark' })}
             band={desktopLayout}
             today={timings}
             skyToday={skyDay}

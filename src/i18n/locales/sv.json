@@ -124,7 +124,14 @@
     "pullRelease": "Släpp för att uppdatera",
     "pullRefreshing": "Uppdaterar dina bönetider…",
     "helpMihrabChip": "Hjälp صلاتي att växa",
-    "minimalTimesTitle": "Dagens tider"
+    "minimalTimesTitle": "Dagens tider",
+    "archPhaseFajr": "Fajr",
+    "archPhaseSunrise": "Sunrise",
+    "archPhaseDay": "Midday",
+    "archPhaseAsr": "Asr",
+    "archPhaseSunset": "Sunset",
+    "archPhaseNight": "Night",
+    "archDayNight": "Day / night"
   },
   "errors": {
     "locationNeededTitle": "Plats krävs",
@@ -194,7 +201,8 @@
     "heroLook": "Himmelsband",
     "heroLookSky": "Målad",
     "heroLookTrack": "Bana",
-    "heroLookHelp": "Målad visar solen och månen på himlen. Bana ritar bandet som ett diagram: horisonten som en linje, solens bana i dag (månens om natten) i skala där du är, och en ring där den står vid nästa bön.",
+    "heroLookArch": "Arch of Light",
+    "heroLookHelp": "Arch of Light shows the sun's path as an arch on a stone card, with the day's prayers as dots under it. Painted shows the sun and the moon on the sky. Track draws the band as a chart: the horizon as a line, today's path of the sun (the moon's at night) to scale where you are, and a ring where it will be at the next prayer.",
     "themeHelp": "System följer enhetens ljust eller mörkt läge. Slå på Systemfärger för plattformspalett i appen (inkl. Material You på Android). Knappar och accenter följer enhetens primärfärg så appen matchar bakgrunden när dynamisk färg finns.",
     "clockFormat": "Tidsformat",
     "clockFormatAuto": "Automatiskt",

@@ -48,7 +48,7 @@ class AppUpdateModule(reactContext: ReactApplicationContext) :
       }
       if (
         Build.VERSION.SDK_INT >= Build.VERSION_CODES.O &&
-        !reactContext.packageManager.canRequestPackageInstalls()
+        !reactApplicationContext.packageManager.canRequestPackageInstalls()
       ) {
         // Android 8 and up: "install unknown apps" is off for this app.
         // The caller explains and opens the setting; the user taps
@@ -57,8 +57,8 @@ class AppUpdateModule(reactContext: ReactApplicationContext) :
         return
       }
       val uri = FileProvider.getUriForFile(
-        reactContext,
-        "${reactContext.packageName}.updates",
+        reactApplicationContext,
+        "${reactApplicationContext.packageName}.updates",
         file,
       )
       val intent = Intent(Intent.ACTION_VIEW).apply {
@@ -66,7 +66,7 @@ class AppUpdateModule(reactContext: ReactApplicationContext) :
         addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
       }
-      reactContext.startActivity(intent)
+      reactApplicationContext.startActivity(intent)
       promise.resolve("started")
     } catch (e: Exception) {
       promise.reject("E_INSTALL", e.message, e)
@@ -77,7 +77,7 @@ class AppUpdateModule(reactContext: ReactApplicationContext) :
   fun canRequestPackageInstalls(promise: Promise) {
     promise.resolve(
       if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-        reactContext.packageManager.canRequestPackageInstalls()
+        reactApplicationContext.packageManager.canRequestPackageInstalls()
       } else {
         true
       },
@@ -89,9 +89,9 @@ class AppUpdateModule(reactContext: ReactApplicationContext) :
     try {
       val intent = Intent(
         Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES,
-        Uri.parse("package:${reactContext.packageName}"),
+        Uri.parse("package:${reactApplicationContext.packageName}"),
       ).apply { addFlags(Intent.FLAG_ACTIVITY_NEW_TASK) }
-      reactContext.startActivity(intent)
+      reactApplicationContext.startActivity(intent)
       promise.resolve(null)
     } catch (e: Exception) {
       promise.reject("E_SETTINGS", e.message, e)

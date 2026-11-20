@@ -123,6 +123,17 @@ export const styles = StyleSheet.create({
   hero: {},
   heroExpanded: { paddingVertical: SPACING.md },
   heroFill: { flexGrow: 1, flexShrink: 0, flexBasis: 'auto' },
+  /**
+   * The Arch of Light (1.0.4): the card and its top row, inset from the
+   * page's edges where the painted sky used to bleed to them. The top
+   * padding is the hero's own (status bar + a breath), set where it is
+   * rendered; the bottom is a card's gap to the day line under it.
+   */
+  archCardWrap: {
+    paddingHorizontal: HOME_SCREEN_PADDING,
+    paddingBottom: SPACING.lg,
+    gap: SPACING.md,
+  },
   // Minimal: the foreground fills the hero as the hero fills the page,
   // so the spacers inside it share the height as before.
   heroFore: { flexGrow: 1, flexShrink: 0, flexBasis: 'auto' },

@@ -124,7 +124,14 @@
     "pullRelease": "Suelta para actualizar",
     "pullRefreshing": "Actualizando tus horarios de oración…",
     "helpMihrabChip": "Ayuda a crecer a صلاتي",
-    "minimalTimesTitle": "Horarios de hoy"
+    "minimalTimesTitle": "Horarios de hoy",
+    "archPhaseFajr": "Fajr",
+    "archPhaseSunrise": "Sunrise",
+    "archPhaseDay": "Midday",
+    "archPhaseAsr": "Asr",
+    "archPhaseSunset": "Sunset",
+    "archPhaseNight": "Night",
+    "archDayNight": "Day / night"
   },
   "errors": {
     "locationNeededTitle": "Ubicación necesaria",
@@ -194,7 +201,8 @@
     "heroLook": "Franja del cielo",
     "heroLookSky": "Pintada",
     "heroLookTrack": "Trayectoria",
-    "heroLookHelp": "Pintada muestra el sol y la luna en el cielo. Trayectoria dibuja la franja como un gráfico: el horizonte como una línea, la trayectoria del sol de hoy (la de la luna por la noche) a escala donde estás, y un anillo donde estará en la próxima oración.",
+    "heroLookArch": "Arch of Light",
+    "heroLookHelp": "Arch of Light shows the sun's path as an arch on a stone card, with the day's prayers as dots under it. Painted shows the sun and the moon on the sky. Track draws the band as a chart: the horizon as a line, today's path of the sun (the moon's at night) to scale where you are, and a ring where it will be at the next prayer.",
     "themeHelp": "El sistema coincide con el modo claro u oscuro de su dispositivo. Active los colores del sistema para usar la paleta de la plataforma en la aplicación (incluido Material You en Android). Los botones y acentos siguen el color primario de su teléfono para que la aplicación coincida con su fondo de pantalla cuando el color dinámico esté disponible.",
     "clockFormat": "Formato de hora",
     "clockFormatAuto": "Automático",
