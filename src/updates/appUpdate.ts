@@ -264,7 +264,7 @@ export function useAvailableUpdate(): ReleaseInfo | null {
 /**
  * What a failed download says about itself, so the card can tell a
  * network blip from a server answer — and so a transient failure can
- * be tried once more instead of being shown as a check that never
+ * be tried again instead of being shown as a check that never
  * happened. The message carries the reason (an HTTP status, the sizes
  * that did not match) for the card to show under the error.
  */
@@ -416,20 +416,48 @@ async function attemptDownload(
  * Download the release's APK into the app's cache, reporting progress
  * in bytes. Throws on a non-200/206 response, an empty file, a size
  * that does not match the release, or a cancelled download. A transient
- * failure — a network blip, a truncated file, a 5xx — is tried once
- * more before it is reported, so one dropped connection on a 61 MB
- * file does not end the update.
+ * failure — a network blip, a truncated file, a 5xx — is tried up to
+ * four more times, with a short pause between attempts, so a
+ * connection that drops again and again on a 61 MB file does not end
+ * the update after one retry.
  *
  * The download resumes: a partial file from an interrupted attempt is
  * kept, and the next fetch asks for only the bytes after it (`Range`),
  * so a cut connection costs the missing tail, not the whole file. The
- * retry re-measures the partial, so even the retry resumes from where
- * the first attempt stopped. The release asset URL redirects to a host
+ * retry re-measures the partial, so every attempt resumes from where
+ * the previous one stopped. The release asset URL redirects to a host
  * that answers Ranges; a server that answers 200 instead is treated as
  * a transient failure and the download restarts from zero. The file is
  * checked again, natively, before the installer is offered it — see
- * `AppUpdateModule`.
+ * `AppUpdateModule`. When the download finally fails, the error says
+ * how much of the release is already saved, so a Try again is known
+ * to pick up from there.
  */
+/**
+ * How many times the download is tried, and the pause between
+ * attempts: a connection that drops twice in a few minutes needs more
+ * than one retry to get a 61 MB file down, and a pause keeps the
+ * retries from hammering a path that has just dropped.
+ */
+const DOWNLOAD_ATTEMPTS = 5;
+const RETRY_DELAY_MS = 2000;
+
+/**
+ * A short pause before the next attempt, cut short the moment the
+ * caller cancels — a cancelled download must stop now, not after the
+ * pause.
+ */
+async function waitBeforeRetry(
+  ms: number,
+  shouldCancel: () => boolean,
+): Promise<void> {
+  const deadline = Date.now() + ms;
+  while (Date.now() < deadline) {
+    if (shouldCancel()) return;
+    await new Promise(resolve => setTimeout(resolve, 100));
+  }
+}
+
 export async function downloadApk(
   release: ReleaseInfo,
   onProgress: (received: number, total: number) => void,
@@ -459,7 +487,7 @@ export async function downloadApk(
     }
   }
   let lastError: unknown = new Error('APK download: failed');
-  for (let attempt = 0; attempt < 2; attempt++) {
+  for (let attempt = 0; attempt < DOWNLOAD_ATTEMPTS; attempt++) {
     try {
       return await attemptDownload(
         release,
@@ -471,13 +499,33 @@ export async function downloadApk(
     } catch (error) {
       lastError = error;
       if (
-        attempt === 0 &&
+        attempt < DOWNLOAD_ATTEMPTS - 1 &&
         !shouldCancel() &&
         isRetryableDownloadError(error)
       ) {
+        await waitBeforeRetry(RETRY_DELAY_MS, shouldCancel);
+        if (shouldCancel()) break;
         continue;
       }
       break;
+    }
+  }
+  if (lastError instanceof ApkDownloadError) {
+    // Say how much is already saved, so the next Try again is known
+    // to pick up from there — and so a download that never got a byte
+    // is told apart from one that nearly finished.
+    const saved = await partialSize(path, release);
+    if (
+      saved > 0 &&
+      typeof release.size === 'number' &&
+      release.size > 0
+    ) {
+      const mb = (bytes: number) => (bytes / (1024 * 1024)).toFixed(1);
+      throw new ApkDownloadError(
+        lastError.kind,
+        `${lastError.message} (${mb(saved)} MB of ${mb(release.size)} MB saved)`,
+        lastError.status,
+      );
     }
   }
   throw lastError;

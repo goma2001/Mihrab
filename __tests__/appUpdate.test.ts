@@ -42,6 +42,7 @@ let mockFetchCalls: Array<{
 let mockRangeSupported = true;
 let mockDownloadSizes: number[] = [];
 let mockInterruptAfter: number | null = null;
+let mockInterruptSizes: number[] = [];
 let mockConfigOptions: Record<string, unknown> = {};
 
 jest.mock('react-native-blob-util', () => ({
@@ -142,7 +143,17 @@ jest.mock('react-native-blob-util', () => ({
                   mockInterruptAfter = null;
                   mockFiles.set(path, append ? existing + cut : cut);
                   progressCb?.(cut, cut);
-                  rejectTask(new Error('Download interrupted'));
+                  rejectTask(new Error('Download interrupted.'));
+                  return;
+                }
+                if (mockInterruptSizes.length > 0) {
+                  // The same cut, on every attempt: a connection that
+                  // drops again and again, so the retry has to keep
+                  // resuming from a growing partial.
+                  const cut = mockInterruptSizes.shift()!;
+                  mockFiles.set(path, append ? existing + cut : cut);
+                  progressCb?.(cut, cut);
+                  rejectTask(new Error('Download interrupted.'));
                   return;
                 }
                 mockFiles.set(path, append ? existing + bytes : bytes);
@@ -207,6 +218,7 @@ beforeEach(() => {
   mockRangeSupported = true;
   mockDownloadSizes = [];
   mockInterruptAfter = null;
+  mockInterruptSizes = [];
   mockConfigOptions = {};
   mockVersion.versionName = '1.0.2';
   mockVersion.buildNumber = '3';
@@ -419,7 +431,9 @@ describe('downloadApk', () => {
     await expect(
       downloadApk(release, () => {}, () => false),
     ).rejects.toThrow('empty file');
-  });
+    // The empty file is retried four more times, with a pause between
+    // attempts, before it is reported.
+  }, 20000);
 
   it('creates the updates directory before downloading', async () => {
     const path = await downloadApk(release, () => {}, () => false);
@@ -429,12 +443,63 @@ describe('downloadApk', () => {
     expect(path).toBe('/mock/cache/updates/Salaty-v1.0.3.apk');
   });
 
-  it('retries once on a network failure, then succeeds', async () => {
+  it('retries on a network failure, then succeeds', async () => {
     mockFetchFailures = 1;
     const path = await downloadApk(release, () => {}, () => false);
     expect(path).toBe('/mock/cache/updates/Salaty-v1.0.3.apk');
     expect(ReactNativeBlobUtil.config).toHaveBeenCalledTimes(2);
   });
+
+  it('retries up to five times on repeated network failures', async () => {
+    // The 1.0.8→1.0.9 failure: the connection was cut twice in a few
+    // minutes, and one retry could not survive that.
+    mockFetchFailures = 5;
+    await expect(
+      downloadApk(release, () => {}, () => false),
+    ).rejects.toThrow('Network request failed');
+    expect(ReactNativeBlobUtil.config).toHaveBeenCalledTimes(5);
+  }, 20000);
+
+  it('waits about two seconds between attempts', async () => {
+    mockFetchFailures = 1;
+    const started = Date.now();
+    const path = await downloadApk(release, () => {}, () => false);
+    expect(path).toBe('/mock/cache/updates/Salaty-v1.0.3.apk');
+    expect(ReactNativeBlobUtil.config).toHaveBeenCalledTimes(2);
+    expect(Date.now() - started).toBeGreaterThanOrEqual(1900);
+  });
+
+  it('succeeds on a later attempt, resuming from the partial', async () => {
+    const sized: ReleaseInfo = { ...release, size: 1024 * 1024 };
+    mockDownloadSize = 512 * 1024;
+    // The first three attempts are cut halfway; the fourth finishes.
+    mockInterruptSizes = [512 * 1024, 512 * 1024, 512 * 1024];
+    const out = await downloadApk(sized, () => {}, () => false);
+    expect(out).toBe('/mock/cache/updates/Salaty-v1.0.3.apk');
+    expect(mockFiles.get('/mock/cache/updates/Salaty-v1.0.3.apk')).toBe(
+      1024 * 1024,
+    );
+    expect(ReactNativeBlobUtil.config).toHaveBeenCalledTimes(4);
+  }, 20000);
+
+  it('reports how much is already saved when the download finally fails', async () => {
+    const sized: ReleaseInfo = { ...release, size: 1024 * 1024 };
+    // Every attempt is cut, and the partial grows: 512 KB, then four
+    // times 100 KB — 912 KB of the 1 MB release when it gives up.
+    mockInterruptSizes = [
+      512 * 1024,
+      100 * 1024,
+      100 * 1024,
+      100 * 1024,
+      100 * 1024,
+    ];
+    await expect(
+      downloadApk(sized, () => {}, () => false),
+    ).rejects.toThrow(
+      'APK download: Download interrupted. (0.9 MB of 1.0 MB saved)',
+    );
+    expect(ReactNativeBlobUtil.config).toHaveBeenCalledTimes(5);
+  }, 20000);
 
   it('does not retry a 404: the answer will only repeat itself', async () => {
     mockTaskStatus = 404;
@@ -446,15 +511,22 @@ describe('downloadApk', () => {
 
   it('throws when the downloaded size does not match the release', async () => {
     const sized: ReleaseInfo = { ...release, size: 1024 * 1024 };
-    // The fresh fetch is short, and the resumed fetch is short too, so
-    // the file never reaches the release size.
-    mockDownloadSizes = [512 * 1024, 100 * 1024];
+    // Every fetch is short, so the file never reaches the release
+    // size: 512 KB, then four times 100 KB.
+    mockDownloadSizes = [
+      512 * 1024,
+      100 * 1024,
+      100 * 1024,
+      100 * 1024,
+      100 * 1024,
+    ];
     await expect(
       downloadApk(sized, () => {}, () => false),
     ).rejects.toThrow('size mismatch');
-    // A truncated transfer is retried once before it is reported.
-    expect(ReactNativeBlobUtil.config).toHaveBeenCalledTimes(2);
-  });
+    // A truncated transfer is retried four more times, with a pause
+    // between attempts, before it is reported.
+    expect(ReactNativeBlobUtil.config).toHaveBeenCalledTimes(5);
+  }, 20000);
 
   it('accepts the download when the size matches the release', async () => {
     const sized: ReleaseInfo = { ...release, size: 1024 * 1024 };

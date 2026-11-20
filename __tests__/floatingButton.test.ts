@@ -321,11 +321,11 @@ describe('the v2 pill and times panel (native side)', () => {
     expect(service).toMatch(/Color\.parseColor\("#C9A227"\)/);
   });
 
-  it('the release is 1.0.9', () => {
+  it('the release is 1.0.10', () => {
     const pkg = JSON.parse(repo('package.json')) as { version: string };
-    expect(pkg.version).toBe('1.0.9');
+    expect(pkg.version).toBe('1.0.10');
     const gradle = repo('android', 'app', 'build.gradle');
-    expect(gradle).toContain('versionCode 10');
-    expect(gradle).toContain('versionName "1.0.9"');
+    expect(gradle).toContain('versionCode 11');
+    expect(gradle).toContain('versionName "1.0.10"');
   });
 });
