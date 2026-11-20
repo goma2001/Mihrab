@@ -32,6 +32,12 @@
     </queries>
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <!-- Installing an update the user asked for in Settings → Updates
+         (AppUpdateModule): Android 8 and up asks the user to allow
+         "install unknown apps" for this app first, and the permission is
+         what makes that prompt exist. Never requested by the app itself
+         outside that one flow. -->
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
     <!-- Reading a pairing code off another device's screen, and nothing
          else. Optional hardware: a tablet without a camera still pairs by
          typing the code, and must not be filtered out of the store. -->
@@ -541,6 +547,22 @@
         <meta-data
           android:name="android.support.FILE_PROVIDER_PATHS"
           android:resource="@xml/adhan_paths" />
+      </provider>
+
+      <!-- Serves a downloaded update APK to the system installer. The
+           file lives in this app's private cache, so a file:// URI would
+           be unreadable outside the process; this turns it into a
+           content:// URI that AppUpdateModule grants read access to. Not
+           exported, and scoped to the one directory in update_paths.xml.
+           Used only after the user taps Install in Settings → Updates. -->
+      <provider
+        android:name="androidx.core.content.FileProvider"
+        android:authorities="${applicationId}.updates"
+        android:exported="false"
+        android:grantUriPermissions="true">
+        <meta-data
+          android:name="android.support.FILE_PROVIDER_PATHS"
+          android:resource="@xml/update_paths" />
       </provider>
 
     </application>

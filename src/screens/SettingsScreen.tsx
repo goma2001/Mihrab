@@ -109,9 +109,12 @@ export function SettingsScreen() {
                 <page.Icon color={palette.accentSolid} />
               </View>
               <View style={styles.rowText}>
-                <Text style={[styles.title, { color: palette.text }]}>
-                  {t(page.titleKey)}
-                </Text>
+                <View style={styles.titleRow}>
+                  <Text style={[styles.title, { color: palette.text }]}>
+                    {t(page.titleKey)}
+                  </Text>
+                  {page.badge ? <page.badge /> : null}
+                </View>
                 {/* One line, and one line only. A blurb that wraps to
                     three turns an index back into a page to read. */}
                 <Text
@@ -158,6 +161,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   rowText: { flex: 1, gap: 2 },
+  titleRow: { flexDirection: 'row', alignItems: 'center', gap: SPACING.sm },
   title: { fontSize: TYPE.body.fontSize, fontWeight: '400' },
   blurb: { fontSize: TYPE.label.fontSize },
 });
