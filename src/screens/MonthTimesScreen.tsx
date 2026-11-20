@@ -253,9 +253,14 @@ export function MonthTimesScreen() {
     return rows.map((r, i) => ({ ...r, timings: times[i] }));
   }, [rows, showDaruri, lat, lng, settings.school]);
 
-  // Abbreviated column headers from localized prayer names
+  // Abbreviated column headers from the dedicated abbreviation keys —
+  // the first three letters of the full name collide (Asr and Isha are
+  // both "الع"), while the _abbr keys are distinct in every locale.
   const colHeaders = useMemo(
-    () => DISPLAY_ORDER.map(key => t(`prayer.${key}`).slice(0, 3)),
+    () =>
+      DISPLAY_ORDER.map(key =>
+        t(`prayer.${key}_abbr`, { defaultValue: t(`prayer.${key}`) }),
+      ),
     [t],
   );
 

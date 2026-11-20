@@ -34,6 +34,7 @@ jest.mock('../src/native/AppUpdate', () => ({
 let mockFiles = new Map<string, number>();
 let mockTaskStatus = 200;
 let mockDownloadSize = 1024 * 1024;
+let mockFetchFailures = 0;
 
 jest.mock('react-native-blob-util', () => ({
   __esModule: true,
@@ -59,6 +60,16 @@ jest.mock('react-native-blob-util', () => ({
           }),
           info: () => ({ status: mockTaskStatus }),
         };
+        if (mockFetchFailures > 0) {
+          mockFetchFailures -= 1;
+          const failed = Promise.reject(
+            new Error('Network request failed'),
+          );
+          task.then = failed.then.bind(failed);
+          task.catch = failed.catch.bind(failed);
+          task.finally = failed.finally.bind(failed);
+          return task;
+        }
         const response = { info: () => ({ status: mockTaskStatus }) };
         const done = new Promise(resolve => {
           // A real download takes longer than the cancel watchdog's
@@ -89,6 +100,7 @@ jest.mock('react-native-blob-util', () => ({
 
 import NetInfo from '@react-native-community/netinfo';
 import { Platform } from 'react-native';
+import ReactNativeBlobUtil from 'react-native-blob-util';
 import {
   _resetAppUpdateForTests,
   apkAssetName,
@@ -123,6 +135,7 @@ beforeEach(() => {
   mockFiles = new Map();
   mockTaskStatus = 200;
   mockDownloadSize = 1024 * 1024;
+  mockFetchFailures = 0;
   mockVersion.versionName = '1.0.2';
   mockVersion.buildNumber = '3';
   delete mockAppUpdateModule.installApk;
@@ -190,6 +203,29 @@ describe('parseReleasePayload', () => {
         ],
       }),
     ).toBeNull();
+  });
+
+  it('reads the asset size when the payload carries it', () => {
+    expect(
+      parseReleasePayload({
+        ...RELEASE_1_0_3,
+        assets: [
+          {
+            name: 'Salaty-v1.0.3.apk',
+            browser_download_url:
+              'https://github.com/goma2001/Mihrab/releases/download/v1.0.3/Salaty-v1.0.3.apk',
+            size: 61240263,
+          },
+        ],
+      }),
+    ).toEqual({
+      version: '1.0.3',
+      apkUrl:
+        'https://github.com/goma2001/Mihrab/releases/download/v1.0.3/Salaty-v1.0.3.apk',
+      notes: 'New in 1.0.3: updates from inside the app.',
+      size: 61240263,
+    });
+    expect(parseReleasePayload(RELEASE_1_0_3)).not.toHaveProperty('size');
   });
 });
 
@@ -311,6 +347,45 @@ describe('downloadApk', () => {
     await expect(
       downloadApk(release, () => {}, () => false),
     ).rejects.toThrow('empty file');
+  });
+
+  it('creates the updates directory before downloading', async () => {
+    const path = await downloadApk(release, () => {}, () => false);
+    expect(ReactNativeBlobUtil.fs.mkdir).toHaveBeenCalledWith(
+      '/mock/cache/updates',
+    );
+    expect(path).toBe('/mock/cache/updates/Salaty-v1.0.3.apk');
+  });
+
+  it('retries once on a network failure, then succeeds', async () => {
+    mockFetchFailures = 1;
+    const path = await downloadApk(release, () => {}, () => false);
+    expect(path).toBe('/mock/cache/updates/Salaty-v1.0.3.apk');
+    expect(ReactNativeBlobUtil.config).toHaveBeenCalledTimes(2);
+  });
+
+  it('does not retry a 404: the answer will only repeat itself', async () => {
+    mockTaskStatus = 404;
+    await expect(
+      downloadApk(release, () => {}, () => false),
+    ).rejects.toThrow('HTTP 404');
+    expect(ReactNativeBlobUtil.config).toHaveBeenCalledTimes(1);
+  });
+
+  it('throws when the downloaded size does not match the release', async () => {
+    const sized: ReleaseInfo = { ...release, size: 1024 * 1024 };
+    mockDownloadSize = 512;
+    await expect(
+      downloadApk(sized, () => {}, () => false),
+    ).rejects.toThrow('size mismatch');
+    // A truncated transfer is retried once before it is reported.
+    expect(ReactNativeBlobUtil.config).toHaveBeenCalledTimes(2);
+  });
+
+  it('accepts the download when the size matches the release', async () => {
+    const sized: ReleaseInfo = { ...release, size: 1024 * 1024 };
+    const path = await downloadApk(sized, () => {}, () => false);
+    expect(path).toBe('/mock/cache/updates/Salaty-v1.0.3.apk');
   });
 
   it('cancels when the caller asks', async () => {

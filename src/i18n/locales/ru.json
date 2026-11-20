@@ -2559,6 +2559,7 @@
     "errorOffline": "You’re offline. Check your connection and try again.",
     "errorNoApk": "The latest release has no install file.",
     "errorFetch": "Couldn’t check for updates.",
+    "errorDownload": "Couldn't download the update. Check your connection and try again.",
     "retry": "Try again",
     "whatsNew": "What’s new",
     "currentVersion": "Current version: {{version}}",

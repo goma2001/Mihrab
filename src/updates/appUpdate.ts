@@ -55,6 +55,8 @@ export type ReleaseInfo = {
   apkUrl: string;
   /** The release body — what is new, as the release wrote it. */
   notes: string;
+  /** The asset's size in bytes, when the release payload carries it. */
+  size?: number;
 };
 
 export type UpdateCheckResult =
@@ -92,7 +94,11 @@ export function parseReleasePayload(payload: unknown): ReleaseInfo | null {
   if (/^\d+\.\d+\.\d+-/.test(version)) return null;
   if (!Array.isArray(assets)) return null;
   const apk = assets.find(
-    (a): a is { name: string; browser_download_url: string } =>
+    (a): a is {
+      name: string;
+      browser_download_url: string;
+      size?: unknown;
+    } =>
       !!a &&
       typeof a === 'object' &&
       (a as { name?: unknown }).name === apkAssetName(version) &&
@@ -100,10 +106,13 @@ export function parseReleasePayload(payload: unknown): ReleaseInfo | null {
         .browser_download_url === 'string',
   );
   if (!apk) return null;
+  const size =
+    typeof apk.size === 'number' && apk.size > 0 ? apk.size : undefined;
   return {
     version,
     apkUrl: apk.browser_download_url,
     notes: typeof body === 'string' ? body : '',
+    ...(size !== undefined ? { size } : {}),
   };
 }
 
@@ -253,22 +262,54 @@ export function useAvailableUpdate(): ReleaseInfo | null {
 // ------------------------------------------------------------ download
 
 /**
- * Download the release's APK into the app's cache, reporting progress
- * in bytes. Throws on a non-200 response, an empty file, or a
- * cancelled download. The file is checked again, natively, before the
- * installer is offered it — see `AppUpdateModule`.
+ * What a failed download says about itself, so the card can tell a
+ * network blip from a server answer — and so a transient failure can
+ * be tried once more instead of being shown as a check that never
+ * happened. The message carries the reason (an HTTP status, the sizes
+ * that did not match) for the card to show under the error.
  */
-export async function downloadApk(
+export class ApkDownloadError extends Error {
+  readonly kind: 'http' | 'empty' | 'size-mismatch' | 'network';
+  readonly status?: number;
+  constructor(
+    kind: ApkDownloadError['kind'],
+    message: string,
+    status?: number,
+  ) {
+    super(message);
+    this.name = 'ApkDownloadError';
+    this.kind = kind;
+    if (status !== undefined) this.status = status;
+  }
+}
+
+/**
+ * A failure worth one more attempt: a network blip, a truncated file,
+ * or a server-side 5xx (or a 429). A 4xx answer will only repeat
+ * itself, and a cancelled download is not a failure at all.
+ */
+function isRetryableDownloadError(error: unknown): boolean {
+  if (!(error instanceof ApkDownloadError)) return false;
+  if (
+    error.kind === 'network' ||
+    error.kind === 'empty' ||
+    error.kind === 'size-mismatch'
+  ) {
+    return true;
+  }
+  if (error.kind === 'http') {
+    const status = error.status ?? 0;
+    return status === 429 || status >= 500;
+  }
+  return false;
+}
+
+async function attemptDownload(
   release: ReleaseInfo,
+  path: string,
   onProgress: (received: number, total: number) => void,
   shouldCancel: () => boolean,
 ): Promise<string> {
-  const dirs = ReactNativeBlobUtil.fs.dirs;
-  const dir = `${dirs.CacheDir}/updates`;
-  const path = `${dir}/${apkAssetName(release.version)}`;
-  if (!(await ReactNativeBlobUtil.fs.exists(dir))) {
-    await ReactNativeBlobUtil.fs.mkdir(dir);
-  }
   onProgress(0, 0);
   const task = ReactNativeBlobUtil.config({
     path,
@@ -282,19 +323,86 @@ export async function downloadApk(
     watchdog = setInterval(() => {
       if (shouldCancel()) task.cancel();
     }, 500);
-    const res = await task;
-    if (res.info().status !== 200) {
-      throw new Error(`APK download: HTTP ${res.info().status}`);
+    let res;
+    try {
+      res = await task;
+    } catch (error) {
+      if (shouldCancel()) throw error;
+      throw new ApkDownloadError(
+        'network',
+        `APK download: ${error instanceof Error ? error.message : String(error)}`,
+      );
+    }
+    const status = res.info().status;
+    if (status !== 200) {
+      throw new ApkDownloadError(
+        'http',
+        `APK download: HTTP ${status}`,
+        status,
+      );
     }
     const stat = await ReactNativeBlobUtil.fs.stat(path).catch(() => null);
     if (!stat || Number(stat.size) <= 0) {
-      throw new Error('APK download: empty file');
+      throw new ApkDownloadError('empty', 'APK download: empty file');
     }
-    onProgress(Number(stat.size), Number(stat.size));
+    const size = Number(stat.size);
+    if (
+      typeof release.size === 'number' &&
+      release.size > 0 &&
+      size !== release.size
+    ) {
+      throw new ApkDownloadError(
+        'size-mismatch',
+        `APK download: size mismatch (received ${size}, expected ${release.size})`,
+      );
+    }
+    onProgress(size, size);
     return path;
   } finally {
     if (watchdog) clearInterval(watchdog);
   }
+}
+
+/**
+ * Download the release's APK into the app's cache, reporting progress
+ * in bytes. Throws on a non-200 response, an empty file, a size that
+ * does not match the release, or a cancelled download. A transient
+ * failure — a network blip, a truncated file, a 5xx — is tried once
+ * more before it is reported, so one dropped connection on a 61 MB
+ * file does not end the update. The file is checked again, natively,
+ * before the installer is offered it — see `AppUpdateModule`.
+ */
+export async function downloadApk(
+  release: ReleaseInfo,
+  onProgress: (received: number, total: number) => void,
+  shouldCancel: () => boolean,
+): Promise<string> {
+  const dirs = ReactNativeBlobUtil.fs.dirs;
+  const dir = `${dirs.CacheDir}/updates`;
+  const path = `${dir}/${apkAssetName(release.version)}`;
+  // react-native-blob-util writes to the configured path but does not
+  // create its parent: without this the first download on a fresh
+  // install throws before a byte moves.
+  if (!(await ReactNativeBlobUtil.fs.exists(dir))) {
+    await ReactNativeBlobUtil.fs.mkdir(dir);
+  }
+  let lastError: unknown = new Error('APK download: failed');
+  for (let attempt = 0; attempt < 2; attempt++) {
+    try {
+      return await attemptDownload(release, path, onProgress, shouldCancel);
+    } catch (error) {
+      lastError = error;
+      if (
+        attempt === 0 &&
+        !shouldCancel() &&
+        isRetryableDownloadError(error)
+      ) {
+        continue;
+      }
+      break;
+    }
+  }
+  throw lastError;
 }
 
 // ------------------------------------------------------------- install
