@@ -145,6 +145,10 @@ const STAYS: Record<string, string> = {
     'describes this phone — the retired feature tour’s seen-flag, no longer ' +
     'written, read once to tell an install that predates release notes ' +
     'from a fresh one (src/polish/ChangelogSheet.tsx, LEGACY_TOUR_KEY)',
+  'salaty.dedicationSeen':
+    'describes this phone — the dedication card has been shown here once ' +
+    '(src/polish/DedicationBanner.tsx). A new phone is a fresh install and ' +
+    'may as well be shown it once, the same as the feature tour it sits beside',
   'salaty.syncHint.dismissed.v1':
     'describes this phone — which one-off pointers the user has waved away, ' +
     'the same kind of thing as the what’s-new version stamp',

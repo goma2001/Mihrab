@@ -121,6 +121,11 @@ import {
   ChangelogSheet,
   pendingChangelog,
 } from '../polish/ChangelogSheet';
+import {
+  DedicationBanner,
+  pendingDedication,
+} from '../polish/DedicationBanner';
+import { quietLaunchUpdateCheck } from '../updates/appUpdate';
 import { SPACING } from '../theme/tokens';
 import { useFoldPosture } from '../native/FoldPosture';
 import type { HostInstance } from 'react-native';
@@ -604,6 +609,7 @@ export function HomeScreen() {
    * to decide how much of it to mark new.
    */
   const [changelogSince, setChangelogSince] = useState<string | null>(null);
+  const [dedicationVisible, setDedicationVisible] = useState(false);
   // The what's-new sheet and the features offer never share a launch.
   const changelogShown = useRef(false);
   if (changelogSince !== null) changelogShown.current = true;
@@ -611,9 +617,18 @@ export function HomeScreen() {
     useCallback(() => {
       if (!settings.onboardingComplete) return;
       let cancelled = false;
-      void pendingChangelog().then(since => {
+      // The dedication is decided FIRST, before the changelog stamps the
+      // version a fresh install is told apart by — see DedicationBanner.
+      // Then the changelog, then the quiet update check: one launch, in
+      // that order, and none of them blocks the launch or interrupts it.
+      void (async () => {
+        if (!cancelled && (await pendingDedication())) {
+          setDedicationVisible(true);
+        }
+        const since = await pendingChangelog();
         if (!cancelled && since) setChangelogSince(since);
-      });
+      })();
+      quietLaunchUpdateCheck();
       return () => {
         cancelled = true;
       };
@@ -2208,6 +2223,17 @@ export function HomeScreen() {
         visible={changelogSince !== null}
         since={changelogSince}
         onClose={() => setChangelogSince(null)}
+      />
+      {/* The dedication, once, on a fresh install — and never on the same
+          launch as the what's-new sheet, which a fresh install has none
+          of anyway. */}
+      <DedicationBanner
+        visible={
+          dedicationVisible &&
+          changelogSince === null &&
+          !changelogShown.current
+        }
+        onClose={() => setDedicationVisible(false)}
       />
     </ScrollView>
     </PullToRefreshFrame>

@@ -18,8 +18,10 @@ import {
   NotificationsIcon,
   PrayerTimesIcon,
   QuranIcon,
+  UpdatesIcon,
   WidgetsIcon,
 } from './SettingsSectionIcons';
+import { UpdateAvailableBadge } from './UpdatesCard';
 import { IS_WEB_APP } from '../../config/webApp';
 import { hasFolderPicker } from '../../sync/folderAccess';
 
@@ -55,6 +57,13 @@ export type SettingsSubpage = {
   blurbKey: string;
   Icon: ComponentType<{ size?: number; color: ColorValue }>;
   getComponent: () => ComponentType<Record<string, never>>;
+  /**
+   * A small live pill on the index row — a newer version's number on the
+   * Updates row, nothing anywhere else. The index renders it without
+   * knowing which section it belongs to, so a row's badge cannot drift
+   * from the section that owns it.
+   */
+  badge?: ComponentType<Record<string, never>>;
   /**
    * Platforms this section has anything to say on. Absent = all of them.
    *
@@ -180,6 +189,26 @@ const ALL_SUBPAGES: readonly SettingsSubpage[] = [
     blurbKey: 'settings.sectionDownloadsBlurb',
     Icon: DownloadsIcon,
     getComponent: () => (require('./pages/DownloadsSettingsScreen') as typeof import('./pages/DownloadsSettingsScreen')).DownloadsSettingsScreen,
+  },
+  {
+    /**
+     * Its own section rather than a row under About: an update is
+     * something people come back to — to check, to read what is new, to
+     * install — and the row on the index carries the new version's number
+     * when the quiet launch check found one.
+     *
+     * Android only: the update is a GitHub APK, and only Android
+     * installs one. iOS comes from the App Store, the Mac from the App
+     * Store or a disk image, the web from the site — none of them has
+     * anything to check here.
+     */
+    route: 'SettingsUpdates',
+    titleKey: 'settings.sectionUpdates',
+    blurbKey: 'settings.sectionUpdatesBlurb',
+    Icon: UpdatesIcon,
+    platforms: ['android'],
+    badge: UpdateAvailableBadge,
+    getComponent: () => (require('./pages/UpdatesSettingsScreen') as typeof import('./pages/UpdatesSettingsScreen')).UpdatesSettingsScreen,
   },
   {
     /**

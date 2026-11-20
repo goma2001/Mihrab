@@ -129,6 +129,8 @@ export type RootStackParamList = {
   SettingsTajweed: undefined;
   /** Settings → Downloads: the download manager, and the disk it uses. */
   SettingsDownloads: undefined;
+  /** Settings → Updates (Android): check GitHub Releases, update from inside the app. */
+  SettingsUpdates: undefined;
   /** Settings → Widgets (Android): every widget's look, and the prayer-times widget's own options. */
   SettingsWidgets: undefined;
   SettingsDevices: undefined;

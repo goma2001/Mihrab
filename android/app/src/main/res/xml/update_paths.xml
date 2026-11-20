@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  The one directory the update FileProvider is allowed to hand out.
+
+  Scoped to `updates/` inside the app's cache directory: the provider
+  exists so the system installer can read one downloaded APK, and
+  nothing else in there is anyone else's business. The cache is the
+  right place for it — a file the OS may clear under pressure is simply
+  downloaded again.
+-->
+<paths>
+  <cache-path name="updates" path="updates/" />
+</paths>
