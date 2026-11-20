@@ -35,6 +35,14 @@ let mockFiles = new Map<string, number>();
 let mockTaskStatus = 200;
 let mockDownloadSize = 1024 * 1024;
 let mockFetchFailures = 0;
+let mockFetchCalls: Array<{
+  url: string;
+  headers?: Record<string, string>;
+}> = [];
+let mockRangeSupported = true;
+let mockDownloadSizes: number[] = [];
+let mockInterruptAfter: number | null = null;
+let mockConfigOptions: Record<string, unknown> = {};
 
 jest.mock('react-native-blob-util', () => ({
   __esModule: true,
@@ -49,52 +57,111 @@ jest.mock('react-native-blob-util', () => ({
         if (!mockFiles.has(path)) throw new Error('ENOENT');
         return { size: mockFiles.get(path), path };
       }),
-    },
-    config: jest.fn(() => ({
-      fetch: jest.fn(() => {
-        let rejectTask!: (e: unknown) => void;
-        const task: Record<string, unknown> = {
-          progress: jest.fn(() => task),
-          cancel: jest.fn(() => {
-            rejectTask(new Error('cancelled'));
-          }),
-          info: () => ({ status: mockTaskStatus }),
-        };
-        if (mockFetchFailures > 0) {
-          mockFetchFailures -= 1;
-          const failed = Promise.reject(
-            new Error('Network request failed'),
-          );
-          task.then = failed.then.bind(failed);
-          task.catch = failed.catch.bind(failed);
-          task.finally = failed.finally.bind(failed);
-          return task;
-        }
-        const response = { info: () => ({ status: mockTaskStatus }) };
-        const done = new Promise(resolve => {
-          // A real download takes longer than the cancel watchdog's
-          // 500 ms tick; resolve after 600 ms so a cancellation asked
-          // for up front reaches the task before it finishes. The task
-          // resolves to a response, not to itself: a thenable that
-          // resolves to itself never settles.
-          setTimeout(() => {
-            const path = '/mock/cache/updates/Salaty-v1.0.3.apk';
-            if (mockTaskStatus === 200) {
-              mockFiles.set(path, mockDownloadSize);
-            }
-            resolve(response);
-          }, 600);
-        });
-        const cancelled = new Promise<never>((_resolve, reject) => {
-          rejectTask = reject;
-        });
-        const raced = Promise.race([done, cancelled]);
-        task.then = raced.then.bind(raced);
-        task.catch = raced.catch.bind(raced);
-        task.finally = raced.finally.bind(raced);
-        return task;
+      unlink: jest.fn(async (path: string) => {
+        mockFiles.delete(path);
       }),
-    })),
+    },
+    config: jest.fn((options: Record<string, unknown>) => {
+      mockConfigOptions = options;
+      return {
+        fetch: jest.fn(
+          (
+            _method: string,
+            url: string,
+            headers?: Record<string, string>,
+          ) => {
+            mockFetchCalls.push({ url, headers });
+            const path =
+              (mockConfigOptions.path as string) ??
+              '/mock/cache/updates/Salaty-v1.0.3.apk';
+            const range = headers?.Range as string | undefined;
+            // A Range the server honours answers 206; one it ignores
+            // answers 200 with the whole file.
+            const status =
+              range && mockRangeSupported && mockTaskStatus === 200
+                ? 206
+                : mockTaskStatus;
+            let progressCb: ((r: number, t: number) => void) | null = null;
+            let rejectTask!: (e: unknown) => void;
+            // The cancel watchdog's tick (500 ms) beats the download's
+            // 600 ms timer: without this the timer would fire after the
+            // test ended and write into the next test's files.
+            let wasCancelled = false;
+            const task: Record<string, unknown> = {
+              progress: jest.fn(
+                (_opts: unknown, cb: (r: number, t: number) => void) => {
+                  progressCb = cb;
+                  return task;
+                },
+              ),
+              cancel: jest.fn(() => {
+                wasCancelled = true;
+                rejectTask(new Error('cancelled'));
+              }),
+              info: () => ({ status }),
+            };
+            if (mockFetchFailures > 0) {
+              mockFetchFailures -= 1;
+              const failed = Promise.reject(
+                new Error('Network request failed'),
+              );
+              task.then = failed.then.bind(failed);
+              task.catch = failed.catch.bind(failed);
+              task.finally = failed.finally.bind(failed);
+              return task;
+            }
+            const response = { info: () => ({ status }) };
+            const done = new Promise(resolve => {
+              // A real download takes longer than the cancel watchdog's
+              // 500 ms tick; resolve after 600 ms so a cancellation asked
+              // for up front reaches the task before it finishes. The task
+              // resolves to a response, not to itself: a thenable that
+              // resolves to itself never settles.
+              setTimeout(() => {
+                if (wasCancelled) return;
+                // An error answer carries no APK: nothing is written.
+                if (status !== 200 && status !== 206) {
+                  resolve(response);
+                  return;
+                }
+                const bytes =
+                  mockDownloadSizes.length > 0
+                    ? mockDownloadSizes.shift()!
+                    : mockDownloadSize;
+                const existing = mockFiles.get(path) ?? 0;
+                // The native layer appends when the config says not to
+                // overwrite (a resume) or the answer is a 206; a fresh
+                // 200 overwrites.
+                const append =
+                  status === 206 || mockConfigOptions.overwrite === false;
+                if (mockInterruptAfter !== null) {
+                  // The stream is cut mid-file: the bytes that arrived
+                  // stay in the file, and the task fails — the native
+                  // "Download interrupted." the user saw on 1.0.6.
+                  const cut = mockInterruptAfter;
+                  mockInterruptAfter = null;
+                  mockFiles.set(path, append ? existing + cut : cut);
+                  progressCb?.(cut, cut);
+                  rejectTask(new Error('Download interrupted'));
+                  return;
+                }
+                mockFiles.set(path, append ? existing + bytes : bytes);
+                progressCb?.(bytes, bytes);
+                resolve(response);
+              }, 600);
+            });
+            const cancelled = new Promise<never>((_resolve, reject) => {
+              rejectTask = reject;
+            });
+            const raced = Promise.race([done, cancelled]);
+            task.then = raced.then.bind(raced);
+            task.catch = raced.catch.bind(raced);
+            task.finally = raced.finally.bind(raced);
+            return task;
+          },
+        ),
+      };
+    }),
   },
 }));
 
@@ -136,6 +203,11 @@ beforeEach(() => {
   mockTaskStatus = 200;
   mockDownloadSize = 1024 * 1024;
   mockFetchFailures = 0;
+  mockFetchCalls = [];
+  mockRangeSupported = true;
+  mockDownloadSizes = [];
+  mockInterruptAfter = null;
+  mockConfigOptions = {};
   mockVersion.versionName = '1.0.2';
   mockVersion.buildNumber = '3';
   delete mockAppUpdateModule.installApk;
@@ -374,7 +446,9 @@ describe('downloadApk', () => {
 
   it('throws when the downloaded size does not match the release', async () => {
     const sized: ReleaseInfo = { ...release, size: 1024 * 1024 };
-    mockDownloadSize = 512;
+    // The fresh fetch is short, and the resumed fetch is short too, so
+    // the file never reaches the release size.
+    mockDownloadSizes = [512 * 1024, 100 * 1024];
     await expect(
       downloadApk(sized, () => {}, () => false),
     ).rejects.toThrow('size mismatch');
@@ -392,6 +466,94 @@ describe('downloadApk', () => {
     await expect(
       downloadApk(release, () => {}, () => true),
     ).rejects.toThrow('cancelled');
+  });
+
+  it('resumes an interrupted download from the partial file', async () => {
+    const sized: ReleaseInfo = { ...release, size: 1024 * 1024 };
+    const path = '/mock/cache/updates/Salaty-v1.0.3.apk';
+    mockFiles.set(path, 512 * 1024);
+    mockDownloadSize = 512 * 1024;
+    const seen: Array<[number, number]> = [];
+    const out = await downloadApk(
+      sized,
+      (received, total) => seen.push([received, total]),
+      () => false,
+    );
+    expect(out).toBe(path);
+    expect(mockFiles.get(path)).toBe(1024 * 1024);
+    // The Range asks for only the missing tail.
+    expect(mockFetchCalls).toHaveLength(1);
+    expect(mockFetchCalls[0].headers).toEqual({
+      Range: 'bytes=524288-',
+    });
+    // Progress counts what is already on disk: no jump back to zero.
+    expect(seen[0]).toEqual([512 * 1024, 1024 * 1024]);
+    expect(seen).toContainEqual([1024 * 1024, 1024 * 1024]);
+  });
+
+  it('the retry resumes from where the first attempt stopped', async () => {
+    const sized: ReleaseInfo = { ...release, size: 1024 * 1024 };
+    mockDownloadSize = 512 * 1024;
+    // The first fetch is cut halfway — the 1.0.6 failure — and the
+    // retry picks up from the bytes that arrived, not from zero.
+    mockInterruptAfter = 512 * 1024;
+    const out = await downloadApk(sized, () => {}, () => false);
+    expect(out).toBe('/mock/cache/updates/Salaty-v1.0.3.apk');
+    expect(mockFiles.get('/mock/cache/updates/Salaty-v1.0.3.apk')).toBe(
+      1024 * 1024,
+    );
+    expect(mockFetchCalls).toHaveLength(2);
+    expect(mockFetchCalls[0].headers).toBeUndefined();
+    expect(mockFetchCalls[1].headers).toEqual({
+      Range: 'bytes=524288-',
+    });
+  });
+
+  it('restarts from zero when the server ignores the Range', async () => {
+    const sized: ReleaseInfo = { ...release, size: 1024 * 1024 };
+    const path = '/mock/cache/updates/Salaty-v1.0.3.apk';
+    mockFiles.set(path, 512 * 1024);
+    mockRangeSupported = false;
+    mockDownloadSize = 1024 * 1024;
+    const out = await downloadApk(sized, () => {}, () => false);
+    expect(out).toBe(path);
+    expect(mockFiles.get(path)).toBe(1024 * 1024);
+    expect(mockFetchCalls).toHaveLength(2);
+    expect(mockFetchCalls[0].headers).toEqual({
+      Range: 'bytes=524288-',
+    });
+    expect(mockFetchCalls[1].headers).toBeUndefined();
+  });
+
+  it('discards a partial larger than the release and downloads fresh', async () => {
+    const sized: ReleaseInfo = { ...release, size: 1024 * 1024 };
+    const path = '/mock/cache/updates/Salaty-v1.0.3.apk';
+    mockFiles.set(path, 2 * 1024 * 1024);
+    mockDownloadSize = 1024 * 1024;
+    const out = await downloadApk(sized, () => {}, () => false);
+    expect(out).toBe(path);
+    expect(mockFiles.get(path)).toBe(1024 * 1024);
+    expect(mockFetchCalls).toHaveLength(1);
+    expect(mockFetchCalls[0].headers).toBeUndefined();
+  });
+
+  it('returns at once when the partial is already the whole release', async () => {
+    const sized: ReleaseInfo = { ...release, size: 1024 * 1024 };
+    const path = '/mock/cache/updates/Salaty-v1.0.3.apk';
+    mockFiles.set(path, 1024 * 1024);
+    const out = await downloadApk(sized, () => {}, () => false);
+    expect(out).toBe(path);
+    expect(ReactNativeBlobUtil.config).not.toHaveBeenCalled();
+  });
+
+  it('does not resume without a known release size', async () => {
+    const path = '/mock/cache/updates/Salaty-v1.0.3.apk';
+    mockFiles.set(path, 512 * 1024);
+    mockDownloadSize = 1024 * 1024;
+    const out = await downloadApk(release, () => {}, () => false);
+    expect(out).toBe(path);
+    expect(mockFiles.get(path)).toBe(1024 * 1024);
+    expect(mockFetchCalls[0].headers).toBeUndefined();
   });
 });
 

@@ -304,21 +304,60 @@ function isRetryableDownloadError(error: unknown): boolean {
   return false;
 }
 
+/**
+ * The partial file at the download path, when it is a usable prefix of
+ * the release: its size is where the next fetch resumes from. Zero
+ * when there is no partial, when it is empty, when the release carries
+ * no size to measure it against, or when it is already the whole file
+ * (the caller handles that case before the loop). A partial larger
+ * than the release is garbage — a server that ignored a Range and had
+ * the full file appended after the partial — and the fresh fetch
+ * overwrites it away.
+ */
+async function partialSize(
+  path: string,
+  release: ReleaseInfo,
+): Promise<number> {
+  if (typeof release.size !== 'number' || release.size <= 0) return 0;
+  const stat = await ReactNativeBlobUtil.fs.stat(path).catch(() => null);
+  if (!stat) return 0;
+  const size = Number(stat.size);
+  if (size <= 0 || size >= release.size) return 0;
+  return size;
+}
+
 async function attemptDownload(
   release: ReleaseInfo,
   path: string,
   onProgress: (received: number, total: number) => void,
   shouldCancel: () => boolean,
+  resumeFrom: number,
 ): Promise<string> {
-  onProgress(0, 0);
-  const task = ReactNativeBlobUtil.config({
-    path,
-    overwrite: true,
-  }).fetch('GET', release.apkUrl);
+  // Progress counts what is already on disk: a resumed download does
+  // not jump the bar back to zero.
+  const total = release.size ?? 0;
+  onProgress(resumeFrom, total);
+  // A resume is a Range fetch into the same path with overwrite off:
+  // the native layer opens the file in append mode, so the bytes the
+  // server sends land after the partial. A fresh download overwrites.
+  const task =
+    resumeFrom > 0
+      ? ReactNativeBlobUtil.config({ path, overwrite: false }).fetch(
+          'GET',
+          release.apkUrl,
+          { Range: `bytes=${resumeFrom}-` },
+        )
+      : ReactNativeBlobUtil.config({ path, overwrite: true }).fetch(
+          'GET',
+          release.apkUrl,
+        );
   let watchdog: ReturnType<typeof setInterval> | null = null;
   try {
-    task.progress({ interval: 250 }, (received, total) => {
-      onProgress(Number(received) || 0, Number(total) || 0);
+    task.progress({ interval: 250 }, (received, totalForFetch) => {
+      onProgress(
+        resumeFrom + (Number(received) || 0),
+        release.size ?? resumeFrom + (Number(totalForFetch) || 0),
+      );
     });
     watchdog = setInterval(() => {
       if (shouldCancel()) task.cancel();
@@ -334,7 +373,17 @@ async function attemptDownload(
       );
     }
     const status = res.info().status;
-    if (status !== 200) {
+    if (status === 200 && resumeFrom > 0) {
+      // The server ignored the Range: the full file was appended after
+      // the partial, so the file is now garbage. Drop it and try again
+      // from zero — the retry below does the fresh download.
+      await ReactNativeBlobUtil.fs.unlink(path).catch(() => {});
+      throw new ApkDownloadError(
+        'network',
+        'APK download: server ignored Range, restarting from zero',
+      );
+    }
+    if (status !== 200 && status !== 206) {
       throw new ApkDownloadError(
         'http',
         `APK download: HTTP ${status}`,
@@ -365,12 +414,21 @@ async function attemptDownload(
 
 /**
  * Download the release's APK into the app's cache, reporting progress
- * in bytes. Throws on a non-200 response, an empty file, a size that
- * does not match the release, or a cancelled download. A transient
+ * in bytes. Throws on a non-200/206 response, an empty file, a size
+ * that does not match the release, or a cancelled download. A transient
  * failure — a network blip, a truncated file, a 5xx — is tried once
  * more before it is reported, so one dropped connection on a 61 MB
- * file does not end the update. The file is checked again, natively,
- * before the installer is offered it — see `AppUpdateModule`.
+ * file does not end the update.
+ *
+ * The download resumes: a partial file from an interrupted attempt is
+ * kept, and the next fetch asks for only the bytes after it (`Range`),
+ * so a cut connection costs the missing tail, not the whole file. The
+ * retry re-measures the partial, so even the retry resumes from where
+ * the first attempt stopped. The release asset URL redirects to a host
+ * that answers Ranges; a server that answers 200 instead is treated as
+ * a transient failure and the download restarts from zero. The file is
+ * checked again, natively, before the installer is offered it — see
+ * `AppUpdateModule`.
  */
 export async function downloadApk(
   release: ReleaseInfo,
@@ -386,10 +444,30 @@ export async function downloadApk(
   if (!(await ReactNativeBlobUtil.fs.exists(dir))) {
     await ReactNativeBlobUtil.fs.mkdir(dir);
   }
+  if (typeof release.size === 'number' && release.size > 0) {
+    const stat = await ReactNativeBlobUtil.fs.stat(path).catch(() => null);
+    const size = stat ? Number(stat.size) : 0;
+    if (size === release.size) {
+      // The whole file is already here — a download that finished but
+      // was never installed. Bytes are always a prefix of the file, so
+      // a prefix of exactly the release size is the complete APK.
+      onProgress(size, size);
+      return path;
+    }
+    if (size > release.size) {
+      await ReactNativeBlobUtil.fs.unlink(path).catch(() => {});
+    }
+  }
   let lastError: unknown = new Error('APK download: failed');
   for (let attempt = 0; attempt < 2; attempt++) {
     try {
-      return await attemptDownload(release, path, onProgress, shouldCancel);
+      return await attemptDownload(
+        release,
+        path,
+        onProgress,
+        shouldCancel,
+        await partialSize(path, release),
+      );
     } catch (error) {
       lastError = error;
       if (
