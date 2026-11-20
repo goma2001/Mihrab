@@ -69,7 +69,7 @@ jobs:
         # android/keystore.properties and *.jks are gitignored — the
         # keystore never enters the repository.
         run: |
-          echo "${{ secrets.SALATY_MIHRAB_KEYSTORE_B64 }}" | base64 -d > android/app/salaty-release.jks
+          echo "${{ secrets.SALATY_MIHRAB_KEYSTORE_B64 }}" | base64 -d -i > android/app/salaty-release.jks
           test -s android/app/salaty-release.jks
           cat > android/keystore.properties <<EOF
           storePassword=${{ secrets.SALATY_MIHRAB_KEYSTORE_PASSWORD }}
