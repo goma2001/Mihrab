@@ -242,7 +242,7 @@ export const PERIOD_TINTS: Record<
 // and the restyled screens use lives here — no raw colours in components.
 
 /** The phases the arch shows (see sunArch.ts for how they are computed). */
-export type ArchPhase = 'fajr' | 'sunrise' | 'day' | 'asr' | 'sunset' | 'night';
+export type ArchPhase = 'fajr' | 'sunrise' | 'morning' | 'day' | 'asr' | 'sunset' | 'night';
 
 export const ARCH_GOLD = '#C9A227';
 export const ARCH_GOLD_SOFT = '#E3C766';
@@ -277,6 +277,10 @@ export const ARCH_SKY: Record<ArchPhase, { light: ArchSky; dark: ArchSky }> = {
   sunrise: {
     light: { top: '#7FB3C8', mid: '#F2C879', bottom: '#FBEED3', orb: '#E8A93C', glow: '#F2C879', ink: '#3A2E1A', arc: '#C9A227' },
     dark: { top: '#2E4A5C', mid: '#8A6A3A', bottom: '#5C4A2E', orb: '#E8A93C', glow: '#E8A93C', ink: '#F5EEDC', arc: '#E3C766' },
+  },
+  morning: {
+    light: { top: '#8FC6D4', mid: '#CFE4D8', bottom: '#F7F2E2', orb: '#F0B93C', glow: '#F2D06B', ink: '#17352C', arc: '#C9A227' },
+    dark: { top: '#1E3A48', mid: '#2E5648', bottom: '#3A4A3E', orb: '#F2B705', glow: '#F2B705', ink: '#E8F0E6', arc: '#E3C766' },
   },
   day: {
     light: { top: '#7FC4D6', mid: '#BFE3EA', bottom: '#F4F1E6', orb: '#F2B705', glow: '#F2D06B', ink: '#17352C', arc: '#C9A227' },
