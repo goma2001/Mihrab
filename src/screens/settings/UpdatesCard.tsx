@@ -9,6 +9,8 @@
  *    Update button;
  *  - downloading — progress in megabytes, with Cancel;
  *  - downloaded — Install, which hands the file to the system installer;
+ *  - download-failed — the download itself failed (not the check):
+ *    its own message, the reason under it, and Try again;
  *  - needs-permission — Android 8 and up, "install unknown apps" is off:
  *    the reason, and a button into the setting;
  *  - error — offline, no APK in the release, or the check failed, with
@@ -68,6 +70,7 @@ type Phase =
   | { kind: 'error'; reason: 'offline' | 'no-apk' | 'fetch-failed' }
   | { kind: 'downloading'; release: ReleaseInfo; received: number; total: number }
   | { kind: 'downloaded'; release: ReleaseInfo; path: string }
+  | { kind: 'download-failed'; release: ReleaseInfo; detail?: string }
   | { kind: 'needs-permission'; release: ReleaseInfo; path: string }
   | { kind: 'install-started'; release: ReleaseInfo }
   | { kind: 'install-failed'; release: ReleaseInfo; path: string };
@@ -152,11 +155,19 @@ function UpdatesCardImpl() {
       })
       .catch(error => {
         quiet('settings/UpdatesCard', error);
-        if (mountedRef.current && !cancelledRef.current) {
-          setPhase({ kind: 'error', reason: 'fetch-failed' });
-        } else if (mountedRef.current) {
+        if (!mountedRef.current) return;
+        if (cancelledRef.current) {
           // Cancelled: back to the offer, not an error.
           setPhase({ kind: 'available', release });
+        } else {
+          // A download failure is its own state — not the check's
+          // "couldn't check" — with the reason under it, so the reader
+          // can tell which step failed.
+          setPhase({
+            kind: 'download-failed',
+            release,
+            detail: error instanceof Error ? error.message : undefined,
+          });
         }
       });
   }, []);
@@ -208,6 +219,11 @@ function UpdatesCardImpl() {
                     ? t('updates.downloading', 'Downloading…')
                     : phase.kind === 'downloaded'
                       ? t('updates.downloaded', 'Downloaded — ready to install')
+                    : phase.kind === 'download-failed'
+                      ? t(
+                          'updates.errorDownload',
+                          'Couldn’t download the update. Check your connection and try again.',
+                        )
                       : phase.kind === 'needs-permission'
                         ? t(
                             'updates.needsPermission',
@@ -236,6 +252,11 @@ function UpdatesCardImpl() {
                                   )}
           </Text>
         </View>
+        {phase.kind === 'download-failed' && phase.detail ? (
+          <Text style={[typeStyle('footnote'), { color: palette.muted }]}>
+            {phase.detail}
+          </Text>
+        ) : null}
         <Text style={[typeStyle('footnote'), { color: palette.muted }]}>
           {t('updates.currentVersion', 'Current version: {{version}}', {
             version: ltr(installed),
@@ -251,6 +272,7 @@ function UpdatesCardImpl() {
         {phase.kind === 'available' ||
         phase.kind === 'downloading' ||
         phase.kind === 'downloaded' ||
+        phase.kind === 'download-failed' ||
         phase.kind === 'needs-permission' ||
         phase.kind === 'install-started' ||
         phase.kind === 'install-failed' ? (
@@ -328,6 +350,22 @@ function UpdatesCardImpl() {
             ]}>
             <Text style={[typeStyle('headline'), { color: palette.text }]}>
               {t('updates.cancel', 'Cancel')}
+            </Text>
+          </Pressable>
+        ) : null}
+        {phase.kind === 'download-failed' ? (
+          <Pressable
+            accessibilityRole="button"
+            accessibilityLabel={t('updates.retry', 'Try again')}
+            onPress={() => startDownload(phase.release)}
+            style={({ pressed }) => [
+              styles.primary,
+              { backgroundColor: palette.accentBg },
+              pressed ? styles.pressed : null,
+            ]}>
+            <Text
+              style={[typeStyle('headline'), { color: palette.accentSolid }]}>
+              {t('updates.retry', 'Try again')}
             </Text>
           </Pressable>
         ) : null}

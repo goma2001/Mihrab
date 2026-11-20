@@ -186,3 +186,22 @@ describe('locale interpolation parity', () => {
     });
   }
 });
+
+describe('prayer abbreviations are distinct', () => {
+  // The arch dots and the month table's column headers wear the
+  // dedicated _abbr keys. They used to wear the first three letters
+  // of the full name, so Asr and Isha both read "الع" — two prayers,
+  // one label. If a locale ever re-introduces a collision, this fails.
+  const DAY_PATH = ['Fajr', 'Sunrise', 'Dhuhr', 'Asr', 'Maghrib', 'Isha'];
+
+  for (const locale of ALL_LOCALES) {
+    test(`${locale}.json gives the six day-path prayers distinct abbreviations`, () => {
+      const data = loadLocale(locale);
+      const values = DAY_PATH.map(k => data[`prayer.${k}_abbr`]);
+      expect(values.every(v => typeof v === 'string' && v.length > 0)).toBe(
+        true,
+      );
+      expect(new Set(values).size).toBe(DAY_PATH.length);
+    });
+  }
+});

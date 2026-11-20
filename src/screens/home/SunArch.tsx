@@ -360,16 +360,15 @@ export function SunArch({
                 style={[
                   styles.dotLabel,
                   {
-                    color: isNext
-                      ? palette.text
-                      : isDone
-                        ? palette.muted
-                        : palette.muted,
+                    color:
+                      isNext || isDone ? palette.text : palette.muted,
                     fontWeight: isNext ? '700' : '400',
                   },
                 ]}
                 numberOfLines={1}>
-                {t(`prayer.${dot.key}`, dot.key).slice(0, 3)}
+                {t(`prayer.${dot.key}_abbr`, {
+                  defaultValue: t(`prayer.${dot.key}`),
+                })}
               </Text>
             </View>
           );
@@ -425,7 +424,8 @@ const styles = StyleSheet.create({
   },
   dot: {},
   dotLabel: {
-    fontSize: TYPE.caption.fontSize,
+    fontSize: TYPE.label.fontSize,
+    lineHeight: TYPE.label.lineHeight,
     fontWeight: '400',
   },
 });

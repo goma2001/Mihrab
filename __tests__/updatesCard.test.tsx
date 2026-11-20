@@ -205,6 +205,28 @@ describe('UpdatesCard', () => {
     );
   });
 
+  it('a download failure is its own state, with the reason and a retry', async () => {
+    mockCheck.cached = AVAILABLE;
+    mockDownload.fn
+      .mockRejectedValueOnce(new Error('APK download: HTTP 302'))
+      .mockResolvedValue('/mock/cache/updates/Salaty-v1.0.3.apk');
+    const root = await renderCard();
+    await flush();
+    press(root, 'Update');
+    await flush();
+    const texts = textsOf(root);
+    // Not the check's "couldn't check": the download's own message.
+    expect(
+      texts.some(t => t.includes('Couldn’t download the update')),
+    ).toBe(true);
+    expect(texts.some(t => t.includes('HTTP 302'))).toBe(true);
+    expect(texts.some(t => t.includes('Try again'))).toBe(true);
+    press(root, 'Try again');
+    await flush();
+    expect(mockDownload.fn).toHaveBeenCalledTimes(2);
+    expect(textsOf(root).some(t => t.includes('Install'))).toBe(true);
+  });
+
   it('when the system withholds the install, it opens settings', async () => {
     mockCheck.cached = AVAILABLE;
     mockInstall.fn.mockResolvedValue('needs-permission');
