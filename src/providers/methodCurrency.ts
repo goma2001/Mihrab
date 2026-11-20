@@ -15,7 +15,7 @@
  *     on the printed minute all but rarely (99.1–99.98 %), never a minute
  *     further;
  *   • 'checking' — the authority has published tables the method is not yet
- *     certified on (MihrabHQ/mihrab-methods' certification says so);
+ *     certified on (mihrab-methods' certification says so);
  *   • 'update' — the method itself has moved on (a newer revision): its
  *     lists no longer fit this build, so the app must be updated.
  *

@@ -68,7 +68,7 @@ import { parseNamazvaktiXml } from '../../src/providers/namazvaktiParser';
 import { namazvaktiBucketAsset, NV_PACK_BUCKETS, packYear, type PackedBucket } from '../../src/providers/namazvaktiPack';
 
 const ORIGIN = 'https://www.namazvakti.com';
-const USER_AGENT = 'Mihrab dataset builder (+https://github.com/MihrabHQ/Mihrab; mihrab@elghamri.se)';
+const USER_AGENT = 'Salaty dataset builder (+https://github.com/goma2001/Mihrab; anazaza492@gmail.com)';
 
 const int = (name: string, fallback: number): number => {
   const v = process.env[name];

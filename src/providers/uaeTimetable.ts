@@ -2,7 +2,7 @@
  * The United Arab Emirates, on the phone: the prayer times the General
  * Authority of Islamic Affairs, Endowments and Zakat publishes for its
  * forty-one zones, by its own method (`uaeMethod.ts`, from
- * MihrabHQ/mihrab-methods) at the zone's point, with its correction list
+ * mihrab-methods) at the zone's point, with its correction list
  * for the few times the published table is on the other side of a minute
  * (applied in `localAdhan.ts`). Offline, for any date; nothing is
  * downloaded.

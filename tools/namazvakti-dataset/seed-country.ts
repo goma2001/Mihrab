@@ -10,7 +10,7 @@ import { parseCityInfo, parseCityList, parseCountryList, parseStateList, tileKey
 
 const ORIGIN = 'https://www.namazvakti.com';
 const DIR = path.join(__dirname, '../../data/prayer-times/namazvakti/v1/tiles');
-const UA = 'Mihrab dataset builder (+https://github.com/MihrabHQ/Mihrab; mihrab@elghamri.se)';
+const UA = 'Salaty dataset builder (+https://github.com/goma2001/Mihrab; anazaza492@gmail.com)';
 const sleep = (ms: number) => new Promise(r => setTimeout(r, ms));
 
 async function get(url: string, until?: RegExp): Promise<string> {

@@ -1,7 +1,7 @@
 /**
  * Iran — the Institute of Geophysics of the University of Tehran, on the
  * phone: the prayer times its Calendar Center's yearly sheets give, by its
- * own method (`tehranMethod.ts`, from MihrabHQ/mihrab-methods).
+ * own method (`tehranMethod.ts`, from mihrab-methods).
  *
  * The Institute prints a sheet for each of the thirty-one province
  * capitals and computes each at one point. A reader in one of them gets

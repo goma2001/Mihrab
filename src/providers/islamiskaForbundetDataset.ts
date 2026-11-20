@@ -8,7 +8,7 @@
  * own arithmetic rounds the other way. On the printed minute for every time
  * of those timetables over 2024–2027; the method alone, 99.98 %, every time
  * within the minute. Nothing is fetched: the source is the open
- * MihrabHQ/mihrab-methods (src/methods/sweden.ts).
+ * mihrab-methods (src/methods/sweden.ts).
  */
 import { getNearestIslamiskaForbundetCityWithDistance, islamiskaForbundetCityCoords } from './islamiskaForbundetNearest';
 import { computeLocalAdhanTimes } from './localAdhan';

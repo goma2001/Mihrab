@@ -24,7 +24,7 @@
  * This gives the Ministry's minute for about 95 % of the table; every other
  * time is a single minute away.
  *
- * From MihrabHQ/mihrab-methods, revision 1.
+ * From mihrab-methods, revision 1.
  */
 import { meeusApparentSun } from './moroccoMethod';
 

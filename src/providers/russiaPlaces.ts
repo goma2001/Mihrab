@@ -3,7 +3,7 @@
  * Administration of Muslims of the Republic of Tatarstan's forty-four towns
  * and district seats, and the Central Spiritual Administration of Muslims
  * of Russia's eighteen cities — each at the point its authority computes it
- * (from MihrabHQ/mihrab-methods), and the nearest of them to a reader.
+ * (from mihrab-methods), and the nearest of them to a reader.
  */
 import tatarstan from './data/tatarstanPlaces.json';
 import cdum from './data/cdumCities.json';

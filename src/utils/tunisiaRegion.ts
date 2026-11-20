@@ -1,7 +1,7 @@
 /**
  * The places Tunisia's Institut National de la Météorologie's method is
  * held to, and which of them a reader is in (`data/tunisiaPlaces.json`,
- * from MihrabHQ/mihrab-methods). Kept apart from the timetable itself so
+ * from mihrab-methods). Kept apart from the timetable itself so
  * that the routing can ask without loading the calculation.
  */
 import places from '../providers/data/tunisiaPlaces.json';

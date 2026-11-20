@@ -26,7 +26,7 @@
  * fixed clock time (12:00 in most districts). The Dhuhr here is the zenith
  * column, the sun's transit.
  *
- * From MihrabHQ/mihrab-methods, revision 1.
+ * From mihrab-methods, revision 1.
  */
 import { meeusApparentSun, refractionFromApparent, refractionFromTrue } from './moroccoMethod';
 

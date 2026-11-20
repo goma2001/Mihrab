@@ -1,6 +1,6 @@
 /**
  * Sweden's correction list (src/providers/swedenCorrections.ts, from
- * MihrabHQ/mihrab-methods): a minute either way, at Diyanet's points, on the
+ * mihrab-methods): a minute either way, at Diyanet's points, on the
  * dates the timetables cover — and the app's Sweden times apply it.
  */
 jest.unmock('adhan');

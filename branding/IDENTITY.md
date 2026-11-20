@@ -165,7 +165,7 @@ mention and *القرآن* after, *المصحف المدني*, *الأذكار*,
 | F-Droid | `fastlane/metadata/android/<locale>/` (read straight from the repo) | same |
 | App Store | `fastlane/metadata/ios/<locale>/` | name 30 · subtitle 30 · keywords 100 · promotional text 170 · description 4000 |
 | Website | `docs/index.html`, `docs/sv/index.html` by hand; the other eleven from `scripts/site/strings.json` via `node scripts/build-site.js` | `<title>` about 60 visible |
-| GitHub | README intro, the repo's About line, the MihrabHQ org description and its `profile/README.md` | About: one sentence |
+| GitHub | README intro, the repo's About line, the repo's About line | About: one sentence |
 | In the app | `share.tagline` on shared images | one short line |
 
 **Play's short description carries no price or promotion words** — no

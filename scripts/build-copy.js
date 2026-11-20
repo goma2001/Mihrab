@@ -129,9 +129,9 @@ function readmeBlock(cert) {
   return [
     '<div align="center">',
     '',
-    `<a href="https://github.com/MihrabHQ/mihrab-methods"><img src="branding/badges/certification.svg" alt="certified: ${int(total.off)} of ${int(total.times)} times off the printed minute"></a>`,
+    `<img src="branding/badges/certification.svg" alt="certified: ${int(total.off)} of ${int(total.times)} times off the printed minute">`,
     '',
-    `Prayer times computed with **[mihrab-methods](https://github.com/MihrabHQ/mihrab-methods)**, the authorities’ own methods checked against every time they have published.`,
+    `Prayer times computed with **mihrab-methods**, the authorities’ own methods checked against every time they have published.`,
     '',
     '</div>',
     '',

@@ -23,7 +23,7 @@ request to `main` like any other.
 
 ## The browser, Windows and Linux together
 
-Mihrab Web (mihrabhq.github.io) is the same webpack build with
+Mihrab Web is the same webpack build with
 `--env web`: `desktop/web/webapp/` swaps a browser bridge in for Electron's
 preload, and `IS_WEB_APP` is true. Everything else is shared, so a patch for
 one of the three is a patch for all of them:

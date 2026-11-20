@@ -7,7 +7,7 @@
  * times the authority's
  * own program puts on the other side of a minute's rounding point from the
  * method. Each entry moves one printed time of one point on one date by a
- * minute. The lists are written by MihrabHQ/mihrab-methods
+ * minute. The lists are written by mihrab-methods
  * (`npm run corrections -- <authority>`) from the authorities' tables and
  * cover the dates those do; with them the method is on every printed minute.
  *

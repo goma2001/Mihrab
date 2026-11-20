@@ -1,7 +1,7 @@
 /**
  * Morocco — the Ministry of Habous's times, computed on the phone.
  *
- * The ministry's own method (`moroccoMethod.ts`, from MihrabHQ/mihrab-methods)
+ * The ministry's own method (`moroccoMethod.ts`, from mihrab-methods)
  * at the nearest listed city's point and horizons, with the correction list
  * for the few times the ministry's program rounds the other way
  * (`moroccoCorrections.json`, applied in `localAdhan.ts`): its printed

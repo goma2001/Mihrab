@@ -110,7 +110,7 @@ describe('the wording', () => {
     for (const rel of ['docs/index.html', 'docs/sv/index.html', 'docs/tr/index.html', 'docs/ar/index.html']) {
       const text = readFileSync(path.join(ROOT, rel), 'utf-8');
       for (const m of text.matchAll(/<script\b([^>]*)>/g)) expect(m[1]).toMatch(/type="application\/ld\+json"/);
-      expect(text).not.toMatch(/<link[^>]+href="https?:\/\/(?!mihrab\.elghamri\.se)/);
+      expect(text).not.toMatch(/<link[^>]+href="https?:\/\/(?!goma2001\.github\.io)/);
       expect(text).not.toMatch(/<(img|script|iframe)[^>]+src="https?:\/\//);
     }
   });

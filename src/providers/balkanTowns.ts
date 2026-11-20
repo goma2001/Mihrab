@@ -7,7 +7,7 @@
  * Each timetable is one town's table plus a town's whole minutes
  * (`townTableMethod.ts`). A town here has two points: where it is, which is
  * what a reader is matched by, and the point the method is computed at
- * (`pointLat`, `pointLon`, from MihrabHQ/mihrab-methods), which carries the
+ * (`pointLat`, `pointLon`, from mihrab-methods), which carries the
  * town's minutes in its longitude and is what the correction list is keyed
  * by. The Community's calendar also gives towns of Kosovo, North Macedonia,
  * Montenegro and the Preševo valley; those are not served here.

@@ -4,7 +4,7 @@ The countries whose authority publishes a table per place, mirrored as-is
 and served through one module in the app (`src/providers/nationalTable.ts`,
 instances in `nationalTables.ts`). Indonesia's Kemenag table is served
 through the same module but computed on the phone (its method and
-correction list, from MihrabHQ/mihrab-methods); its places list,
+correction list, from mihrab-methods); its places list,
 `src/providers/data/kemenagPlaces.json`, is the only data it needs.
 
 | Country | Source | Builder | Places |

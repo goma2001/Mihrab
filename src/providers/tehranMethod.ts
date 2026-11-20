@@ -21,7 +21,7 @@
  * The sheets' midnight is halfway from sunset to the next day's Fajr
  * (`tehranSunsetAndMidnight`).
  *
- * From MihrabHQ/mihrab-methods, revision 1.
+ * From mihrab-methods, revision 1.
  */
 import { meeusApparentSun } from './moroccoMethod';
 

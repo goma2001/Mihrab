@@ -67,9 +67,9 @@ LOCALES = {
 ASC_LOCALE = {"bn": "bn-BD", "ur": "ur-PK"}
 PRIMARY_CATEGORY = "LIFESTYLE"
 SECONDARY_CATEGORY = "REFERENCE"
-MARKETING_URL = "https://mihrab.elghamri.se/"
-SUPPORT_URL = "https://github.com/MihrabHQ/Mihrab/issues"
-PRIVACY_URL = "https://github.com/MihrabHQ/Mihrab/blob/main/PRIVACY_POLICY.md"
+MARKETING_URL = "https://goma2001.github.io/Mihrab/"
+SUPPORT_URL = "https://github.com/goma2001/Mihrab/issues"
+PRIVACY_URL = "https://github.com/goma2001/Mihrab/blob/main/PRIVACY_POLICY.md"
 
 EDITABLE = {
     "PREPARE_FOR_SUBMISSION",

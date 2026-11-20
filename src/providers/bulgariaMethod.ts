@@ -15,7 +15,7 @@
  * This gives the Office's minute for about 98 % of the table; every other
  * time is a single minute away.
  *
- * From MihrabHQ/mihrab-methods, revision 1.
+ * From mihrab-methods, revision 1.
  */
 import { townTableRawMinutes, townTableTimes, type TownTable, type TownTableInstants, type TownTableMinutes } from './townTableMethod';
 

@@ -29,7 +29,7 @@
  * allowance as their sunset, like every other place — so a place carries
  * the earlier allowance and the last year it applies to (revision 2).
  *
- * From MihrabHQ/mihrab-methods, revision 2.
+ * From mihrab-methods, revision 2.
  */
 import { meeusApparentSun } from './moroccoMethod';
 

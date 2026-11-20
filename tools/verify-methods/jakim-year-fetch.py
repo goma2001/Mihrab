@@ -14,7 +14,7 @@ year = sys.argv[2] if len(sys.argv) > 2 else None
 src = open(os.path.join(HERE, '..', 'national-tables', 'jakim-zones.ts')).read()
 codes = re.findall(r"code:\s*'([A-Z]{3}\d{2})'", src)
 MONTHS = dict(Jan=1, Feb=2, Mac=3, Apr=4, Mei=5, Jun=6, Jul=7, Ogos=8, Sep=9, Okt=10, Nov=11, Dis=12)
-UA = 'Mihrab dataset builder (+https://github.com/MihrabHQ/Mihrab; mihrab@elghamri.se)'
+UA = 'Salaty dataset builder (+https://github.com/goma2001/Mihrab; anazaza492@gmail.com)'
 os.makedirs(os.path.join(out, 'v1', 'cities'), exist_ok=True)
 hm = lambda s: s[:5]
 for i, code in enumerate(codes, 1):

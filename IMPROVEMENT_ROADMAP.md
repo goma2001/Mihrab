@@ -38,7 +38,7 @@ that fails the build if a new one is added without.
 
 **Correctness.** `validateTimings` checks ordering, not just shape;
 Sweden's calculation is on the printed minute of Diyanet's and Islamiska
-Förbundet's timetables for 2024–2027 ([mihrab-methods](https://github.com/MihrabHQ/mihrab-methods)); DST
+Förbundet's timetables for 2024–2027 (mihrab-methods); DST
 transitions, AsyncStorage quota, exact-alarm revocation, pre-reminder
 clamping, widget rollover with no tomorrow, and the `(0,0)` coordinate guard
 all have tests.

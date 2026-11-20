@@ -21,7 +21,7 @@
  * This gives the Ministry's minute for about 99.7 % of the published times;
  * every other one is a single minute.
  *
- * From MihrabHQ/mihrab-methods, revision 1.
+ * From mihrab-methods, revision 1.
  */
 import { meeusApparentSun } from './moroccoMethod';
 

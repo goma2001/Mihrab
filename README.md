@@ -19,9 +19,9 @@ _Store links (Google Play, F-Droid, App Store) are pending._
 <!-- accuracy:start -->
 <div align="center">
 
-<a href="https://github.com/MihrabHQ/mihrab-methods"><img src="branding/badges/certification.svg" alt="certified: 0 of 77,661,385 times off the printed minute"></a>
+<img src="branding/badges/certification.svg" alt="certified: 0 of 77,661,385 times off the printed minute">
 
-Prayer times computed with **[mihrab-methods](https://github.com/MihrabHQ/mihrab-methods)**, the authorities’ own methods checked against every time they have published.
+Prayer times computed with **mihrab-methods**, the authorities’ own methods checked against every time they have published.
 
 </div>
 
@@ -107,7 +107,7 @@ Like an alarm clock, over the lock screen: the prayer, the next one under it, St
 </details>
 <details><summary><b>Times that match your authority's timetable</b></summary>
 
-**Sweden** (Islamiska Förbundet), **Diyanet** (Türkiye and its places worldwide), **Morocco** (the Ministry of Habous and Islamic Affairs), **Algeria** (the Ministry of Religious Affairs and Wakfs) and **Indonesia** (Kemenag) are calculated on the phone with the authority's own method from [mihrab-methods](https://github.com/MihrabHQ/mihrab-methods), on the printed minute for every time they were checked against (the table at the top). **Singapore** (MUIS), **Malaysia** (JAKIM) and **Türkiye Takvimi** (namazvakti.com) are their published tables, taken minute for minute from this repo for your nearest listed city, with the authority's own service as a backup. Everywhere else: AlAdhan, or calculation on the device (Adhan JS). "Automatic" picks the right one for where you are, and a source pinned for one country quietly gives way to AlAdhan outside it ([where each comes from](docs/prayer-times-sources.md)).
+**Sweden** (Islamiska Förbundet), **Diyanet** (Türkiye and its places worldwide), **Morocco** (the Ministry of Habous and Islamic Affairs), **Algeria** (the Ministry of Religious Affairs and Wakfs) and **Indonesia** (Kemenag) are calculated on the phone with the authority's own method from mihrab-methods, on the printed minute for every time they were checked against (the table at the top). **Singapore** (MUIS), **Malaysia** (JAKIM) and **Türkiye Takvimi** (namazvakti.com) are their published tables, taken minute for minute from this repo for your nearest listed city, with the authority's own service as a backup. Everywhere else: AlAdhan, or calculation on the device (Adhan JS). "Automatic" picks the right one for where you are, and a source pinned for one country quietly gives way to AlAdhan outside it ([where each comes from](docs/prayer-times-sources.md)).
 
 </details>
 <details><summary><b>Says when it is standing in</b></summary>
@@ -117,7 +117,7 @@ If the table you chose has nothing for today, the phone calculates the day with 
 </details>
 <details><summary><b>24 calculation methods, or your own angles</b></summary>
 
-The 17 AlAdhan methods plus Dubai, JAKIM, Kemenag, Tunisia, Portugal, Jordan and Sweden (the Istanbul congress method Diyanet computes Islamiska Förbundet's tables by, within a minute by the method alone and on the printed minute with its yearly correction list — [mihrab-methods](https://github.com/MihrabHQ/mihrab-methods)), each tuned to what that authority publishes and checked against it every week; hill towns are computed at their height, and Umm al-Qura's Isha moves to two hours in Ramadan as it does in Makkah. Or set the Fajr and Isha angles yourself.
+The 17 AlAdhan methods plus Dubai, JAKIM, Kemenag, Tunisia, Portugal, Jordan and Sweden (the Istanbul congress method Diyanet computes Islamiska Förbundet's tables by, within a minute by the method alone and on the printed minute with its yearly correction list — mihrab-methods), each tuned to what that authority publishes and checked against it every week; hill towns are computed at their height, and Umm al-Qura's Isha moves to two hours in Ramadan as it does in Makkah. Or set the Fajr and Isha angles yourself.
 
 </details>
 <details><summary><b>High latitudes</b></summary>
@@ -473,7 +473,7 @@ Pull requests, translations and reproducible bug reports are welcome.
 - [ARCHITECTURE.md](ARCHITECTURE.md) — how the code is laid out
 - [CHANGELOG.md](CHANGELOG.md) — what changed in each release
 - [SECURITY.md](SECURITY.md) — reporting a vulnerability
-- A translation that reads wrong, or a language to add: [open a translation issue](https://github.com/MihrabHQ/Mihrab/issues/new?template=translation.yml)
+- A translation that reads wrong, or a language to add: [open a translation issue](https://github.com/goma2001/Mihrab/issues/new?template=translation.yml)
 
 ---
 
@@ -490,7 +490,7 @@ Four kinds of support are welcome, and they are worth more:
 - **Dua** — for me and my parents, and for everyone whose work this is built on.
 - **Constructive feedback** — a prayer time that disagrees with your masjid, a
   translation that reads wrong, a screen that fights you. Say what you saw and
-  what you expected in [an issue](https://github.com/MihrabHQ/Mihrab/issues);
+  what you expected in [an issue](https://github.com/goma2001/Mihrab/issues);
   that is how the bugs get found.
 - **Pass it on** — rate صلاتي where you got it, and tell family and friends.
   The app's own month sheet (Settings → About → Help صلاتي) is an easy thing to

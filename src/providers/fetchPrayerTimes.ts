@@ -321,7 +321,7 @@ export async function fetchPrayerTimesUnified(
     case 'islamiska_forbundet': {
       // Islamiska Förbundet's cities, calculated on the phone: Diyanet's
       // method (congressMethod.ts, with swedenCorrections.ts) for the
-      // nearest listed city — the source is MihrabHQ/mihrab-methods.
+      // nearest listed city — the source is mihrab-methods.
       // Beyond the listed cities' reach it is computed for the reader's own
       // coordinates.
       try {

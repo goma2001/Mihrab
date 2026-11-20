@@ -6,7 +6,7 @@
  * at fixed addresses in this repository (`data/prayer-times/v1`,
  * `…/morocco/v1`, `…/algeria/v1`). Those versions are still installed. The
  * app now computes these authorities itself (their methods and correction
- * lists, from MihrabHQ/mihrab-methods), and this writes, at the same
+ * lists, from mihrab-methods), and this writes, at the same
  * addresses and in the same shape, what the current app computes: each
  * listed place, every day from the first of this month to the end of the
  * third month after. An earlier version then keeps serving the authority's

@@ -22,7 +22,7 @@
 import { BuildError, addDays, changedPlaces, emitOutput, minutesOf, writeTable, type DayMinutes, type PlaceTable } from './write';
 
 const ORIGIN = 'https://shuroiulamo.tj';
-const UA = 'Mihrab dataset builder (+https://github.com/MihrabHQ/Mihrab; mihrab@elghamri.se)';
+const UA = 'Salaty dataset builder (+https://github.com/goma2001/Mihrab; anazaza492@gmail.com)';
 const IMSAK_BEFORE_FAJR = 10;
 const KEEP_PAST_DAYS = 7;
 

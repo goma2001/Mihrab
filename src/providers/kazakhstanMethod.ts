@@ -27,7 +27,7 @@
  * With that the method gives every published time of the places read, with
  * no correction list.
  *
- * From MihrabHQ/mihrab-methods, revision 1.
+ * From mihrab-methods, revision 1.
  */
 
 const RAD = Math.PI / 180;

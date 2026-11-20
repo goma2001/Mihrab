@@ -23,7 +23,7 @@
  * Each zone is computed at its own point; none is another's times plus
  * minutes.
  *
- * From MihrabHQ/mihrab-methods, revision 1.
+ * From mihrab-methods, revision 1.
  */
 import { meeusApparentSun, refractionFromApparent, refractionFromTrue } from './moroccoMethod';
 

@@ -1,7 +1,7 @@
 #!/bin/sh
 # Remove Mihrab for Linux, with its settings.
 #
-#   curl -fsSL https://raw.githubusercontent.com/MihrabHQ/Mihrab/main/desktop/scripts/uninstall-linux.sh | sh
+#   curl -fsSL https://raw.githubusercontent.com/goma2001/Mihrab/main/desktop/scripts/uninstall-linux.sh | sh
 #
 # Quits Mihrab and takes away whatever install-linux.sh put there: the
 # package (apt, dnf, zypper or pacman) with Mihrab's repository and its key,
@@ -17,4 +17,4 @@ case "$0" in
     if [ -f "$here/install-linux.sh" ]; then exec sh "$here/install-linux.sh" uninstall; fi
     ;;
 esac
-curl -fsSL https://raw.githubusercontent.com/MihrabHQ/Mihrab/main/desktop/scripts/install-linux.sh | sh -s uninstall
+curl -fsSL https://raw.githubusercontent.com/goma2001/Mihrab/main/desktop/scripts/install-linux.sh | sh -s uninstall

@@ -42,7 +42,7 @@ on the authority's printed minute over the tables checked:
 | **Algeria** — Ministry of Religious Affairs | method 19, `algeriaMethod.ts`, 68 cities | 99.37 % | 1448 AH, 101,184 times |
 | **Indonesia** — Kemenag | method 20, `indonesiaMethod.ts`, 517 regencies | 99.97 % | Oct → Dec 2026, 266,772 times |
 
-Two more are computed the same way, from MihrabHQ/mihrab-methods, and are
+Two more are computed the same way, from mihrab-methods, and are
 not in the table above: **Tatarstan** — the Spiritual Administration of
 Muslims of the Republic of Tatarstan (`tatarstanMethod.ts`, 44 towns and
 district seats, inside the republic's outline), and **Russia's Central
@@ -105,7 +105,7 @@ them the method alone is served. Where Islamiska Förbundet's own copy
 differs from Diyanet's (a year served copied, Kiruna printed with Umeå's
 table), the app follows Diyanet.
 
-Source: [MihrabHQ/mihrab-methods](https://github.com/MihrabHQ/mihrab-methods),
+Source: mihrab-methods,
 where the methods, their correction lists and their check against the
 timetables live; the app copies them.
 

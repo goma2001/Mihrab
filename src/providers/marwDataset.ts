@@ -2,7 +2,7 @@
  * Algeria — the Ministry of Religious Affairs and Wakfs's times, computed on
  * the phone (issue #70).
  *
- * The Ministry's own method (`algeriaMethod.ts`, from MihrabHQ/mihrab-methods)
+ * The Ministry's own method (`algeriaMethod.ts`, from mihrab-methods)
  * at the point it computes the nearest of its 68 listed cities, with the
  * correction list for the few times its program rounds the other way
  * (`algeriaCorrections.json`, applied in `localAdhan.ts`): its printed

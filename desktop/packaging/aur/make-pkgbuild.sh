@@ -13,7 +13,7 @@ version=$1
 amd64=$2
 arm64=$3
 out=$4
-base=${MIHRAB_RELEASES:-https://github.com/MihrabHQ/Mihrab/releases/download}
+base=${MIHRAB_RELEASES:-https://github.com/goma2001/Mihrab/releases/download}
 # mihrab-bin on the AUR; plain `mihrab` in Mihrab's own pacman repository
 # (build-arch.sh). Either stands in for the other.
 pkgname=${MIHRAB_PKGNAME:-mihrab-bin}
@@ -26,15 +26,15 @@ src_x86_64="mihrab-$version-amd64.deb::$base/v$version/Mihrab-$version-linux-amd
 src_aarch64="mihrab-$version-arm64.deb::$base/v$version/Mihrab-$version-linux-arm64.deb"
 
 desc="Prayer times, the adhan and the Qur'an"
-url="https://mihrab.elghamri.se"
+url="https://github.com/goma2001/Mihrab"
 depends="gtk3 libnotify nss libxtst alsa-lib xdg-utils"
 
 mkdir -p "$out"
 
 {
-  echo "# Maintainer: Hassan El Ghamri <hassan15015099 at gmail dot com>"
+  echo "# Maintainer: Goma Mohamed <anazaza492 at gmail dot com>"
   echo "#"
-  echo "# Written by desktop/packaging/aur/make-pkgbuild.sh in MihrabHQ/Mihrab for"
+  echo "# Written by desktop/packaging/aur/make-pkgbuild.sh in goma2001/Mihrab for"
   echo "# each release; changes belong there."
   echo
   echo "pkgname=$pkgname"

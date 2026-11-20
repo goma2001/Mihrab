@@ -5,7 +5,7 @@ to each authority (`src/providers/localAdhan.ts`) — not a copy of the
 authority's table. Sweden, Diyanet, Morocco, Algeria and Indonesia are
 already computed on the phone, with each authority's small correction
 list; those methods are developed and certified in
-[MihrabHQ/mihrab-methods](https://github.com/MihrabHQ/mihrab-methods),
+mihrab-methods,
 and the app copies them. Singapore's and Malaysia's free tables are still
 served from this repo (`tools/national-tables`), with the authority's
 method standing in past their window; this checks that method.
@@ -123,7 +123,7 @@ three other things, each now in the data:
 Computed on the phone, each with its authority's correction list, and on
 every printed minute of the authority's tables over the dates checked:
 the methods, their accuracy and how each was read off the tables are in
-[MihrabHQ/mihrab-methods](https://github.com/MihrabHQ/mihrab-methods). The
+mihrab-methods. The
 check runs here too where those reference tables are checked out
 (the folder `MIHRAB_TABLES` names):
 `verify.ts diyanet habous marw kemenag`.

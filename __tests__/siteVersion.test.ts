@@ -63,7 +63,7 @@ describe('website version', () => {
   });
 
   it('names the shipped version in the colophon', () => {
-    expect(site).toContain(`Mihrab ${versionName} (${versionCode}), built by`);
+    expect(site).toContain(`صلاتي ${versionName} (${versionCode}), built by`);
   });
 
   it('names the shipped version in the structured data', () => {
@@ -75,7 +75,7 @@ describe('website version', () => {
   it('says the same version everywhere it says one', () => {
     // The two stamps disagreeing is the exact state this was found in.
     const mentioned = new Set(
-      Array.from(site.matchAll(/Mihrab (\d+\.\d+\.\d+) \(\d+\)/g), m => m[1]),
+      Array.from(site.matchAll(/صلاتي (\d+\.\d+\.\d+) \(\d+\)/g), m => m[1]),
     );
     for (const m of site.matchAll(/Version (\d+\.\d+\.\d+) \(\d+\)/g)) {
       mentioned.add(m[1]);
@@ -97,7 +97,7 @@ describe('the Swedish page', () => {
   });
 
   it('names the shipped version in the colophon', () => {
-    expect(siteSv).toContain(`Mihrab ${versionName} (${versionCode}), byggd av`);
+    expect(siteSv).toContain(`صلاتي ${versionName} (${versionCode}), byggd av`);
   });
 
   it('names the shipped version in the structured data', () => {
@@ -106,7 +106,7 @@ describe('the Swedish page', () => {
 
   it('says the same version everywhere it says one', () => {
     const mentioned = new Set(
-      Array.from(siteSv.matchAll(/Mihrab (\d+\.\d+\.\d+) \(\d+\)/g), m => m[1]),
+      Array.from(siteSv.matchAll(/صلاتي (\d+\.\d+\.\d+) \(\d+\)/g), m => m[1]),
     );
     for (const m of siteSv.matchAll(/Version (\d+\.\d+\.\d+) \(\d+\)/g)) {
       mentioned.add(m[1]);

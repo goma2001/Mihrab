@@ -48,7 +48,9 @@ const { fillPage, figTokens } = require('./copy/site');
 const ROOT = path.join(__dirname, '..');
 const DOCS = path.join(ROOT, 'docs');
 const STRINGS = path.join(__dirname, 'site', 'strings.json');
-const ORIGIN = `https://${fs.readFileSync(path.join(DOCS, 'CNAME'), 'utf-8').trim()}`;
+// The site used to live on the author's domain (docs/CNAME); the fork
+// has no domain of its own, so it lives on GitHub Pages under the fork repo.
+const ORIGIN = 'https://goma2001.github.io/Mihrab';
 
 /**
  * Every channel the app ships through, in the order the English page lists
@@ -75,17 +77,12 @@ const BADGES = [
   {
     img: 'github',
     alt: 'GitHub',
-    href: 'https://github.com/MihrabHQ/Mihrab/releases/latest',
-  },
-  {
-    img: 'microsoft',
-    alt: 'Microsoft Store',
-    href: 'https://apps.microsoft.com/detail/9N43KNMJHBWV',
+    href: 'https://github.com/goma2001/Mihrab/releases/latest',
   },
   {
     img: 'obtainium',
     alt: 'Obtainium',
-    href: 'https://apps.obtainium.imranr.dev/redirect?r=obtainium://app/%7B%22id%22%3A%22com.goma.salat%22%2C%22url%22%3A%22https%3A%2F%2Fgithub.com%2FMihrabHQ%2FMihrab%22%2C%22author%22%3A%22Hassan-PS%22%2C%22name%22%3A%22Mihrab%22%7D',
+    href: 'https://apps.obtainium.imranr.dev/redirect?r=obtainium://app/%7B%22id%22%3A%22com.goma.salat%22%2C%22url%22%3A%22https%3A%2F%2Fgithub.com%2Fgoma2001%2FMihrab%22%2C%22author%22%3A%22goma2001%22%2C%22name%22%3A%22%D8%B5%D9%84%D8%A7%D8%AA%D9%8A%22%7D',
   },
 ];
 
@@ -267,169 +264,17 @@ ${list.map(v => card(v, true)).join('\n')}
 </section>`;
 }
 
-/**
- * Mihrab Web: the same app in a browser, at the MihrabHQ.github.io site. A
- * link, nothing more — this page still loads nothing from anywhere else.
- */
-const WEB_APP_URL = 'https://mihrabhq.github.io/';
-
-/**
- * Mihrab Web's own section, first on the page, and the only place it is
- * offered below the hero: it was the last card under "Get Mihrab", one
- * more download channel — and for a while both, which said "In your
- * browser" twice on one page — when it is the one way to use
- * Mihrab with nothing to install, and the only button on the page that a
- * visitor at a computer can press and be in the app. So: what it is, the
- * way in, and the app itself in a browser window (a picture; the page
- * still loads nothing from anywhere else, and embeds nothing).
- */
-const WEB_SHOT = { width: 1600, height: 1076 };
-// A visitor on a phone is shown it in a phone's browser instead: the same
-// page as it opens for them, and the figure drawn as a phone (site.css).
-const WEB_SHOT_PHONE = { width: 780, height: 1400 };
-function webSection(code, t, at) {
-  const w = t.install && t.install.web;
-  if (!w || !w.h2 || !w.note || !w.alt) throw new Error(`${code}: no strings for the Mihrab Web section`);
-  return `<section class="webapp" id="web">
-  <div class="wrap">
-    <div class="webapp-grid">
-      <div class="webapp-text">
-        <p class="eyebrow">${esc(w.h3)}</p>
-        <h2>${esc(w.h2)}</h2>
-        <p class="lede">${esc(w.body)}</p>
-        <p class="web-go"><a class="button" href="${WEB_APP_URL}">${esc(w.link)}</a> <code dir="ltr">mihrabhq.github.io</code></p>
-        <p class="note">${esc(w.note)}</p>
-      </div>
-      <figure class="browser">
-        <div class="browser-bar" dir="ltr" aria-hidden="true"><i></i><i></i><i></i><span>mihrabhq.github.io</span></div>
-        <a href="${WEB_APP_URL}" tabindex="-1" aria-hidden="true">
-          <picture>
-          <source media="(max-width: 899px)" srcset="${at}/img/web-app-phone.jpg${SHOT_V}" width="${WEB_SHOT_PHONE.width}" height="${WEB_SHOT_PHONE.height}">
-          <img src="${at}/img/web-app.jpg${SHOT_V}" width="${WEB_SHOT.width}" height="${WEB_SHOT.height}" loading="lazy" decoding="async"
-            srcset="${at}/img/web-app-800.jpg${SHOT_V} 800w, ${at}/img/web-app.jpg${SHOT_V} 1600w"
-            sizes="(max-width: 899px) calc(100vw - 48px), 560px"
-            alt="${esc(w.alt)}">
-          </picture>
-        </a>
-      </figure>
-    </div>
-  </div>
-</section>`;
-}
-
-/** Mihrab Web as a thing of its own to a search engine: a web application, free, at its address. */
-function webLd(code, t) {
-  const w = t.install && t.install.web;
-  return `<script type="application/ld+json">
-${JSON.stringify(
-  {
-    '@context': 'https://schema.org',
-    '@type': 'WebApplication',
-    name: 'Mihrab Web',
-    url: WEB_APP_URL,
-    applicationCategory: 'LifestyleApplication',
-    operatingSystem: 'Any',
-    browserRequirements: 'Requires JavaScript',
-    description: w.body,
-    inLanguage: code,
-    isAccessibleForFree: true,
-    offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
-    license: 'https://www.gnu.org/licenses/agpl-3.0.html',
-  },
-  null,
-  2,
-)}
-</script>`;
-}
-
-/**
- * The Windows and Linux app. Windows: the Microsoft Store (Store ID
- * 9N43KNMJHBWV), which installs it and keeps it up to date. Linux: the
- * distribution's own package manager, from Mihrab's signed repositories at
- * mihrabhq.github.io/packages (published by MihrabHQ/packages; the Desktop
- * workflow's `packages` job installs and removes from them on each
- * distribution), so updates come with the system's. Commands are in a <pre>,
- * left to right on every page, so the lines copy whole.
- */
-const PACKAGES = 'https://mihrabhq.github.io/packages';
-// The repositories' signing key (desktop/packaging/make-keys.sh): pacman is
-// told to trust it by this fingerprint. Change it here if the key changes.
-const PACKAGES_KEY = '28BB36D6D8388A8EF15EEA24E19DCF135A3D8035';
-// The package manager takes the app; the settings live in the home folder.
-const SETTINGS = 'rm -rf ~/.config/Mihrab';
-const LINUX_COMMANDS = [
-  {
-    name: 'Debian, Ubuntu, Mint (apt)',
-    install: [
-      `sudo curl -fsSLo /usr/share/keyrings/mihrab.gpg ${PACKAGES}/mihrab.gpg`,
-      `sudo curl -fsSLo /etc/apt/sources.list.d/mihrab.sources ${PACKAGES}/mihrab.sources`,
-      'sudo apt update && sudo apt install mihrab',
-    ],
-    remove: `sudo apt purge mihrab && ${SETTINGS}`,
-  },
-  {
-    name: 'Fedora (dnf)',
-    install: [
-      `sudo curl -fsSLo /etc/yum.repos.d/mihrab.repo ${PACKAGES}/mihrab.repo`,
-      'sudo dnf install mihrab',
-    ],
-    remove: `sudo dnf remove mihrab && ${SETTINGS}`,
-  },
-  {
-    name: 'openSUSE (zypper)',
-    install: [`sudo zypper addrepo ${PACKAGES}/mihrab.repo`, 'sudo zypper install mihrab'],
-    remove: `sudo zypper remove mihrab && ${SETTINGS}`,
-  },
-  {
-    name: 'Arch, Manjaro, EndeavourOS (pacman, yay)',
-    install: [
-      `curl -fsSL ${PACKAGES}/mihrab.asc | sudo pacman-key --add -`,
-      `sudo pacman-key --lsign-key ${PACKAGES_KEY}`,
-      `printf '\\n[mihrab]\\nServer = ${PACKAGES}/arch/$arch\\n' | sudo tee -a /etc/pacman.conf`,
-      'sudo pacman -Syu mihrab',
-    ],
-    remove: `sudo pacman -R mihrab && ${SETTINGS}`,
-  },
-];
-
-function desktopCard(code, t, imgBase) {
-  const d = t.install && t.install.desktop;
-  if (!d) throw new Error(`${code}: no strings for the Windows and Linux cards`);
-  const glyph = inner =>
-    `<svg class="glyph" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${inner}</svg>`;
-  // Each distribution folded under its name, so the card stays the size of
-  // its neighbours; the one a reader opens shows its lines in full.
-  const distros = LINUX_COMMANDS.map(
-    l => `        <details class="distro">
-          <summary dir="ltr">${esc(l.name)}</summary>
-          <p class="cmd-label">${esc(d.install)}</p>
-          <pre dir="ltr"><code>${esc(l.install.join('\n'))}</code></pre>
-          <p class="cmd-label">${esc(d.remove)}</p>
-          <pre dir="ltr"><code>${esc(l.remove)}</code></pre>
-        </details>`,
-  ).join('\n');
-  return `      <div class="platform windows">
-        <h3>${glyph('<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 12h18M12 4v16"/>')}${esc(d.windows)}</h3>
-${badgeList(['microsoft'], imgBase, '        ')}
-      </div>
-      <div class="platform linux">
-        <h3>${glyph('<rect x="3" y="4" width="18" height="16" rx="2"/><path d="m7 10 3 2-3 2M12 15h5"/>')}${esc(d.linux)} <span class="tag">${esc(d.tag)}</span></h3>
-${distros}
-        <p class="flag">${esc(d.flag)} <a href="https://github.com/MihrabHQ/Mihrab/issues">${esc(d.report)}</a></p>
-      </div>`;
-}
 
 /**
  * Where the app runs, as the hero and the structured data say it: one list,
  * because the hero went on saying three platforms after the page offered six.
  */
-const PLATFORMS = 'iOS, Android, macOS, Windows, Linux, web';
+const PLATFORMS = 'iOS, Android, macOS, Windows, Linux';
 const OPERATING_SYSTEMS = 'Android, iOS, iPadOS, macOS, Windows, Linux';
 
 /**
- * The first screen's way in: the two stores most visitors want, Mihrab Web
- * (the one a visitor at a computer can open on the spot), and a link down
- * to every other channel. The hero used to be words only, with the
+ * The first screen's way in: the two stores most visitors want, and a link
+ * down to every other channel. The hero used to be words only, with the
  * badges a screen further down — and a page whose job is to get the app
  * onto a device should not make the reader scroll to find out how.
  */
@@ -439,7 +284,6 @@ function heroCta(code, t, imgBase) {
   if (!more) throw new Error(`${code}: no label for the hero's link to every download`);
   return `    <div class="cta">
 ${badgeList(['appstore', 'googleplay'], imgBase, '      ')}
-      <a class="open-web" href="${WEB_APP_URL}">${esc(t.install.web.link)}</a>
       <a class="more" href="${to}">${esc(more)} <span aria-hidden="true">&darr;</span></a>
     </div>`;
 }
@@ -473,7 +317,7 @@ function jumpNav(code, t) {
   if (!t.nav) throw new Error(`${code}: no strings for the section links`);
   const items = Array.isArray(t.nav.items)
     ? t.nav.items
-    : ['web', 'install', 'accuracy', 'screenshots', 'features', 'privacy', 'faq'].map(id => [`#${id}`, t.nav[id]]);
+    : ['install', 'accuracy', 'screenshots', 'features', 'privacy', 'faq'].map(id => [`#${id}`, t.nav[id]]);
   for (const [href, label] of items) if (!href || !label) throw new Error(`${code}: a section link has no label`);
   return `<nav class="jump" aria-label="${esc(t.nav.label)}">
   <ul>
@@ -596,14 +440,14 @@ function renderPage(code, langs, version) {
     license: 'https://www.gnu.org/licenses/agpl-3.0.html',
     author: {
       '@type': 'Person',
-      name: 'Hassan El Ghamri',
-      url: 'https://github.com/Hassan-PS',
+      name: 'Goma Mohamed',
+      url: 'https://github.com/goma2001',
     },
     sameAs: [
       'https://play.google.com/store/apps/details?id=com.goma.salat',
       'https://apps.apple.com/us/app/prayer-salah-times-qibla/id6762085256',
       'https://f-droid.org/packages/com.goma.salat/',
-      'https://github.com/MihrabHQ/Mihrab',
+      'https://github.com/goma2001/Mihrab',
     ],
   };
   const faq = {
@@ -654,9 +498,6 @@ ${ld(app)}
 <script type="application/ld+json">
 ${ld(faq)}
 </script>
-<!-- webapp-ld:start -->
-${webLd(code, t)}
-<!-- webapp-ld:end -->
 <link rel="stylesheet" href="../assets/site.css${CSS_V}">
 </head>
 <body>
@@ -711,7 +552,7 @@ ${t.chips.map(c => `      <li>${check}${esc(c)}</li>`).join('\n')}
       <span>${esc(t.labels.version)} ${v}</span> <span class="dot" aria-hidden="true">•</span>
       <span>${PLATFORMS}</span> <span class="dot" aria-hidden="true">•</span>
       <span>AGPL-3.0-or-later</span> <span class="dot" aria-hidden="true">•</span>
-      <a href="https://github.com/MihrabHQ/Mihrab">${esc(t.labels.source)}</a>
+      <a href="https://github.com/goma2001/Mihrab">${esc(t.labels.source)}</a>
     </p>
     </div>
 <!-- heroshot:start -->
@@ -722,10 +563,6 @@ ${heroShot(code, t, '../assets')}
 </header>
 
 <main id="main">
-<!-- webapp:start -->
-${webSection(code, t, '../assets')}
-<!-- webapp:end -->
-
 <section class="install" id="install">
   <div class="wrap">
     <p class="eyebrow">${esc(t.install.eyebrow)}</p>
@@ -735,14 +572,12 @@ ${webSection(code, t, '../assets')}
       <div class="platform">
         <h3><svg class="glyph" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="3" width="10" height="18" rx="2.5"/><path d="M11 18h2"/></svg>${esc(t.install.apple)}</h3>
 ${badgeList(['appstore'], '../assets/img/badges', '        ')}
-        <p class="note">${esc(t.install.brew)}<br><code>brew install --cask mihrabhq/tap/mihrab</code></p>
       </div>
       <div class="platform">
         <h3><svg class="glyph" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8.5 5.5 7 3"/><path d="M15.5 5.5 17 3"/><rect x="4" y="5.5" width="16" height="14" rx="4.5"/><circle cx="9.5" cy="11.5" r="1.2" fill="currentColor" stroke="none"/><circle cx="14.5" cy="11.5" r="1.2" fill="currentColor" stroke="none"/></svg>${esc(t.install.android)}</h3>
 ${badgeList(['obtainium', 'googleplay', 'fdroid', 'github'], '../assets/img/badges', '        ')}
         <p class="flag">${esc(t.install.flag)} <a href="https://github.com/ImranR98/Obtainium">${esc(t.install.getObtainium)}</a></p>
       </div>
-${desktopCard(code, t, '../assets/img/badges')}
     </div>
   </div>
 </section>
@@ -829,8 +664,8 @@ ${t.faq.items
       <div>
         <h2>${esc(t.footer.project.h2)}</h2>
         <ul>
-          <li><a href="https://github.com/MihrabHQ/Mihrab/issues">${esc(t.footer.project.issues)}</a></li>
-          <li><a href="https://github.com/MihrabHQ/Mihrab/blob/main/CHANGELOG.md">${esc(t.footer.project.changelog)}</a></li>
+          <li><a href="https://github.com/goma2001/Mihrab/issues">${esc(t.footer.project.issues)}</a></li>
+          <li><a href="https://github.com/goma2001/Mihrab/blob/main/CHANGELOG.md">${esc(t.footer.project.changelog)}</a></li>
         </ul>
       </div>
     </div>
@@ -886,15 +721,8 @@ function build() {
       text = patchBlock(text, 'jump', jumpNav(code, l));
       text = patchBlock(text, 'cta', heroCta(code, l, `${assets}/img/badges`));
       text = patchBlock(text, 'heroshot', heroShot(code, l, assets));
-      text = patchBlock(text, 'webapp', webSection(code, l, assets));
-      text = patchBlock(text, 'webapp-ld', webLd(code, l));
       text = patchBlock(text, 'gallery', gallery(code, l));
       text = patchBlock(text, 'reviews', reviews(code, l));
-      text = patchBlock(
-        text,
-        'desktop',
-        desktopCard(code, l, path.relative(path.dirname(file), path.join(DOCS, 'assets', 'img', 'badges'))),
-      );
       files.set(file, fillPage(text, code));
       continue;
     }
@@ -933,4 +761,4 @@ if (require.main === module) {
   }
 }
 
-module.exports = { build, CSS_V, WEB_APP_URL, webSection, webLd, PLATFORMS, OPERATING_SYSTEMS, heroCta, heroShot, jumpNav, accuracy, picker, hreflang, gallery, desktopCard, ORIGIN, SHOT_V, PHONE_PANELS, WIDE_PANELS, panelWords, plain };
+module.exports = { build, CSS_V, PLATFORMS, OPERATING_SYSTEMS, heroCta, heroShot, jumpNav, accuracy, picker, hreflang, gallery, ORIGIN, SHOT_V, PHONE_PANELS, WIDE_PANELS, panelWords, plain };

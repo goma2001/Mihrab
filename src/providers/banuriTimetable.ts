@@ -1,7 +1,7 @@
 /**
  * Pakistan — Jamia Uloom-ul-Islamia, Banuri Town (Karachi), on the phone:
  * the prayer times its own page gives, by its own method
- * (`banuriMethod.ts`, from MihrabHQ/mihrab-methods).
+ * (`banuriMethod.ts`, from mihrab-methods).
  *
  * The Jamia's page lists a hundred cities of Pakistan and computes each at
  * one point. A reader in one of them gets that city's times — the printed

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * The calculation methods and their lists, from MihrabHQ/mihrab-methods.
+ * The calculation methods and their lists, from mihrab-methods.
  *
  * The app computes each authority's times with the method mihrab-methods
  * certifies. Those files are copies: this script makes them, so that a copy
@@ -102,7 +102,7 @@ function copyOf(from, authority) {
     if (!revisions[authority]) throw new Error(`no revision for ${authority}`);
     const end = s.indexOf('\n */\n');
     if (!s.startsWith('/**') || end < 0) throw new Error(`${from}: no opening comment to say where it is from`);
-    s = `${s.slice(0, end)}\n *\n * From MihrabHQ/mihrab-methods, revision ${revisions[authority]}.${s.slice(end)}`;
+    s = `${s.slice(0, end)}\n *\n * From mihrab-methods, revision ${revisions[authority]}.${s.slice(end)}`;
   }
   return s;
 }

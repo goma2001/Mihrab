@@ -1,12 +1,12 @@
 {
   "name": "mihrab-desktop",
   "private": true,
-  "version": "1.0.6",
+  "version": "1.0.7",
   "productName": "Mihrab",
   "description": "Mihrab for Windows and Linux: the React Native app rendered with react-native-web inside Electron.",
   "author": {
-    "name": "Hassan El Ghamri",
-    "email": "hassan15015099@gmail.com"
+    "name": "Goma Mohamed",
+    "email": "anazaza492@gmail.com"
   },
   "license": "AGPL-3.0-or-later",
   "main": "electron/main.js",
@@ -35,7 +35,7 @@
     "react-dom": "^19.2.3",
     "react-native-web": "^0.21.2"
   },
-  "homepage": "https://github.com/MihrabHQ/Mihrab",
+  "homepage": "https://github.com/goma2001/Mihrab",
   "build": {
     "appId": "com.goma.salat.desktop",
     "productName": "Mihrab",
@@ -94,7 +94,7 @@
           "Keywords": "prayer;salah;adhan;quran;islam;"
         }
       },
-      "maintainer": "Hassan El Ghamri <hassan15015099@gmail.com>",
+      "maintainer": "Goma Mohamed <anazaza492@gmail.com>",
       "syncDesktopName": true
     },
     "deb": {

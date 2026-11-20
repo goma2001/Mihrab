@@ -5,7 +5,7 @@
  * and Brunei's (the Ministry of Religious Affairs).
  *
  * Each is the authority's own method (`<country>Method.ts`, from
- * MihrabHQ/mihrab-methods) at the point its table gives the place that
+ * mihrab-methods) at the point its table gives the place that
  * answers for the reader (`ministryPlaces.ts`), with its correction list
  * for the few times the printed table is on the other side of a minute
  * (applied in `localAdhan.ts`): the printed minute, every time, over the

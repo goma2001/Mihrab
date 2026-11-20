@@ -19,7 +19,7 @@
  *     (Shafi'i, Hanbali) is chosen;
  *   • no margin on any time; each rounded to the nearest minute.
  *
- * From MihrabHQ/mihrab-methods, revision 1.
+ * From mihrab-methods, revision 1.
  */
 import { kazakhstanSunAt as sunAt, kazakhstanJulian as julian } from './kazakhstanMethod';
 

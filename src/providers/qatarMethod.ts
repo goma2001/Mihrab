@@ -19,7 +19,7 @@
  * can be read to: about a minute before at Fajr, a minute after at Dhuhr
  * and Asr, two after at Maghrib.
  *
- * From MihrabHQ/mihrab-methods, revision 1.
+ * From mihrab-methods, revision 1.
  */
 import { meeusApparentSun } from './moroccoMethod';
 

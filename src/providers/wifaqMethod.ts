@@ -31,7 +31,7 @@
  * for is the Hanafi, which the page names as the one to follow where no
  * local scholar says otherwise.
  *
- * From MihrabHQ/mihrab-methods, revision 2.
+ * From mihrab-methods, revision 2.
  */
 import { meeusApparentSun } from './moroccoMethod';
 

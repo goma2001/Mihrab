@@ -60,7 +60,7 @@ unsure whether a change touches 1 or 2, assume it does.
 
 - **The computed methods** — Sweden, Diyanet, Morocco, Algeria, Indonesia —
   are developed and certified in
-  [mihrab-methods](https://github.com/MihrabHQ/mihrab-methods): a method is
+  mihrab-methods: a method is
   used only at **0 times off** its authority's published timetable. The app
   carries copies (`src/providers/*Method.ts`, `src/providers/data/`). Change a
   method there first, certify it, raise its revision, then copy it here with

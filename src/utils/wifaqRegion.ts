@@ -1,6 +1,6 @@
 /**
  * The towns Wifaqul Ulama (Britain) prints a timetable for, and which of
- * them a reader is in (`data/wifaqTowns.json`, from MihrabHQ/mihrab-methods).
+ * them a reader is in (`data/wifaqTowns.json`, from mihrab-methods).
  * Kept apart from the timetable itself so that the routing can ask without
  * loading the calculation.
  */

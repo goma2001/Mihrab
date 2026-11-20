@@ -367,7 +367,7 @@ export const kemenagTable = createNationalTable({
   refreshTtlMs: NATIONAL_TABLE_REFRESH_TTL_MS,
   indexPollIntervalMs: NATIONAL_TABLE_INDEX_POLL_INTERVAL_MS,
   // The ministry's own method at the regency's point (`indonesiaMethod.ts`,
-  // from MihrabHQ/mihrab-methods), with the correction list for the few
+  // from mihrab-methods), with the correction list for the few
   // times its program rounds the other way (`indonesiaCorrections.json`):
   // its printed minute, every time, over the days its tables were checked.
   // Nothing is downloaded; the phone's clock is the zone.

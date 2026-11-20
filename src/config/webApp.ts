@@ -1,5 +1,5 @@
 /**
- * Mihrab Web — the app built for a browser (mihrabhq.github.io).
+ * Mihrab Web — the app built for a browser.
  *
  * Every Qur'an asset is already in place there (the muṣḥaf's page fonts,
  * the tajwīd colours, the four riwāyāt, the hard-word meanings, one

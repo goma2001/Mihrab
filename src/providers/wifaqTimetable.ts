@@ -1,7 +1,7 @@
 /**
  * United Kingdom — Wifaqul Ulama (Britain), on the phone: the times its
  * yearly timetables print for some eighty towns, by its own method
- * (`wifaqMethod.ts`, from MihrabHQ/mihrab-methods).
+ * (`wifaqMethod.ts`, from mihrab-methods).
  *
  * A reader in one of the towns gets that town's times, computed at the
  * town's point — the printed minute, with the correction list for the few

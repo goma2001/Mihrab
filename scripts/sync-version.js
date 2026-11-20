@@ -67,8 +67,8 @@ function rules({ versionName, versionCode }) {
     {
       file: SITE,
       what: 'site: footer colophon',
-      find: /Mihrab [\d.]+ \(\d+\), built by/,
-      replace: `Mihrab ${versionName} (${versionCode}), built by`,
+      find: /صلاتي [\d.]+ \(\d+\), built by/,
+      replace: `صلاتي ${versionName} (${versionCode}), built by`,
     },
     {
       // The structured data search engines read. Invisible on the page,
@@ -90,8 +90,8 @@ function rules({ versionName, versionCode }) {
     {
       file: SITE_SV,
       what: 'site (sv): footer colophon',
-      find: /Mihrab [\d.]+ \(\d+\), byggd av/,
-      replace: `Mihrab ${versionName} (${versionCode}), byggd av`,
+      find: /صلاتي [\d.]+ \(\d+\), byggd av/,
+      replace: `صلاتي ${versionName} (${versionCode}), byggd av`,
     },
     {
       file: SITE_SV,

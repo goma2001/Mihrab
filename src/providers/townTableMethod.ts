@@ -23,7 +23,7 @@
  * The moment the sun is taken at and the margin on Fajr are each
  * timetable's own (`bulgaria.ts`, `albania.ts`).
  *
- * From MihrabHQ/mihrab-methods, revision 1.
+ * From mihrab-methods, revision 1.
  */
 import { meeusApparentSun } from './moroccoMethod';
 

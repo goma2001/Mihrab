@@ -2,7 +2,7 @@
  * Tunisia — the Institut National de la Météorologie, on the phone: the
  * prayer times it gives for the governorates' seats, Aïn Draham and Rjim
  * Maatoug, by its own method (`tunisiaMethod.ts`, from
- * MihrabHQ/mihrab-methods).
+ * mihrab-methods).
  *
  * A reader in one of the places gets that place's times, computed at its
  * point with its horizon — the minute the Institute gives, with the

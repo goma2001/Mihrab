@@ -64,7 +64,7 @@ export function AttributionsSettingsScreen() {
         defaultValue: 'Mushaf page images (604)',
       }),
       sub: 'KFGQPC fonts · via quran/quran.com-images',
-      url: 'https://github.com/MihrabHQ/Mihrab/releases/tag/mushaf-assets-v2',
+      url: 'https://github.com/quran/quran.com-images',
     },
     {
       label: t('attributions.tajweedRules', {

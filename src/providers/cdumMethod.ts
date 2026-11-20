@@ -30,7 +30,7 @@
  * parallel's own day; no place listed here is that far north, and the
  * method gives no times there.
  *
- * From MihrabHQ/mihrab-methods, revision 1.
+ * From mihrab-methods, revision 1.
  */
 import { kazakhstanSunAt as sunAt, kazakhstanJulian as julian } from './kazakhstanMethod';
 

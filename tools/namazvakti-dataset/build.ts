@@ -49,7 +49,7 @@ import {
 
 const ORIGIN = 'https://www.namazvakti.com';
 const USER_AGENT =
-  'Mihrab dataset builder (+https://github.com/MihrabHQ/Mihrab; mihrab@elghamri.se)';
+  'Salaty dataset builder (+https://github.com/goma2001/Mihrab; anazaza492@gmail.com)';
 
 const ROOT = path.join(__dirname, '../..');
 const OUT_DIR = path.join(ROOT, 'data/prayer-times/namazvakti/v1');

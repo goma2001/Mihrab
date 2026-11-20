@@ -18,7 +18,7 @@ const DOCS = path.join(ROOT, 'docs');
 const LANGS = JSON.parse(
   readFileSync(path.join(ROOT, 'scripts', 'site', 'strings.json'), 'utf-8'),
 ) as Record<string, { path: string; accuracy?: { table?: unknown } }>;
-const { PLATFORMS, OPERATING_SYSTEMS, WEB_APP_URL, CSS_V } = require('../scripts/build-site.js');
+const { PLATFORMS, OPERATING_SYSTEMS, CSS_V } = require('../scripts/build-site.js');
 
 const codes = Object.keys(LANGS);
 const pageOf = (code: string) =>
@@ -92,8 +92,11 @@ describe('accuracy is on every page that leads with it', () => {
     const section = /<section class="accuracy-section" id="accuracy"[\s\S]*?<\/section>/.exec(pageOf(code));
     expect(section).not.toBeNull();
     expect(section![0]).toContain('<table class="accuracy">');
-    expect(section![0]).toContain('github.com/MihrabHQ/mihrab-methods');
-    expect(section![0]).toContain('template=times-differ.yml');
+    // The method's name is given, not linked upstream; the report link
+    // points at this fork's issues.
+    expect(section![0]).toContain('mihrab-methods');
+    expect(section![0]).not.toContain('github.com/MihrabHQ/mihrab-methods');
+    expect(section![0]).toContain('github.com/goma2001/Mihrab/issues/new');
     // Its own words, not the English table's — which names an authority
     // the translated pages leave to the Swedish one.
     expect(LANGS[code].accuracy?.table).toBeDefined();
@@ -118,66 +121,42 @@ describe('accuracy is on every page that leads with it', () => {
 });
 
 /**
- * Mihrab Web was the last card under "Get Mihrab" — one more download
- * channel, when it is the one way to use Mihrab with nothing to install.
- * It has the hero's third button, the first section, a place in the
- * section links, an answer in the questions and its own structured data.
+ * Mihrab Web — the same app in a browser at mihrabhq.github.io — is gone:
+ * the fork ships the installed app only. No page may offer it, link to it,
+ * or describe it to a search engine.
  */
-describe('Mihrab Web is shown as the app in a browser, not as one more download', () => {
-  it.each(codes)('%s opens it from the hero', code => {
-    expect(heroOf(code)).toContain(`<a class="open-web" href="${WEB_APP_URL}">`);
-  });
-
-  it.each(codes)('%s gives it the first section, with the way in and a picture described in its language', code => {
+describe('Mihrab Web is gone: no page offers or links to it', () => {
+  it.each(codes)('%s has no web section, no hero button for it, and no link to it', code => {
     const page = pageOf(code);
-    const first = /<main id="main">\s*(?:<!--[^>]*-->\s*)*<section class="([\w-]+)" id="([\w-]+)"/.exec(page)!;
-    expect([first[1], first[2]]).toEqual(['webapp', 'web']);
-    const section = /<section class="webapp" id="web">[\s\S]*?<\/section>/.exec(page)![0];
-    expect(section).toContain(`<a class="button" href="${WEB_APP_URL}">`);
-    expect(section).toMatch(/<img src="[^"]*img\/web-app\.jpg[^"]*"[^>]*alt="[^"]{20,}"/);
-    // A picture of it, never the app itself in a frame: the page loads
-    // nothing from anywhere else.
-    expect(page).not.toMatch(/<iframe/);
+    expect(page).not.toContain('class="webapp"');
+    expect(page).not.toContain('class="open-web"');
+    expect(page).not.toContain('mihrabhq.github.io');
+    expect(page).not.toContain('Mihrab Web');
+    expect(heroOf(code)).not.toContain('open-web');
   });
 
-  it.each(codes)('%s shows a phone its own picture: the app in a phone’s browser', code => {
-    const section = /<section class="webapp" id="web">[\s\S]*?<\/section>/.exec(pageOf(code))![0];
-    expect(section).toMatch(/<source media="\(max-width: 899px\)" srcset="[^"]*web-app-phone\.jpg[^"]*" width="\d+" height="\d+">/);
-  });
-
-  it('ships the picture at both widths', () => {
-    for (const f of ['web-app.jpg', 'web-app-800.jpg', 'web-app-phone.jpg']) {
-      expect(existsSync(path.join(DOCS, 'assets', 'img', f))).toBe(true);
-    }
-  });
-
-  it.each(codes)('%s links to it from the section links and answers whether it needs installing', code => {
+  it.each(codes)('%s does not link to it from the section links, and its questions do not answer it', code => {
     const page = pageOf(code);
-    expect(/<nav class="jump"[\s\S]*?<\/nav>/.exec(page)![0]).toContain('href="#web"');
-    const faq = /<section class="faq"[\s\S]*?<\/section>/.exec(page)![0];
-    expect(faq).toContain('mihrabhq.github.io');
+    expect(/<nav class="jump"[\s\S]*?<\/nav>/.exec(page)![0]).not.toContain('href="#web"');
+    const faq = /<section class="faq"[\s\S]*?<\/section>/.exec(page);
+    if (faq) expect(faq[0]).not.toContain('mihrabhq.github.io');
   });
 
-  it.each(codes)('%s describes it to a search engine as a free web application', code => {
+  it.each(codes)('%s does not describe it to a search engine', code => {
     const blocks = Array.from(
       pageOf(code).matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g),
       m => JSON.parse(m[1]),
     );
-    const web = blocks.find(b => b['@type'] === 'WebApplication');
-    expect(web).toBeDefined();
-    expect(web.url).toBe(WEB_APP_URL);
-    expect(web.offers.price).toBe('0');
+    expect(blocks.find(b => b['@type'] === 'WebApplication')).toBeUndefined();
     // And the installed app is still the first block, which other tests read.
     expect(blocks[0]['@type']).toBe('MobileApplication');
   });
 
-  it('offers it once below the hero: in its own section, not again under Get Mihrab', () => {
-    // Both at once put "In your browser" on the page twice.
+  it('does not offer it below the hero either', () => {
     for (const code of codes) {
       const install = /<section class="install"[\s\S]*?<\/section>/.exec(pageOf(code))![0];
-      // (The Linux commands under it name the same host's /packages.)
-      expect(install).not.toContain(`href="${WEB_APP_URL}"`);
       expect(install).not.toContain('class="platform web"');
+      expect(install).not.toContain('mihrabhq.github.io');
     }
   });
 });

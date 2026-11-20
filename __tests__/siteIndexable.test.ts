@@ -25,8 +25,8 @@ const LANGS: Record<string, { name: string; dir: string; path: string }> =
   JSON.parse(
     readFileSync(path.join(ROOT, 'scripts', 'site', 'strings.json'), 'utf-8'),
   );
-const host = readFileSync(path.join(DOCS, 'CNAME'), 'utf-8').trim();
-const origin = `https://${host}`;
+// The fork has no domain of its own; the site lives on GitHub Pages under it.
+const origin = 'https://goma2001.github.io/Mihrab';
 
 const { SHOT_V, PHONE_PANELS, WIDE_PANELS, panelWords, plain } =
   require('../scripts/build-site') as {
@@ -115,7 +115,7 @@ describe('the app is an entity, not a word', () => {
         expect.stringContaining('play.google.com'),
         expect.stringContaining('apps.apple.com'),
         expect.stringContaining('f-droid.org'),
-        expect.stringContaining('github.com/MihrabHQ/Mihrab'),
+        expect.stringContaining('github.com/goma2001/Mihrab'),
       ]),
     );
   });
@@ -128,9 +128,9 @@ describe('the app is an entity, not a word', () => {
 
 describe('the long-tail answers are on the page, not only in the markup', () => {
   // The queries this section exists for: "open source prayer times app",
-  // "prayer times no ads", "prayer times homebrew", "prayer times
-  // obtainium". Structured data that promises answers the page does not
-  // visibly contain is the definition of the markup Google discards.
+  // "prayer times no ads", "prayer times obtainium". Structured data that
+  // promises answers the page does not visibly contain is the definition
+  // of the markup Google discards.
   const blocks = Array.from(
     site.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g),
     m => JSON.parse(m[1]),
@@ -155,7 +155,6 @@ describe('the long-tail answers are on the page, not only in the markup', () => 
   it.each([
     ['open source', /open-source prayer times app/i],
     ['no ads', /no ad network/i],
-    ['homebrew', /brew install --cask mihrabhq\/tap\/mihrab/],
     ['obtainium', /Obtainium/],
     ['no play services', /no Play Services/i],
   ])('says the words someone searching for "%s" would type', (_l, re) => {

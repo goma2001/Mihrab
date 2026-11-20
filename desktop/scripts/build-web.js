@@ -12,7 +12,7 @@
  *            timings downloaded by the app itself — so every file is in
  *            exactly the form the app writes it. Recitation audio in it is
  *            left out: the web app plays from the reciter's own server.
- * --out      the web app site's folder (the MihrabHQ.github.io repository).
+ * --out      the web app site's folder.
  *
  * The hard-word meanings are fetched here, from the app's own mirror, and
  * written as the app writes them (src/quran/wordMeanings.ts).
@@ -41,7 +41,7 @@ const BUILD = path.join(DESKTOP, 'build', 'web');
 const BUNDLE = path.join(DESKTOP, 'build', 'bundle');
 const DOCS = path.join(profile, 'Documents');
 const FILES = path.join(out, 'files');
-const MIRROR = 'https://github.com/MihrabHQ/Mihrab/releases/download/data-wordmeanings-v1';
+const MIRROR = 'https://raw.githubusercontent.com/goma2001/Mihrab/main/data/word-meanings/v1';
 // A fixed stamp, so rebuilding the site does not rewrite 114 unchanged files.
 const WORD_MEANINGS_STAMP = '2026-01-01T00:00:00.000Z';
 

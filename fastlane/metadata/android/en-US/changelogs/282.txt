@@ -1,2 +1,2 @@
 • Shared month sheets carry the new tagline: صلاتي — The Muslim Companion.
-• The app's links to its source, releases and downloads now point to its new home, github.com/MihrabHQ/Mihrab. The old links keep working.
+• The app's links to its source, releases and downloads now point to its new home, github.com/goma2001/Mihrab. The old links keep working.

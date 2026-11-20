@@ -1,6 +1,6 @@
 /**
  * The places of six national timetables the phone computes by the
- * authority's own method (from MihrabHQ/mihrab-methods): Egypt's 77 cities,
+ * authority's own method (from mihrab-methods): Egypt's 77 cities,
  * Jordan's 16 zones, Kazakhstan's 84 cities, Qatar's one table, and the
  * areas of Kuwait and the districts of Brunei — and which of them answers
  * for a reader.

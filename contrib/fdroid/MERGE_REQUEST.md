@@ -16,8 +16,8 @@ Add com.goma.salat (Prayer Times)
 - **Package ID:** `com.goma.salat`
 - **Name:** Prayer Times
 - **License:** AGPL-3.0-or-later
-- **Source:** https://github.com/MihrabHQ/Mihrab
-- **Upstream F-Droid notes:** [`contrib/fdroid/`](https://github.com/MihrabHQ/Mihrab/tree/main/contrib/fdroid)
+- **Source:** https://github.com/goma2001/Mihrab
+- **Upstream F-Droid notes:** [`contrib/fdroid/`](https://github.com/goma2001/Mihrab/tree/main/contrib/fdroid)
 
 ### Build
 
