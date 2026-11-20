@@ -364,7 +364,7 @@ the shadow log.
 | `xcode-cloud.py` | `runs [n]`, `start [--force]`, `why <run>`, `shipped X.Y.Z [sha]` (exit 0 / 2 never / 3 not yet), `ensure <sha> [minutes]` (0 / 2), `pause`, `resume` | `ASC_KEY_PATH`, `ASC_KEY_ID`, `ASC_ISSUER_ID`, else `~/.config/mihrab/asc.json` | App Store Connect (start, pause, resume) |
 | `appstore-metadata.py` | `[--dry-run] [--create X.Y.Z]` (exit 3 when frozen) | as `xcode-cloud.py` | the App Store listing |
 
-Fixed facts the scripts share: repo `MihrabHQ/Mihrab`; team `GAW23HT439`;
+Fixed facts the scripts share: repo `goma2001/Mihrab`; team `GAW23HT439`;
 App Group `group.com.prayerapp`; widget extension id
 `maccatalyst.com.hassan.prayerapp.PrayerWidgetExtension`; bundle id
 `com.hassan.prayerapp`; release APK certificate SHA-256 `e66c0dab…f997`;
