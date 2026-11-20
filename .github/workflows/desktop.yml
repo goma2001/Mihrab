@@ -345,7 +345,7 @@ jobs:
           fi
           gh release upload desktop-preview desktop/dist/preview/* --clobber
           gh release edit desktop-preview --prerelease --latest=false \
-            --notes "Installers for testing the Windows and Linux app, built from $(git rev-parse --short HEAD) on $(date -u +%Y-%m-%d). Install and remove with one command: see [desktop/README.md](https://github.com/MihrabHQ/Mihrab/blob/main/desktop/README.md)."
+            --notes "Installers for testing the Windows and Linux app, built from $(git rev-parse --short HEAD) on $(date -u +%Y-%m-%d). Install and remove with one command: see [desktop/README.md](https://github.com/goma2001/Mihrab/blob/main/desktop/README.md)."
 
   # The package managers' way in, proved on the files this run built: the apt,
   # dnf and pacman repositories and the AUR recipe exactly as MihrabHQ/packages
