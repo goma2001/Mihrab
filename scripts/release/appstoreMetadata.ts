@@ -47,9 +47,9 @@ export const ASC_LOCALE: Record<string, string> = { bn: 'bn-BD', ur: 'ur-PK' };
 export const ascLocale = (loc: string) => ASC_LOCALE[loc] ?? loc;
 export const PRIMARY_CATEGORY = 'LIFESTYLE';
 export const SECONDARY_CATEGORY = 'REFERENCE';
-export const MARKETING_URL = 'https://github.com/goma2001/Mihrab';
-export const SUPPORT_URL = 'https://github.com/goma2001/Mihrab/issues';
-export const PRIVACY_URL = 'https://github.com/goma2001/Mihrab/blob/main/PRIVACY_POLICY.md';
+export const MARKETING_URL = 'https://github.com/goma2001/salaty';
+export const SUPPORT_URL = 'https://github.com/goma2001/salaty/issues';
+export const PRIVACY_URL = 'https://github.com/goma2001/salaty/blob/main/PRIVACY_POLICY.md';
 
 export const EDITABLE = new Set([
   'PREPARE_FOR_SUBMISSION',

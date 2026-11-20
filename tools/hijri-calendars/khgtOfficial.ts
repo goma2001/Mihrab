@@ -157,7 +157,7 @@ export function parseYears(html: string): number[] {
 async function get(url: string): Promise<string> {
   for (let attempt = 1; ; attempt++) {
     try {
-      const res = await fetch(url, { headers: { 'User-Agent': 'Salaty calendar build (github.com/goma2001/Mihrab)' } });
+      const res = await fetch(url, { headers: { 'User-Agent': 'Salaty calendar build (github.com/goma2001/salaty)' } });
       if (!res.ok) throw new Error(`${res.status} ${url}`);
       return await res.text();
     } catch (e) {

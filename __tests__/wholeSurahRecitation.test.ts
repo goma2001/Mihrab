@@ -659,7 +659,7 @@ describe('the reports and suggestions around it', () => {
 
   it('opens an issue holding everything a fix needs, and nothing personal', () => {
     const url: string = ayahBoundaryReportUrl('zahrani', 2, 255, 'hafs');
-    expect(url.startsWith('https://github.com/goma2001/Mihrab/issues/new?')).toBe(true);
+    expect(url.startsWith('https://github.com/goma2001/salaty/issues/new?')).toBe(true);
     const body = decodeURIComponent(url.slice(url.indexOf('&body=') + 6));
     expect(body).toContain('zahrani');
     expect(body).toContain('2:255');

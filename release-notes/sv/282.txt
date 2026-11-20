@@ -1,2 +1,2 @@
 • Mihrab har fått sin slogan, Mihrab – The Muslim Companion, och delade månadsblad visar den.
-• Appens länkar till källkod, versioner och nedladdningar pekar nu till dess nya hem, github.com/goma2001/Mihrab. De gamla länkarna fungerar fortfarande.
+• Appens länkar till källkod, versioner och nedladdningar pekar nu till dess nya hem, github.com/goma2001/salaty. De gamla länkarna fungerar fortfarande.

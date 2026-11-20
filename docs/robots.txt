@@ -22,4 +22,4 @@ Disallow: /*.md$
 Disallow: /release/
 Disallow: /design/
 
-Sitemap: https://goma2001.github.io/Mihrab/sitemap.xml
+Sitemap: https://goma2001.github.io/salaty/sitemap.xml

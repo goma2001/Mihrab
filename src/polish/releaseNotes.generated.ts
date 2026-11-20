@@ -204,9 +204,9 @@ export const RELEASE_NOTES: ReleaseNote[] = [
     version: '2.27.1',
     date: '2026-09-26',
     notes: {
-      en: '• Mihrab now carries its tagline, Mihrab — The Muslim Companion, and shared month sheets show it.\n• The app\'s links to its source, releases and downloads now point to its new home, github.com/goma2001/Mihrab. The old links keep working.',
-      ar: '• يحمل Mihrab الآن شعاره «Mihrab — The Muslim Companion»، وتظهر في جداول الشهر المشتركة.\n• روابط التطبيق إلى الشيفرة المصدرية والإصدارات والتنزيلات تشير الآن إلى موطنه الجديد github.com/goma2001/Mihrab، وتبقى الروابط القديمة صالحة.',
-      sv: '• Mihrab har fått sin slogan, Mihrab – The Muslim Companion, och delade månadsblad visar den.\n• Appens länkar till källkod, versioner och nedladdningar pekar nu till dess nya hem, github.com/goma2001/Mihrab. De gamla länkarna fungerar fortfarande.',
+      en: '• Mihrab now carries its tagline, Mihrab — The Muslim Companion, and shared month sheets show it.\n• The app\'s links to its source, releases and downloads now point to its new home, github.com/goma2001/salaty. The old links keep working.',
+      ar: '• يحمل Mihrab الآن شعاره «Mihrab — The Muslim Companion»، وتظهر في جداول الشهر المشتركة.\n• روابط التطبيق إلى الشيفرة المصدرية والإصدارات والتنزيلات تشير الآن إلى موطنه الجديد github.com/goma2001/salaty، وتبقى الروابط القديمة صالحة.',
+      sv: '• Mihrab har fått sin slogan, Mihrab – The Muslim Companion, och delade månadsblad visar den.\n• Appens länkar till källkod, versioner och nedladdningar pekar nu till dess nya hem, github.com/goma2001/salaty. De gamla länkarna fungerar fortfarande.',
     },
   },
   {

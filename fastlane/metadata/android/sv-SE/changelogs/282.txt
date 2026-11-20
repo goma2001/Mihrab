@@ -1,2 +1,2 @@
 • Delade månadsblad har fått den nya undertiteln: صلاتي — Muslimens följeslagare.
-• Appens länkar till källkod, versioner och nedladdningar pekar nu på dess nya hem, github.com/goma2001/Mihrab. De gamla länkarna fungerar fortfarande.
+• Appens länkar till källkod, versioner och nedladdningar pekar nu på dess nya hem, github.com/goma2001/salaty. De gamla länkarna fungerar fortfarande.

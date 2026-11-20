@@ -1,8 +1,8 @@
 #!/bin/sh
 # Mihrab for Linux.
 #
-#   install:  curl -fsSL https://raw.githubusercontent.com/goma2001/Mihrab/main/desktop/scripts/install-linux.sh | sh
-#   remove:   curl -fsSL https://raw.githubusercontent.com/goma2001/Mihrab/main/desktop/scripts/uninstall-linux.sh | sh
+#   install:  curl -fsSL https://raw.githubusercontent.com/goma2001/salaty/main/desktop/scripts/install-linux.sh | sh
+#   remove:   curl -fsSL https://raw.githubusercontent.com/goma2001/salaty/main/desktop/scripts/uninstall-linux.sh | sh
 #             (the same as this script with `uninstall`, which it runs)
 #
 # Adds Mihrab's repository to the system's own package manager and installs
@@ -27,7 +27,7 @@
 set -eu
 
 REPO="${MIHRAB_REPO:-https://mihrabhq.github.io/packages}"
-RELEASES="https://github.com/goma2001/Mihrab/releases/download"
+RELEASES="https://github.com/goma2001/salaty/releases/download"
 DATA="${XDG_DATA_HOME:-$HOME/.local/share}"
 CONF="${XDG_CONFIG_HOME:-$HOME/.config}"
 APP="$DATA/mihrab"
@@ -189,4 +189,4 @@ if [ -n "${DISPLAY:-}${WAYLAND_DISPLAY:-}" ] && [ -z "${MIHRAB_FROM:-}${MIHRAB_R
 else
   say "Open it from your applications menu. To remove it again:"
 fi
-say "  curl -fsSL https://raw.githubusercontent.com/goma2001/Mihrab/main/desktop/scripts/uninstall-linux.sh | sh"
+say "  curl -fsSL https://raw.githubusercontent.com/goma2001/salaty/main/desktop/scripts/uninstall-linux.sh | sh"

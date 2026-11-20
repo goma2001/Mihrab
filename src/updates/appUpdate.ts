@@ -38,7 +38,7 @@ import { AppUpdateModule } from '../native/AppUpdate';
 
 /** The latest release that is not a draft and not a pre-release. */
 export const LATEST_RELEASE_URL =
-  'https://api.github.com/repos/goma2001/Mihrab/releases/latest';
+  'https://api.github.com/repos/goma2001/salaty/releases/latest';
 
 /** How long a check result is trusted before the screen asks again. */
 const CACHE_TTL_MS = 30 * 60 * 1000;
@@ -131,7 +131,7 @@ async function fetchLatestRelease(): Promise<ReleaseInfo | null> {
     {
       headers: {
         Accept: 'application/vnd.github+json',
-        'User-Agent': `Salaty/${installed} (+https://github.com/goma2001/Mihrab)`,
+        'User-Agent': `Salaty/${installed} (+https://github.com/goma2001/salaty)`,
       },
     },
     { maxAttempts: 2, timeoutMs: 7000 },

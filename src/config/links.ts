@@ -17,10 +17,10 @@
  */
 
 /** The project's own front door. What a stranger should be handed. */
-export const SALATY_WEBSITE = 'https://github.com/goma2001/Mihrab';
+export const SALATY_WEBSITE = 'https://github.com/goma2001/salaty';
 
 /** Shown rather than linked — a bare host reads better than a URL. */
-export const SALATY_WEBSITE_LABEL = 'github.com/goma2001/Mihrab';
+export const SALATY_WEBSITE_LABEL = 'github.com/goma2001/salaty';
 
 /** The source. Still linked from the attributions, where it belongs. */
-export const SALATY_REPO = 'https://github.com/goma2001/Mihrab';
+export const SALATY_REPO = 'https://github.com/goma2001/salaty';

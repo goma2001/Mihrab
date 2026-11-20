@@ -24,7 +24,7 @@ import path from 'node:path';
 import { BuildError, ROOT, changedPlaces, emitOutput, minutesOf, writeTable, type DayMinutes, type PlaceTable } from './write';
 
 const API = 'https://www.londonprayertimes.com/api/times/';
-const UA = 'Salaty dataset builder (+https://github.com/goma2001/Mihrab; anazaza492@gmail.com)';
+const UA = 'Salaty dataset builder (+https://github.com/goma2001/salaty; anazaza492@gmail.com)';
 const IMSAK_BEFORE_FAJR = 10;
 const KEEP_PAST_DAYS = 7;
 const MONTHS = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];

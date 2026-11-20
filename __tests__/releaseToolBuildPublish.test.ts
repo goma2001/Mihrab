@@ -297,7 +297,7 @@ function publishWorld() {
     .on('git rev-parse HEAD', { stdout: 'feedbeef00\n' })
     .on('gh release create', {})
     .on('gh release view', { stdout: 'Salaty-v2.28.0.apk\nMihrab-macOS-2.28.0.zip\n' });
-  w.url('https://github.com/goma2001/Mihrab/releases/download/v2.28.0/Mihrab-macOS-2.28.0.zip', { body: 'ZIP' });
+  w.url('https://github.com/goma2001/salaty/releases/download/v2.28.0/Mihrab-macOS-2.28.0.zip', { body: 'ZIP' });
   const BASE = 'https://api.appstoreconnect.apple.com';
   w.url(`${BASE}/v1/ciProducts?limit=10`, { text: JSON.stringify({ data: [{ id: 'P' }] }) });
   w.url(`${BASE}/v1/ciProducts/P/workflows?limit=20`, { text: JSON.stringify({ data: [{ id: 'WF', attributes: { name: 'Default' } }] }) });

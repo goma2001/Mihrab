@@ -12,7 +12,7 @@
 import { IS_WEB_APP } from './webApp';
 import { fetchWithRetry, type FetchWithRetryOptions } from '../utils/fetchWithRetry';
 
-export const MIRROR_BASE = 'https://github.com/goma2001/Mihrab/releases/download';
+export const MIRROR_BASE = 'https://github.com/goma2001/salaty/releases/download';
 
 export const MIRROR_TAGS = {
   wordMeanings: 'data-wordmeanings-v1',

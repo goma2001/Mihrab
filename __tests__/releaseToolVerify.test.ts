@@ -12,7 +12,7 @@ import { generateKeyPairSync } from 'crypto';
 
 const TAG = 'v2.28.0';
 const V = '2.28.0';
-const DL = `https://github.com/goma2001/Mihrab/releases/download/${TAG}`;
+const DL = `https://github.com/goma2001/salaty/releases/download/${TAG}`;
 const BASE = 'https://api.appstoreconnect.apple.com';
 const SDK = `${HOME}/Library/Android/sdk/build-tools`;
 const PEM = generateKeyPairSync('ec', { namedCurve: 'P-256' }).privateKey.export({ type: 'pkcs8', format: 'pem' }) as string;
@@ -71,7 +71,7 @@ function published() {
     .on('gh run list', { stdout: 'completed|success|https://ci/1\n' });
   w.url(`${DL}/Mihrab-macOS-${V}.zip`, { body: zipBytes });
   w.url(`${DL}/Salaty-v${V}.apk`, { body: 'APK' });
-  w.url('https://github.com/goma2001/Mihrab', { text: `<p>Version ${V} (283)</p>` });
+  w.url('https://github.com/goma2001/salaty', { text: `<p>Version ${V} (283)</p>` });
   w.url('https://goma2001.github.io/packages/version.txt', { text: `${V}\n` });
   w.url('https://goma2001.github.io/version.txt', { text: `${TAG}\n` });
   // App Store Connect: the build is there.
@@ -195,7 +195,7 @@ describe('what has gone wrong live', () => {
   it('a DRAFT fails, with the fix (v2.7.39)', async () => {
     const w = published().on('gh release view', { stdout: JSON.stringify({ isDraft: true, assets: [] }) });
     const { fails, code } = await run(w);
-    expect(fails).toContain(`release is a DRAFT — assets 404 publicly. Fix: gh release edit ${TAG} -R goma2001/Mihrab --draft=false --latest`);
+    expect(fails).toContain(`release is a DRAFT — assets 404 publicly. Fix: gh release edit ${TAG} -R goma2001/salaty --draft=false --latest`);
     expect(fails).toContain(`asset MISSING from release: Salaty-v${V}.apk`);
     expect(code).toBe(1);
   });
@@ -261,7 +261,7 @@ describe('what has gone wrong live', () => {
 
   it('the live site serving the old version fails, and says whose side it is', async () => {
     const w = published()
-      .url('https://github.com/goma2001/Mihrab', { text: '<p>Version 2.27.1 (282)</p>' })
+      .url('https://github.com/goma2001/salaty', { text: '<p>Version 2.27.1 (282)</p>' })
       .url('https://www.githubstatus.com/api/v2/components.json', { text: JSON.stringify({ components: [{ name: 'Pages', status: 'major_outage' }] }) })
       .on('gh api', { stdout: 'built\n' });
     const { fails } = await run(w);

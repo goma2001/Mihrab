@@ -15,7 +15,7 @@
 # packages are there.
 set -uo pipefail
 
-REPO=goma2001/Mihrab
+REPO=goma2001/salaty
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 VERSION="${1:-}"
 VERSION="${VERSION#v}"

@@ -15,7 +15,7 @@ import { BuildError, changedPlaces, emitOutput, minutesOf, writeTable, type DayM
 
 const DATASET = 'd_a6a206cba471fe04b62dd886ef5eaf22';
 const API = `https://api-open.data.gov.sg/v1/public/api/datasets/${DATASET}/poll-download`;
-const UA = 'Salaty dataset builder (+https://github.com/goma2001/Mihrab; anazaza492@gmail.com)';
+const UA = 'Salaty dataset builder (+https://github.com/goma2001/salaty; anazaza492@gmail.com)';
 /** The site lists no Imsak; the mosques take ten minutes before Subuh. */
 const IMSAK_BEFORE_FAJR = 10;
 

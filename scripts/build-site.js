@@ -50,7 +50,7 @@ const DOCS = path.join(ROOT, 'docs');
 const STRINGS = path.join(__dirname, 'site', 'strings.json');
 // The site used to live on the author's domain (docs/CNAME); the fork
 // has no domain of its own, so it lives on GitHub Pages under the fork repo.
-const ORIGIN = 'https://goma2001.github.io/Mihrab';
+const ORIGIN = 'https://goma2001.github.io/salaty';
 
 /**
  * Every channel the app ships through, in the order the English page lists
@@ -77,7 +77,7 @@ const BADGES = [
   {
     img: 'github',
     alt: 'GitHub',
-    href: 'https://github.com/goma2001/Mihrab/releases/latest',
+    href: 'https://github.com/goma2001/salaty/releases/latest',
   },
   {
     img: 'obtainium',
@@ -447,7 +447,7 @@ function renderPage(code, langs, version) {
       'https://play.google.com/store/apps/details?id=com.goma.salat',
       'https://apps.apple.com/us/app/prayer-salah-times-qibla/id6762085256',
       'https://f-droid.org/packages/com.goma.salat/',
-      'https://github.com/goma2001/Mihrab',
+      'https://github.com/goma2001/salaty',
     ],
   };
   const faq = {
@@ -552,7 +552,7 @@ ${t.chips.map(c => `      <li>${check}${esc(c)}</li>`).join('\n')}
       <span>${esc(t.labels.version)} ${v}</span> <span class="dot" aria-hidden="true">•</span>
       <span>${PLATFORMS}</span> <span class="dot" aria-hidden="true">•</span>
       <span>AGPL-3.0-or-later</span> <span class="dot" aria-hidden="true">•</span>
-      <a href="https://github.com/goma2001/Mihrab">${esc(t.labels.source)}</a>
+      <a href="https://github.com/goma2001/salaty">${esc(t.labels.source)}</a>
     </p>
     </div>
 <!-- heroshot:start -->
@@ -664,8 +664,8 @@ ${t.faq.items
       <div>
         <h2>${esc(t.footer.project.h2)}</h2>
         <ul>
-          <li><a href="https://github.com/goma2001/Mihrab/issues">${esc(t.footer.project.issues)}</a></li>
-          <li><a href="https://github.com/goma2001/Mihrab/blob/main/CHANGELOG.md">${esc(t.footer.project.changelog)}</a></li>
+          <li><a href="https://github.com/goma2001/salaty/issues">${esc(t.footer.project.issues)}</a></li>
+          <li><a href="https://github.com/goma2001/salaty/blob/main/CHANGELOG.md">${esc(t.footer.project.changelog)}</a></li>
         </ul>
       </div>
     </div>

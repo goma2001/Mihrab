@@ -12,7 +12,7 @@ const no = (status: number) => ({ ok: false, status });
 describe('mirror urls', () => {
   it('point at this repository release assets', () => {
     expect(mirrorUrl(MIRROR_TAGS.wordMeanings, '1.json')).toBe(
-      'https://github.com/goma2001/Mihrab/releases/download/data-wordmeanings-v1/1.json',
+      'https://github.com/goma2001/salaty/releases/download/data-wordmeanings-v1/1.json',
     );
   });
 
@@ -20,10 +20,10 @@ describe('mirror urls', () => {
   // each is 2,850. So an edition is a release, and the asset is the surah.
   it('give each text edition its own release, named by the edition', () => {
     expect(mirrorUrl(editionMirrorTag('tafsir', 'ar-tafsir-muyassar'), '2.json')).toBe(
-      'https://github.com/goma2001/Mihrab/releases/download/data-tafsir-ar-tafsir-muyassar/2.json',
+      'https://github.com/goma2001/salaty/releases/download/data-tafsir-ar-tafsir-muyassar/2.json',
     );
     expect(mirrorUrl(editionMirrorTag('translation', 'en.hilali'), '112.json')).toBe(
-      'https://github.com/goma2001/Mihrab/releases/download/data-translation-en.hilali/112.json',
+      'https://github.com/goma2001/salaty/releases/download/data-translation-en.hilali/112.json',
     );
   });
 

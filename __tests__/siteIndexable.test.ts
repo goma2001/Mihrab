@@ -26,7 +26,7 @@ const LANGS: Record<string, { name: string; dir: string; path: string }> =
     readFileSync(path.join(ROOT, 'scripts', 'site', 'strings.json'), 'utf-8'),
   );
 // The fork has no domain of its own; the site lives on GitHub Pages under it.
-const origin = 'https://goma2001.github.io/Mihrab';
+const origin = 'https://goma2001.github.io/salaty';
 
 const { SHOT_V, PHONE_PANELS, WIDE_PANELS, panelWords, plain } =
   require('../scripts/build-site') as {
@@ -115,7 +115,7 @@ describe('the app is an entity, not a word', () => {
         expect.stringContaining('play.google.com'),
         expect.stringContaining('apps.apple.com'),
         expect.stringContaining('f-droid.org'),
-        expect.stringContaining('github.com/goma2001/Mihrab'),
+        expect.stringContaining('github.com/goma2001/salaty'),
       ]),
     );
   });

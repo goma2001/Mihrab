@@ -96,7 +96,7 @@ describe('accuracy is on every page that leads with it', () => {
     // points at this fork's issues.
     expect(section![0]).toContain('mihrab-methods');
     expect(section![0]).not.toContain('github.com/MihrabHQ/mihrab-methods');
-    expect(section![0]).toContain('github.com/goma2001/Mihrab/issues/new');
+    expect(section![0]).toContain('github.com/goma2001/salaty/issues/new');
     // Its own words, not the English table's — which names an authority
     // the translated pages leave to the Swedish one.
     expect(LANGS[code].accuracy?.table).toBeDefined();

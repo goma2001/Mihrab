@@ -595,7 +595,7 @@
         },
         {
           "h3": "وقت يخالف وقت مسجدك؟",
-          "p": "اذكر المدينة والتاريخ والصلاة والوقت المطبوع في [نموذج الإبلاغ](https://github.com/goma2001/Mihrab/issues/new). وإن كان لمسجدك مواقيته الخاصة، فتعديل لكل صلاة داخل التطبيق يطابقها."
+          "p": "اذكر المدينة والتاريخ والصلاة والوقت المطبوع في [نموذج الإبلاغ](https://github.com/goma2001/salaty/issues/new). وإن كان لمسجدك مواقيته الخاصة، فتعديل لكل صلاة داخل التطبيق يطابقها."
         },
         {
           "h3": "جداول منشورة، كما طُبعت",
@@ -990,7 +990,7 @@
         },
         {
           "h3": "Bir vakit caminizinkinden farklı mı?",
-          "p": "Şehri, tarihi, namazı ve basılı vakti [bildirim formunda](https://github.com/goma2001/Mihrab/issues/new) yazın. Caminiz kendi vakitlerini kullanıyorsa, uygulamadaki namaz başına düzeltme onlara uyar."
+          "p": "Şehri, tarihi, namazı ve basılı vakti [bildirim formunda](https://github.com/goma2001/salaty/issues/new) yazın. Caminiz kendi vakitlerini kullanıyorsa, uygulamadaki namaz başına düzeltme onlara uyar."
         },
         {
           "h3": "Yayımlanan tablolar, basıldığı gibi",
@@ -1366,7 +1366,7 @@
         },
         {
           "h3": "کوئی وقت آپ کی مسجد سے مختلف ہے؟",
-          "p": "شہر، تاریخ، نماز اور چھپا ہوا وقت [رپورٹ فارم](https://github.com/goma2001/Mihrab/issues/new) میں لکھیں۔ اگر آپ کی مسجد اپنے اوقات رکھتی ہے تو ایپ میں ہر نماز کا الگ فرق انہیں ملا دیتا ہے۔"
+          "p": "شہر، تاریخ، نماز اور چھپا ہوا وقت [رپورٹ فارم](https://github.com/goma2001/salaty/issues/new) میں لکھیں۔ اگر آپ کی مسجد اپنے اوقات رکھتی ہے تو ایپ میں ہر نماز کا الگ فرق انہیں ملا دیتا ہے۔"
         },
         {
           "h3": "شائع شدہ جدول، جیسے چھپے ہیں",
@@ -1761,7 +1761,7 @@
         },
         {
           "h3": "Ada waktu yang berbeda dari masjid Anda?",
-          "p": "Sebutkan kota, tanggal, salat, dan waktu yang tercetak di [formulir laporan](https://github.com/goma2001/Mihrab/issues/new). Jika masjid Anda memakai waktunya sendiri, penyesuaian per salat di aplikasi dapat menyamakannya."
+          "p": "Sebutkan kota, tanggal, salat, dan waktu yang tercetak di [formulir laporan](https://github.com/goma2001/salaty/issues/new). Jika masjid Anda memakai waktunya sendiri, penyesuaian per salat di aplikasi dapat menyamakannya."
         },
         {
           "h3": "Tabel yang diterbitkan, dipakai apa adanya",
@@ -2137,7 +2137,7 @@
         },
         {
           "h3": "Eine Zeit weicht von Ihrer Moschee ab?",
-          "p": "Nennen Sie Stadt, Datum, Gebet und die gedruckte Zeit im [Meldeformular](https://github.com/goma2001/Mihrab/issues/new). Führt Ihre Moschee eigene Zeiten, gleicht ein Versatz je Gebet in der App sie an."
+          "p": "Nennen Sie Stadt, Datum, Gebet und die gedruckte Zeit im [Meldeformular](https://github.com/goma2001/salaty/issues/new). Führt Ihre Moschee eigene Zeiten, gleicht ein Versatz je Gebet in der App sie an."
         },
         {
           "h3": "Veröffentlichte Tabellen, wie gedruckt",
@@ -2539,7 +2539,7 @@
         },
         {
           "h3": "Un horaire diffère de celui de votre mosquée ?",
-          "p": "Indiquez la ville, la date, la prière et l’horaire imprimé dans [le formulaire de signalement](https://github.com/goma2001/Mihrab/issues/new). Si votre mosquée a ses propres horaires, un décalage par prière dans l’application permet de les suivre."
+          "p": "Indiquez la ville, la date, la prière et l’horaire imprimé dans [le formulaire de signalement](https://github.com/goma2001/salaty/issues/new). Si votre mosquée a ses propres horaires, un décalage par prière dans l’application permet de les suivre."
         },
         {
           "h3": "Tables publiées, reprises telles quelles",
@@ -2915,7 +2915,7 @@
         },
         {
           "h3": "¿Un horario difiere del de tu mezquita?",
-          "p": "Indica la ciudad, la fecha, la oración y lo que estaba impreso en [el formulario de aviso](https://github.com/goma2001/Mihrab/issues/new). Si tu mezquita tiene sus propios horarios, un ajuste por oración en la aplicación los iguala."
+          "p": "Indica la ciudad, la fecha, la oración y lo que estaba impreso en [el formulario de aviso](https://github.com/goma2001/salaty/issues/new). Si tu mezquita tiene sus propios horarios, un ajuste por oración en la aplicación los iguala."
         },
         {
           "h3": "Tablas publicadas, tal como se imprimen",
@@ -3291,7 +3291,7 @@
         },
         {
           "h3": "Время отличается от времени в вашей мечети?",
-          "p": "Укажите город, дату, намаз и напечатанное время в [форме сообщения](https://github.com/goma2001/Mihrab/issues/new). Если у вашей мечети своё расписание, поправка для каждого намаза в приложении подстроит время под него."
+          "p": "Укажите город, дату, намаз и напечатанное время в [форме сообщения](https://github.com/goma2001/salaty/issues/new). Если у вашей мечети своё расписание, поправка для каждого намаза в приложении подстроит время под него."
         },
         {
           "h3": "Опубликованные таблицы — как напечатано",
@@ -3667,7 +3667,7 @@
         },
         {
           "h3": "কোনো সময় আপনার মসজিদের সঙ্গে মিলছে না?",
-          "p": "শহর, তারিখ, নামাজ ও ছাপা সময়টি [রিপোর্ট ফর্মে](https://github.com/goma2001/Mihrab/issues/new) জানান। আপনার মসজিদ নিজস্ব সময় মানলে অ্যাপে প্রতিটি নামাজের আলাদা সমন্বয় তা মিলিয়ে দেয়।"
+          "p": "শহর, তারিখ, নামাজ ও ছাপা সময়টি [রিপোর্ট ফর্মে](https://github.com/goma2001/salaty/issues/new) জানান। আপনার মসজিদ নিজস্ব সময় মানলে অ্যাপে প্রতিটি নামাজের আলাদা সমন্বয় তা মিলিয়ে দেয়।"
         },
         {
           "h3": "প্রকাশিত সারণি, যেমন ছাপা আছে",
@@ -4043,7 +4043,7 @@
         },
         {
           "h3": "कोई समय आपकी मस्जिद से अलग है?",
-          "p": "शहर, तारीख़, नमाज़ और छपा हुआ समय [रिपोर्ट फ़ॉर्म](https://github.com/goma2001/Mihrab/issues/new) में बताएँ। अगर आपकी मस्जिद अपने समय रखती है, तो ऐप में हर नमाज़ का अलग अंतर उन्हें मिला देता है।"
+          "p": "शहर, तारीख़, नमाज़ और छपा हुआ समय [रिपोर्ट फ़ॉर्म](https://github.com/goma2001/salaty/issues/new) में बताएँ। अगर आपकी मस्जिद अपने समय रखती है, तो ऐप में हर नमाज़ का अलग अंतर उन्हें मिला देता है।"
         },
         {
           "h3": "प्रकाशित सारणियाँ, जैसी छपी हैं",
@@ -4419,7 +4419,7 @@
         },
         {
           "h3": "某个时间与你的清真寺不同？",
-          "p": "请在[报告表单](https://github.com/goma2001/Mihrab/issues/new)中写明城市、日期、哪一番礼拜以及印出的时间。如果你的清真寺有自己的时间，可以在应用中为每番礼拜单独设置偏移来对齐。"
+          "p": "请在[报告表单](https://github.com/goma2001/salaty/issues/new)中写明城市、日期、哪一番礼拜以及印出的时间。如果你的清真寺有自己的时间，可以在应用中为每番礼拜单独设置偏移来对齐。"
         },
         {
           "h3": "公布的时间表，照原样使用",

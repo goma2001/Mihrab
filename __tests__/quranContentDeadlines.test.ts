@@ -239,7 +239,7 @@ describe('tafsir', () => {
   });
 
   const isMirror = (input: unknown) =>
-    String(input).includes('github.com/goma2001/Mihrab/releases/download/');
+    String(input).includes('github.com/goma2001/salaty/releases/download/');
 
   it('asks the mirror once, then retries a transient 502 at the original once', async () => {
     let n = 0;

@@ -17,7 +17,7 @@ import { BuildError, changedPlaces, emitOutput, minutesOf, writeTable, type DayM
 import { JAKIM_ZONES, jakimPlaces } from './jakim-zones';
 
 const ORIGIN = 'https://www.e-solat.gov.my';
-const UA = 'Salaty dataset builder (+https://github.com/goma2001/Mihrab; anazaza492@gmail.com)';
+const UA = 'Salaty dataset builder (+https://github.com/goma2001/salaty; anazaza492@gmail.com)';
 const MONTHS: Record<string, number> = { Jan: 1, Feb: 2, Mac: 3, Apr: 4, Mei: 5, Jun: 6, Jul: 7, Ogos: 8, Sep: 9, Okt: 10, Nov: 11, Dis: 12 };
 
 type Row = { date: string; imsak: string; fajr: string; syuruk: string; dhuhr: string; asr: string; maghrib: string; isha: string };

@@ -18,7 +18,7 @@ with none of them (`MIHRAB_FORMAT=appimage` forces it).
 
 Testers can take the installers from the newest **Actions → Desktop → Run
 workflow** off the
-[desktop-preview](https://github.com/goma2001/Mihrab/releases/tag/desktop-preview)
+[desktop-preview](https://github.com/goma2001/salaty/releases/tag/desktop-preview)
 pre-release: on Windows `Mihrab-windows-x64.exe` (or `-arm64`) installs for
 the user into `%LOCALAPPDATA%\Programs\Mihrab`, and removes itself from
 Settings → Apps.

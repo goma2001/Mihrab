@@ -20,7 +20,7 @@
 import { fetchContentOnce } from './contentNetwork';
 
 export const INDOPAK_SWITCH_URL =
-  'https://raw.githubusercontent.com/goma2001/Mihrab/main/data/app-config/v1.json';
+  'https://raw.githubusercontent.com/goma2001/salaty/main/data/app-config/v1.json';
 
 const DEADLINE_MS = 8_000;
 /** How long an answer is trusted before it is asked for again. */

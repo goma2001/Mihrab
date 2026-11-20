@@ -5,7 +5,7 @@
 import type { ExecResult, Io } from './io.ts';
 import type { Kind, Reporter } from './report.ts';
 
-export const REPO = 'goma2001/Mihrab';
+export const REPO = 'goma2001/salaty';
 export const TEAM = 'GAW23HT439';
 export const APP_GROUP = 'group.com.goma.salat';
 export const WIDGET_EXT_ID = 'maccatalyst.com.goma.salat.PrayerWidgetExtension';
@@ -16,7 +16,7 @@ export const LSREGISTER =
 export const JDK = '/Library/Java/JavaVirtualMachines/temurin-21.jdk/Contents/Home';
 export const PLAY_LOCALES = ['en-US', 'sv-SE', 'ar'];
 export const RELEASE_CERT = 'e66c0dabc898856bd0f6057a8fe0aaa440fa1d04f0da5a213104f41f89e6f997';
-export const SITE_URL = 'https://github.com/goma2001/Mihrab';
+export const SITE_URL = 'https://github.com/goma2001/salaty';
 /** Play's limit on a release note, in characters. */
 export const PLAY_NOTE_LIMIT = 500;
 

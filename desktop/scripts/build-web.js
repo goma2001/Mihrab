@@ -41,7 +41,7 @@ const BUILD = path.join(DESKTOP, 'build', 'web');
 const BUNDLE = path.join(DESKTOP, 'build', 'bundle');
 const DOCS = path.join(profile, 'Documents');
 const FILES = path.join(out, 'files');
-const MIRROR = 'https://raw.githubusercontent.com/goma2001/Mihrab/main/data/word-meanings/v1';
+const MIRROR = 'https://raw.githubusercontent.com/goma2001/salaty/main/data/word-meanings/v1';
 // A fixed stamp, so rebuilding the site does not rewrite 114 unchanged files.
 const WORD_MEANINGS_STAMP = '2026-01-01T00:00:00.000Z';
 

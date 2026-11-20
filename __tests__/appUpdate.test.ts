@@ -188,7 +188,7 @@ const RELEASE_1_0_3 = {
     {
       name: 'Salaty-v1.0.3.apk',
       browser_download_url:
-        'https://github.com/goma2001/Mihrab/releases/download/v1.0.3/Salaty-v1.0.3.apk',
+        'https://github.com/goma2001/salaty/releases/download/v1.0.3/Salaty-v1.0.3.apk',
     },
   ],
 };
@@ -234,7 +234,7 @@ describe('parseReleasePayload', () => {
     expect(parseReleasePayload(RELEASE_1_0_3)).toEqual({
       version: '1.0.3',
       apkUrl:
-        'https://github.com/goma2001/Mihrab/releases/download/v1.0.3/Salaty-v1.0.3.apk',
+        'https://github.com/goma2001/salaty/releases/download/v1.0.3/Salaty-v1.0.3.apk',
       notes: 'New in 1.0.3: updates from inside the app.',
     });
   });
@@ -285,7 +285,7 @@ describe('parseReleasePayload', () => {
           {
             name: 'Salaty-v1.0.3.apk',
             browser_download_url:
-              'https://github.com/goma2001/Mihrab/releases/download/v1.0.3/Salaty-v1.0.3.apk',
+              'https://github.com/goma2001/salaty/releases/download/v1.0.3/Salaty-v1.0.3.apk',
             size: 61240263,
           },
         ],
@@ -293,7 +293,7 @@ describe('parseReleasePayload', () => {
     ).toEqual({
       version: '1.0.3',
       apkUrl:
-        'https://github.com/goma2001/Mihrab/releases/download/v1.0.3/Salaty-v1.0.3.apk',
+        'https://github.com/goma2001/salaty/releases/download/v1.0.3/Salaty-v1.0.3.apk',
       notes: 'New in 1.0.3: updates from inside the app.',
       size: 61240263,
     });
@@ -326,7 +326,7 @@ describe('checkForUpdate', () => {
       latest: {
         version: '1.0.3',
         apkUrl:
-          'https://github.com/goma2001/Mihrab/releases/download/v1.0.3/Salaty-v1.0.3.apk',
+          'https://github.com/goma2001/salaty/releases/download/v1.0.3/Salaty-v1.0.3.apk',
         notes: 'New in 1.0.3: updates from inside the app.',
       },
     });
@@ -337,7 +337,7 @@ describe('checkForUpdate', () => {
       {
         name: 'Salaty-v1.0.2.apk',
         browser_download_url:
-          'https://github.com/goma2001/Mihrab/releases/download/v1.0.2/Salaty-v1.0.2.apk',
+          'https://github.com/goma2001/salaty/releases/download/v1.0.2/Salaty-v1.0.2.apk',
       },
     ] });
     await expect(checkForUpdate()).resolves.toEqual({

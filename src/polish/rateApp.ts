@@ -11,7 +11,7 @@
  */
 import { Linking } from 'react-native';
 
-const GITHUB_URL = 'https://github.com/goma2001/Mihrab';
+const GITHUB_URL = 'https://github.com/goma2001/salaty';
 
 /** A place a rating can be left. */
 export type RatingPlace = 'github';

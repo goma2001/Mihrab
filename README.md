@@ -10,7 +10,7 @@
 
 ## التنزيل
 
-التنزيل حاليًا من [صفحة الإصدارات على GitHub](https://github.com/goma2001/Mihrab/releases/latest) (ملف APK). روابط المتاجر (Google Play وF-Droid وApp Store) قادمة لاحقًا.
+التنزيل حاليًا من [صفحة الإصدارات على GitHub](https://github.com/goma2001/salaty/releases/latest) (ملف APK). روابط المتاجر (Google Play وF-Droid وApp Store) قادمة لاحقًا.
 
 _Store links (Google Play, F-Droid, App Store) are pending._
 
@@ -383,16 +383,16 @@ Where you are, five times a day, is the most sensitive thing a prayer app touche
 - **Goes over the network, none of it to the developer** — coordinates to AlAdhan where it is the source of your times (Sweden, Diyanet’s places, Morocco, Algeria and Indonesia are calculated on the phone instead); your position rounded to about a kilometre to OpenStreetMap, to name your town when location is automatic; small update files from this project’s repositories; and the downloads you ask for.
 - **Not present at all** — ads, trackers, accounts, Google Play Services.
 
-The full list, from the code, is in the [privacy policy](PRIVACY_POLICY.md) and on the [privacy policy in this repo](https://github.com/goma2001/Mihrab/blob/main/PRIVACY_POLICY.md).
+The full list, from the code, is in the [privacy policy](PRIVACY_POLICY.md) and on the [privacy policy in this repo](https://github.com/goma2001/salaty/blob/main/PRIVACY_POLICY.md).
 
 ---
 
 ## Install
 
-صلاتي is distributed from its own GitHub releases only, for now: download the APK from [GitHub Releases](https://github.com/goma2001/Mihrab/releases/latest). Store links (Google Play, F-Droid, App Store) are pending, as are the Mac, Windows and Linux builds — this fork builds the Android APK.
+صلاتي is distributed from its own GitHub releases only, for now: download the APK from [GitHub Releases](https://github.com/goma2001/salaty/releases/latest). Store links (Google Play, F-Droid, App Store) are pending, as are the Mac, Windows and Linux builds — this fork builds the Android APK.
 
-- **Android — APK**: [GitHub Releases](https://github.com/goma2001/Mihrab/releases/latest) → `salaty-release.apk` (ARM phones, 32- and 64-bit)
-- **Android — Obtainium (recommended)**: add the fork's releases in Obtainium (`https://github.com/goma2001/Mihrab`) — first to get every update, and it updates itself. Needs [Obtainium](https://github.com/ImranR98/Obtainium) installed.
+- **Android — APK**: [GitHub Releases](https://github.com/goma2001/salaty/releases/latest) → `salaty-release.apk` (ARM phones, 32- and 64-bit)
+- **Android — Obtainium (recommended)**: add the fork's releases in Obtainium (`https://github.com/goma2001/salaty`) — first to get every update, and it updates itself. Needs [Obtainium](https://github.com/ImranR98/Obtainium) installed.
 
 On **GrapheneOS**: no Google Play services are used, the Network and Sensors switches are handled, and the APK is checked at every release for what its exploit protections expect — [what was checked, and how](docs/grapheneos.md).
 
@@ -473,7 +473,7 @@ Pull requests, translations and reproducible bug reports are welcome.
 - [ARCHITECTURE.md](ARCHITECTURE.md) — how the code is laid out
 - [CHANGELOG.md](CHANGELOG.md) — what changed in each release
 - [SECURITY.md](SECURITY.md) — reporting a vulnerability
-- A translation that reads wrong, or a language to add: [open a translation issue](https://github.com/goma2001/Mihrab/issues/new?template=translation.yml)
+- A translation that reads wrong, or a language to add: [open a translation issue](https://github.com/goma2001/salaty/issues/new?template=translation.yml)
 
 ---
 
@@ -490,7 +490,7 @@ Four kinds of support are welcome, and they are worth more:
 - **Dua** — for me and my parents, and for everyone whose work this is built on.
 - **Constructive feedback** — a prayer time that disagrees with your masjid, a
   translation that reads wrong, a screen that fights you. Say what you saw and
-  what you expected in [an issue](https://github.com/goma2001/Mihrab/issues);
+  what you expected in [an issue](https://github.com/goma2001/salaty/issues);
   that is how the bugs get found.
 - **Pass it on** — rate صلاتي where you got it, and tell family and friends.
   The app's own month sheet (Settings → About → Help صلاتي) is an easy thing to

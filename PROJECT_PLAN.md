@@ -22,4 +22,4 @@ anyone on any server, and never will — so the file is a signpost now.
 
 ## Maintainer
 
-See [GitHub contributors](https://github.com/goma2001/Mihrab/graphs/contributors) for the current list.
+See [GitHub contributors](https://github.com/goma2001/salaty/graphs/contributors) for the current list.

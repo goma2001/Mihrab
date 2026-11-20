@@ -43,14 +43,14 @@ describe('where a rating goes', () => {
   it('opens the fork on GitHub, from any build', async () => {
     const { openRatingPlace, openURL } = load('android', 'fdroid');
     await openRatingPlace('github');
-    expect(openURL).toHaveBeenCalledWith('https://github.com/goma2001/Mihrab');
+    expect(openURL).toHaveBeenCalledWith('https://github.com/goma2001/salaty');
   });
 
   it('rateApp goes to GitHub on iOS and on Android', async () => {
     for (const os of ['ios', 'android'] as const) {
       const { rateApp, openURL } = load(os);
       await rateApp();
-      expect(openURL).toHaveBeenCalledWith('https://github.com/goma2001/Mihrab');
+      expect(openURL).toHaveBeenCalledWith('https://github.com/goma2001/salaty');
     }
   });
 });

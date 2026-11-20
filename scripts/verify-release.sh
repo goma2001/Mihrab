@@ -28,7 +28,7 @@ if [ "${RELEASE_TS:-1}" != "0" ]; then
   printf "  ⚠ %s\n" "the TypeScript release tool needs Node 22.6 or later and this is $(node --version 2>/dev/null || echo 'no Node') — the shell script runs instead" >&2
 fi
 VERSION="${TAG#v}"
-REPO="goma2001/Mihrab"
+REPO="goma2001/salaty"
 TAP="$HOME/git/homebrew-tap/Casks/mihrab.rb"
 FAILED=0
 PENDING=0
@@ -409,7 +409,7 @@ else
   fail "docs/index.html does not name $VERSION — run: node scripts/sync-version.js"
 fi
 
-LIVE="$(curl -fsS --max-time 20 "https://goma2001.github.io/Mihrab/?bust=$$" 2>/dev/null || true)"
+LIVE="$(curl -fsS --max-time 20 "https://goma2001.github.io/salaty/?bust=$$" 2>/dev/null || true)"
 if [ -z "$LIVE" ]; then
   fail "could not fetch the live site to check its version"
 elif has "$LIVE" "Version $VERSION ("; then
@@ -421,7 +421,7 @@ else
   # deploy has not happened — that is GitHub's side, not ours.
   fail "live site is NOT serving $VERSION"
   SERVED=$(printf '%s' "$LIVE" | grep -oE 'Version [0-9.]+ \([0-9]+\)' | head -1)
-  MOD=$(curl -sI "https://goma2001.github.io/Mihrab/?bust=$$" | sed -n 's/^[Ll]ast-[Mm]odified: //p' | tr -d '\r')
+  MOD=$(curl -sI "https://goma2001.github.io/salaty/?bust=$$" | sed -n 's/^[Ll]ast-[Mm]odified: //p' | tr -d '\r')
   BUILD=$(gh api "repos/$REPO/pages/builds/latest" --jq '.status' 2>/dev/null || echo "unknown")
   PAGES=$(curl -s --max-time 10 https://www.githubstatus.com/api/v2/components.json 2>/dev/null \
     | python3 -c 'import json,sys;print(next((c["status"] for c in json.load(sys.stdin)["components"] if c["name"]=="Pages"),"unknown"))' 2>/dev/null || echo "unknown")
