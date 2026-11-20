@@ -969,7 +969,7 @@
 				DEVELOPMENT_TEAM = GAW23HT439;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = PrayerApp/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = صلاتي;
+				INFOPLIST_KEY_CFBundleDisplayName = "صلاتي";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
 				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 15.2;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1018,7 +1018,7 @@
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = GAW23HT439;
 				INFOPLIST_FILE = PrayerApp/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = صلاتي;
+				INFOPLIST_KEY_CFBundleDisplayName = "صلاتي";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
 				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 15.2;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1225,7 +1225,7 @@
 				DEVELOPMENT_TEAM = GAW23HT439;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = PrayerWidgetExtension/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = صلاتي;
+				INFOPLIST_KEY_CFBundleDisplayName = "صلاتي";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1269,7 +1269,7 @@
 				DEVELOPMENT_TEAM = GAW23HT439;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = PrayerWidgetExtension/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = صلاتي;
+				INFOPLIST_KEY_CFBundleDisplayName = "صلاتي";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1312,7 +1312,7 @@
 				DEVELOPMENT_TEAM = GAW23HT439;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = MihrabLiveActivity/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = صلاتي;
+				INFOPLIST_KEY_CFBundleDisplayName = "صلاتي";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1351,7 +1351,7 @@
 				DEVELOPMENT_TEAM = GAW23HT439;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = MihrabLiveActivity/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = صلاتي;
+				INFOPLIST_KEY_CFBundleDisplayName = "صلاتي";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
