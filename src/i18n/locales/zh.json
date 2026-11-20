@@ -127,6 +127,7 @@
     "minimalTimesTitle": "今日礼拜时间",
     "archPhaseFajr": "Fajr",
     "archPhaseSunrise": "Sunrise",
+    "archPhaseMorning": "Forenoon",
     "archPhaseDay": "Midday",
     "archPhaseAsr": "Asr",
     "archPhaseSunset": "Sunset",

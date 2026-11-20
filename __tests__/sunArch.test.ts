@@ -42,9 +42,13 @@ describe('sunArchState', () => {
     if (atSunrise.orb.kind === 'sun') expect(atSunrise.orb.under).toBe(0);
   });
 
-  it('walks the sun along the day arc: sunrise, day, Asr, sunset', () => {
+  it('walks the sun along the day arc: sunrise, forenoon, midday, Asr, sunset', () => {
     const morning = sunArchState(times, at(8).getTime());
     expect(morning.phase).toBe('sunrise');
+    // The reported bug (1.0.4): 09:01 read "الظهر" — the forenoon is
+    // its own phase now, midday stays centred on solar noon.
+    const forenoon = sunArchState(times, at(9, 1).getTime());
+    expect(forenoon.phase).toBe('morning');
     const noon = sunArchState(times, at(12, 5).getTime());
     expect(noon.phase).toBe('day');
     if (noon.orb.kind === 'sun') expect(noon.orb.t).toBeCloseTo(0.486, 2);
@@ -53,6 +57,16 @@ describe('sunArchState', () => {
     const evening = sunArchState(times, at(18).getTime());
     expect(evening.phase).toBe('sunset');
     if (evening.orb.kind === 'sun') expect(evening.orb.t).toBeGreaterThan(0.9);
+  });
+
+  it('pins the forenoon boundaries: sunrise below 0.18, midday 0.45–0.62, Asr at 0.62', () => {
+    // Day arc 06:10 → 18:20 is 730 minutes: 0.18 ≈ 08:21, 0.45 ≈ 11:38, 0.62 ≈ 13:42.
+    expect(sunArchState(times, at(8, 21).getTime()).phase).toBe('sunrise');
+    expect(sunArchState(times, at(8, 22).getTime()).phase).toBe('morning');
+    expect(sunArchState(times, at(11, 38).getTime()).phase).toBe('morning');
+    expect(sunArchState(times, at(11, 39).getTime()).phase).toBe('day');
+    expect(sunArchState(times, at(13, 42).getTime()).phase).toBe('day');
+    expect(sunArchState(times, at(13, 43).getTime()).phase).toBe('asr');
   });
 
   it('is dusk after Maghrib and night after Isha, the moon on the night arc', () => {

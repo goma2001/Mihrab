@@ -84,7 +84,10 @@ export function resolveArchTimes(
  *   clips the disc at the horizon line, so it RISES rather than standing
  *   whole on the line.
  * - Sunrise to Maghrib: the sun on the day arc; the phase follows where
- *   on it — sunrise, day, Asr, sunset.
+ *   on it — sunrise, forenoon, midday, Asr, sunset. Midday is centred
+ *   on solar noon (t = 0.5), so a morning hour is never called noon:
+ *   the forenoon (الضحى) runs from t = 0.18 to t = 0.45, midday (الظهر)
+ *   from t = 0.45 to t = 0.62.
  * - Maghrib to ʿIshāʾ: dusk, the moon already rising on the night arc
  *   (Maghrib to the next Fajr); after ʿIshāʾ: night.
  */
@@ -100,7 +103,7 @@ export function sunArchState(times: ArchTimes | null, nowMs: number): SunArchSta
   if (nowMs < maghrib) {
     const t = frac(sunrise, maghrib, nowMs);
     const phase: ArchPhase =
-      t < 0.18 ? 'sunrise' : t < 0.62 ? 'day' : t < 0.92 ? 'asr' : 'sunset';
+      t < 0.18 ? 'sunrise' : t < 0.45 ? 'morning' : t < 0.62 ? 'day' : t < 0.92 ? 'asr' : 'sunset';
     return { phase, orb: { kind: 'sun', t, under: 0 } };
   }
   if (nowMs < isha) {
