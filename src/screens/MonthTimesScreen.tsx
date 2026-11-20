@@ -1,7 +1,7 @@
 import { useNavigation, useRoute, type RouteProp } from '@react-navigation/native';
 import { useHeaderHeight } from '@react-navigation/elements';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FlatList, Platform, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -28,6 +28,7 @@ import { getCacheStatus } from '../prayer/prayerStorage';
 import { refreshStoredPrayerData } from '../prayer/refreshStoredData';
 import { ShareMonthScreen } from './ShareMonthScreen';
 import { MonthControls } from './month/MonthControls';
+import { MonthDayStrip } from './month/MonthDayStrip';
 import {
   monthRowHeight,
   MonthColumnHeader,
@@ -101,6 +102,27 @@ export function MonthTimesScreen() {
   }, [viewYear, viewMonth, i18n.language]);
 
   const isCurrentMonth = viewYear === today.year && viewMonth === today.month;
+
+  // The Arch of Light's day strip (1.0.4): the day at the top of the
+  // table, which a tap on the strip moves. It starts on today and
+  // follows the month when the month is turned.
+  const daysInMonth = new Date(viewYear, viewMonth + 1, 0).getDate();
+  const [visibleDay, setVisibleDay] = useState(isCurrentMonth ? today.day : 1);
+  useEffect(() => {
+    setVisibleDay(isCurrentMonth ? today.day : 1);
+  }, [viewYear, viewMonth, isCurrentMonth, today.day]);
+  const listRef = useRef<FlatList<MonthDayEntry>>(null);
+  const onSelectDay = useCallback((day: number) => {
+    listRef.current?.scrollToIndex({ index: day - 1, viewPosition: 0, animated: true });
+  }, []);
+  const onViewableChanged = useCallback(
+    ({ viewableItems }: { viewableItems: Array<{ index?: number | null }> }) => {
+      const first = viewableItems.find(v => v.index != null)?.index;
+      if (first != null) setVisibleDay(first + 1);
+    },
+    [],
+  );
+  const viewabilityConfig = useRef({ itemVisiblePercentThreshold: 50 }).current;
 
   const goPrevMonth = useCallback(() => {
     if (viewMonth === 0) { setViewMonth(11); setViewYear(y => y - 1); }
@@ -331,13 +353,26 @@ export function MonthTimesScreen() {
     <View style={{ flex: 1, backgroundColor: palette.bg, paddingTop: Platform.OS === 'ios' ? headerHeight : 0 }}>
       <View style={[styles.monthInner, monthWide && styles.monthCap]}>
       {controlsHeader}
+      <MonthDayStrip
+        year={viewYear}
+        month={viewMonth}
+        days={daysInMonth}
+        visibleDay={visibleDay}
+        todayDay={today.day}
+        isCurrentMonth={isCurrentMonth}
+        palette={palette}
+        onSelect={onSelectDay}
+      />
       {columnHeader}
       <FlatList
+        ref={listRef}
         style={{ flex: 1 }}
         data={nightRows ?? []}
         contentInsetAdjustmentBehavior="never"
         keyExtractor={item => formatLocalDate(item.date)}
         renderItem={renderItem}
+        onViewableItemsChanged={onViewableChanged}
+        viewabilityConfig={viewabilityConfig}
         contentContainerStyle={{ paddingBottom: insets.bottom + 24 }}
         ListEmptyComponent={
           !loading && !error ? (

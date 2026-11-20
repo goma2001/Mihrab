@@ -124,7 +124,14 @@
     "pullRelease": "تازہ کرنے کے لیے چھوڑ دیں",
     "pullRefreshing": "آپ کے نماز کے اوقات تازہ ہو رہے ہیں…",
     "helpMihrabChip": "صلاتي کو آگے بڑھائیں",
-    "minimalTimesTitle": "آج کے اوقات"
+    "minimalTimesTitle": "آج کے اوقات",
+    "archPhaseFajr": "Fajr",
+    "archPhaseSunrise": "Sunrise",
+    "archPhaseDay": "Midday",
+    "archPhaseAsr": "Asr",
+    "archPhaseSunset": "Sunset",
+    "archPhaseNight": "Night",
+    "archDayNight": "Day / night"
   },
   "errors": {
     "locationNeededTitle": "مقام درکار ہے۔",
@@ -194,7 +201,8 @@
     "heroLook": "آسمانی پٹی",
     "heroLookSky": "مصوّر",
     "heroLookTrack": "راستہ",
-    "heroLookHelp": "مصوّر آسمان پر سورج اور چاند دکھاتا ہے۔ راستہ پٹی کو ایک چارٹ کی طرح بناتا ہے: افق ایک لکیر، آج سورج کا راستہ (رات کو چاند کا) آپ کے مقام کے پیمانے پر، اور اگلی نماز کے وقت جہاں وہ ہوگا وہاں ایک حلقہ۔",
+    "heroLookArch": "Arch of Light",
+    "heroLookHelp": "Arch of Light shows the sun's path as an arch on a stone card, with the day's prayers as dots under it. Painted shows the sun and the moon on the sky. Track draws the band as a chart: the horizon as a line, today's path of the sun (the moon's at night) to scale where you are, and a ring where it will be at the next prayer.",
     "themeHelp": "سسٹم آپ کے آلے کے لائٹ یا ڈارک موڈ سے میل کھاتا ہے۔ ایپ میں پلیٹ فارم پیلیٹ استعمال کرنے کے لیے سسٹم کے رنگوں کو آن کریں (بشمول آپ کا مواد اینڈرائیڈ پر)۔ بٹن اور لہجے آپ کے فون کے بنیادی رنگ کی پیروی کرتے ہیں تاکہ ڈائنامک رنگ دستیاب ہونے پر ایپ آپ کے وال پیپر سے مماثل ہو۔",
     "clockFormat": "وقت کی شکل",
     "clockFormatAuto": "خودکار",

@@ -4,7 +4,7 @@ import Svg, { Circle, G, Line, Path, Rect, Text as SvgText } from 'react-native-
 import { useTranslation } from 'react-i18next';
 import { useAppPalette } from '../../hooks/useAppPalette';
 import type { CompassMode, SignalStrength } from './useCompassSensor';
-import { SPACING } from '../../theme/tokens';
+import { ARCH_GOLD, SPACING } from '../../theme/tokens';
 
 /**
  * The Qibla compass dial (docs/design/redesign-plan.md §4).
@@ -61,7 +61,10 @@ function CompassDialImpl({ mode, needleDeg, signalStrength = -1 }: CompassDialPr
   // SVG takes plain strings only — the *Solid palette fields exist for this.
   const ink = palette.textSolid;
   const quiet = palette.mutedSolid;
-  const accent = palette.accentSolid;
+  // The Arch of Light (1.0.4): gold marks the Qibla — the needle, the
+  // Kaaba and the live signal's arc — the way the arch's gold marks the
+  // sun's arrival. The rest of the dial stays monochrome.
+  const accent = ARCH_GOLD;
   const live = mode === 'live';
   const signal = live && signalStrength >= 0 ? signalStrength / 100 : 0;
 

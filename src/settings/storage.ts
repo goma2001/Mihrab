@@ -688,6 +688,19 @@ async function loadSettingsUncached(): Promise<PrayerAppSettings> {
   // guessed at, because there is no honest correction for "blue".
   merged.savedAccentColors = coerceSavedAccents(merged.savedAccentColors);
   // Minimal wears the classic colours (minimalLook.ts).
+  // The Arch of Light (1.0.4): the redesign's face. A saved look stays
+  // the reader's — unless it is the old default they never chose: the
+  // painted sky was the only look before the arch, so a blob that still
+  // says 'sky' and never wrote the migration key gets the arch once.
+  // No write-back here: the key rides along on the next ordinary save
+  // (any settings change saves the whole object, key included), and
+  // until then the migration is idempotent — it produces the same
+  // in-memory settings on every load. A save from inside the load
+  // raced the next load's blob and clobbered it.
+  if (merged.heroLookArchDefault !== true) {
+    if (merged.heroLook === 'sky') merged.heroLook = 'arch';
+    merged.heroLookArchDefault = true;
+  }
   return noteSecureRead(minimalLook(merged), secureFailed);
 }
 

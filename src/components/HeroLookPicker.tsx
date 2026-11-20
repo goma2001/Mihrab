@@ -1,5 +1,5 @@
 /**
- * The hero's two looks, offered by showing them, as the layouts are
+ * The hero's three looks, offered by showing them, as the layouts are
  * (LayoutPicker): a small picture of the hero in the reader's own colours
  * — the sky of the hour under the Sky theme, the page's paper otherwise —
  * with the chosen one in the accent's ring.
@@ -8,9 +8,11 @@
  * Track is the same band as a chart (screens/home/trackModel.ts): the
  * horizon as a hairline over the eyebrow, the day's arc, the sun on it
  * and the ring where it will be at the next prayer, the stretch between
- * them drawn stronger. Sketches, not screenshots: lines where the words
- * are, so they read the same in every language and at every text size,
- * and only the countdown in type.
+ * them drawn stronger. Arch is the Arch of Light (1.0.4): a stone card
+ * with the sun's path as a gold arch, the day's path as dots under it,
+ * the countdown under those. Sketches, not screenshots: lines where the
+ * words are, so they read the same in every language and at every text
+ * size, and only the countdown in type.
  *
  * Under Minimal the Track has no rail and carries on below the horizon
  * (TodayCard `trackDepth`), so its picture does too when `minimal` is set.
@@ -20,6 +22,7 @@ import { Pressable, StyleSheet, Text, View } from 'react-native';
 import Svg, { Circle, Line, Path } from 'react-native-svg';
 import { useTranslation } from 'react-i18next';
 import { RADIUS, SPACING } from '../theme/tokens';
+import { ARCH_GOLD } from '../theme/tokens';
 import { typeStyle } from '../theme/typography';
 import { linearDown, radialGlow, withAlpha } from '../screens/home/skyPaint';
 import type { HeroLook } from '../settings/types';
@@ -94,6 +97,15 @@ function PaintedPreview(c: Colors) {
   );
 }
 
+/** A point on the preview's arc — the quadratic the chart looks share. */
+const arcPointAt = (t: number, horizon: number) => {
+  const u = 1 - t;
+  return {
+    x: u * u * 14 + 2 * u * t * (PREVIEW_W / 2) + t * t * (PREVIEW_W - 14),
+    y: u * u * horizon + 2 * u * t * -horizon * 0.55 + t * t * horizon,
+  };
+};
+
 function TrackPreview(c: Colors) {
   // The day's arc across the band, a sun a third of the way along it, the
   // ring at its top (Dhuhr), the stretch between them stronger, the
@@ -101,13 +113,7 @@ function TrackPreview(c: Colors) {
   const horizon = BAND_H - 2;
   const d = `M 14 ${horizon} Q ${PREVIEW_W / 2} ${-horizon * 0.55} ${PREVIEW_W - 14} ${horizon}`;
   // Points on that quadratic at t = 0.3 (the sun) and 0.5 (the ring).
-  const at = (t: number) => {
-    const u = 1 - t;
-    return {
-      x: u * u * 14 + 2 * u * t * (PREVIEW_W / 2) + t * t * (PREVIEW_W - 14),
-      y: u * u * horizon + 2 * u * t * -horizon * 0.55 + t * t * horizon,
-    };
-  };
+  const at = (t: number) => arcPointAt(t, horizon);
   const sun = at(0.3);
   const ring = at(0.5);
   const stretch = (() => {
@@ -143,9 +149,45 @@ function TrackPreview(c: Colors) {
   );
 }
 
+function ArchPreview(c: Colors) {
+  // The Arch of Light (1.0.4): a stone card with the sun's path as a
+  // gold arch, the sun a third of the way along it, the day's path as
+  // dots under it — done in the accent, the next in gold, the rest
+  // quiet — and the countdown under those, no rail. Drawn once; the
+  // preview never animates.
+  const horizon = BAND_H - 2;
+  const d = `M 14 ${horizon} Q ${PREVIEW_W / 2} ${-horizon * 0.55} ${PREVIEW_W - 14} ${horizon}`;
+  const sun = arcPointAt(0.3, horizon);
+  return (
+    <View style={[styles.preview, { backgroundColor: c.skyFoot }]}>
+      <Svg width={PREVIEW_W} height={BAND_H} viewBox={`0 0 ${PREVIEW_W} ${BAND_H}`} style={styles.band} pointerEvents="none">
+        <Path d={d} stroke={ARCH_GOLD} strokeWidth={1.5} fill="none" />
+        <Line x1={0} y1={horizon} x2={PREVIEW_W} y2={horizon} stroke={ARCH_GOLD} strokeWidth={0.75} strokeOpacity={0.5} />
+        <Circle cx={sun.x} cy={sun.y} r={5} fill={c.sun} />
+      </Svg>
+      <View style={styles.archDots}>
+        {[0, 1, 2, 3, 4, 5].map(i => (
+          <View
+            key={i}
+            style={[
+              styles.archDot,
+              {
+                backgroundColor: i < 2 ? c.accent : i === 2 ? ARCH_GOLD : 'transparent',
+                borderColor: i === 2 ? ARCH_GOLD : i < 2 ? c.accent : c.muted,
+              },
+            ]}
+          />
+        ))}
+      </View>
+      <Words text={c.text} rail={false} />
+    </View>
+  );
+}
+
 function HeroLookPickerImpl({ value, onChange, testID, ...colors }: Props) {
   const { t } = useTranslation();
   const options: ReadonlyArray<{ key: HeroLook; label: string }> = [
+    { key: 'arch', label: t('settings.heroLookArch', 'Arch of Light') },
     { key: 'sky', label: t('settings.heroLookSky', 'Painted') },
     { key: 'track', label: t('settings.heroLookTrack', 'Track') },
   ];
@@ -163,7 +205,13 @@ function HeroLookPickerImpl({ value, onChange, testID, ...colors }: Props) {
             onPress={() => onChange(o.key)}
             style={({ pressed }) => [styles.option, pressed && styles.pressed]}>
             <View style={[styles.frame, { borderColor: selected ? colors.accent : 'transparent' }]}>
-              {o.key === 'sky' ? <PaintedPreview {...colors} /> : <TrackPreview {...colors} />}
+              {o.key === 'sky' ? (
+                <PaintedPreview {...colors} />
+              ) : o.key === 'track' ? (
+                <TrackPreview {...colors} />
+              ) : (
+                <ArchPreview {...colors} />
+              )}
             </View>
             <Text
               style={[typeStyle('footnote'), styles.label, { color: selected ? colors.text : colors.muted }]}
@@ -192,6 +240,19 @@ const styles = StyleSheet.create({
   glow: { position: 'absolute', width: 96, height: 96, top: -24, right: -8 },
   sun: { position: 'absolute', width: 10, height: 10, borderRadius: 5, top: 22, right: 36 },
   words: { paddingHorizontal: 10, paddingBottom: 9 },
+  // The Arch's day path: six dots in a row under the arc.
+  archDots: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    gap: 10,
+    marginTop: 8,
+  },
+  archDot: {
+    width: 7,
+    height: 7,
+    borderRadius: 3.5,
+    borderWidth: 1.25,
+  },
   eyebrow: { marginBottom: 4 },
   rail: { height: 6, justifyContent: 'center', marginTop: 6, alignSelf: 'stretch' },
   railTrack: { position: 'absolute', left: 0, right: 0, height: 1.5, borderRadius: 1 },

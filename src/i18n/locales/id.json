@@ -124,7 +124,14 @@
     "pullRelease": "Lepaskan untuk menyegarkan",
     "pullRefreshing": "Memperbarui waktu salat Anda…",
     "helpMihrabChip": "Bantu صلاتي berkembang",
-    "minimalTimesTitle": "Waktu hari ini"
+    "minimalTimesTitle": "Waktu hari ini",
+    "archPhaseFajr": "Fajr",
+    "archPhaseSunrise": "Sunrise",
+    "archPhaseDay": "Midday",
+    "archPhaseAsr": "Asr",
+    "archPhaseSunset": "Sunset",
+    "archPhaseNight": "Night",
+    "archDayNight": "Day / night"
   },
   "errors": {
     "locationNeededTitle": "Lokasi diperlukan",
@@ -194,7 +201,8 @@
     "heroLook": "Pita langit",
     "heroLookSky": "Dilukis",
     "heroLookTrack": "Lintasan",
-    "heroLookHelp": "Dilukis menampilkan matahari dan bulan di langit. Lintasan menggambar pita sebagai grafik: cakrawala sebagai garis, lintasan matahari hari ini (bulan pada malam hari) sesuai skala di tempat Anda, dan cincin di tempat ia berada pada salat berikutnya.",
+    "heroLookArch": "Arch of Light",
+    "heroLookHelp": "Arch of Light shows the sun's path as an arch on a stone card, with the day's prayers as dots under it. Painted shows the sun and the moon on the sky. Track draws the band as a chart: the horizon as a line, today's path of the sun (the moon's at night) to scale where you are, and a ring where it will be at the next prayer.",
     "themeHelp": "Sistem mencocokkan mode terang atau gelap perangkat Anda. Aktifkan warna Sistem untuk menggunakan palet platform di aplikasi (termasuk Material You di Android). Tombol dan aksen mengikuti warna utama ponsel Anda sehingga aplikasi cocok dengan wallpaper Anda saat warna dinamis tersedia.",
     "clockFormat": "Format waktu",
     "clockFormatAuto": "Otomatis",

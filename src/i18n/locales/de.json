@@ -124,7 +124,14 @@
     "pullRelease": "Zum Aktualisieren loslassen",
     "pullRefreshing": "Gebetszeiten werden aktualisiert…",
     "helpMihrabChip": "Hilf صلاتي zu wachsen",
-    "minimalTimesTitle": "Heutige Zeiten"
+    "minimalTimesTitle": "Heutige Zeiten",
+    "archPhaseFajr": "Fajr",
+    "archPhaseSunrise": "Sunrise",
+    "archPhaseDay": "Midday",
+    "archPhaseAsr": "Asr",
+    "archPhaseSunset": "Sunset",
+    "archPhaseNight": "Night",
+    "archDayNight": "Day / night"
   },
   "errors": {
     "locationNeededTitle": "Standort erforderlich",
@@ -194,7 +201,8 @@
     "heroLook": "Himmelsband",
     "heroLookSky": "Gemalt",
     "heroLookTrack": "Bahn",
-    "heroLookHelp": "Gemalt zeigt Sonne und Mond am Himmel. Bahn zeichnet das Band als Diagramm: den Horizont als Linie, die heutige Bahn der Sonne (nachts die des Mondes) maßstabsgetreu für deinen Ort und einen Ring dort, wo sie beim nächsten Gebet steht.",
+    "heroLookArch": "Arch of Light",
+    "heroLookHelp": "Arch of Light shows the sun's path as an arch on a stone card, with the day's prayers as dots under it. Painted shows the sun and the moon on the sky. Track draws the band as a chart: the horizon as a line, today's path of the sun (the moon's at night) to scale where you are, and a ring where it will be at the next prayer.",
     "themeHelp": "Das System passt sich dem Hell- oder Dunkelmodus Ihres Geräts an. Aktivieren Sie Systemfarben, um die Plattformpalette in der App zu verwenden (einschließlich Material You auf Android). Schaltflächen und Akzente folgen der Primärfarbe Ihres Telefons, sodass die App zu Ihrem Hintergrundbild passt, wenn dynamische Farben verfügbar sind.",
     "clockFormat": "Zeitformat",
     "clockFormatAuto": "Automatisch",

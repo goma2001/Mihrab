@@ -124,7 +124,14 @@
     "pullRelease": "রিফ্রেশ করতে ছেড়ে দিন",
     "pullRefreshing": "আপনার নামাজের সময় রিফ্রেশ হচ্ছে…",
     "helpMihrabChip": "صلاتيকে ছড়িয়ে দিন",
-    "minimalTimesTitle": "আজকের সময়"
+    "minimalTimesTitle": "আজকের সময়",
+    "archPhaseFajr": "Fajr",
+    "archPhaseSunrise": "Sunrise",
+    "archPhaseDay": "Midday",
+    "archPhaseAsr": "Asr",
+    "archPhaseSunset": "Sunset",
+    "archPhaseNight": "Night",
+    "archDayNight": "Day / night"
   },
   "errors": {
     "locationNeededTitle": "অবস্থান প্রয়োজন",
@@ -194,7 +201,8 @@
     "heroLook": "আকাশের পটি",
     "heroLookSky": "আঁকা",
     "heroLookTrack": "পথ",
-    "heroLookHelp": "আঁকা আকাশে সূর্য ও চাঁদ দেখায়। পথ পটিটিকে একটি চার্ট হিসেবে আঁকে: দিগন্ত একটি রেখা, আজ সূর্যের পথ (রাতে চাঁদের) আপনার অবস্থান অনুযায়ী মাপে, আর পরের নামাজের সময় সে যেখানে থাকবে সেখানে একটি বৃত্ত।",
+    "heroLookArch": "Arch of Light",
+    "heroLookHelp": "Arch of Light shows the sun's path as an arch on a stone card, with the day's prayers as dots under it. Painted shows the sun and the moon on the sky. Track draws the band as a chart: the horizon as a line, today's path of the sun (the moon's at night) to scale where you are, and a ring where it will be at the next prayer.",
     "themeHelp": "সিস্টেম আপনার ডিভাইস হালকা বা অন্ধকার মোড মেলে. অ্যাপে প্ল্যাটফর্ম প্যালেট ব্যবহার করতে সিস্টেম রং চালু করুন (Android-এ মেটেরিয়াল ইউ সহ)। বোতাম এবং অ্যাকসেন্টগুলি আপনার ফোনের প্রাথমিক রঙ অনুসরণ করে যাতে ডায়নামিক রঙ উপলব্ধ থাকলে অ্যাপটি আপনার ওয়ালপেপারের সাথে মেলে।",
     "clockFormat": "সময়ের বিন্যাস",
     "clockFormatAuto": "স্বয়ংক্রিয়",

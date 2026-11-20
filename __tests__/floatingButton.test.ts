@@ -229,12 +229,12 @@ describe('the native side is wired up', () => {
     );
   });
 
-  it('the pill layout is the dark-green pill with gold text', () => {
+  it('the pill layout is the deep-emerald pill with gold text', () => {
     const layout = repo('android', 'app', 'src', 'main', 'res', 'layout', 'overlay_pill.xml');
     expect(layout).toContain('android:background="@drawable/overlay_pill_bg"');
     expect(layout).toContain('android:textColor="#C9A227"');
     const bg = repo('android', 'app', 'src', 'main', 'res', 'drawable', 'overlay_pill_bg.xml');
-    expect(bg).toContain('<solid android:color="#0B6B4F" />');
+    expect(bg).toContain('<solid android:color="#01543F" />');
     expect(bg).toContain('<stroke android:width="1dp" android:color="#C9A227" />');
   });
 });
@@ -311,7 +311,7 @@ describe('the v2 pill and times panel (native side)', () => {
     expect(layout).toContain('android:id="@+id/overlay_panel_open_app"');
     expect(layout).toContain('android:background="@drawable/overlay_panel_bg"');
     const bg = repo('android', 'app', 'src', 'main', 'res', 'drawable', 'overlay_panel_bg.xml');
-    expect(bg).toContain('<solid android:color="#0B6B4F" />');
+    expect(bg).toContain('<solid android:color="#01543F" />');
     expect(bg).toContain('<stroke android:width="1dp" android:color="#C9A227" />');
   });
 
@@ -321,11 +321,11 @@ describe('the v2 pill and times panel (native side)', () => {
     expect(service).toMatch(/Color\.parseColor\("#C9A227"\)/);
   });
 
-  it('the release is 1.0.3', () => {
+  it('the release is 1.0.4', () => {
     const pkg = JSON.parse(repo('package.json')) as { version: string };
-    expect(pkg.version).toBe('1.0.3');
+    expect(pkg.version).toBe('1.0.4');
     const gradle = repo('android', 'app', 'build.gradle');
-    expect(gradle).toContain('versionCode 4');
-    expect(gradle).toContain('versionName "1.0.3"');
+    expect(gradle).toContain('versionCode 5');
+    expect(gradle).toContain('versionName "1.0.4"');
   });
 });
