@@ -8,7 +8,9 @@ import android.app.Service
 import android.content.Context
 import android.content.Intent
 import android.content.pm.ServiceInfo
+import android.graphics.Color
 import android.graphics.PixelFormat
+import android.graphics.Typeface
 import android.os.Build
 import android.os.Handler
 import android.os.IBinder
@@ -19,26 +21,41 @@ import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.WindowManager
+import android.widget.FrameLayout
+import android.widget.LinearLayout
 import android.widget.TextView
 
 /**
  * Floating prayer button as a system overlay: a small dark-green pill
- * with gold text (next prayer + live countdown) drawn above every app,
- * even when صلاتي itself is closed.
+ * with gold text drawn above every app, even when صلاتي itself is
+ * closed.
  *
  * Ported from the old Flutter Salaty's OverlayService
  * (com.goma.salaty): the same foreground service, the same pill, the
  * same wire format — the times arrive from JavaScript as
- * "name|epochMs;name|epochMs;..." (today's 5 prayers + tomorrow's
- * Fajr) and are persisted in this service's own SharedPreferences, so
- * a reboot restores the last-known countdown without the app.
+ * "hijri|<Hijri date>;title|<panel title>;openapp|<open-app
+ * label>;name|epochMs|HH:MM;name|epochMs|HH:MM;..." (today's five
+ * prayers plus tomorrow's Fajr) and are persisted in this service's
+ * own SharedPreferences, so a reboot restores the last-known
+ * countdown without the app. The clock time rides in the payload
+ * because native code never formats a time
+ * (__tests__/noNativeTimeParsing.test.ts). Payloads without the
+ * three meta segments or the clock field (v1) still parse: the panel
+ * then shows without the Hijri line and with the app name on its
+ * title and open rows, and a prayer without a clock shows its name
+ * alone.
  *
  * - Foreground service (START_STICKY): the system restarts it if it
  *   is killed, and it survives the app being swiped away.
- * - The pill is draggable (position saved as screen fractions) and a
- *   tap opens MainActivity. When a prayer time is reached the pill
- *   shows "حان الآن — <name>" for 60 seconds, then rolls to the next
- *   prayer automatically.
+ * - The pill has two lines: the next prayer and its clock time
+ *   ("العصر 15:08") above, the live countdown below, larger and
+ *   bolder. It is draggable (position saved as screen fractions).
+ *   A tap toggles the day's-times panel: today's five prayers with
+ *   their times, the Hijri date on top, and a row that opens the app.
+ *   The panel never takes focus; a tap outside it, the ✕, or another
+ *   tap on the pill dismisses it. When a prayer time is reached the
+ *   pill shows "حان الآن — <name>" for 60 seconds, then rolls to the
+ *   next prayer automatically.
  * - Started ONLY from user action (the Settings toggle, through
  *   FloatingButtonModule) or from FloatingButtonBootReceiver after a
  *   reboot. Never started from app launch.
@@ -49,7 +66,7 @@ class FloatingButtonService : Service() {
   companion object {
     const val PREFS_NAME = "salaty_floating_button_prefs"
     const val KEY_ENABLED = "enabled"
-    const val KEY_TIMES = "times" // "name|epochMs;name|epochMs;..."
+    const val KEY_TIMES = "times" // "hijri|…;title|…;openapp|…;name|epochMs;…"
     const val KEY_POS_X = "pos_x" // pill-centre fraction of width
     const val KEY_POS_Y = "pos_y" // pill-centre fraction of height
     const val ACTION_START = "com.goma.salat.overlay.START"
@@ -59,13 +76,43 @@ class FloatingButtonService : Service() {
     private const val NOW_WINDOW_MS = 60_000L
   }
 
+  /** One parsed payload: the times plus the panel's display strings. */
+  private data class OverlayPayload(
+    val times: List<PrayerTime>,
+    val hijriDate: String?,
+    val panelTitle: String?,
+    val openAppLabel: String?,
+  )
+
+  /** One prayer from the payload: name, instant, and its clock time. */
+  private data class PrayerTime(
+    val name: String,
+    val at: Long,
+    val clock: String?,
+  )
+
+  /** One row of the times panel, kept to refresh its highlight. */
+  private data class PanelRowView(
+    val name: TextView,
+    val time: TextView,
+    val at: Long,
+  )
+
   private var windowManager: WindowManager? = null
   private var pillView: View? = null
-  private var pillText: TextView? = null
+  private var pillLine1: TextView? = null
+  private var pillLine2: TextView? = null
   private var layoutParams: WindowManager.LayoutParams? = null
   private var pillShown = false
+  private var panelScrim: View? = null
+  private var panelView: View? = null
+  private var panelRowViews: List<PanelRowView> = emptyList()
+  private var panelShown = false
   private val handler = Handler(Looper.getMainLooper())
-  private var times: List<Pair<String, Long>> = emptyList()
+  private var times: List<PrayerTime> = emptyList()
+  private var hijriDate: String? = null
+  private var panelTitle: String? = null
+  private var openAppLabel: String? = null
   private var ticking = false
 
   private val ticker = object : Runnable {
@@ -88,9 +135,9 @@ class FloatingButtonService : Service() {
       return START_NOT_STICKY
     }
     intent?.getStringExtra(KEY_TIMES)?.let { raw ->
-      val parsed = parseTimes(raw)
-      if (parsed.isNotEmpty()) {
-        times = parsed
+      val parsed = parseOverlayPayload(raw)
+      if (parsed.times.isNotEmpty()) {
+        applyPayload(parsed)
         saveTimesToPrefs(raw)
       }
     }
@@ -103,6 +150,7 @@ class FloatingButtonService : Service() {
 
   override fun onDestroy() {
     stopTicking()
+    dismissPanel()
     removePill()
     try {
       stopForeground(true)
@@ -175,7 +223,8 @@ class FloatingButtonService : Service() {
     val wm = getSystemService(WINDOW_SERVICE) as WindowManager
     windowManager = wm
     val view = LayoutInflater.from(this).inflate(R.layout.overlay_pill, null)
-    pillText = view.findViewById(R.id.overlay_pill_text)
+    pillLine1 = view.findViewById(R.id.overlay_pill_line1)
+    pillLine2 = view.findViewById(R.id.overlay_pill_line2)
     val type = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
       WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY
     } else {
@@ -226,7 +275,8 @@ class FloatingButtonService : Service() {
       }
     }
     pillView = null
-    pillText = null
+    pillLine1 = null
+    pillLine2 = null
     layoutParams = null
     pillShown = false
   }
@@ -289,7 +339,7 @@ class FloatingButtonService : Service() {
         }
         MotionEvent.ACTION_UP -> {
           if (!moved) {
-            openApp()
+            togglePanel()
           } else {
             savePosition()
           }
@@ -322,6 +372,156 @@ class FloatingButtonService : Service() {
     startActivity(intent)
   }
 
+  // ---- today's-times panel ----
+
+  private fun togglePanel() {
+    if (panelShown) dismissPanel() else showPanel()
+  }
+
+  private fun showPanel() {
+    if (panelShown) return
+    val wm = windowManager ?: return
+    if (!Settings.canDrawOverlays(this)) return
+    val inflater = LayoutInflater.from(this)
+    // A fullscreen transparent scrim: taps outside the panel dismiss
+    // it, taps inside reach the panel. It never takes focus, so the
+    // app underneath keeps what it was doing.
+    val scrim = FrameLayout(this)
+    val panel = inflater.inflate(R.layout.overlay_times_panel, scrim, false)
+    val titleView = panel.findViewById<TextView>(R.id.overlay_panel_title)
+    titleView.text = panelTitle ?: "صلاتي"
+    val hijriView = panel.findViewById<TextView>(R.id.overlay_panel_hijri)
+    if (hijriDate.isNullOrEmpty()) {
+      hijriView.visibility = View.GONE
+    } else {
+      hijriView.visibility = View.VISIBLE
+      hijriView.text = hijriDate
+    }
+    val rowsContainer = panel.findViewById<LinearLayout>(R.id.overlay_panel_rows)
+    rowsContainer.removeAllViews()
+    val rows = mutableListOf<PanelRowView>()
+    // Today's five prayers: the payload's first five entries (the
+    // sixth is tomorrow's Fajr, for the countdown past Isha).
+    for ((name, at, clock) in times.take(5)) {
+      val row = inflater.inflate(R.layout.overlay_times_row, rowsContainer, false)
+      val nameView = row.findViewById<TextView>(R.id.overlay_row_name)
+      val timeView = row.findViewById<TextView>(R.id.overlay_row_time)
+      nameView.text = name
+      if (clock == null) {
+        // A v1 payload's entry has no clock: the name alone.
+        timeView.visibility = View.GONE
+      } else {
+        timeView.visibility = View.VISIBLE
+        timeView.text = clock
+      }
+      rowsContainer.addView(row)
+      rows.add(PanelRowView(nameView, timeView, at))
+    }
+    panelRowViews = rows
+    val openAppView = panel.findViewById<TextView>(R.id.overlay_panel_open_app)
+    openAppView.text = openAppLabel ?: "صلاتي"
+    openAppView.setOnClickListener {
+      dismissPanel()
+      openApp()
+    }
+    panel.findViewById<TextView>(R.id.overlay_panel_close)
+      .setOnClickListener { dismissPanel() }
+    // Measure first, then anchor under the pill, clamped on screen.
+    val density = resources.displayMetrics.density
+    panel.minimumWidth = (220 * density).toInt()
+    panel.measure(
+      View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED),
+      View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED),
+    )
+    val screenW = resources.displayMetrics.widthPixels
+    val screenH = resources.displayMetrics.heightPixels
+    val pillParams = layoutParams
+    val pillH = pillView?.measuredHeight ?: 0
+    var x = pillParams?.x ?: 0
+    var y = (pillParams?.y ?: 0) + pillH + (8 * density).toInt()
+    x = x.coerceIn(0, (screenW - panel.measuredWidth).coerceAtLeast(0))
+    y = y.coerceIn(0, (screenH - panel.measuredHeight).coerceAtLeast(0))
+    val panelParams = FrameLayout.LayoutParams(
+      FrameLayout.LayoutParams.WRAP_CONTENT,
+      FrameLayout.LayoutParams.WRAP_CONTENT,
+      Gravity.TOP or Gravity.START,
+    )
+    panelParams.leftMargin = x
+    panelParams.topMargin = y
+    scrim.addView(panel, panelParams)
+    panelView = panel
+    scrim.setOnTouchListener { _, event ->
+      if (event.action == MotionEvent.ACTION_DOWN) {
+        val loc = IntArray(2)
+        panel.getLocationOnScreen(loc)
+        val inside = event.rawX >= loc[0] && event.rawX < loc[0] + panel.width &&
+          event.rawY >= loc[1] && event.rawY < loc[1] + panel.height
+        if (!inside) {
+          dismissPanel()
+          true
+        } else {
+          false
+        }
+      } else {
+        false
+      }
+    }
+    val type = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+      WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY
+    } else {
+      @Suppress("DEPRECATION")
+      WindowManager.LayoutParams.TYPE_PHONE
+    }
+    val params = WindowManager.LayoutParams(
+      WindowManager.LayoutParams.MATCH_PARENT,
+      WindowManager.LayoutParams.MATCH_PARENT,
+      type,
+      WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
+      PixelFormat.TRANSLUCENT,
+    )
+    params.gravity = Gravity.TOP or Gravity.START
+    try {
+      wm.addView(scrim, params)
+      panelScrim = scrim
+      panelShown = true
+    } catch (_: Exception) {
+      // Overlay not allowed: stay with the pill only.
+      panelScrim = null
+      panelView = null
+      panelRowViews = emptyList()
+      return
+    }
+    refreshPanelHighlight()
+  }
+
+  private fun dismissPanel() {
+    val scrim = panelScrim
+    if (scrim != null && panelShown) {
+      try {
+        windowManager?.removeView(scrim)
+      } catch (_: Exception) {
+        // Already removed.
+      }
+    }
+    panelScrim = null
+    panelView = null
+    panelRowViews = emptyList()
+    panelShown = false
+  }
+
+  /** Gold + bold for the next prayer's row, plain white for the rest. */
+  private fun refreshPanelHighlight() {
+    if (!panelShown) return
+    val now = System.currentTimeMillis()
+    val next = times.firstOrNull { it.at > now }
+    val gold = Color.parseColor("#C9A227")
+    for (row in panelRowViews) {
+      val isNext = next != null && row.at == next.at
+      row.name.setTextColor(if (isNext) gold else Color.WHITE)
+      row.name.setTypeface(null, if (isNext) Typeface.BOLD else Typeface.NORMAL)
+    }
+  }
+
   // ---- countdown ----
 
   private fun startTicking() {
@@ -336,26 +536,39 @@ class FloatingButtonService : Service() {
   }
 
   private fun updatePillText() {
-    val textView = pillText ?: return
+    val line1 = pillLine1 ?: return
+    val line2 = pillLine2 ?: return
     val now = System.currentTimeMillis()
     if (times.isEmpty()) {
-      textView.text = "صلاتي"
+      line1.text = "صلاتي"
+      line2.visibility = View.GONE
       return
     }
+    line2.visibility = View.VISIBLE
     // "حان الآن" for 60s after a prayer time, then roll on.
-    val last = times.lastOrNull { it.second <= now }
-    if (last != null && now - last.second < NOW_WINDOW_MS) {
-      textView.text = "حان الآن — ${last.first}"
+    val last = times.lastOrNull { it.at <= now }
+    if (last != null && now - last.at < NOW_WINDOW_MS) {
+      line1.text = "حان الآن — ${last.name}"
+      val next = times.firstOrNull { it.at > now }
+      if (next != null) {
+        line2.text = formatHms(next.at - now)
+      } else {
+        line2.visibility = View.GONE
+      }
+      if (panelShown) refreshPanelHighlight()
       return
     }
-    val next = times.firstOrNull { it.second > now }
+    val next = times.firstOrNull { it.at > now }
     if (next == null) {
       // All stored times are past (stale — the app pushes fresh
       // times on the next launch).
-      textView.text = "صلاتي"
+      line1.text = "صلاتي"
+      line2.visibility = View.GONE
       return
     }
-    textView.text = "${next.first} ${formatHms(next.second - now)}"
+    line1.text = if (next.clock != null) "${next.name} ${next.clock}" else next.name
+    line2.text = formatHms(next.at - now)
+    if (panelShown) refreshPanelHighlight()
   }
 
   private fun formatHms(ms: Long): String {
@@ -365,16 +578,48 @@ class FloatingButtonService : Service() {
 
   // ---- persistence (this service's own prefs file) ----
 
-  private fun parseTimes(raw: String): List<Pair<String, Long>> {
-    val out = mutableListOf<Pair<String, Long>>()
-    for (part in raw.split(";")) {
-      val sep = part.lastIndexOf("|")
-      if (sep <= 0) continue
-      val name = part.substring(0, sep)
-      val ms = part.substring(sep + 1).toLongOrNull() ?: continue
-      out.add(name to ms)
+  private fun applyPayload(payload: OverlayPayload) {
+    times = payload.times
+    hijriDate = payload.hijriDate
+    panelTitle = payload.panelTitle
+    openAppLabel = payload.openAppLabel
+    if (panelShown) {
+      // Fresh times while the panel is open: rebuild it.
+      dismissPanel()
+      showPanel()
     }
-    return out
+  }
+
+  /**
+   * The wire format (see src/services/floatingButton.ts):
+   * "hijri|…;title|…;openapp|…;name|epochMs|HH:MM;…". The three meta
+   * segments are optional, and so is the clock field — a v1 payload
+   * ("name|epochMs;…") parses to times with no Hijri date, title,
+   * open-app label or clock.
+   */
+  private fun parseOverlayPayload(raw: String): OverlayPayload {
+    val times = mutableListOf<PrayerTime>()
+    var hijri: String? = null
+    var title: String? = null
+    var openApp: String? = null
+    for (part in raw.split(";")) {
+      when {
+        part.startsWith("hijri|") ->
+          hijri = part.removePrefix("hijri|").takeIf { it.isNotEmpty() }
+        part.startsWith("title|") ->
+          title = part.removePrefix("title|").takeIf { it.isNotEmpty() }
+        part.startsWith("openapp|") ->
+          openApp = part.removePrefix("openapp|").takeIf { it.isNotEmpty() }
+        else -> {
+          val fields = part.split("|")
+          if (fields.size < 2) continue
+          val ms = fields[1].toLongOrNull() ?: continue
+          val clock = fields.getOrNull(2)?.takeIf { it.isNotEmpty() }
+          times.add(PrayerTime(fields[0], ms, clock))
+        }
+      }
+    }
+    return OverlayPayload(times, hijri, title, openApp)
   }
 
   private fun saveTimesToPrefs(raw: String) {
@@ -387,7 +632,7 @@ class FloatingButtonService : Service() {
   private fun loadTimesFromPrefs() {
     val raw = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
       .getString(KEY_TIMES, null) ?: return
-    val parsed = parseTimes(raw)
-    if (parsed.isNotEmpty()) times = parsed
+    val parsed = parseOverlayPayload(raw)
+    if (parsed.times.isNotEmpty()) applyPayload(parsed)
   }
 }

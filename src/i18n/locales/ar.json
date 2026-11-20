@@ -253,6 +253,8 @@
     "floatingButtonPermissionTitle": "السماح بالظهور فوق التطبيقات غير مفعّل",
     "floatingButtonPermissionHelp": "بدون هذا الإذن لا يستطيع التطبيق رسم الزر فوق التطبيقات الأخرى.",
     "floatingButtonPermissionAction": "فتح إعدادات النظام",
+    "floatingButtonPanelTitle": "مواقيت اليوم",
+    "floatingButtonOpenApp": "فتح التطبيق",
     "language": "اللغة",
     "languageHelp": "اختر لغة التطبيق. العربية والأردية تستخدمان تخطيطًا من اليمين لليسار.",
     "langEn": "الإنجليزية",
