@@ -253,6 +253,8 @@
     "floatingButtonPermissionTitle": "Draw over other apps is off",
     "floatingButtonPermissionHelp": "Without this permission the app cannot draw the button above other apps.",
     "floatingButtonPermissionAction": "Open system settings",
+    "floatingButtonPanelTitle": "Today's prayer times",
+    "floatingButtonOpenApp": "Open the app",
     "language": "زبان",
     "languageHelp": "ایپ کی زبان منتخب کریں۔ عربی اور اردو میں دائیں سے بائیں ترتیب استعمال ہوتی ہے۔",
     "langEn": "انگریزی",
