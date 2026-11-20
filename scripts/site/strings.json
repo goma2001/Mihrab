@@ -113,25 +113,7 @@
       "apple": "Apple",
       "android": "Android",
       "flag": "Obtainium is recommended: first to get every update, and it updates itself.",
-      "getObtainium": "Don’t have it? Get Obtainium",
-      "desktop": {
-        "h3": "Windows & Linux",
-        "tag": "Preview",
-        "flag": "The whole app runs on the desktop, and it is looking for testers.",
-        "report": "Report what breaks",
-        "windows": "Windows",
-        "linux": "Linux",
-        "install": "Install",
-        "remove": "Remove, with its settings"
-      },
-      "web": {
-        "h3": "In your browser",
-        "body": "Prayer times for where you are, notifications at each prayer, and the whole Qur’an.",
-        "link": "Open Mihrab Web",
-        "h2": "Try it now — nothing to install",
-        "note": "Your settings and bookmarks stay in this browser. Add it to your home screen to keep it close.",
-        "alt": "Mihrab Web in a browser: the Today page with the countdown to Maghrib under a sunset sky, and the day’s prayer times."
-      }
+      "getObtainium": "Don’t have it? Get Obtainium"
     },
     "reviews": {
       "eyebrow": "From the stores",
@@ -146,12 +128,11 @@
       "screenshots": "Screenshots",
       "features": "Features",
       "privacy": "Privacy",
-      "faq": "Questions",
-      "web": "Web app"
+      "faq": "Questions"
     },
     "labels": {
       "lang": "Language",
-      "allDownloads": "Windows, Linux and F-Droid"
+      "allDownloads": "F-Droid and more"
     }
   },
   "sv": {
@@ -268,25 +249,7 @@
       "apple": "Apple",
       "android": "Android",
       "flag": "Obtainium rekommenderas: först med varje uppdatering, och uppdaterar sig själv.",
-      "getObtainium": "Har du det inte? Hämta Obtainium",
-      "desktop": {
-        "h3": "Windows och Linux",
-        "tag": "Förhandsversion",
-        "flag": "Hela appen fungerar på datorn, och vi söker testare.",
-        "report": "Rapportera det som inte fungerar",
-        "windows": "Windows",
-        "linux": "Linux",
-        "install": "Installera",
-        "remove": "Ta bort, med inställningarna"
-      },
-      "web": {
-        "h3": "I webbläsaren",
-        "body": "Bönetider för där du är, aviseringar vid varje bön och hela Koranen.",
-        "link": "Öppna Mihrab Web",
-        "h2": "Prova nu — inget att installera",
-        "note": "Dina inställningar och bokmärken stannar i den här webbläsaren. Lägg till den på hemskärmen för att ha den nära.",
-        "alt": "Mihrab Web i en webbläsare: sidan Idag med nedräkningen till maghrib under en solnedgångshimmel, och dagens bönetider."
-      }
+      "getObtainium": "Har du det inte? Hämta Obtainium"
     },
     "reviews": {
       "eyebrow": "Från butikerna",
@@ -297,10 +260,6 @@
     "nav": {
       "label": "Avsnitt",
       "items": [
-        [
-          "#web",
-          "Webbapp"
-        ],
         [
           "#ladda-ner",
           "Ladda ner"
@@ -333,7 +292,7 @@
     },
     "labels": {
       "lang": "Språk",
-      "allDownloads": "Windows, Linux och F-Droid"
+      "allDownloads": "F-Droid och mer"
     },
     "navInstall": "#ladda-ner"
   },
@@ -354,29 +313,10 @@
       "eyebrow": "التثبيت",
       "h2": "احصل على محراب",
       "lede": "التطبيق نفسه في كل القنوات، مبنيّ من المصدر نفسه. ولا تحتوي أي نسخة أندرويد على خدمات Google Play، ومنها نسخة متجر Play.",
-      "brew": "على الماك:",
       "apple": "أبل",
       "android": "أندرويد",
       "flag": "ننصح بـ Obtainium: أول من يحصل على كل إصدار، ويحدّث نفسه.",
-      "getObtainium": "ليس لديك؟ احصل على Obtainium",
-      "desktop": {
-        "h3": "ويندوز ولينكس",
-        "tag": "معاينة",
-        "flag": "التطبيق كاملًا يعمل على الحاسوب، ونبحث عمّن يجرّبه.",
-        "report": "أبلغ عمّا لا يعمل",
-        "windows": "ويندوز",
-        "linux": "لينكس",
-        "install": "التثبيت",
-        "remove": "الإزالة مع الإعدادات"
-      },
-      "web": {
-        "h3": "في متصفحك",
-        "body": "مواقيت الصلاة لمكانك، وإشعار عند كل صلاة، والقرآن كاملًا.",
-        "link": "افتح محراب على الويب",
-        "h2": "جرّبه الآن — دون أي تثبيت",
-        "note": "تبقى إعداداتك وعلاماتك في هذا المتصفح. أضفه إلى الشاشة الرئيسية ليبقى قريبًا منك.",
-        "alt": "محراب على الويب في متصفح: صفحة «اليوم» وفيها العدّ التنازلي لصلاة المغرب تحت سماء الغروب، ومواقيت صلوات اليوم."
-      }
+      "getObtainium": "ليس لديك؟ احصل على Obtainium"
     },
     "features": {
       "eyebrow": "المزايا",
@@ -441,7 +381,7 @@
         },
         {
           "q": "ما الأجهزة المدعومة؟",
-          "a": "آيفون وآيباد وأندرويد وماك. على الماك يمكن التثبيت عبر Homebrew."
+          "a": "آيفون وآيباد وأندرويد وماك."
         },
         {
           "q": "لماذا تختلف مواقيت محراب عن التطبيقات الأخرى؟",
@@ -462,10 +402,6 @@
         {
           "q": "هل يتتبّع محراب موقعي؟",
           "a": "لا. لا تحليلات ولا شبكة إعلانات ولا حساب. ولا تغادر الإحداثيات الهاتف إلا في طلبين، ليس أحدهما إلى المطوّر: إلى AlAdhan حين يكون مصدر مواقيتك، وإلى OpenStreetMap عند تحديد الموقع تلقائيًا لمعرفة اسم بلدتك، مقرَّبة إلى نحو كيلومتر. اختر الحساب على الجهاز وأدخل بلدتك يدويًا، فلا يُرسل أيٌّ منهما."
-        },
-        {
-          "q": "هل أستطيع استعمال محراب دون تثبيت أي شيء؟",
-          "a": "نعم. يعمل محراب على الويب في متصفحك على العنوان mihrabhq.github.io: مواقيت الصلاة لمكانك، وإشعار عند كل صلاة ما دام التبويب مفتوحًا، والقرآن كاملًا. وتبقى الإعدادات والعلامات في ذلك المتصفح."
         }
       ]
     },
@@ -489,10 +425,10 @@
       "lang": "اللغة",
       "version": "الإصدار",
       "source": "الشيفرة على GitHub",
-      "built": "محراب {v}، من تطوير حسن الغمري.",
+      "built": "صلاتي {v}، من تطوير جوما محمد.",
       "banner": "وقفة مع فلسطين.",
       "bannerMore": "أين تتبرّع، وماذا تقاطع، وكيف تتابع.",
-      "allDownloads": "ويندوز ولينكس وF-Droid"
+      "allDownloads": "F-Droid والمزيد"
     },
     "shots": {
       "eyebrow": "لقطات الشاشة",
@@ -627,7 +563,7 @@
           ]
         }
       ],
-      "note": "محراب تطبيق مستقل، لا يتبع أي وزارة ولا يتحدث باسمها. الطريقة والتحقق منها مفتوحان للجميع: [mihrab-methods](https://github.com/MihrabHQ/mihrab-methods)."
+      "note": "محراب تطبيق مستقل، لا يتبع أي وزارة ولا يتحدث باسمها. الطريقة والتحقق منها مفتوحان للجميع: mihrab-methods."
     },
     "reviews": {
       "eyebrow": "من المتاجر",
@@ -642,8 +578,7 @@
       "screenshots": "لقطات",
       "features": "المزايا",
       "privacy": "الخصوصية",
-      "faq": "أسئلة",
-      "web": "تطبيق الويب"
+      "faq": "أسئلة"
     },
     "accuracy": {
       "review": "native",
@@ -656,11 +591,11 @@
       "cards": [
         {
           "h3": "تحقّق بنفسك",
-          "p": "الطرق والمقارنة وسجلّها منشورة للجميع في [mihrab-methods](https://github.com/MihrabHQ/mihrab-methods). آخر مقارنة: {fig:total.checkedAtLong}."
+          "p": "الطرق والمقارنة وسجلّها منشورة للجميع في mihrab-methods. آخر مقارنة: {fig:total.checkedAtLong}."
         },
         {
           "h3": "وقت يخالف وقت مسجدك؟",
-          "p": "اذكر المدينة والتاريخ والصلاة والوقت المطبوع في [نموذج الإبلاغ](https://github.com/MihrabHQ/mihrab-methods/issues/new?template=times-differ.yml). وإن كان لمسجدك مواقيته الخاصة، فتعديل لكل صلاة داخل التطبيق يطابقها."
+          "p": "اذكر المدينة والتاريخ والصلاة والوقت المطبوع في [نموذج الإبلاغ](https://github.com/goma2001/Mihrab/issues/new). وإن كان لمسجدك مواقيته الخاصة، فتعديل لكل صلاة داخل التطبيق يطابقها."
         },
         {
           "h3": "جداول منشورة، كما طُبعت",
@@ -780,29 +715,10 @@
       "eyebrow": "Kurulum",
       "h2": "Mihrab'ı edinin",
       "lede": "Her kanalda aynı uygulama, aynı kaynaktan derlenmiş. Play Store sürümü dahil hiçbir Android sürümü Google Play Hizmetleri içermez.",
-      "brew": "Mac'te:",
       "apple": "Apple",
       "android": "Android",
       "flag": "Obtainium önerilir: her sürüm önce orada ve kendini günceller.",
-      "getObtainium": "Yüklü değil mi? Obtainium’u edinin",
-      "desktop": {
-        "h3": "Windows ve Linux",
-        "tag": "Önizleme",
-        "flag": "Uygulamanın tamamı bilgisayarda çalışıyor ve test edecek kişiler arıyoruz.",
-        "report": "Bozuk olanı bildirin",
-        "windows": "Windows",
-        "linux": "Linux",
-        "install": "Kur",
-        "remove": "Ayarlarıyla birlikte kaldır"
-      },
-      "web": {
-        "h3": "Tarayıcınızda",
-        "body": "Bulunduğunuz yerin namaz vakitleri, her vakitte bildirim ve Kur’an’ın tamamı.",
-        "link": "Mihrab Web’i aç",
-        "h2": "Hemen deneyin — kurulum yok",
-        "note": "Ayarlarınız ve yer imleriniz bu tarayıcıda kalır. Elinizin altında olması için ana ekranınıza ekleyin.",
-        "alt": "Tarayıcıda Mihrab Web: gün batımı göğü altında akşam namazına geri sayımıyla Bugün sayfası ve günün namaz vakitleri."
-      }
+      "getObtainium": "Yüklü değil mi? Obtainium’u edinin"
     },
     "features": {
       "eyebrow": "Özellikler",
@@ -867,7 +783,7 @@
         },
         {
           "q": "Hangi cihazlarda çalışır?",
-          "a": "iPhone, iPad, Android ve Mac. Mac'te Homebrew ile kurulur."
+          "a": "iPhone, iPad, Android ve Mac."
         },
         {
           "q": "Mihrab’ın vakitleri neden diğer uygulamalardan farklı?",
@@ -888,10 +804,6 @@
         {
           "q": "Mihrab konumumu izliyor mu?",
           "a": "Hayır. Analitik yok, reklam ağı yok, hesap yok. Koordinatlar telefondan yalnızca iki istekte çıkar, hiçbiri geliştiriciye gitmez: vakitlerinizin kaynağı olduğunda AlAdhan’a ve otomatik konumda, şehrinizin adını bulmak için yaklaşık bir kilometreye yuvarlanmış olarak OpenStreetMap’e. Cihazda hesaplamayı seçip şehrinizi elle girerseniz ikisi de yapılmaz."
-        },
-        {
-          "q": "Mihrab’ı hiçbir şey kurmadan kullanabilir miyim?",
-          "a": "Evet. Mihrab Web tarayıcınızda mihrabhq.github.io adresinde çalışır: bulunduğunuz yerin namaz vakitleri, sekme açıkken her namazda bir bildirim ve Kur’an’ın tamamı. Ayarlar ve yer imleri o tarayıcıda kalır."
         }
       ]
     },
@@ -915,10 +827,10 @@
       "lang": "Dil",
       "version": "Sürüm",
       "source": "GitHub'da kaynak kodu",
-      "built": "Mihrab {v}, Hassan El Ghamri tarafından.",
+      "built": "صلاتي {v}, Goma Mohamed tarafından.",
       "banner": "Filistin'in yanındayız.",
       "bannerMore": "Nereye bağış yapılır, ne boykot edilir, nasıl takip edilir.",
-      "allDownloads": "Windows, Linux ve F-Droid"
+      "allDownloads": "F-Droid ve daha fazlası"
     },
     "shots": {
       "eyebrow": "Ekran görüntüleri",
@@ -1046,7 +958,7 @@
           ]
         }
       ],
-      "note": "Mihrab bağımsızdır; Diyanet İşleri Başkanlığı ile bağlantısı yoktur ve onun adına konuşmaz. Yöntem ve doğrulaması açık kaynaktır: [mihrab-methods](https://github.com/MihrabHQ/mihrab-methods)."
+      "note": "Mihrab bağımsızdır; Diyanet İşleri Başkanlığı ile bağlantısı yoktur ve onun adına konuşmaz. Yöntem ve doğrulaması açık kaynaktır: mihrab-methods."
     },
     "reviews": {
       "eyebrow": "Mağazalardan",
@@ -1061,8 +973,7 @@
       "screenshots": "Ekran görüntüleri",
       "features": "Özellikler",
       "privacy": "Gizlilik",
-      "faq": "Sorular",
-      "web": "Web uygulaması"
+      "faq": "Sorular"
     },
     "accuracy": {
       "review": "native",
@@ -1075,11 +986,11 @@
       "cards": [
         {
           "h3": "Kendiniz kontrol edin",
-          "p": "Yöntemler, kontrol ve kaydı [mihrab-methods](https://github.com/MihrabHQ/mihrab-methods) deposunda herkese açıktır. Son kontrol: {fig:total.checkedAtLong}."
+          "p": "Yöntemler, kontrol ve kaydı mihrab-methods deposunda herkese açıktır. Son kontrol: {fig:total.checkedAtLong}."
         },
         {
           "h3": "Bir vakit caminizinkinden farklı mı?",
-          "p": "Şehri, tarihi, namazı ve basılı vakti [bildirim formunda](https://github.com/MihrabHQ/mihrab-methods/issues/new?template=times-differ.yml) yazın. Caminiz kendi vakitlerini kullanıyorsa, uygulamadaki namaz başına düzeltme onlara uyar."
+          "p": "Şehri, tarihi, namazı ve basılı vakti [bildirim formunda](https://github.com/goma2001/Mihrab/issues/new) yazın. Caminiz kendi vakitlerini kullanıyorsa, uygulamadaki namaz başına düzeltme onlara uyar."
         },
         {
           "h3": "Yayımlanan tablolar, basıldığı gibi",
@@ -1199,29 +1110,10 @@
       "eyebrow": "انسٹال",
       "h2": "محراب حاصل کریں",
       "lede": "ہر ذریعے پر وہی ایپ، ایک ہی سورس سے بنی۔ پلے اسٹور والے سمیت کسی بھی اینڈرائیڈ ورژن میں گوگل پلے سروسز نہیں ہیں۔",
-      "brew": "میک پر:",
       "apple": "ایپل",
       "android": "اینڈرائیڈ",
       "flag": "Obtainium تجویز کیا جاتا ہے: ہر ورژن سب سے پہلے، اور خود اپڈیٹ ہوتا ہے۔",
-      "getObtainium": "موجود نہیں؟ Obtainium حاصل کریں",
-      "desktop": {
-        "h3": "ونڈوز اور لینکس",
-        "tag": "پیش نظارہ",
-        "flag": "پوری ایپ کمپیوٹر پر چلتی ہے، اور ہمیں آزمانے والوں کی تلاش ہے۔",
-        "report": "جو کام نہ کرے اس کی اطلاع دیں",
-        "windows": "ونڈوز",
-        "linux": "لینکس",
-        "install": "انسٹال کریں",
-        "remove": "ترتیبات سمیت ہٹائیں"
-      },
-      "web": {
-        "h3": "اپنے براؤزر میں",
-        "body": "آپ کے مقام کے نماز کے اوقات، ہر نماز پر اطلاع، اور پورا قرآن۔",
-        "link": "محراب ویب کھولیں",
-        "h2": "ابھی آزمائیں — کچھ انسٹال کیے بغیر",
-        "note": "آپ کی ترتیبات اور بک مارکس اسی براؤزر میں رہتے ہیں۔ اسے قریب رکھنے کے لیے ہوم اسکرین پر شامل کر لیں۔",
-        "alt": "براؤزر میں محراب ویب: «آج» کا صفحہ، غروب کے آسمان تلے مغرب تک الٹی گنتی اور دن کے اوقاتِ نماز کے ساتھ۔"
-      }
+      "getObtainium": "موجود نہیں؟ Obtainium حاصل کریں"
     },
     "features": {
       "eyebrow": "خصوصیات",
@@ -1286,7 +1178,7 @@
         },
         {
           "q": "کن آلات پر چلتی ہے؟",
-          "a": "آئی فون، آئی پیڈ، اینڈرائیڈ اور میک۔ میک پر Homebrew سے انسٹال کریں۔"
+          "a": "آئی فون، آئی پیڈ، اینڈرائیڈ اور میک۔"
         },
         {
           "q": "محراب کے اوقات دوسری ایپس سے مختلف کیوں ہیں؟",
@@ -1307,10 +1199,6 @@
         {
           "q": "کیا محراب میرے مقام کا سراغ رکھتا ہے؟",
           "a": "نہیں۔ نہ کوئی اینالیٹکس ہے، نہ اشتہاری نیٹ ورک، نہ اکاؤنٹ۔ کوآرڈینیٹس فون سے صرف دو درخواستوں میں باہر جاتے ہیں، اور کوئی بھی ڈویلپر کو نہیں جاتی: AlAdhan کو، جب وہ آپ کے اوقات کا ماخذ ہو، اور خودکار مقام کی صورت میں OpenStreetMap کو، آپ کے قصبے کا نام جاننے کے لیے، تقریباً ایک کلومیٹر تک گول کر کے۔ آلے پر حساب منتخب کریں اور اپنا قصبہ خود درج کریں تو دونوں میں سے کوئی درخواست نہیں بھیجی جاتی۔"
-        },
-        {
-          "q": "کیا میں کچھ انسٹال کیے بغیر محراب استعمال کر سکتا ہوں؟",
-          "a": "جی ہاں۔ محراب ویب آپ کے براؤزر میں mihrabhq.github.io پر چلتا ہے: آپ کے مقام کے اوقاتِ نماز، ٹیب کھلا رہنے تک ہر نماز پر اطلاع، اور پورا قرآن۔ ترتیبات اور بک مارکس اسی براؤزر میں رہتے ہیں۔"
         }
       ]
     },
@@ -1334,10 +1222,10 @@
       "lang": "زبان",
       "version": "ورژن",
       "source": "GitHub پر سورس",
-      "built": "محراب {v}، حسن الغمری کی تیار کردہ۔",
+      "built": "صلاتي {v}، جوما محمد کی تیار کردہ۔",
       "banner": "فلسطین کے ساتھ۔",
       "bannerMore": "کہاں عطیہ کریں، کس کا بائیکاٹ کریں، اور باخبر کیسے رہیں۔",
-      "allDownloads": "ونڈوز، لینکس اور F-Droid"
+      "allDownloads": "F-Droid اور مزید"
     },
     "shots": {
       "eyebrow": "اسکرین شاٹس",
@@ -1461,8 +1349,7 @@
       "screenshots": "اسکرین شاٹس",
       "features": "خصوصیات",
       "privacy": "رازداری",
-      "faq": "سوالات",
-      "web": "ویب ایپ"
+      "faq": "سوالات"
     },
     "accuracy": {
       "review": "native",
@@ -1475,11 +1362,11 @@
       "cards": [
         {
           "h3": "خود جانچیں",
-          "p": "طریقے، جانچ اور اس کا ریکارڈ [mihrab-methods](https://github.com/MihrabHQ/mihrab-methods) میں سب کے لیے کھلے ہیں۔ آخری جانچ: {fig:total.checkedAtLong}۔"
+          "p": "طریقے، جانچ اور اس کا ریکارڈ mihrab-methods میں سب کے لیے کھلے ہیں۔ آخری جانچ: {fig:total.checkedAtLong}۔"
         },
         {
           "h3": "کوئی وقت آپ کی مسجد سے مختلف ہے؟",
-          "p": "شہر، تاریخ، نماز اور چھپا ہوا وقت [رپورٹ فارم](https://github.com/MihrabHQ/mihrab-methods/issues/new?template=times-differ.yml) میں لکھیں۔ اگر آپ کی مسجد اپنے اوقات رکھتی ہے تو ایپ میں ہر نماز کا الگ فرق انہیں ملا دیتا ہے۔"
+          "p": "شہر، تاریخ، نماز اور چھپا ہوا وقت [رپورٹ فارم](https://github.com/goma2001/Mihrab/issues/new) میں لکھیں۔ اگر آپ کی مسجد اپنے اوقات رکھتی ہے تو ایپ میں ہر نماز کا الگ فرق انہیں ملا دیتا ہے۔"
         },
         {
           "h3": "شائع شدہ جدول، جیسے چھپے ہیں",
@@ -1599,29 +1486,10 @@
       "eyebrow": "Pasang",
       "h2": "Dapatkan Mihrab",
       "lede": "Aplikasi yang sama di semua kanal, dibangun dari sumber yang sama. Tidak ada versi Android, termasuk versi Play Store, yang memuat Google Play Services.",
-      "brew": "Di Mac:",
       "apple": "Apple",
       "android": "Android",
       "flag": "Obtainium disarankan: setiap rilis lebih dulu, dan memperbarui sendiri.",
-      "getObtainium": "Belum punya? Dapatkan Obtainium",
-      "desktop": {
-        "h3": "Windows & Linux",
-        "tag": "Pratinjau",
-        "flag": "Seluruh aplikasi berjalan di komputer, dan kami mencari penguji.",
-        "report": "Laporkan yang rusak",
-        "windows": "Windows",
-        "linux": "Linux",
-        "install": "Pasang",
-        "remove": "Hapus, beserta pengaturannya"
-      },
-      "web": {
-        "h3": "Di peramban Anda",
-        "body": "Waktu salat untuk tempat Anda, notifikasi di setiap waktu salat, dan seluruh Al-Qur’an.",
-        "link": "Buka Mihrab Web",
-        "h2": "Coba sekarang — tanpa memasang apa pun",
-        "note": "Pengaturan dan penanda Anda tetap di peramban ini. Tambahkan ke layar utama agar selalu dekat.",
-        "alt": "Mihrab Web di peramban: halaman Hari Ini dengan hitung mundur menuju Magrib di bawah langit senja, dan waktu salat hari itu."
-      }
+      "getObtainium": "Belum punya? Dapatkan Obtainium"
     },
     "features": {
       "eyebrow": "Fitur",
@@ -1686,7 +1554,7 @@
         },
         {
           "q": "Perangkat apa saja yang didukung?",
-          "a": "iPhone, iPad, Android, dan Mac. Di Mac, pasang melalui Homebrew."
+          "a": "iPhone, iPad, Android, dan Mac."
         },
         {
           "q": "Mengapa waktu di Mihrab berbeda dari aplikasi lain?",
@@ -1707,10 +1575,6 @@
         {
           "q": "Apakah Mihrab melacak lokasi saya?",
           "a": "Tidak. Tidak ada analitik, jaringan iklan, maupun akun. Koordinat hanya keluar dari ponsel dalam dua permintaan, tidak satu pun ke pengembang: ke AlAdhan bila itu sumber waktu Anda, dan, dengan lokasi otomatis, ke OpenStreetMap untuk menamai kota Anda, dibulatkan sekitar satu kilometer. Pilih perhitungan di perangkat dan masukkan kota Anda secara manual, maka kedua permintaan itu tidak dilakukan."
-        },
-        {
-          "q": "Bisakah saya memakai Mihrab tanpa memasang apa pun?",
-          "a": "Bisa. Mihrab Web berjalan di peramban Anda di mihrabhq.github.io: waktu salat untuk tempat Anda, notifikasi di setiap waktu salat selama tab terbuka, dan Al-Qur’an lengkap. Pengaturan dan penanda tetap di peramban itu."
         }
       ]
     },
@@ -1734,10 +1598,10 @@
       "lang": "Bahasa",
       "version": "Versi",
       "source": "Kode sumber di GitHub",
-      "built": "Mihrab {v}, dibuat oleh Hassan El Ghamri.",
+      "built": "صلاتي {v}, dibuat oleh Goma Mohamed.",
       "banner": "Bersama Palestina.",
       "bannerMore": "Ke mana berdonasi, apa yang diboikot, dan cara mengikuti kabarnya.",
-      "allDownloads": "Windows, Linux, dan F-Droid"
+      "allDownloads": "F-Droid dan lainnya"
     },
     "shots": {
       "eyebrow": "Tangkapan layar",
@@ -1865,7 +1729,7 @@
           ]
         }
       ],
-      "note": "Mihrab independen dan tidak berafiliasi dengan Kementerian Agama, serta tidak berbicara atas namanya. Metode dan verifikasinya terbuka: [mihrab-methods](https://github.com/MihrabHQ/mihrab-methods)."
+      "note": "Mihrab independen dan tidak berafiliasi dengan Kementerian Agama, serta tidak berbicara atas namanya. Metode dan verifikasinya terbuka: mihrab-methods."
     },
     "reviews": {
       "eyebrow": "Dari toko aplikasi",
@@ -1880,8 +1744,7 @@
       "screenshots": "Tangkapan layar",
       "features": "Fitur",
       "privacy": "Privasi",
-      "faq": "Pertanyaan",
-      "web": "Aplikasi web"
+      "faq": "Pertanyaan"
     },
     "accuracy": {
       "review": "native",
@@ -1894,11 +1757,11 @@
       "cards": [
         {
           "h3": "Periksa sendiri",
-          "p": "Metode, pemeriksaan, dan catatannya terbuka untuk umum di [mihrab-methods](https://github.com/MihrabHQ/mihrab-methods). Terakhir diperiksa {fig:total.checkedAtLong}."
+          "p": "Metode, pemeriksaan, dan catatannya terbuka untuk umum di mihrab-methods. Terakhir diperiksa {fig:total.checkedAtLong}."
         },
         {
           "h3": "Ada waktu yang berbeda dari masjid Anda?",
-          "p": "Sebutkan kota, tanggal, salat, dan waktu yang tercetak di [formulir laporan](https://github.com/MihrabHQ/mihrab-methods/issues/new?template=times-differ.yml). Jika masjid Anda memakai waktunya sendiri, penyesuaian per salat di aplikasi dapat menyamakannya."
+          "p": "Sebutkan kota, tanggal, salat, dan waktu yang tercetak di [formulir laporan](https://github.com/goma2001/Mihrab/issues/new). Jika masjid Anda memakai waktunya sendiri, penyesuaian per salat di aplikasi dapat menyamakannya."
         },
         {
           "h3": "Tabel yang diterbitkan, dipakai apa adanya",
@@ -2018,29 +1881,10 @@
       "eyebrow": "Installieren",
       "h2": "Mihrab holen",
       "lede": "Dieselbe App auf jedem Kanal, aus derselben Quelle gebaut. Keine Android-Version enthält Google Play Services, auch nicht die aus dem Play Store.",
-      "brew": "Auf dem Mac:",
       "apple": "Apple",
       "android": "Android",
       "flag": "Obtainium wird empfohlen: jede Version zuerst, und es aktualisiert sich selbst.",
-      "getObtainium": "Noch nicht installiert? Obtainium holen",
-      "desktop": {
-        "h3": "Windows & Linux",
-        "tag": "Vorschau",
-        "flag": "Die ganze App läuft auf dem Computer, und wir suchen Tester.",
-        "report": "Melde, was nicht funktioniert",
-        "windows": "Windows",
-        "linux": "Linux",
-        "install": "Installieren",
-        "remove": "Entfernen, samt Einstellungen"
-      },
-      "web": {
-        "h3": "Im Browser",
-        "body": "Gebetszeiten für deinen Ort, eine Benachrichtigung zu jedem Gebet und der ganze Koran.",
-        "link": "Mihrab Web öffnen",
-        "h2": "Jetzt ausprobieren — ohne Installation",
-        "note": "Ihre Einstellungen und Lesezeichen bleiben in diesem Browser. Legen Sie die Seite auf den Startbildschirm, um sie griffbereit zu haben.",
-        "alt": "Mihrab Web im Browser: die Seite „Heute“ mit dem Countdown zum Maghrib unter einem Abendhimmel und den Gebetszeiten des Tages."
-      }
+      "getObtainium": "Noch nicht installiert? Obtainium holen"
     },
     "features": {
       "eyebrow": "Funktionen",
@@ -2105,7 +1949,7 @@
         },
         {
           "q": "Welche Geräte werden unterstützt?",
-          "a": "iPhone, iPad, Android und Mac. Auf dem Mac per Homebrew installieren."
+          "a": "iPhone, iPad, Android und Mac."
         },
         {
           "q": "Warum weichen die Zeiten in Mihrab von anderen Apps ab?",
@@ -2126,10 +1970,6 @@
         {
           "q": "Verfolgt Mihrab meinen Standort?",
           "a": "Nein. Es gibt keine Analytik, kein Werbenetzwerk und kein Konto. Koordinaten verlassen das Telefon nur in zwei Anfragen, keine davon an den Entwickler: an AlAdhan, wo es die Quelle Ihrer Zeiten ist, und bei automatischem Standort an OpenStreetMap, um Ihren Ort zu benennen, auf etwa einen Kilometer gerundet. Wählen Sie die Berechnung auf dem Gerät und geben Sie Ihren Ort von Hand ein, entfällt beides."
-        },
-        {
-          "q": "Kann ich Mihrab nutzen, ohne etwas zu installieren?",
-          "a": "Ja. Mihrab Web läuft im Browser unter mihrabhq.github.io: Gebetszeiten für Ihren Ort, eine Benachrichtigung zu jedem Gebet, solange der Tab geöffnet ist, und der ganze Koran. Einstellungen und Lesezeichen bleiben in diesem Browser."
         }
       ]
     },
@@ -2153,10 +1993,10 @@
       "lang": "Sprache",
       "version": "Version",
       "source": "Quellcode auf GitHub",
-      "built": "Mihrab {v}, gebaut von Hassan El Ghamri.",
+      "built": "صلاتي {v}, gebaut von Goma Mohamed.",
       "banner": "Solidarität mit Palästina.",
       "bannerMore": "Wohin spenden, was boykottieren, wie informiert bleiben.",
-      "allDownloads": "Windows, Linux und F-Droid"
+      "allDownloads": "F-Droid und mehr"
     },
     "shots": {
       "eyebrow": "Bildschirmfotos",
@@ -2280,8 +2120,7 @@
       "screenshots": "Screenshots",
       "features": "Funktionen",
       "privacy": "Datenschutz",
-      "faq": "Fragen",
-      "web": "Web-App"
+      "faq": "Fragen"
     },
     "accuracy": {
       "review": "native",
@@ -2294,11 +2133,11 @@
       "cards": [
         {
           "h3": "Selbst nachprüfen",
-          "p": "Die Methoden, die Prüfung und ihr Protokoll sind öffentlich in [mihrab-methods](https://github.com/MihrabHQ/mihrab-methods). Zuletzt geprüft am {fig:total.checkedAtLong}."
+          "p": "Die Methoden, die Prüfung und ihr Protokoll sind öffentlich in mihrab-methods. Zuletzt geprüft am {fig:total.checkedAtLong}."
         },
         {
           "h3": "Eine Zeit weicht von Ihrer Moschee ab?",
-          "p": "Nennen Sie Stadt, Datum, Gebet und die gedruckte Zeit im [Meldeformular](https://github.com/MihrabHQ/mihrab-methods/issues/new?template=times-differ.yml). Führt Ihre Moschee eigene Zeiten, gleicht ein Versatz je Gebet in der App sie an."
+          "p": "Nennen Sie Stadt, Datum, Gebet und die gedruckte Zeit im [Meldeformular](https://github.com/goma2001/Mihrab/issues/new). Führt Ihre Moschee eigene Zeiten, gleicht ein Versatz je Gebet in der App sie an."
         },
         {
           "h3": "Veröffentlichte Tabellen, wie gedruckt",
@@ -2418,29 +2257,10 @@
       "eyebrow": "Installation",
       "h2": "Obtenir Mihrab",
       "lede": "La même application sur tous les canaux, compilée depuis la même source. Aucune version Android ne contient les services Google Play, pas même celle du Play Store.",
-      "brew": "Sur Mac :",
       "apple": "Apple",
       "android": "Android",
       "flag": "Obtainium est recommandé : chaque version en premier, et il se met à jour tout seul.",
-      "getObtainium": "Pas encore installé ? Obtenir Obtainium",
-      "desktop": {
-        "h3": "Windows et Linux",
-        "tag": "Aperçu",
-        "flag": "L’application entière fonctionne sur ordinateur, et nous cherchons des testeurs.",
-        "report": "Signalez ce qui ne marche pas",
-        "windows": "Windows",
-        "linux": "Linux",
-        "install": "Installer",
-        "remove": "Désinstaller, avec ses réglages"
-      },
-      "web": {
-        "h3": "Dans votre navigateur",
-        "body": "Les horaires de prière de votre ville, une notification à chaque prière et le Coran entier.",
-        "link": "Ouvrir Mihrab Web",
-        "h2": "Essayez maintenant — rien à installer",
-        "note": "Vos réglages et vos signets restent dans ce navigateur. Ajoutez-la à votre écran d’accueil pour la garder sous la main.",
-        "alt": "Mihrab Web dans un navigateur : la page Aujourd’hui avec le compte à rebours jusqu’au Maghrib sous un ciel de couchant, et les horaires de prière du jour."
-      }
+      "getObtainium": "Pas encore installé ? Obtenir Obtainium"
     },
     "features": {
       "eyebrow": "Fonctions",
@@ -2505,7 +2325,7 @@
         },
         {
           "q": "Quels appareils sont pris en charge ?",
-          "a": "iPhone, iPad, Android et Mac. Sur Mac, l'installation se fait avec Homebrew."
+          "a": "iPhone, iPad, Android et Mac."
         },
         {
           "q": "Pourquoi les horaires de Mihrab diffèrent-ils de ceux d’autres applications ?",
@@ -2526,10 +2346,6 @@
         {
           "q": "Mihrab suit-il ma position ?",
           "a": "Non. Il n’y a ni statistiques, ni réseau publicitaire, ni compte. Les coordonnées ne quittent le téléphone que dans deux requêtes, aucune vers le développeur : vers AlAdhan lorsqu’il est la source de vos horaires, et, avec la position automatique, vers OpenStreetMap pour nommer votre ville, arrondies à environ un kilomètre. Choisissez le calcul sur l’appareil et saisissez votre ville à la main : aucune des deux requêtes n’est faite."
-        },
-        {
-          "q": "Puis-je utiliser Mihrab sans rien installer ?",
-          "a": "Oui. Mihrab Web fonctionne dans votre navigateur à l’adresse mihrabhq.github.io : les horaires de prière pour votre lieu, une notification à chaque prière tant que l’onglet est ouvert, et le Coran en entier. Les réglages et les signets restent dans ce navigateur."
         }
       ]
     },
@@ -2553,10 +2369,10 @@
       "lang": "Langue",
       "version": "Version",
       "source": "Code source sur GitHub",
-      "built": "Mihrab {v}, réalisé par Hassan El Ghamri.",
+      "built": "صلاتي {v}, réalisé par Goma Mohamed.",
       "banner": "Solidarité avec la Palestine.",
       "bannerMore": "Où faire un don, quoi boycotter, comment rester informé.",
-      "allDownloads": "Windows, Linux et F-Droid"
+      "allDownloads": "F-Droid et plus"
     },
     "shots": {
       "eyebrow": "Captures d’écran",
@@ -2691,7 +2507,7 @@
           ]
         }
       ],
-      "note": "Mihrab est indépendant : il n’est affilié à aucun ministère et ne parle pas en leur nom. La méthode et sa vérification sont publiques : [mihrab-methods](https://github.com/MihrabHQ/mihrab-methods)."
+      "note": "Mihrab est indépendant : il n’est affilié à aucun ministère et ne parle pas en leur nom. La méthode et sa vérification sont publiques : mihrab-methods."
     },
     "reviews": {
       "eyebrow": "Dans les stores",
@@ -2706,8 +2522,7 @@
       "screenshots": "Captures",
       "features": "Fonctions",
       "privacy": "Vie privée",
-      "faq": "Questions",
-      "web": "Appli web"
+      "faq": "Questions"
     },
     "accuracy": {
       "review": "native",
@@ -2720,11 +2535,11 @@
       "cards": [
         {
           "h3": "Vérifiez vous-même",
-          "p": "Les méthodes, la vérification et son relevé sont publics dans [mihrab-methods](https://github.com/MihrabHQ/mihrab-methods). Dernière vérification : {fig:total.checkedAtLong}."
+          "p": "Les méthodes, la vérification et son relevé sont publics dans mihrab-methods. Dernière vérification : {fig:total.checkedAtLong}."
         },
         {
           "h3": "Un horaire diffère de celui de votre mosquée ?",
-          "p": "Indiquez la ville, la date, la prière et l’horaire imprimé dans [le formulaire de signalement](https://github.com/MihrabHQ/mihrab-methods/issues/new?template=times-differ.yml). Si votre mosquée a ses propres horaires, un décalage par prière dans l’application permet de les suivre."
+          "p": "Indiquez la ville, la date, la prière et l’horaire imprimé dans [le formulaire de signalement](https://github.com/goma2001/Mihrab/issues/new). Si votre mosquée a ses propres horaires, un décalage par prière dans l’application permet de les suivre."
         },
         {
           "h3": "Tables publiées, reprises telles quelles",
@@ -2844,29 +2659,10 @@
       "eyebrow": "Instalar",
       "h2": "Consigue Mihrab",
       "lede": "La misma aplicación en todos los canales, compilada desde la misma fuente. Ninguna versión para Android incluye los servicios de Google Play, ni siquiera la de Play Store.",
-      "brew": "En Mac:",
       "apple": "Apple",
       "android": "Android",
       "flag": "Se recomienda Obtainium: cada versión primero, y se actualiza solo.",
-      "getObtainium": "¿No lo tienes? Consigue Obtainium",
-      "desktop": {
-        "h3": "Windows y Linux",
-        "tag": "Vista previa",
-        "flag": "La aplicación completa funciona en el ordenador, y buscamos personas que la prueben.",
-        "report": "Informa de lo que falle",
-        "windows": "Windows",
-        "linux": "Linux",
-        "install": "Instalar",
-        "remove": "Quitar, con sus ajustes"
-      },
-      "web": {
-        "h3": "En tu navegador",
-        "body": "Horarios de oración para donde estés, un aviso en cada oración y el Corán completo.",
-        "link": "Abrir Mihrab Web",
-        "h2": "Pruébala ahora — sin instalar nada",
-        "note": "Tus ajustes y marcadores se quedan en este navegador. Añádela a la pantalla de inicio para tenerla a mano.",
-        "alt": "Mihrab Web en un navegador: la página Hoy con la cuenta atrás hasta el Magrib bajo un cielo de atardecer, y los horarios de oración del día."
-      }
+      "getObtainium": "¿No lo tienes? Consigue Obtainium"
     },
     "features": {
       "eyebrow": "Funciones",
@@ -2931,7 +2727,7 @@
         },
         {
           "q": "¿Qué dispositivos admite?",
-          "a": "iPhone, iPad, Android y Mac. En Mac se instala con Homebrew."
+          "a": "iPhone, iPad, Android y Mac."
         },
         {
           "q": "¿Por qué los horarios de Mihrab difieren de los de otras aplicaciones?",
@@ -2952,10 +2748,6 @@
         {
           "q": "¿Mihrab rastrea mi ubicación?",
           "a": "No. No hay analítica, ni red publicitaria, ni cuenta. Las coordenadas salen del teléfono solo en dos peticiones, ninguna al desarrollador: a AlAdhan cuando es la fuente de tus horarios y, con la ubicación automática, a OpenStreetMap para nombrar tu ciudad, redondeadas a un kilómetro aproximadamente. Elige el cálculo en el dispositivo e introduce tu ciudad a mano, y no se hace ninguna de las dos."
-        },
-        {
-          "q": "¿Puedo usar Mihrab sin instalar nada?",
-          "a": "Sí. Mihrab Web funciona en tu navegador en mihrabhq.github.io: horarios de oración para donde estás, una notificación en cada oración mientras la pestaña esté abierta, y el Corán completo. Los ajustes y marcadores se quedan en ese navegador."
         }
       ]
     },
@@ -2979,10 +2771,10 @@
       "lang": "Idioma",
       "version": "Versión",
       "source": "Código en GitHub",
-      "built": "Mihrab {v}, creada por Hassan El Ghamri.",
+      "built": "صلاتي {v}, creada por Goma Mohamed.",
       "banner": "Con Palestina.",
       "bannerMore": "Dónde donar, qué boicotear y cómo mantenerse informado.",
-      "allDownloads": "Windows, Linux y F-Droid"
+      "allDownloads": "F-Droid y más"
     },
     "shots": {
       "eyebrow": "Capturas de pantalla",
@@ -3106,8 +2898,7 @@
       "screenshots": "Capturas",
       "features": "Funciones",
       "privacy": "Privacidad",
-      "faq": "Preguntas",
-      "web": "App web"
+      "faq": "Preguntas"
     },
     "accuracy": {
       "review": "native",
@@ -3120,11 +2911,11 @@
       "cards": [
         {
           "h3": "Compruébalo tú mismo",
-          "p": "Los métodos, la comprobación y su registro son públicos en [mihrab-methods](https://github.com/MihrabHQ/mihrab-methods). Última comprobación: {fig:total.checkedAtLong}."
+          "p": "Los métodos, la comprobación y su registro son públicos en mihrab-methods. Última comprobación: {fig:total.checkedAtLong}."
         },
         {
           "h3": "¿Un horario difiere del de tu mezquita?",
-          "p": "Indica la ciudad, la fecha, la oración y lo que estaba impreso en [el formulario de aviso](https://github.com/MihrabHQ/mihrab-methods/issues/new?template=times-differ.yml). Si tu mezquita tiene sus propios horarios, un ajuste por oración en la aplicación los iguala."
+          "p": "Indica la ciudad, la fecha, la oración y lo que estaba impreso en [el formulario de aviso](https://github.com/goma2001/Mihrab/issues/new). Si tu mezquita tiene sus propios horarios, un ajuste por oración en la aplicación los iguala."
         },
         {
           "h3": "Tablas publicadas, tal como se imprimen",
@@ -3244,29 +3035,10 @@
       "eyebrow": "Установка",
       "h2": "Установить Mihrab",
       "lede": "Одно и то же приложение во всех каналах, собранное из одного исходного кода. Ни одна сборка для Android, включая сборку из Play Store, не содержит сервисов Google Play.",
-      "brew": "На Mac:",
       "apple": "Apple",
       "android": "Android",
       "flag": "Рекомендуем Obtainium: каждая версия первой, и обновляется само.",
-      "getObtainium": "Нет приложения? Установите Obtainium",
-      "desktop": {
-        "h3": "Windows и Linux",
-        "tag": "Предварительная версия",
-        "flag": "Приложение целиком работает на компьютере, и мы ищем тех, кто его протестирует.",
-        "report": "Сообщите, что не работает",
-        "windows": "Windows",
-        "linux": "Linux",
-        "install": "Установить",
-        "remove": "Удалить вместе с настройками"
-      },
-      "web": {
-        "h3": "В браузере",
-        "body": "Время намаза для вашего места, уведомление к каждому намазу и весь Коран.",
-        "link": "Открыть Mihrab Web",
-        "h2": "Попробуйте сейчас — без установки",
-        "note": "Ваши настройки и закладки остаются в этом браузере. Добавьте страницу на главный экран, чтобы она была под рукой.",
-        "alt": "Mihrab Web в браузере: экран «Сегодня» с обратным отсчётом до магриба под закатным небом и время намазов на день."
-      }
+      "getObtainium": "Нет приложения? Установите Obtainium"
     },
     "features": {
       "eyebrow": "Возможности",
@@ -3331,7 +3103,7 @@
         },
         {
           "q": "Какие устройства поддерживаются?",
-          "a": "iPhone, iPad, Android и Mac. На Mac устанавливается через Homebrew."
+          "a": "iPhone, iPad, Android и Mac."
         },
         {
           "q": "Почему время в Mihrab отличается от других приложений?",
@@ -3352,10 +3124,6 @@
         {
           "q": "Отслеживает ли Mihrab моё местоположение?",
           "a": "Нет. Нет ни аналитики, ни рекламной сети, ни учётной записи. Координаты покидают телефон только в двух запросах, и ни один не идёт разработчику: в AlAdhan, когда он служит источником времени, и, при автоматическом определении места, в OpenStreetMap, чтобы назвать ваш город, с округлением примерно до километра. Выберите расчёт на устройстве и введите город вручную — и ни один запрос не отправляется."
-        },
-        {
-          "q": "Можно ли пользоваться Mihrab, ничего не устанавливая?",
-          "a": "Да. Mihrab Web работает в браузере по адресу mihrabhq.github.io: время намаза для вашего места, уведомление к каждому намазу, пока вкладка открыта, и весь Коран. Настройки и закладки остаются в этом браузере."
         }
       ]
     },
@@ -3379,10 +3147,10 @@
       "lang": "Язык",
       "version": "Версия",
       "source": "Исходный код на GitHub",
-      "built": "Mihrab {v}, разработчик — Hassan El Ghamri.",
+      "built": "صلاتي {v}, разработчик — Goma Mohamed.",
       "banner": "Вместе с Палестиной.",
       "bannerMore": "Куда пожертвовать, что бойкотировать и как следить за новостями.",
-      "allDownloads": "Windows, Linux и F-Droid"
+      "allDownloads": "F-Droid и другое"
     },
     "shots": {
       "eyebrow": "Скриншоты",
@@ -3506,8 +3274,7 @@
       "screenshots": "Скриншоты",
       "features": "Возможности",
       "privacy": "Приватность",
-      "faq": "Вопросы",
-      "web": "Веб-версия"
+      "faq": "Вопросы"
     },
     "accuracy": {
       "review": "native",
@@ -3520,11 +3287,11 @@
       "cards": [
         {
           "h3": "Проверьте сами",
-          "p": "Методы, проверка и её протокол открыты в [mihrab-methods](https://github.com/MihrabHQ/mihrab-methods). Последняя проверка: {fig:total.checkedAtLong}."
+          "p": "Методы, проверка и её протокол открыты в mihrab-methods. Последняя проверка: {fig:total.checkedAtLong}."
         },
         {
           "h3": "Время отличается от времени в вашей мечети?",
-          "p": "Укажите город, дату, намаз и напечатанное время в [форме сообщения](https://github.com/MihrabHQ/mihrab-methods/issues/new?template=times-differ.yml). Если у вашей мечети своё расписание, поправка для каждого намаза в приложении подстроит время под него."
+          "p": "Укажите город, дату, намаз и напечатанное время в [форме сообщения](https://github.com/goma2001/Mihrab/issues/new). Если у вашей мечети своё расписание, поправка для каждого намаза в приложении подстроит время под него."
         },
         {
           "h3": "Опубликованные таблицы — как напечатано",
@@ -3644,29 +3411,10 @@
       "eyebrow": "ইনস্টল",
       "h2": "Mihrab নিন",
       "lede": "সব চ্যানেলে একই অ্যাপ, একই সোর্স থেকে তৈরি। Play Store সংস্করণসহ কোনো Android সংস্করণে Google Play Services নেই।",
-      "brew": "ম্যাকে:",
       "apple": "অ্যাপল",
       "android": "অ্যান্ড্রয়েড",
       "flag": "Obtainium প্রস্তাবিত: প্রতিটি সংস্করণ সবার আগে, আর নিজে থেকেই আপডেট হয়।",
-      "getObtainium": "নেই? Obtainium নিন",
-      "desktop": {
-        "h3": "উইন্ডোজ ও লিনাক্স",
-        "tag": "প্রিভিউ",
-        "flag": "পুরো অ্যাপটি কম্পিউটারে চলে, আর আমরা পরীক্ষক খুঁজছি।",
-        "report": "যা কাজ করে না তা জানান",
-        "windows": "উইন্ডোজ",
-        "linux": "লিনাক্স",
-        "install": "ইনস্টল",
-        "remove": "সেটিংসসহ সরান"
-      },
-      "web": {
-        "h3": "আপনার ব্রাউজারে",
-        "body": "আপনার জায়গার নামাজের সময়, প্রতি ওয়াক্তে বিজ্ঞপ্তি, আর পুরো কুরআন।",
-        "link": "মিহরাব ওয়েব খুলুন",
-        "h2": "এখনই দেখে নিন — কিছু ইনস্টল করতে হবে না",
-        "note": "আপনার সেটিংস ও বুকমার্ক এই ব্রাউজারেই থাকে। হাতের কাছে রাখতে হোম স্ক্রিনে যোগ করে নিন।",
-        "alt": "ব্রাউজারে মিহরাব ওয়েব: সূর্যাস্তের আকাশের নিচে মাগরিবের কাউন্টডাউনসহ «আজ» পাতা এবং দিনের নামাজের সময়।"
-      }
+      "getObtainium": "নেই? Obtainium নিন"
     },
     "features": {
       "eyebrow": "বৈশিষ্ট্য",
@@ -3731,7 +3479,7 @@
         },
         {
           "q": "কোন ডিভাইসে চলে?",
-          "a": "আইফোন, আইপ্যাড, অ্যান্ড্রয়েড ও ম্যাক। ম্যাকে Homebrew দিয়ে ইনস্টল করুন।"
+          "a": "আইফোন, আইপ্যাড, অ্যান্ড্রয়েড ও ম্যাক।"
         },
         {
           "q": "মিহরাবের সময় অন্য অ্যাপের থেকে আলাদা কেন?",
@@ -3752,10 +3500,6 @@
         {
           "q": "মিহরাব কি আমার অবস্থান অনুসরণ করে?",
           "a": "না। কোনো অ্যানালিটিক্স, বিজ্ঞাপন নেটওয়ার্ক বা অ্যাকাউন্ট নেই। স্থানাঙ্ক ফোন থেকে বের হয় মাত্র দুটি অনুরোধে, যার কোনোটিই ডেভেলপারের কাছে যায় না: AlAdhan-এ, যখন সেটিই আপনার সময়ের উৎস, এবং স্বয়ংক্রিয় অবস্থান চালু থাকলে আপনার শহরের নাম জানতে OpenStreetMap-এ, প্রায় এক কিলোমিটারে গোল করে। ডিভাইসে হিসাব বেছে নিন এবং শহরের নাম নিজে লিখুন, তাহলে কোনো অনুরোধই পাঠানো হয় না।"
-        },
-        {
-          "q": "কিছু ইনস্টল না করে কি মিহরাব ব্যবহার করা যায়?",
-          "a": "হ্যাঁ। মিহরাব ওয়েব আপনার ব্রাউজারে mihrabhq.github.io ঠিকানায় চলে: আপনার জায়গার নামাজের সময়, ট্যাব খোলা থাকলে প্রতিটি নামাজে একটি নোটিফিকেশন, এবং সম্পূর্ণ কুরআন। সেটিংস ও বুকমার্ক ওই ব্রাউজারেই থাকে।"
         }
       ]
     },
@@ -3779,10 +3523,10 @@
       "lang": "ভাষা",
       "version": "সংস্করণ",
       "source": "GitHub-এ সোর্স",
-      "built": "Mihrab {v}, নির্মাতা Hassan El Ghamri।",
+      "built": "صلاتي {v}, নির্মাতা Goma Mohamed।",
       "banner": "ফিলিস্তিনের পাশে।",
       "bannerMore": "কোথায় দান করবেন, কী বর্জন করবেন, কীভাবে খবর রাখবেন।",
-      "allDownloads": "Windows, Linux ও F-Droid"
+      "allDownloads": "F-Droid এবং আরও"
     },
     "shots": {
       "eyebrow": "স্ক্রিনশট",
@@ -3906,8 +3650,7 @@
       "screenshots": "স্ক্রিনশট",
       "features": "বৈশিষ্ট্য",
       "privacy": "গোপনীয়তা",
-      "faq": "প্রশ্ন",
-      "web": "ওয়েব অ্যাপ"
+      "faq": "প্রশ্ন"
     },
     "accuracy": {
       "review": "native",
@@ -3920,11 +3663,11 @@
       "cards": [
         {
           "h3": "নিজেই যাচাই করুন",
-          "p": "পদ্ধতি, যাচাই ও তার নথি [mihrab-methods](https://github.com/MihrabHQ/mihrab-methods)-এ সবার জন্য উন্মুক্ত। সর্বশেষ যাচাই: {fig:total.checkedAtLong}।"
+          "p": "পদ্ধতি, যাচাই ও তার নথি mihrab-methods-এ সবার জন্য উন্মুক্ত। সর্বশেষ যাচাই: {fig:total.checkedAtLong}।"
         },
         {
           "h3": "কোনো সময় আপনার মসজিদের সঙ্গে মিলছে না?",
-          "p": "শহর, তারিখ, নামাজ ও ছাপা সময়টি [রিপোর্ট ফর্মে](https://github.com/MihrabHQ/mihrab-methods/issues/new?template=times-differ.yml) জানান। আপনার মসজিদ নিজস্ব সময় মানলে অ্যাপে প্রতিটি নামাজের আলাদা সমন্বয় তা মিলিয়ে দেয়।"
+          "p": "শহর, তারিখ, নামাজ ও ছাপা সময়টি [রিপোর্ট ফর্মে](https://github.com/goma2001/Mihrab/issues/new) জানান। আপনার মসজিদ নিজস্ব সময় মানলে অ্যাপে প্রতিটি নামাজের আলাদা সমন্বয় তা মিলিয়ে দেয়।"
         },
         {
           "h3": "প্রকাশিত সারণি, যেমন ছাপা আছে",
@@ -4044,29 +3787,10 @@
       "eyebrow": "इंस्टॉल",
       "h2": "Mihrab पाएँ",
       "lede": "हर माध्यम पर वही ऐप, उसी स्रोत से बना। Play Store वाले सहित किसी भी Android संस्करण में Google Play Services नहीं है।",
-      "brew": "मैक पर:",
       "apple": "Apple",
       "android": "Android",
       "flag": "Obtainium अनुशंसित है: हर संस्करण सबसे पहले, और यह अपने-आप अपडेट होता है।",
-      "getObtainium": "नहीं है? Obtainium पाएँ",
-      "desktop": {
-        "h3": "विंडोज़ और लिनक्स",
-        "tag": "प्रीव्यू",
-        "flag": "पूरा ऐप कंप्यूटर पर चलता है, और हमें इसे परखने वालों की तलाश है।",
-        "report": "जो काम न करे, उसकी रिपोर्ट करें",
-        "windows": "विंडोज़",
-        "linux": "लिनक्स",
-        "install": "इंस्टॉल करें",
-        "remove": "सेटिंग्स समेत हटाएँ"
-      },
-      "web": {
-        "h3": "आपके ब्राउज़र में",
-        "body": "आपकी जगह के नमाज़ के समय, हर नमाज़ पर सूचना, और पूरा क़ुरआन।",
-        "link": "मिहराब वेब खोलें",
-        "h2": "अभी आज़माएँ — कुछ इंस्टॉल किए बिना",
-        "note": "आपकी सेटिंग और बुकमार्क इसी ब्राउज़र में रहते हैं। इसे पास रखने के लिए होम स्क्रीन पर जोड़ लें।",
-        "alt": "ब्राउज़र में मिहराब वेब: सूर्यास्त के आसमान तले मग़रिब की उलटी गिनती के साथ «आज» पृष्ठ और दिन की नमाज़ के समय।"
-      }
+      "getObtainium": "नहीं है? Obtainium पाएँ"
     },
     "features": {
       "eyebrow": "विशेषताएँ",
@@ -4131,7 +3855,7 @@
         },
         {
           "q": "किन उपकरणों पर चलता है?",
-          "a": "आईफ़ोन, आईपैड, एंड्रॉइड और मैक। मैक पर Homebrew से इंस्टॉल करें।"
+          "a": "आईफ़ोन, आईपैड, एंड्रॉइड और मैक।"
         },
         {
           "q": "मिहराब के समय दूसरे ऐप से अलग क्यों हैं?",
@@ -4152,10 +3876,6 @@
         {
           "q": "क्या मिहराब मेरी लोकेशन पर नज़र रखता है?",
           "a": "नहीं। न कोई एनालिटिक्स है, न विज्ञापन नेटवर्क, न खाता। निर्देशांक फ़ोन से सिर्फ़ दो अनुरोधों में बाहर जाते हैं, और कोई भी डेवलपर को नहीं जाता: AlAdhan को, जब वही आपके समय का स्रोत हो, और स्वचालित लोकेशन के साथ, आपके शहर का नाम जानने के लिए OpenStreetMap को, लगभग एक किलोमीटर तक पूर्णांकित करके। डिवाइस पर गणना चुनें और अपना शहर हाथ से लिखें, तो दोनों में से कोई अनुरोध नहीं भेजा जाता।"
-        },
-        {
-          "q": "क्या मैं कुछ इंस्टॉल किए बिना मिहराब इस्तेमाल कर सकता हूँ?",
-          "a": "हाँ। मिहराब वेब आपके ब्राउज़र में mihrabhq.github.io पर चलता है: आपकी जगह के नमाज़ के समय, टैब खुला रहने तक हर नमाज़ पर एक सूचना, और पूरा क़ुरआन। सेटिंग और बुकमार्क उसी ब्राउज़र में रहते हैं।"
         }
       ]
     },
@@ -4179,10 +3899,10 @@
       "lang": "भाषा",
       "version": "संस्करण",
       "source": "GitHub पर स्रोत",
-      "built": "Mihrab {v}, निर्माता Hassan El Ghamri।",
+      "built": "صلاتي {v}, निर्माता Goma Mohamed।",
       "banner": "फ़िलिस्तीन के साथ।",
       "bannerMore": "कहाँ दान करें, किसका बहिष्कार करें, और ख़बर कैसे रखें।",
-      "allDownloads": "Windows, Linux और F-Droid"
+      "allDownloads": "F-Droid और अधिक"
     },
     "shots": {
       "eyebrow": "स्क्रीनशॉट",
@@ -4306,8 +4026,7 @@
       "screenshots": "स्क्रीनशॉट",
       "features": "सुविधाएँ",
       "privacy": "निजता",
-      "faq": "सवाल",
-      "web": "वेब ऐप"
+      "faq": "सवाल"
     },
     "accuracy": {
       "review": "native",
@@ -4320,11 +4039,11 @@
       "cards": [
         {
           "h3": "ख़ुद जाँचें",
-          "p": "तरीक़े, जाँच और उसका रिकॉर्ड [mihrab-methods](https://github.com/MihrabHQ/mihrab-methods) में सबके लिए खुले हैं। पिछली जाँच: {fig:total.checkedAtLong}।"
+          "p": "तरीक़े, जाँच और उसका रिकॉर्ड mihrab-methods में सबके लिए खुले हैं। पिछली जाँच: {fig:total.checkedAtLong}।"
         },
         {
           "h3": "कोई समय आपकी मस्जिद से अलग है?",
-          "p": "शहर, तारीख़, नमाज़ और छपा हुआ समय [रिपोर्ट फ़ॉर्म](https://github.com/MihrabHQ/mihrab-methods/issues/new?template=times-differ.yml) में बताएँ। अगर आपकी मस्जिद अपने समय रखती है, तो ऐप में हर नमाज़ का अलग अंतर उन्हें मिला देता है।"
+          "p": "शहर, तारीख़, नमाज़ और छपा हुआ समय [रिपोर्ट फ़ॉर्म](https://github.com/goma2001/Mihrab/issues/new) में बताएँ। अगर आपकी मस्जिद अपने समय रखती है, तो ऐप में हर नमाज़ का अलग अंतर उन्हें मिला देता है।"
         },
         {
           "h3": "प्रकाशित सारणियाँ, जैसी छपी हैं",
@@ -4444,29 +4163,10 @@
       "eyebrow": "安装",
       "h2": "获取 Mihrab",
       "lede": "各个渠道是同一个应用，由同一份源码构建。所有 Android 版本（包括 Play 商店版本）都不含 Google Play 服务。",
-      "brew": "在 Mac 上：",
       "apple": "Apple",
       "android": "Android",
       "flag": "推荐使用 Obtainium：每个版本最先到达，并自动更新。",
-      "getObtainium": "还没有？获取 Obtainium",
-      "desktop": {
-        "h3": "Windows 和 Linux",
-        "tag": "预览版",
-        "flag": "完整的应用已能在电脑上运行，我们正在寻找测试者。",
-        "report": "报告问题",
-        "windows": "Windows",
-        "linux": "Linux",
-        "install": "安装",
-        "remove": "卸载（连同设置）"
-      },
-      "web": {
-        "h3": "在浏览器中",
-        "body": "你所在地的礼拜时间、每次礼拜的通知，以及完整的《古兰经》。",
-        "link": "打开 Mihrab Web",
-        "h2": "现在就试试——无需安装",
-        "note": "你的设置和书签保存在这个浏览器中。把它添加到主屏幕，随手可用。",
-        "alt": "浏览器中的 Mihrab 网页版：“今日”页面，日落天空下距昏礼的倒计时，以及当天的礼拜时间。"
-      }
+      "getObtainium": "还没有？获取 Obtainium"
     },
     "features": {
       "eyebrow": "功能",
@@ -4531,7 +4231,7 @@
         },
         {
           "q": "支持哪些设备？",
-          "a": "iPhone、iPad、Android 和 Mac。Mac 上可用 Homebrew 安装。"
+          "a": "iPhone、iPad、Android 和 Mac。"
         },
         {
           "q": "为什么 Mihrab 的时间与其他应用不同？",
@@ -4552,10 +4252,6 @@
         {
           "q": "Mihrab 会追踪我的位置吗？",
           "a": "不会。没有统计分析，没有广告网络，也没有账号。坐标只在两种请求中离开手机，且都不发给开发者：当 AlAdhan 是你的时间来源时发给 AlAdhan；使用自动定位时发给 OpenStreetMap 以查出你所在城镇的名称，并取整到约一公里。选择在设备上计算并手动输入城镇，这两种请求都不会发出。"
-        },
-        {
-          "q": "不安装任何东西可以使用 Mihrab 吗？",
-          "a": "可以。Mihrab 网页版在浏览器中运行，网址是 mihrabhq.github.io：你所在地的礼拜时间、标签页开着时每番礼拜的通知，以及完整的《古兰经》。设置和书签保存在该浏览器中。"
         }
       ]
     },
@@ -4579,10 +4275,10 @@
       "lang": "语言",
       "version": "版本",
       "source": "GitHub 上的源码",
-      "built": "Mihrab {v}，由 Hassan El Ghamri 开发。",
+      "built": "صلاتي {v}，由 Goma Mohamed 开发。",
       "banner": "声援巴勒斯坦。",
       "bannerMore": "去哪里捐助、抵制什么、如何持续关注。",
-      "allDownloads": "Windows、Linux 和 F-Droid"
+      "allDownloads": "F-Droid 及更多"
     },
     "shots": {
       "eyebrow": "应用截图",
@@ -4706,8 +4402,7 @@
       "screenshots": "截图",
       "features": "功能",
       "privacy": "隐私",
-      "faq": "常见问题",
-      "web": "网页版"
+      "faq": "常见问题"
     },
     "accuracy": {
       "review": "native",
@@ -4720,11 +4415,11 @@
       "cards": [
         {
           "h3": "自己核对",
-          "p": "这些方法、核对过程及其记录都公开在 [mihrab-methods](https://github.com/MihrabHQ/mihrab-methods)。最近一次核对：{fig:total.checkedAtLong}。"
+          "p": "这些方法、核对过程及其记录都公开在 mihrab-methods。最近一次核对：{fig:total.checkedAtLong}。"
         },
         {
           "h3": "某个时间与你的清真寺不同？",
-          "p": "请在[报告表单](https://github.com/MihrabHQ/mihrab-methods/issues/new?template=times-differ.yml)中写明城市、日期、哪一番礼拜以及印出的时间。如果你的清真寺有自己的时间，可以在应用中为每番礼拜单独设置偏移来对齐。"
+          "p": "请在[报告表单](https://github.com/goma2001/Mihrab/issues/new)中写明城市、日期、哪一番礼拜以及印出的时间。如果你的清真寺有自己的时间，可以在应用中为每番礼拜单独设置偏移来对齐。"
         },
         {
           "h3": "公布的时间表，照原样使用",

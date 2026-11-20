@@ -204,9 +204,9 @@ export const RELEASE_NOTES: ReleaseNote[] = [
     version: '2.27.1',
     date: '2026-09-26',
     notes: {
-      en: '• Mihrab now carries its tagline, Mihrab — The Muslim Companion, and shared month sheets show it.\n• The app\'s links to its source, releases and downloads now point to its new home, github.com/MihrabHQ/Mihrab. The old links keep working.\n• Mac: the Homebrew tap has moved to MihrabHQ/homebrew-tap.',
-      ar: '• يحمل Mihrab الآن شعاره «Mihrab — The Muslim Companion»، وتظهر في جداول الشهر المشتركة.\n• روابط التطبيق إلى الشيفرة المصدرية والإصدارات والتنزيلات تشير الآن إلى موطنه الجديد github.com/MihrabHQ/Mihrab، وتبقى الروابط القديمة صالحة.\n• Mac: انتقل مستودع Homebrew (tap) إلى MihrabHQ/homebrew-tap.',
-      sv: '• Mihrab har fått sin slogan, Mihrab – The Muslim Companion, och delade månadsblad visar den.\n• Appens länkar till källkod, versioner och nedladdningar pekar nu till dess nya hem, github.com/MihrabHQ/Mihrab. De gamla länkarna fungerar fortfarande.\n• Mac: Homebrew-tappen har flyttat till MihrabHQ/homebrew-tap.',
+      en: '• Mihrab now carries its tagline, Mihrab — The Muslim Companion, and shared month sheets show it.\n• The app\'s links to its source, releases and downloads now point to its new home, github.com/goma2001/Mihrab. The old links keep working.',
+      ar: '• يحمل Mihrab الآن شعاره «Mihrab — The Muslim Companion»، وتظهر في جداول الشهر المشتركة.\n• روابط التطبيق إلى الشيفرة المصدرية والإصدارات والتنزيلات تشير الآن إلى موطنه الجديد github.com/goma2001/Mihrab، وتبقى الروابط القديمة صالحة.',
+      sv: '• Mihrab har fått sin slogan, Mihrab – The Muslim Companion, och delade månadsblad visar den.\n• Appens länkar till källkod, versioner och nedladdningar pekar nu till dess nya hem, github.com/goma2001/Mihrab. De gamla länkarna fungerar fortfarande.',
     },
   },
   {
