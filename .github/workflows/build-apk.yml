@@ -120,9 +120,9 @@ jobs:
           tag_name: ${{ env.RELEASE_TAG }}
           name: صلاتي ${{ env.RELEASE_TAG }}
           body: |
-            صلاتي ${{ env.RELEASE_TAG }} — أول إصدار من صلاتي، مبنية على مشروع Mihrab مفتوح المصدر (AGPLv3).
+            صلاتي ${{ env.RELEASE_TAG }} — مواقيت الصلاة والقرآن والأذكار، تعمل دون اتصال، بلا إعلانات وبلا حساب — بالمظهر الهادئ (فجر هادئ)، وزر الصلاة العائم خارج التطبيق (الإعدادات ← التنبيهات)، ومواقيت أم القرى في السعودية والمصرية في مصر حسب الموقع.
 
-            First release of صلاتي, based on the open-source Mihrab project (AGPLv3): prayer times, Qur'an and dhikr — offline-first, no ads, no account — with the dawn-calm (فجر هادئ) look, a floating prayer button above other apps (Settings → Notifications), and Umm al-Qura in Saudi Arabia / Egyptian in Egypt by location.
+            Prayer times, Qur'an and dhikr — offline-first, no ads, no account — with the dawn-calm (فجر هادئ) look, a floating prayer button above other apps (Settings → Notifications), and Umm al-Qura in Saudi Arabia / Egyptian in Egypt by location.
 
             Signed with the shared keystore (SHA256 8B:C1:D3:25:...).
           files: |
