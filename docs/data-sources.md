@@ -50,7 +50,7 @@ What ships today:
   other way (`src/providers/congressMethod.ts`, `diyanetMethod.ts`,
   `moroccoMethod.ts`, `algeriaMethod.ts`, `indonesiaMethod.ts`;
   `src/providers/swedenCorrections.ts`); source:
-  [MihrabHQ/mihrab-methods](https://github.com/MihrabHQ/mihrab-methods).
+  mihrab-methods.
   Singapore (MUIS, from data.gov.sg), Malaysia (JAKIM e-Solat) and London
   (the London Unified Prayer Timetable, from londonprayertimes.com) and
   Kyrgyzstan (the Spiritual Administration's, from muftiyat.kg's public API)

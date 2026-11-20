@@ -101,7 +101,7 @@ fastlane/metadata/            Play / App Store listing copy and the Play changel
 - `src/providers/fetchPrayerTimes.ts` — fan-out to all providers; calls `validateTimings()` on every response.
 - `src/providers/validateTimings.ts` — asserts all 6 keys present and `HH:MM` formatted; throws on failure.
 - `src/providers/localAdhan.ts` — on-device fallback (adhan.js); used when network fails.
-- `src/providers/congressMethod.ts` — Sweden's times, calculated on the phone: the International Prayer Times Congress method as Diyanet computes the tables Islamiska Förbundet publishes, with the yearly correction list in `swedenCorrections.ts`. Source: [MihrabHQ/mihrab-methods](https://github.com/MihrabHQ/mihrab-methods).
+- `src/providers/congressMethod.ts` — Sweden's times, calculated on the phone: the International Prayer Times Congress method as Diyanet computes the tables Islamiska Förbundet publishes, with the yearly correction list in `swedenCorrections.ts`. Source: mihrab-methods.
 
 **GPS & location**
 - `src/hooks/usePrayerDay.ts` — instant-load pattern (shows cached coords, GPS in background, refetches only if device moved >~1 km via `coordsChangedSignificantly`).

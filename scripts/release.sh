@@ -83,7 +83,7 @@ set -uo pipefail
 export LANG="${LANG:-en_US.UTF-8}"
 export LC_ALL="${LC_ALL:-$LANG}"
 
-REPO="MihrabHQ/Mihrab"
+REPO="goma2001/Mihrab"
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 TAP="$HOME/git/homebrew-tap/Casks/mihrab.rb"
 GRADLE_FILE="$ROOT/android/app/build.gradle"
