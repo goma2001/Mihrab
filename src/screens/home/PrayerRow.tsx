@@ -1,6 +1,7 @@
 import { memo } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
+import { ARCH_GOLD } from '../../theme/tokens';
 import { useAppPalette } from '../../hooks/useAppPalette';
 import {
   TABULAR_MAX_FONT_SCALE,
@@ -209,13 +210,14 @@ function PrayerRowImpl({
         tier === 'compact' && styles.rowCompact,
         tier === 'roomy' && styles.rowRoomy,
       ]}>
-      {/* The current prayer's mark: the bar at the row's start, and the
-          accent on its name and time. It had a tinted fill across the
-          whole row as well — the one block in a table that is otherwise
+      {/* The current prayer's mark: a gold bar at the row's start — the
+          Arch of Light's gold (1.0.4), the same gold as the arch's arc —
+          and the accent on its name and time. It had a tinted fill across
+          the whole row as well — the one block in a table that is otherwise
           hairlines and type, and the bar already says "now". */}
       {isNext && (
         <View
-          style={[styles.activeBar, { backgroundColor: palette.accent }]}
+          style={[styles.activeBar, { backgroundColor: ARCH_GOLD }]}
         />
       )}
       {/* An inset hairline, not a full-bleed one: the divider starts where

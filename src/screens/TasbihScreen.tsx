@@ -37,7 +37,7 @@ import {
 import { useTabBarInset } from '../navigation/tabBarInset';
 import { useTabPageTop } from '../navigation/useTabPageTop';
 import { useFoldPosture } from '../native/FoldPosture';
-import { RADIUS, SPACING } from '../theme/tokens';
+import { ARCH_GOLD, RADIUS, SPACING } from '../theme/tokens';
 import { TYPE } from '../theme/typography';
 
 /**
@@ -208,7 +208,10 @@ export function TasbihScreen() {
       <TasbihRing
         size={ringSize}
         progress={target > 0 ? count / target : 0}
-        color={targetReached ? palette.accentSolid : palette.accentSolid}
+        // The Arch of Light (1.0.4): emerald while counting, gold when
+        // the target is reached — the ring says "done" in the arch's
+        // gold. (Both branches were the accent: a ternary doing nothing.)
+        color={targetReached ? ARCH_GOLD : palette.accentSolid}
         trackColor={String(palette.controlBg)}>
         <Text
           style={[

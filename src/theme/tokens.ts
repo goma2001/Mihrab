@@ -236,6 +236,66 @@ export const PERIOD_TINTS: Record<
   night: { light: '#46517A', dark: '#7D89BE' },
 } as const;
 
+// ─── The Arch of Light (1.0.4) — حجر وزمرد (stone + emerald) ───────────
+// The full redesign's identity: warm stone neutrals, the deep emerald of
+// فجر هادئ (#01543F) carried forward, gold accents. Every colour the arch
+// and the restyled screens use lives here — no raw colours in components.
+
+/** The phases the arch shows (see sunArch.ts for how they are computed). */
+export type ArchPhase = 'fajr' | 'sunrise' | 'day' | 'asr' | 'sunset' | 'night';
+
+export const ARCH_GOLD = '#C9A227';
+export const ARCH_GOLD_SOFT = '#E3C766';
+export const ARCH_EMERALD = RAW.emeraldDeep;
+export const ARCH_EMERALD_DEEP = '#013B2C';
+/** The orb's radius on the arch, and the arc's stroke. */
+export const ARCH_ORB_R = 13;
+export const ARCH_ARC_STROKE = 2.5;
+
+/**
+ * The sky inside the arch, per phase: the gradient from the top of the
+ * arc to the horizon, the orb's colour and its glow, the ink for text
+ * drawn on the sky (the phase tag), and the arc's own line. Light and
+ * dark follow the device's mode — the sky is a drawing, not a theme
+ * swap, so the dark variant is the same sky at night, deeper.
+ */
+export type ArchSky = {
+  top: string;
+  mid: string;
+  bottom: string;
+  orb: string;
+  glow: string;
+  ink: string;
+  arc: string;
+};
+
+export const ARCH_SKY: Record<ArchPhase, { light: ArchSky; dark: ArchSky }> = {
+  fajr: {
+    light: { top: '#232B47', mid: '#4A4E7A', bottom: '#C9A98F', orb: '#F2C879', glow: '#F2C879', ink: '#F5F0E6', arc: '#E3C766' },
+    dark: { top: '#141A2E', mid: '#2E3454', bottom: '#6B5A4A', orb: '#E3C766', glow: '#E3C766', ink: '#EDE8DC', arc: '#C9A227' },
+  },
+  sunrise: {
+    light: { top: '#7FB3C8', mid: '#F2C879', bottom: '#FBEED3', orb: '#E8A93C', glow: '#F2C879', ink: '#3A2E1A', arc: '#C9A227' },
+    dark: { top: '#2E4A5C', mid: '#8A6A3A', bottom: '#5C4A2E', orb: '#E8A93C', glow: '#E8A93C', ink: '#F5EEDC', arc: '#E3C766' },
+  },
+  day: {
+    light: { top: '#7FC4D6', mid: '#BFE3EA', bottom: '#F4F1E6', orb: '#F2B705', glow: '#F2D06B', ink: '#17352C', arc: '#C9A227' },
+    dark: { top: '#1E3A4A', mid: '#2E5A6E', bottom: '#3A4A42', orb: '#F2B705', glow: '#F2B705', ink: '#E8F0E6', arc: '#E3C766' },
+  },
+  asr: {
+    light: { top: '#8FB8C4', mid: '#E8C07A', bottom: '#F6E3C2', orb: '#E8963C', glow: '#E8C07A', ink: '#3A2A12', arc: '#C9A227' },
+    dark: { top: '#2E4048', mid: '#7A5A2E', bottom: '#4A3A26', orb: '#E8963C', glow: '#E8963C', ink: '#F5EEDC', arc: '#E3C766' },
+  },
+  sunset: {
+    light: { top: '#4A3A5C', mid: '#D96A4A', bottom: '#F2B25C', orb: '#E85C2B', glow: '#F2B25C', ink: '#FFF3E0', arc: '#E3C766' },
+    dark: { top: '#241A30', mid: '#7A3A2E', bottom: '#8A5A2E', orb: '#E85C2B', glow: '#E85C2B', ink: '#FBEEDC', arc: '#E3C766' },
+  },
+  night: {
+    light: { top: '#0E1424', mid: '#1E2A4A', bottom: '#2E3A5C', orb: '#E8E5DE', glow: '#E8E5DE', ink: '#E8E5DE', arc: '#C9A227' },
+    dark: { top: '#080A12', mid: '#141A2E', bottom: '#1E2A44', orb: '#E8E5DE', glow: '#E8E5DE', ink: '#E8E5DE', arc: '#C9A227' },
+  },
+} as const;
+
 // ─── Helpers ──────────────────────────────────────────────────────────────
 
 /** Returns the matching semantic palette for a theme key. */

@@ -97,7 +97,7 @@ import { TilawahRow } from './quran/TilawahRow';
 import { KhatmahEntry } from './quran/KhatmahEntry';
 import { HifzEntry } from './quran/HifzEntry';
 import { useTabBarScroll } from '../navigation/tabBarVisibility';
-import { RADIUS, SPACING } from '../theme/tokens';
+import { ARCH_GOLD, RADIUS, SPACING } from '../theme/tokens';
 import { tajweedColoursShown } from '../quran/tajweed/tajweedSupport';
 import { useSheetSides } from '../responsive/sheetSides';
 import { IS_WEB_APP } from '../config/webApp';
@@ -671,7 +671,15 @@ export function QuranScreen() {
         <View
           style={[
             styles.doorsCard,
-            { backgroundColor: palette.card, ...cardEdgeStyle(palette) },
+            // The Arch of Light's gold at the card's leading edge (1.0.4),
+            // the same gold as the next prayer's bar and the arch's arc:
+            // the way back into the book is marked like the way forward.
+            {
+              backgroundColor: palette.card,
+              ...cardEdgeStyle(palette),
+              borderStartWidth: 3,
+              borderStartColor: ARCH_GOLD,
+            },
           ]}>
           <ResumeDoors
             state={doors}

@@ -75,12 +75,12 @@ export type WidgetHighlightId =
   | 'blue'
   | 'amber'
   | 'custom';
-/** The hero's sky band: painted, or drawn as a chart — see `heroLook`. */
-export type HeroLook = 'sky' | 'track';
-export const HERO_LOOKS: readonly HeroLook[] = ['sky', 'track'];
-export const DEFAULT_HERO_LOOK: HeroLook = 'sky';
+/** The hero's look: the painted sky, the Track chart, or the Arch of Light (1.0.4). */
+export type HeroLook = 'sky' | 'track' | 'arch';
+export const HERO_LOOKS: readonly HeroLook[] = ['sky', 'track', 'arch'];
+export const DEFAULT_HERO_LOOK: HeroLook = 'arch';
 export function isHeroLook(v: unknown): v is HeroLook {
-  return v === 'sky' || v === 'track';
+  return v === 'sky' || v === 'track' || v === 'arch';
 }
 
 /**
@@ -537,14 +537,23 @@ export type PrayerAppSettings = {
    */
   skyVariant: SkyVariant;
   /**
-   * How the hero's sky band is drawn (screens/home/trackModel.ts):
-   * 'sky', the painted sky with the sun and the moon on their arc, or
+   * How the hero is drawn (screens/home/trackModel.ts, sunArch.ts):
+   * 'sky', the painted sky with the sun and the moon on their arc,
    * 'track', the same band as a chart — the horizon as a hairline,
    * today's track of the sun (the moon's by night) to scale from the
-   * reader's coordinates, the body on it and the next prayer's ring.
-   * Under every theme; the text, the rail and the page do not move.
+   * reader's coordinates, the body on it and the next prayer's ring — or
+   * 'arch', the Arch of Light (1.0.4): a stone card with the sun's path
+   * as an arch, the orb on it, the countdown under it. Under every theme;
+   * the text, the rail and the page do not move.
    */
   heroLook: HeroLook;
+  /**
+   * The Arch of Light (1.0.4), once: whether the upgrade that made the
+   * arch the default has run (storage.ts). Without it a reader who
+   * afterwards picked the painted sky would be moved back to the arch
+   * on every load.
+   */
+  heroLookArchDefault: boolean;
   tintedSurfaces: boolean;
   /**
    * Custom colours the user has kept, newest first — see
@@ -892,8 +901,10 @@ export const DEFAULT_SETTINGS: PrayerAppSettings = {
   // Upgrades without this key stay Classic — see storage.ts.
   tintedSurfaces: true,
   skyVariant: 'realistic',
-  // The painted sky until someone picks the chart under Appearance.
+  // The Arch of Light until someone picks another look under Appearance.
   heroLook: DEFAULT_HERO_LOOK,
+  // Whether the 1.0.4 upgrade that made the arch the default has run.
+  heroLookArchDefault: false,
   // Nobody starts with a colour they did not pick.
   savedAccentColors: [],
   // Live Activity defaults: OFF; when enabled, the detail-rich layout

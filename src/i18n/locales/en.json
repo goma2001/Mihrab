@@ -124,7 +124,14 @@
     "pullRelease": "Release to refresh",
     "pullRefreshing": "Refreshing your times…",
     "helpMihrabChip": "Help صلاتي grow",
-    "minimalTimesTitle": "Today’s times"
+    "minimalTimesTitle": "Today’s times",
+    "archPhaseFajr": "Fajr",
+    "archPhaseSunrise": "Sunrise",
+    "archPhaseDay": "Midday",
+    "archPhaseAsr": "Asr",
+    "archPhaseSunset": "Sunset",
+    "archPhaseNight": "Night",
+    "archDayNight": "Day / night"
   },
   "errors": {
     "locationNeededTitle": "Location needed",
@@ -194,7 +201,8 @@
     "heroLook": "Sky band",
     "heroLookSky": "Painted",
     "heroLookTrack": "Track",
-    "heroLookHelp": "Painted shows the sun and the moon on the sky. Track draws the band as a chart: the horizon as a line, today's path of the sun (the moon's at night) to scale where you are, and a ring where it will be at the next prayer.",
+    "heroLookArch": "Arch of Light",
+    "heroLookHelp": "Arch of Light shows the sun's path as an arch on a stone card, with the day's prayers as dots under it. Painted shows the sun and the moon on the sky. Track draws the band as a chart: the horizon as a line, today's path of the sun (the moon's at night) to scale where you are, and a ring where it will be at the next prayer.",
     "themeHelp": "System matches your device light or dark mode. Turn on System colors to use the platform palette in the app (including Material You on Android). Buttons and accents follow your phone’s primary color so the app matches your wallpaper when dynamic color is available.",
     "clockFormat": "Time format",
     "clockFormatAuto": "Automatic",
